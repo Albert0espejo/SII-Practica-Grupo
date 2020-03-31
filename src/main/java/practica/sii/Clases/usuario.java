@@ -19,6 +19,8 @@ class usuario implements Serializable {
 	private String usuario;
 	private String contrasena;
 	private String correo;
+	@ManyToOne
+	private Universidad universidad;
 	private static final long serialVersionUID = 1L;
 
 	public usuario() {
@@ -53,6 +55,12 @@ class usuario implements Serializable {
 		this.correo = correo;
 	}
 	
+	public Universidad getUniversidad() {
+		return universidad;
+	}
+	public void setUniversidad(Universidad universidad) {
+		this.universidad = universidad;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
