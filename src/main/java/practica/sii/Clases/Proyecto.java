@@ -11,17 +11,20 @@ import javax.persistence.*;
  *
  */
 @Entity
-
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Proyecto implements Serializable {
 
 	   
-	@Id
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long ID_Proyecto;
 	private String Lugar;
+	@Temporal(TemporalType.DATE)
 	private Date Fecha_Inicio;
+	@Temporal(TemporalType.DATE)
 	private Date Fecha_Final;
 	private String Descripcion;
-	private String Estado;
+	@Enumerated(EnumType.STRING)
+	private Estado Estado;
 	private static final long serialVersionUID = 1L;
 
 	public Proyecto() {
@@ -62,12 +65,35 @@ public class Proyecto implements Serializable {
 	public void setDescripcion(String Descripcion) {
 		this.Descripcion = Descripcion;
 	}   
-	public String getEstado() {
+	public Estado getEstado() {
 		return this.Estado;
 	}
 
-	public void setEstado(String Estado) {
+	public void setEstado(Estado Estado) {
 		this.Estado = Estado;
 	}
-   
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((ID_Proyecto == null) ? 0 : ID_Proyecto.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Proyecto other = (Proyecto) obj;
+		if (ID_Proyecto == null) {
+			if (other.ID_Proyecto != null)
+				return false;
+		} else if (!ID_Proyecto.equals(other.ID_Proyecto))
+			return false;
+		return true;
+	}
 }

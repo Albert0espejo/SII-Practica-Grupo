@@ -10,7 +10,7 @@ import javax.persistence.*;
  */
 @Entity
 
-public class Voluntariado implements Serializable {
+public class Voluntariado extends Proyecto implements Serializable {
 
 	
 	private String Nombre_Voluntariado;
