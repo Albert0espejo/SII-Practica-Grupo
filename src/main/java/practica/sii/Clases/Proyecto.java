@@ -27,6 +27,15 @@ public class Proyecto implements Serializable {
 	private String Descripcion;
 	@Enumerated(EnumType.STRING)
 	private Estado Estado;
+	@OneToMany(mappedBy = "proyecto")
+	private List<Solicitud> solicitudes;
+	
+	public List<Solicitud> getSolicitudes() {
+		return solicitudes;
+	}
+	public void setSolicitudes(List<Solicitud> solicitudes) {
+		this.solicitudes = solicitudes;
+	}
 	private static final long serialVersionUID = 1L;
 	
 	@ManyToMany

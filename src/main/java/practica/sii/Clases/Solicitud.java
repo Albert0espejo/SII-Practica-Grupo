@@ -42,6 +42,7 @@ public class Solicitud implements Serializable {
 		this.Estado = Estado;
 	}
 	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -64,5 +65,17 @@ public class Solicitud implements Serializable {
 		} else if (!Id_Solicitud.equals(other.Id_Solicitud))
 			return false;
 		return true;
+	}
+	public Universidad getUniversidad() {
+		return universidad;
+	}
+	public void setUniversidad(Universidad universidad) {
+		this.universidad = universidad;
+	}
+	public Proyecto getProyecto() {
+		return proyecto;
+	}
+	public void setProyecto(Proyecto proyecto) {
+		this.proyecto = proyecto;
 	}
 }
