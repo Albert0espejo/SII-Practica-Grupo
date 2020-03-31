@@ -21,6 +21,8 @@ public class Alumno extends usuario implements Serializable {
 	private String Direccion;
 	private String Idiomas;
 	private Integer Numero_Expediente;
+	@ManyToOne
+	private Universidad universidad;
 	private static final long serialVersionUID = 1L;
 
 	public Alumno() {
@@ -75,5 +77,11 @@ public class Alumno extends usuario implements Serializable {
 	public void setNumero_Expediente(Integer Numero_Expediente) {
 		this.Numero_Expediente = Numero_Expediente;
 	}
-   
+	public Universidad getUniversidad() {
+		return universidad;
+	}
+	public void setUniversidad(Universidad universidad) {
+		this.universidad = universidad;
+	}
+	
 }
