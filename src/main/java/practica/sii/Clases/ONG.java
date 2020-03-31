@@ -3,7 +3,10 @@ package practica.sii.Clases;
 import java.io.Serializable;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
+
 import javax.persistence.*;
+
 
 /**
  * Entity implementation class for Entity: ONG
@@ -22,7 +25,25 @@ public class ONG extends usuario implements Serializable {
 	private String Representante;
 	private String Direccion_Web;
 	private static final long serialVersionUID = 1L;
+	
+	@ManyToMany (mappedBy="ong")
+	private List<Proyecto> proyecto;
+	
+	@ManyToOne
+	private Noticias noticias;
 
+	public List<Proyecto> getProyecto() {
+		return proyecto;
+	}
+	public void setProyecto(List<Proyecto> proyecto) {
+		this.proyecto = proyecto;
+	}
+	public Noticias getNoticias() {
+		return noticias;
+	}
+	public void setNoticias(Noticias noticias) {
+		this.noticias = noticias;
+	}
 	public ONG() {
 		super();
 	}   

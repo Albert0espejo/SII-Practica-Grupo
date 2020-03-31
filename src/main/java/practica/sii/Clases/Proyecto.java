@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.lang.Long;
 import java.lang.String;
 import java.sql.Date;
+import java.util.List;
+
 import javax.persistence.*;
 
 /**
@@ -26,6 +28,9 @@ public class Proyecto implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private Estado Estado;
 	private static final long serialVersionUID = 1L;
+	
+	@ManyToMany
+	private List<ONG> ong;
 
 	public Proyecto() {
 		super();
@@ -95,5 +100,11 @@ public class Proyecto implements Serializable {
 		} else if (!ID_Proyecto.equals(other.ID_Proyecto))
 			return false;
 		return true;
+	}
+	public List<ONG> getOng() {
+		return ong;
+	}
+	public void setOng(List<ONG> ong) {
+		this.ong = ong;
 	}
 }

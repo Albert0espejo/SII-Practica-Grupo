@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.lang.Long;
 import java.lang.String;
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -24,6 +25,9 @@ public class Noticias implements Serializable {
 	private Date Fecha_Publicacion;
 	private String Autor;
 	private static final long serialVersionUID = 1L;
+	
+	@OneToMany (mappedBy="Noticias")
+	private List<ONG> ong;
 
 	public Noticias() {
 		super();
@@ -86,5 +90,11 @@ public class Noticias implements Serializable {
 		} else if (!Id_Noticia.equals(other.Id_Noticia))
 			return false;
 		return true;
+	}
+	public List<ONG> getOng() {
+		return ong;
+	}
+	public void setOng(List<ONG> ong) {
+		this.ong = ong;
 	}
 }
