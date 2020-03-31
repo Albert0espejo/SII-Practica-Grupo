@@ -26,8 +26,8 @@ public class Noticias implements Serializable {
 	private String Autor;
 	private static final long serialVersionUID = 1L;
 	
-	@OneToMany (mappedBy="noticias")
-	private List<ONG> ong;
+	@ManyToOne
+	private ONG ong;
 
 	public Noticias() {
 		super();
@@ -91,10 +91,10 @@ public class Noticias implements Serializable {
 			return false;
 		return true;
 	}
-	public List<ONG> getOng() {
+	public ONG getOng() {
 		return ong;
 	}
-	public void setOng(List<ONG> ong) {
+	public void setOng(ONG ong) {
 		this.ong = ong;
 	}
 }

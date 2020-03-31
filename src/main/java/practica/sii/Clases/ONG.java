@@ -29,8 +29,8 @@ public class ONG extends usuario implements Serializable {
 	@ManyToMany (mappedBy="ong")
 	private List<Proyecto> proyecto;
 	
-	@ManyToOne
-	private Noticias noticias;
+	@OneToMany (mappedBy = "ong")
+	private List<Noticias> noticias;
 
 	public List<Proyecto> getProyecto() {
 		return proyecto;
@@ -38,10 +38,10 @@ public class ONG extends usuario implements Serializable {
 	public void setProyecto(List<Proyecto> proyecto) {
 		this.proyecto = proyecto;
 	}
-	public Noticias getNoticias() {
+	public List<Noticias> getNoticias() {
 		return noticias;
 	}
-	public void setNoticias(Noticias noticias) {
+	public void setNoticias(List<Noticias> noticias) {
 		this.noticias = noticias;
 	}
 	public ONG() {
