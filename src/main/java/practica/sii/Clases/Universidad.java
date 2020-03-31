@@ -6,7 +6,7 @@ import java.lang.String;
 import javax.persistence.*;
 
 /**
-* Entity implementation class for Entity: usuario
+* Entity implementation class for Entity: Universidad
 *
 */
 @Entity
