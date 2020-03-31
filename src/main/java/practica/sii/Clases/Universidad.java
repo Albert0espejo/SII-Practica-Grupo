@@ -13,7 +13,6 @@ import javax.persistence.*;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Universidad implements Serializable{
 
-	
 	@Id_Universidad @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long Id_Universidad;
 	private String Nombre;
