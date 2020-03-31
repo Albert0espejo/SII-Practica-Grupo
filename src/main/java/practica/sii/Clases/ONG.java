@@ -11,12 +11,13 @@ import javax.persistence.*;
  */
 @Entity
 
-public class ONG implements Serializable {
+public class ONG extends usuario implements Serializable {
 
 	
 	private String Nombre;
 	private String Descripcion;
-	private String Direccion;
+	@Embedded
+	private Address Direccion;
 	private Integer Telefono;
 	private String Representante;
 	private String Direccion_Web;
@@ -39,11 +40,11 @@ public class ONG implements Serializable {
 	public void setDescripcion(String Descripcion) {
 		this.Descripcion = Descripcion;
 	}   
-	public String getDireccion() {
+	public Address getDireccion() {
 		return this.Direccion;
 	}
 
-	public void setDireccion(String Direccion) {
+	public void setDireccion(Address Direccion) {
 		this.Direccion = Direccion;
 	}   
 	public Integer getTelefono() {

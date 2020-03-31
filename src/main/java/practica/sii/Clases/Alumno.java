@@ -11,7 +11,7 @@ import javax.persistence.*;
  */
 @Entity
 
-public class Alumno implements Serializable {
+public class Alumno extends usuario implements Serializable {
 
 	
 	private String Nombre;

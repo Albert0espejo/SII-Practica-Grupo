@@ -17,7 +17,8 @@ public class Universidad implements Serializable{
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long Id_Universidad;
 	private String Nombre;
-	private String Direccion;
+	@Embedded
+	private Address Direccion;
 	private String Direccion_Web;
 	private String Ciudad;
 	private Long Codigo_Postal;
@@ -38,10 +39,10 @@ public class Universidad implements Serializable{
 	public void setNombre(String Nombre) {
 		this.Nombre = Nombre;
 	}
-	public String getDireccion() {
-		return this.Nombre;
+	public Address getDireccion() {
+		return this.Direccion;
 	}
-	public void setDireccion(String Direccion) {
+	public void setDireccion(Address Direccion) {
 		this.Direccion = Direccion;
 	}
 	public String getDireccion_Web() {
@@ -63,4 +64,27 @@ public class Universidad implements Serializable{
 		this.Codigo_Postal= Codigo_Postal;
 	}
 	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((Id_Universidad == null) ? 0 : Id_Universidad.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Universidad other = (Universidad) obj;
+		if (Id_Universidad == null) {
+			if (other.Id_Universidad != null)
+				return false;
+		} else if (!Id_Universidad.equals(other.Id_Universidad))
+			return false;
+		return true;
+	}
 }
