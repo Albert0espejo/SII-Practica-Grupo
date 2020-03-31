@@ -3,6 +3,8 @@ package practica.sii.Clases;
 import java.io.Serializable;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
+
 import javax.persistence.*;
 
 /**
@@ -22,6 +24,10 @@ public class Universidad implements Serializable{
 	private String Direccion_Web;
 	private String Ciudad;
 	private Long Codigo_Postal;
+	@OneToMany(mappedBy = "universidad")
+	private List<usuario> usuarios;
+	@OneToMany(mappedBy = "universidad")
+	private List<Solicitud> solicitudes;
 	private static final long serialVersionUID = 1L;
 	
 	public Universidad() {
@@ -64,6 +70,19 @@ public class Universidad implements Serializable{
 		this.Codigo_Postal= Codigo_Postal;
 	}
 	
+	public List<usuario> getUsuarios() {
+		return usuarios;
+	}
+	public void setUsuarios(List<usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
+	
+	public List<Solicitud> getSolicitudes() {
+		return solicitudes;
+	}
+	public void setSolicitudes(List<Solicitud> solicitudes) {
+		this.solicitudes = solicitudes;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;

@@ -26,7 +26,7 @@ public class Noticias implements Serializable {
 	private String Autor;
 	private static final long serialVersionUID = 1L;
 	
-	@OneToMany (mappedBy="Noticias")
+	@OneToMany (mappedBy="noticias")
 	private List<ONG> ong;
 
 	public Noticias() {
