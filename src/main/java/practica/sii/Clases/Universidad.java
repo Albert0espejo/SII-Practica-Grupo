@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class Universidad implements Serializable{
 
 	
-	@Id_Universidad @GeneratedValue(strategy = GenerationType.AUTO)
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long Id_Universidad;
 	private String Nombre;
 	private String Direccion;
