@@ -19,6 +19,8 @@ public class PDI extends usuario implements Serializable {
 	private String Departamento;
 	private String Telefono;
 	private String Es_Gestor;
+	@ManyToOne
+	private Universidad universidad;
 	private static final long serialVersionUID = 1L;
 
 	public PDI() {
@@ -66,5 +68,10 @@ public class PDI extends usuario implements Serializable {
 	public void setEs_Gestor(String Es_Gestor) {
 		this.Es_Gestor = Es_Gestor;
 	}
-   
+	public Universidad getUniversidad() {
+		return universidad;
+	}
+	public void setUniversidad(Universidad universidad) {
+		this.universidad = universidad;
+	}
 }

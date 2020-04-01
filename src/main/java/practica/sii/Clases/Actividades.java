@@ -11,7 +11,8 @@ import javax.persistence.*;
  */
 @Entity
 
-public class Actividades implements Serializable {
+
+public class Actividades extends Proyecto implements Serializable {
 
 	
 	private String Nombre_Actividad;
