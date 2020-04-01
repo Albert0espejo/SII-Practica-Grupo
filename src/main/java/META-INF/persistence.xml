@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="practica.sii" transaction-type="RESOURCE_LOCAL">
-<<<<<<< HEAD
-		<class>es.uma.informatica.practica.sii.Actividades</class>
-		<class>es.uma.informatica.practica.sii.Noticia</class>
-		<class>practica.sii.Clases.Noticias</class>
-		<class>practica.sii.Clases.Actividades</class>
-=======
 		<class>practica.sii.Clases.Noticias</class>
 		<class>practica.sii.Clases.Actividades</class>
 		<class>practica.sii.Clases.Solicitud</class>
@@ -18,7 +12,6 @@
 		<class>practica.sii.Clases.Universidad</class>
 		<class>practica.sii.Clases.usuario</class>
 		<class>practica.sii.Clases.Voluntariado</class>
->>>>>>> branch 'master' of https://github.com/Albert0espejo/SII-Practica-Grupo.git
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.168.99.100:3306/sii"/>
 			<property name="javax.persistence.jdbc.user" value="siiuser"/>
