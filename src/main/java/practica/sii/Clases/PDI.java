@@ -9,7 +9,6 @@ import javax.persistence.*;
  *
  */
 @Entity
-@DiscriminatorValue("PDI")
 public class PDI extends Usuario implements Serializable {
 
 	

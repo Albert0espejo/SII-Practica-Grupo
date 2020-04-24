@@ -9,7 +9,6 @@ import javax.persistence.*;
  *
  */
 @Entity
-@DiscriminatorValue("PAS")
 public class PAS extends Usuario implements Serializable {
 
 	

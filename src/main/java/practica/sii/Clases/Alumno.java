@@ -10,7 +10,6 @@ import javax.persistence.*;
  *
  */
 @Entity
-@DiscriminatorValue("Alu")
 public class Alumno extends Usuario implements Serializable {
 
 	

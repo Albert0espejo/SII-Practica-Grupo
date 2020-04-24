@@ -11,16 +11,22 @@ import javax.persistence.*;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name= "Tipo", discriminatorType = DiscriminatorType.STRING)
-public
-class Usuario implements Serializable {
+public class Usuario implements Serializable {
 
+	public enum Rol {
+	      ADMINISTRADOR,
+	      PAS,
+	      PDI,
+	      ONG,
+	      ALUMNO
+	};
 	   
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long Id;
 	private String usuario;
 	private String contrasena;
 	private String correo;
+	private Rol rol;
 	@ManyToOne
 	private Universidad universidad;
 	private static final long serialVersionUID = 1L;
@@ -62,6 +68,12 @@ class Usuario implements Serializable {
 	}
 	public void setUniversidad(Universidad universidad) {
 		this.universidad = universidad;
+	}
+	public Rol getRol() {
+		return rol;
+	}
+	public void setRol(Rol rol) {
+		this.rol = rol;
 	}
 	@Override
 	public int hashCode() {
