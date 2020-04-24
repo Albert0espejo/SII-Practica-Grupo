@@ -25,7 +25,7 @@ public class Universidad implements Serializable{
 	private String Ciudad;
 	private Long Codigo_Postal;
 	@OneToMany(mappedBy = "universidad")
-	private List<usuario> usuarios;
+	private List<Usuario> usuarios;
 	@OneToMany(mappedBy = "universidad")
 	private List<Solicitud> solicitudes;
 	private static final long serialVersionUID = 1L;
@@ -70,10 +70,10 @@ public class Universidad implements Serializable{
 		this.Codigo_Postal= Codigo_Postal;
 	}
 	
-	public List<usuario> getUsuarios() {
+	public List<Usuario> getUsuarios() {
 		return usuarios;
 	}
-	public void setUsuarios(List<usuario> usuarios) {
+	public void setUsuarios(List<Usuario> usuarios) {
 		this.usuarios = usuarios;
 	}
 	

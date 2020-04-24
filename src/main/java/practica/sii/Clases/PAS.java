@@ -9,8 +9,8 @@ import javax.persistence.*;
  *
  */
 @Entity
-
-public class PAS extends usuario implements Serializable {
+@DiscriminatorValue("PAS")
+public class PAS extends Usuario implements Serializable {
 
 	
 	private String Facultad;

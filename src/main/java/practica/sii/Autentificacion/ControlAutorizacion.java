@@ -4,18 +4,14 @@
  */
 package practica.sii.Autentificacion;
 
-import es.uma.informatica.sii.jsf.autenticacion.modelo.Usuario;
-import static es.uma.informatica.sii.jsf.autenticacion.modelo.Usuario.Rol.ADMINISTRADOR;
-import static es.uma.informatica.sii.jsf.autenticacion.modelo.Usuario.Rol.NORMAL;
 import javax.inject.Named;
+
+import practica.sii.Clases.Usuario;
+
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import javax.faces.context.FacesContext;
 
-/**
- *
- * @author francis
- */
 @Named(value = "controlAutorizacion")
 @SessionScoped
 public class ControlAutorizacion implements Serializable {

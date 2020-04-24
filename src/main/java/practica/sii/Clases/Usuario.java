@@ -11,7 +11,9 @@ import javax.persistence.*;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-class usuario implements Serializable {
+@DiscriminatorColumn(name= "Tipo", discriminatorType = DiscriminatorType.STRING)
+public
+class Usuario implements Serializable {
 
 	   
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,7 +25,7 @@ class usuario implements Serializable {
 	private Universidad universidad;
 	private static final long serialVersionUID = 1L;
 
-	public usuario() {
+	public Usuario() {
 		super();
 	}   
 	public Long getId() {
@@ -76,7 +78,7 @@ class usuario implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		usuario other = (usuario) obj;
+		Usuario other = (Usuario) obj;
 		if (Id == null) {
 			if (other.Id != null)
 				return false;

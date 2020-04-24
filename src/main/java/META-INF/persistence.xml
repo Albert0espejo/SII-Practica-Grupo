@@ -10,7 +10,7 @@
 		<class>practica.sii.Clases.PDI</class>
 		<class>practica.sii.Clases.Proyecto</class>
 		<class>practica.sii.Clases.Universidad</class>
-		<class>practica.sii.Clases.usuario</class>
+		<class>practica.sii.Clases.Usuario</class>
 		<class>practica.sii.Clases.Voluntariado</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.168.99.100:3306/sii"/>

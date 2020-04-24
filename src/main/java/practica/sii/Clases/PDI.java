@@ -9,8 +9,8 @@ import javax.persistence.*;
  *
  */
 @Entity
-
-public class PDI extends usuario implements Serializable {
+@DiscriminatorValue("PDI")
+public class PDI extends Usuario implements Serializable {
 
 	
 	private String Nombre;

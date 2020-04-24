@@ -10,8 +10,8 @@ import javax.persistence.*;
  *
  */
 @Entity
-
-public class Alumno extends usuario implements Serializable {
+@DiscriminatorValue("Alu")
+public class Alumno extends Usuario implements Serializable {
 
 	
 	private String Nombre;

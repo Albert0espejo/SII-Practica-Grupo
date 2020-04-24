@@ -13,8 +13,8 @@ import javax.persistence.*;
  *
  */
 @Entity
-
-public class ONG extends usuario implements Serializable {
+@DiscriminatorValue("ONG")
+public class ONG extends Usuario implements Serializable {
 
 	
 	private String Nombre;

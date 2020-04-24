@@ -13,8 +13,8 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import es.uma.informatica.sii.jsf.autenticacion.modelo.Usuario;
-import es.uma.informatica.sii.jsf.autenticacion.modelo.Usuario.Rol;
+import practica.sii.Clases.Usuario;
+
 
 /**
  *
@@ -36,7 +36,7 @@ public class Login {
      */
     public Login() {
         usuarios = new ArrayList<Usuario>();
-        usuarios.add(new Usuario("pepe", "asdf", Rol.NORMAL));
+        usuarios.add(new Usuario("pepe", "asdf", Tipo.NORMAL));
         usuarios.add(new Usuario("manolo", "qwer", Rol.ADMINISTRADOR));
     }
 
