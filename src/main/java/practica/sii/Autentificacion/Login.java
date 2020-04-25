@@ -5,6 +5,7 @@
 package practica.sii.Autentificacion;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
@@ -58,8 +59,29 @@ public class Login {
 
     public String autenticar() {
         // Implementar este método
-        FacesContext ctx = FacesContext.getCurrentInstance();
-        ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "El método autenticar() no está implementado", "El método autenticar() no está implementado"));
+    	FacesContext ctx = FacesContext.getCurrentInstance();
+        
+        boolean encontrado = false;
+        Iterator i = usuarios.iterator();
+        Usuario aux = null;
+        
+        while(i.hasNext() && !encontrado) {
+        	aux = (Usuario) i.next();
+        	if(aux.getUsuario().equals(usuario)) {
+        		encontrado = true;
+        	}
+        }
+        
+        if(encontrado) {
+        	if(aux.getContrasena().equals(contrasenia)) {
+        		ctrl.setUsuario(aux);
+        		return ctrl.home();
+        	}else {
+                ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Contraseña incorrecta", "Contraseña incorrecta"));
+        	}
+        }else {
+        	ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuario no encontrado", "Usuario no encontrado" ));
+        }
         return null;
     }
 }

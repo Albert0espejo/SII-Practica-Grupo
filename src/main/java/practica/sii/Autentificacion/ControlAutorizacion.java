@@ -9,6 +9,7 @@ import javax.inject.Named;
 import practica.sii.Clases.Usuario;
 
 import javax.enterprise.context.SessionScoped;
+
 import java.io.Serializable;
 import javax.faces.context.FacesContext;
 
@@ -32,8 +33,19 @@ public class ControlAutorizacion implements Serializable {
         // Si no hay usuario debe devolver la página de login
         // Si el usuario es el administrador debe devolver la página admin.xhtml
         // Si el usuario es un usuario normal debe devolver la página normal.xhtml
-        
-        return null;
+    	if(usuario.getRol().equals(Usuario.Rol.ADMINISTRADOR)) {
+        	return "admin.xhtml";
+        }else if(usuario.getRol().equals(Usuario.Rol.ALUMNO)){
+        	return "alumno.xhtml";
+        }else if(usuario.getRol().equals(Usuario.Rol.ONG)) {
+        	return "ong.xhtml";
+        }else if(usuario.getRol().equals(Usuario.Rol.PAS)) {
+        	return "pas.xhtml";
+        }else if(usuario.getRol().equals(Usuario.Rol.PDI)) {
+        	return "pdi.xhtml";
+        }else {
+        	return "login.xhtml";
+        }
     }
     
     public String logout()

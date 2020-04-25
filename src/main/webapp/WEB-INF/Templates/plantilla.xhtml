@@ -18,6 +18,7 @@
             <h:form id="menu">
                 <ul class="menulist">
                     <li><h:commandLink action="#{controlAutorizacion.home()}" value="Home"/></li>
+                    <ui:insert name="botones"></ui:insert>
                     <c:if test="#{controlAutorizacion.usuario != null}">
                         <li><h:commandLink action="#{controlAutorizacion.logout()}" value="Salir"/></li>
                     </c:if>
