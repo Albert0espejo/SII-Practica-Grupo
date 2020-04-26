@@ -1,6 +1,8 @@
 package practica.sii.Autentificacion;
 
+import java.io.Serializable;
 import java.util.List;
+
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
@@ -10,11 +12,12 @@ import javax.persistence.Query;
  
 import practica.sii.Clases.Usuario;
 import practica.sii.Autentificacion.Login;
+
+
 @Named(value = "controlAdmin")
 @SessionScoped
-public class ControlAdmin {
+public class ControlAdmin implements Serializable{
 	
-	private EntityManager em;
 	
 	public enum Vistas {
 		USUARIOS,
@@ -25,6 +28,7 @@ public class ControlAdmin {
 	
 	private List<Usuario> listaUsuarios;
 	private Vistas actual = null;
+	private Boolean showtable = false;
 	
 	public void setActual (Vistas vista) {
 		actual = vista;
@@ -47,5 +51,18 @@ public class ControlAdmin {
 		/*Query query = (Query) em.createNamedQuery("todosUsuarios");
     	List<Usuario> res = query.getResultList();
         return res;*/
+	}
+	
+	public Boolean getShowtable() {
+		return showtable;
+	}
+	
+	public String enabletable() {
+		if(showtable == true) {
+			showtable = false;
+		}else {
+			showtable = true;
+		}
+		return "";
 	}
 }

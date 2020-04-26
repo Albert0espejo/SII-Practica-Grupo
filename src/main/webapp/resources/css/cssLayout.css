@@ -4,6 +4,7 @@
     background-color: #036fab;
     color: white;
     padding: 5px;
+    height: 3em;
     margin: 0px 0px 10px 0px;
 }
 
@@ -52,10 +53,12 @@
   text-decoration: none;
 }
 
-#top a:link:hover, #top a:visited:hover  {
-  color: black;
-  font-weight : bold;
-  text-decoration : underline;
+#top a:hover {
+    color: #c2dfef;
 }
 
-
+ul.menulist li {
+    list-style: none;
+    display:inline;
+    margin: 1em;
+}

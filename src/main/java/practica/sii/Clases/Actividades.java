@@ -11,7 +11,6 @@ import javax.persistence.*;
  */
 @Entity
 
-
 public class Actividades extends Proyecto implements Serializable {
 
 	
