@@ -7,6 +7,7 @@
     <ui:define name="title">Página para el usuario administrador</ui:define>
     
     <ui:define name="botones">
+    	<li><h:commandLink action="#{controlAdmin.vistaUsuario}" value="Vista Usuarios"/></li>
     	<li><h:commandLink action="#{controlAutorizacion.vistaNormal}" value="Vista Normal"/></li>
     </ui:define>
     
@@ -16,6 +17,36 @@
                 <h1>Usuario administrador</h1>
                 <p>¡¡Bienvenido <h:outputText value="#{controlAutorizacion.usuario.usuario}"/>!!</p>
 
+            </c:when>
+            <c:when test ="#{controlAdmin.actual == 'USUARIOS'}">
+            	<h:dataTable value="#{controlAdmin.listaUsuarios}" var="usuarios">
+      				<h:column>
+         				<f:facet name="header">
+            				<h:outputText value="Id"></h:outputText>
+         				</f:facet>
+         				<h:outputText value="#{usuarios.id}"></h:outputText>
+      				</h:column>
+     				<h:column>
+         				<f:facet name="header">
+            				<h:outputText value="nombre"></h:outputText>
+        				</f:facet>
+         				<h:outputText value="#{usuarios.usuario}"></h:outputText>
+      				</h:column>
+      				<h:column>
+         				<f:facet name="header">
+            				<h:outputText value="Rol"></h:outputText>
+        				</f:facet>
+         				<h:outputText value="#{usuarios.rol}"></h:outputText>
+      				</h:column>
+      				<h:column>
+         				<h:form>
+            				<h:commandButton action="#{holaMundo.removeValor(dato)}"
+               					value="Borrar">
+               				</h:commandButton>
+         				</h:form>
+      				</h:column>
+				</h:dataTable>
+            	
             </c:when>
             <c:otherwise>
                 <ui:include src="/WEB-INF/templates/errorAutorizacion.xhtml"/>

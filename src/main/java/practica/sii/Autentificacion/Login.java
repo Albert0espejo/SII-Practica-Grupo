@@ -15,19 +15,17 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import practica.sii.Clases.Usuario;
+import practica.sii.Clases.Usuario.Rol;
 
 
-/**
- *
- * @author francis
- */
+
 @Named(value = "login")
 @RequestScoped
 public class Login {
 
     private String usuario;
     private String contrasenia;
-    private List<Usuario> usuarios;
+    private static List<Usuario> usuarios;
     
     @Inject
     private ControlAutorizacion ctrl;
@@ -37,8 +35,8 @@ public class Login {
      */
     public Login() {
         usuarios = new ArrayList<Usuario>();
-      /*  usuarios.add(new Usuario("pepe", "asdf", Tipo.NORMAL));
-        usuarios.add(new Usuario("manolo", "qwer", Rol.ADMINISTRADOR));*/
+        usuarios.add(new Usuario(1L,"pepe", "asdf", Rol.ALUMNO));
+        usuarios.add(new Usuario(2L,"manolo", "qwer", Rol.ADMINISTRADOR));
     }
 
     public String getUsuario() {
@@ -47,6 +45,10 @@ public class Login {
 
     public String getContrasenia() {
         return contrasenia;
+    }
+    
+    public static List<Usuario> getUsuarios(){
+    	return usuarios;
     }
 
     public void setUsuario(String usuario) {
