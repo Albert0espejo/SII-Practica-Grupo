@@ -1,10 +1,15 @@
 package practica.sii.Autentificacion;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import practica.sii.Clases.Noticias;
 import practica.sii.Clases.Proyecto;
@@ -31,9 +36,21 @@ public class ControlAdmin implements Serializable{
 	private Boolean showtableNoticias = false;
 	private Boolean showtableProyectos = false;
 	
+	private EntityManagerFactory emf;
+	private EntityManager em;
+	
 	public ControlAdmin() {
-		Login aux= new Login();
-		listaUsuarios = aux.getUsuarios();
+		emf = Persistence.createEntityManagerFactory("practica.sii");
+		em = emf.createEntityManager();
+
+		
+		Query query = (Query) em.createNamedQuery("todosUsuarios");
+		
+		listaUsuarios = query.getResultList();
+		listaNoticias = new ArrayList<Noticias>();
+		listaProyectos = new ArrayList<Proyecto>();
+		listaSolicitudes = new ArrayList<Solicitud>();
+		listaUniversidades = new ArrayList<Universidad>();
 	}
 	
 	public List<Usuario> getListaUsuarios(){
@@ -86,22 +103,57 @@ public class ControlAdmin implements Serializable{
 	}
 
 	public void enabletableUsuarios() {
+		if(showtableNoticias || showtableSolicitudes || showtableProyectos || showtableUniversidades) {
+			showtableNoticias = false;
+			showtableSolicitudes = false;
+			showtableProyectos = false;
+			showtableUniversidades = false;
+		}
+		
 		showtableUsuarios = !showtableUsuarios;
 	}
 	
 	public void enabletableSolicitudes() {
+		if(showtableNoticias || showtableUsuarios || showtableProyectos || showtableUniversidades) {
+			showtableNoticias = false;
+			showtableUsuarios = false;
+			showtableProyectos = false;
+			showtableUniversidades = false;
+		}
+		
 		showtableSolicitudes = !showtableSolicitudes;
 	}
 	
 	public void enabletableUniversidades() {
+		if(showtableNoticias || showtableUsuarios || showtableProyectos || showtableSolicitudes) {
+			showtableNoticias = false;
+			showtableUsuarios = false;
+			showtableProyectos = false;
+			showtableSolicitudes = false;
+		}
+		
 		showtableUniversidades = !showtableUniversidades;
 	}
 	
 	public void enabletableNoticias() {
+		if(showtableUniversidades || showtableUsuarios || showtableProyectos || showtableSolicitudes) {
+			showtableUniversidades = false;
+			showtableUsuarios = false;
+			showtableProyectos = false;
+			showtableSolicitudes = false;
+		}
+		
 		showtableNoticias = !showtableNoticias;
 	}
 	
 	public void enabletableProyectos() {
+		if(showtableNoticias || showtableUsuarios || showtableUniversidades || showtableSolicitudes) {
+			showtableNoticias = false;
+			showtableUsuarios = false;
+			showtableUniversidades = false;
+			showtableSolicitudes = false;
+		}
+		
 		showtableProyectos = !showtableProyectos;
 	}
 	
