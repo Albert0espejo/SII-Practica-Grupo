@@ -17,15 +17,15 @@
     
     <ui:define name="content">
             	<h:dataTable class="tabla" value="#{controlAdmin.listaUsuarios}" var="usuarios" rendered="#{controlAdmin.showtableUsuarios}">
-      				<h:column headerText="Id">
+      				<h:column>
       					<f:facet name = "header">Id</f:facet>
          				<h:outputText value="#{usuarios.id}"></h:outputText>
       				</h:column>
-     				<h:column headerText="Usuario">
+     				<h:column>
      					<f:facet name = "header">Usuario</f:facet>
          				<h:outputText value="#{usuarios.usuario}"></h:outputText>
       				</h:column>
-      				<h:column headerText="Rol" >
+      				<h:column >
       					<f:facet name = "header">Rol</f:facet>
          				<h:outputText value="#{usuarios.rol}"></h:outputText>
       				</h:column>
@@ -39,15 +39,15 @@
 				</h:dataTable>
 				
 				<h:dataTable class="tabla" value="#{controlAdmin.listaSolicitudes}" var="solicitudes" rendered="#{controlAdmin.showtableSolicitudes}">
-      				<h:column headerText="Id">
+      				<h:column>
       					<f:facet name = "header">Id</f:facet>
          				<h:outputText value="#{usuarios.id}"></h:outputText>
       				</h:column>
-     				<h:column headerText="Usuario">
+     				<h:column>
      					<f:facet name = "header">Usuario</f:facet>
          				<h:outputText value="#{usuarios.usuario}"></h:outputText>
       				</h:column>
-      				<h:column headerText="Rol" >
+      				<h:column >
       					<f:facet name = "header">Rol</f:facet>
          				<h:outputText value="#{usuarios.rol}"></h:outputText>
       				</h:column>
@@ -61,15 +61,15 @@
 				</h:dataTable>
 				
 				<h:dataTable class="tabla" value="#{controlAdmin.listaUniversidades}" var="universidades" rendered="#{controlAdmin.showtableUniversidades}">
-      				<h:column headerText="Id">
+      				<h:column>
       					<f:facet name = "header">Id</f:facet>
          				<h:outputText value="#{usuarios.id}"></h:outputText>
       				</h:column>
-     				<h:column headerText="Usuario">
+     				<h:column>
      					<f:facet name = "header">Usuario</f:facet>
          				<h:outputText value="#{usuarios.usuario}"></h:outputText>
       				</h:column>
-      				<h:column headerText="Rol" >
+      				<h:column >
       					<f:facet name = "header">Rol</f:facet>
          				<h:outputText value="#{usuarios.rol}"></h:outputText>
       				</h:column>
@@ -83,15 +83,15 @@
 				</h:dataTable>
 				
 				<h:dataTable class="tabla" value="#{controlAdmin.listaNoticias}" var="noticias" rendered="#{controlAdmin.showtableNoticias}">
-      				<h:column headerText="Id">
-      					<f:facet name = "header">Id</f:facet>
+      				<h:column>
+      					<f:facet name= "header">Id</f:facet>
          				<h:outputText value="#{usuarios.id}"></h:outputText>
       				</h:column>
-     				<h:column headerText="Usuario">
+     				<h:column>
      					<f:facet name = "header">Usuario</f:facet>
          				<h:outputText value="#{usuarios.usuario}"></h:outputText>
       				</h:column>
-      				<h:column headerText="Rol" >
+      				<h:column >
       					<f:facet name = "header">Rol</f:facet>
          				<h:outputText value="#{usuarios.rol}"></h:outputText>
       				</h:column>
@@ -105,15 +105,15 @@
 				</h:dataTable>
 				
 				<h:dataTable class="tabla" value="#{controlAdmin.listaProyectos}" var="proyectos" rendered="#{controlAdmin.showtableProyectos}">
-      				<h:column headerText="Id">
+      				<h:column >
       					<f:facet name = "header">Id</f:facet>
          				<h:outputText value="#{usuarios.id}"></h:outputText>
       				</h:column>
-     				<h:column headerText="Usuario">
+     				<h:column >
      					<f:facet name = "header">Usuario</f:facet>
          				<h:outputText value="#{usuarios.usuario}"></h:outputText>
       				</h:column>
-      				<h:column headerText="Rol" >
+      				<h:column >
       					<f:facet name = "header">Rol</f:facet>
          				<h:outputText value="#{usuarios.rol}"></h:outputText>
       				</h:column>

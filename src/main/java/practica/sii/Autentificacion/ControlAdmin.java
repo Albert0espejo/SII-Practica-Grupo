@@ -43,10 +43,11 @@ public class ControlAdmin implements Serializable{
 		emf = Persistence.createEntityManagerFactory("practica.sii");
 		em = emf.createEntityManager();
 
-		
-		Query query = (Query) em.createNamedQuery("todosUsuarios");
+		Query query = (Query) em.createQuery("SELECT u FROM Usuario u");
 		
 		listaUsuarios = query.getResultList();
+		
+		
 		listaNoticias = new ArrayList<Noticias>();
 		listaProyectos = new ArrayList<Proyecto>();
 		listaSolicitudes = new ArrayList<Solicitud>();
@@ -110,6 +111,8 @@ public class ControlAdmin implements Serializable{
 			showtableUniversidades = false;
 		}
 		
+		
+
 		showtableUsuarios = !showtableUsuarios;
 	}
 	
