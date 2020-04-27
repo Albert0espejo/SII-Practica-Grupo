@@ -43,7 +43,7 @@ public class ControlAdmin implements Serializable{
 		emf = Persistence.createEntityManagerFactory("practica.sii");
 		em = emf.createEntityManager();
 
-		Query query = (Query) em.createQuery("SELECT u FROM Usuario u");
+		Query query = (Query) em.createQuery("SELECT c FROM USUARIO c");
 		
 		listaUsuarios = query.getResultList();
 		
