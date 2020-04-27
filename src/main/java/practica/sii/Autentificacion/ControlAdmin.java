@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import practica.sii.Clases.Noticias;
 import practica.sii.Clases.Proyecto;
@@ -42,12 +43,10 @@ public class ControlAdmin implements Serializable{
 	public ControlAdmin() {
 		emf = Persistence.createEntityManagerFactory("practica.sii");
 		em = emf.createEntityManager();
-
-		Query query = (Query) em.createQuery("SELECT c FROM USUARIO c");
-		
-		listaUsuarios = query.getResultList();
 		
 		
+		
+		listaUsuarios = new ArrayList<Usuario>();
 		listaNoticias = new ArrayList<Noticias>();
 		listaProyectos = new ArrayList<Proyecto>();
 		listaSolicitudes = new ArrayList<Solicitud>();
@@ -55,6 +54,12 @@ public class ControlAdmin implements Serializable{
 	}
 	
 	public List<Usuario> getListaUsuarios(){
+		Query query = (Query) em.createQuery("SELECT c.usuario, c.Id, c.rol FROM Usuario c");
+		
+		//TypedQuery<Usuario> query = em.createQuery("SELECT c.usuario, c.Id, c.rol FROM Usuario c", Usuario.class);
+		List<Usuario> aux = query.getResultList();
+		listaUsuarios = aux;
+		listaUsuarios.add(new Usuario(1L, "hola", "adios", Usuario.Rol.ALUMNO));
 		return listaUsuarios;
 	}
 
@@ -110,8 +115,6 @@ public class ControlAdmin implements Serializable{
 			showtableProyectos = false;
 			showtableUniversidades = false;
 		}
-		
-		
 
 		showtableUsuarios = !showtableUsuarios;
 	}
