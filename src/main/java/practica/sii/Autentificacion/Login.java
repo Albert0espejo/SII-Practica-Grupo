@@ -14,6 +14,10 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import practica.sii.Clases.Noticias;
+import practica.sii.Clases.Proyecto;
+import practica.sii.Clases.Solicitud;
+import practica.sii.Clases.Universidad;
 import practica.sii.Clases.Usuario;
 import practica.sii.Clases.Usuario.Rol;
 
@@ -25,7 +29,11 @@ public class Login {
 
     private String usuario;
     private String contrasenia;
-    private static List<Usuario> usuarios;
+    private List<Usuario> usuarios;
+	private List<Solicitud> listaSolicitudes;
+	private List<Universidad> listaUniversidades;
+	private List<Noticias> listaNoticias;
+	private List<Proyecto> listaProyectos;
     
     @Inject
     private ControlAutorizacion ctrl;
@@ -47,7 +55,7 @@ public class Login {
         return contrasenia;
     }
     
-    public static List<Usuario> getUsuarios(){
+    public List<Usuario> getUsuarios(){
     	return usuarios;
     }
 
