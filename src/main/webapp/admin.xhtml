@@ -25,13 +25,25 @@
      					<f:facet name = "header">Usuario</f:facet>
          				<h:outputText value="#{usuarios.usuario}"></h:outputText>
       				</h:column>
+      				<h:column>
+     					<f:facet name = "header">Contraseña</f:facet>
+         				<h:outputText value="#{usuarios.contrasena}"></h:outputText>
+      				</h:column>
+      				<h:column>
+     					<f:facet name = "header">Correo</f:facet>
+         				<h:outputText value="#{usuarios.correo}"></h:outputText>
+      				</h:column>
       				<h:column >
       					<f:facet name = "header">Rol</f:facet>
          				<h:outputText value="#{usuarios.rol}"></h:outputText>
       				</h:column>
       				<h:column>
+     					<f:facet name = "header">Universidad</f:facet>
+         				<h:outputText value="#{usuarios.universidad}"></h:outputText>
+      				</h:column>
+      				<h:column>
       					<h:form>
-            				<h:commandButton action="#{controlAdmin.borrarUsuario(usuarios.id)}"
+            				<h:commandButton action="#{controlAdmin.borrarUsuario(usuarios)}"
                				value="Borrar" update="usuarios">
                				</h:commandButton>
                			</h:form>
