@@ -44,11 +44,16 @@ public class Login {
      */
     public Login() {
     	Universidad Malaga = new Universidad(1L,"Malaga", new Address("Avd.Cervantes","","Malaga","Andalucia",29010L,"España"),"uma.es","Malaga",29010L);
-        usuarios = new ArrayList<Usuario>();
+        Proyecto ProyectoA = new Proyecto("1", "Hospital Carlos Haya", 01/06/2020, 21/07/2020, "Descripcion del proyecto", 1);
+        Proyecto ProyectoB = new Proyecto("2", "Casa de la Juventud", 15/12/2020, 08/02/2021, "Descripcion del proyecto", 1);
+    	usuarios = new ArrayList<Usuario>();
         usuarios.add(new Usuario(1L,"pepe", "asdf","pepe@uma.es", Rol.ALUMNO, Malaga));
         usuarios.add(new Usuario(2L,"manolo", "qwer", "manolo@uma.es",Rol.ADMINISTRADOR,Malaga));
         usuarios.add(new Usuario(3L,"pasprueba","asdf","pasprueba@uma.es", Rol.PAS, Malaga));
         usuarios.add(new Usuario(4L,"pdiprueba","zxcv","pdiprueba@uma.es", Rol.PDI, Malaga));
+        listaSolicitudes = new ArrayList<Solicitud>();
+        listaSolicitudes.add(new Solicitud("1", 1, Malaga, ProyectoA));
+        listaSolicitudes.add(new Solicitud("2", 0, Malaga, ProyectoA));
     }
 
     public void setUsuarios(List<Usuario> usuarios) {
