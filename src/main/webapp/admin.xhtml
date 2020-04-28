@@ -1,0 +1,141 @@
+<ui:composition template="/WEB-INF/Templates/plantilla.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                >
+    <ui:define name="title">Página para el usuario administrador</ui:define>
+    
+    <ui:define name="botones">
+    	<li><h:commandButton action="#{controlAdmin.enabletableUsuarios}" update="usuarios" value="Vista Usuarios"/></li>
+    	<li><h:commandButton action="#{controlAdmin.enabletableSolicitudes}" update="solicitudes" value="Vista Solicitudes"/></li>
+    	<li><h:commandButton action="#{controlAdmin.enabletableUniversidades}" update="universidades" value="Vista Universidades"/></li>
+    	<li><h:commandButton action="#{controlAdmin.enabletableNoticias}" update="noticias" value="Vista Noticias"/></li>
+    	<li><h:commandButton action="#{controlAdmin.enabletableProyectos}" update="proyectos" value="Vista Proyectos"/></li>
+    </ui:define>
+    
+    <ui:define name="content">
+            	<h:dataTable class="tabla" value="#{controlAdmin.listaUsuarios}" var="usuarios" rendered="#{controlAdmin.showtableUsuarios}">
+      				<h:column>
+      					<f:facet name = "header">Id</f:facet>
+         				<h:outputText value="#{usuarios.id}"></h:outputText>
+      				</h:column>
+     				<h:column>
+     					<f:facet name = "header">Usuario</f:facet>
+         				<h:outputText value="#{usuarios.usuario}"></h:outputText>
+      				</h:column>
+      				<h:column>
+     					<f:facet name = "header">Contraseña</f:facet>
+         				<h:outputText value="#{usuarios.contrasena}"></h:outputText>
+      				</h:column>
+      				<h:column>
+     					<f:facet name = "header">Correo</f:facet>
+         				<h:outputText value="#{usuarios.correo}"></h:outputText>
+      				</h:column>
+      				<h:column >
+      					<f:facet name = "header">Rol</f:facet>
+         				<h:outputText value="#{usuarios.rol}"></h:outputText>
+      				</h:column>
+      				<h:column>
+     					<f:facet name = "header">Universidad</f:facet>
+         				<h:outputText value="#{usuarios.universidad}"></h:outputText>
+      				</h:column>
+      				<h:column>
+      					<h:form>
+            				<h:commandButton action="#{controlAdmin.borrarUsuario(usuarios)}"
+               				value="Borrar" update="usuarios">
+               				</h:commandButton>
+               			</h:form>
+      				</h:column>
+				</h:dataTable>
+				
+				<h:dataTable class="tabla" value="#{controlAdmin.listaSolicitudes}" var="solicitudes" rendered="#{controlAdmin.showtableSolicitudes}">
+      				<h:column>
+      					<f:facet name = "header">Id</f:facet>
+         				<h:outputText value="#{usuarios.id}"></h:outputText>
+      				</h:column>
+     				<h:column>
+     					<f:facet name = "header">Usuario</f:facet>
+         				<h:outputText value="#{usuarios.usuario}"></h:outputText>
+      				</h:column>
+      				<h:column >
+      					<f:facet name = "header">Rol</f:facet>
+         				<h:outputText value="#{usuarios.rol}"></h:outputText>
+      				</h:column>
+      				<h:column>
+      					<h:form>
+            				<h:commandButton action="#{controlAdmin.borrarUsuario(usuarios.id)}"
+               				value="Borrar" update="usuarios">
+               				</h:commandButton>
+               			</h:form>
+      				</h:column>
+				</h:dataTable>
+				
+				<h:dataTable class="tabla" value="#{controlAdmin.listaUniversidades}" var="universidades" rendered="#{controlAdmin.showtableUniversidades}">
+      				<h:column>
+      					<f:facet name = "header">Id</f:facet>
+         				<h:outputText value="#{usuarios.id}"></h:outputText>
+      				</h:column>
+     				<h:column>
+     					<f:facet name = "header">Usuario</f:facet>
+         				<h:outputText value="#{usuarios.usuario}"></h:outputText>
+      				</h:column>
+      				<h:column >
+      					<f:facet name = "header">Rol</f:facet>
+         				<h:outputText value="#{usuarios.rol}"></h:outputText>
+      				</h:column>
+      				<h:column>
+      					<h:form>
+            				<h:commandButton action="#{controlAdmin.borrarUsuario(usuarios.id)}"
+               				value="Borrar" update="usuarios">
+               				</h:commandButton>
+               			</h:form>
+      				</h:column>
+				</h:dataTable>
+				
+				<h:dataTable class="tabla" value="#{controlAdmin.listaNoticias}" var="noticias" rendered="#{controlAdmin.showtableNoticias}">
+      				<h:column>
+      					<f:facet name= "header">Id</f:facet>
+         				<h:outputText value="#{usuarios.id}"></h:outputText>
+      				</h:column>
+     				<h:column>
+     					<f:facet name = "header">Usuario</f:facet>
+         				<h:outputText value="#{usuarios.usuario}"></h:outputText>
+      				</h:column>
+      				<h:column >
+      					<f:facet name = "header">Rol</f:facet>
+         				<h:outputText value="#{usuarios.rol}"></h:outputText>
+      				</h:column>
+      				<h:column>
+      					<h:form>
+            				<h:commandButton action="#{controlAdmin.borrarUsuario(usuarios.id)}"
+               				value="Borrar" update="usuarios">
+               				</h:commandButton>
+               			</h:form>
+      				</h:column>
+				</h:dataTable>
+				
+				<h:dataTable class="tabla" value="#{controlAdmin.listaProyectos}" var="proyectos" rendered="#{controlAdmin.showtableProyectos}">
+      				<h:column >
+      					<f:facet name = "header">Id</f:facet>
+         				<h:outputText value="#{usuarios.id}"></h:outputText>
+      				</h:column>
+     				<h:column >
+     					<f:facet name = "header">Usuario</f:facet>
+         				<h:outputText value="#{usuarios.usuario}"></h:outputText>
+      				</h:column>
+      				<h:column >
+      					<f:facet name = "header">Rol</f:facet>
+         				<h:outputText value="#{usuarios.rol}"></h:outputText>
+      				</h:column>
+      				<h:column>
+      					<h:form>
+            				<h:commandButton action="#{controlAdmin.borrarUsuario(usuarios.id)}"
+               				value="Borrar" update="usuarios">
+               				</h:commandButton>
+               			</h:form>
+      				</h:column>
+				</h:dataTable>
+    </ui:define>
+</ui:composition>
