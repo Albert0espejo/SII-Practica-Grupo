@@ -92,6 +92,10 @@ public class Universidad implements Serializable{
 	public void setSolicitudes(List<Solicitud> solicitudes) {
 		this.solicitudes = solicitudes;
 	}
+	public String toString() {
+		return this.Nombre;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

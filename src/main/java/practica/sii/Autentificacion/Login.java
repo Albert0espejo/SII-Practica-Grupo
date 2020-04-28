@@ -14,6 +14,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import practica.sii.Clases.Address;
 import practica.sii.Clases.Noticias;
 import practica.sii.Clases.Proyecto;
 import practica.sii.Clases.Solicitud;
@@ -42,7 +43,7 @@ public class Login {
      * Creates a new instance of Login
      */
     public Login() {
-    	Universidad Malaga = new Universidad();
+    	Universidad Malaga = new Universidad(1L,"Malaga", new Address("Avd.Cervantes","","Malaga","Andalucia",29010L,"España"),"uma.es","Malaga",29010L);
         usuarios = new ArrayList<Usuario>();
         usuarios.add(new Usuario(1L,"pepe", "asdf","pepe@uma.es", Rol.ALUMNO, Malaga));
         usuarios.add(new Usuario(2L,"manolo", "qwer", "manolo@uma.es",Rol.ADMINISTRADOR,Malaga));
