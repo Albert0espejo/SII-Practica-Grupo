@@ -5,6 +5,8 @@ import java.lang.Long;
 import java.lang.String;
 import javax.persistence.*;
 
+import Usuario.Rol;
+
 /**
  * Entity implementation class for Entity: Solicitud
  *
@@ -24,9 +26,13 @@ public class Solicitud implements Serializable {
 	private Proyecto proyecto;
 	private static final long serialVersionUID = 1L;
 
-	public Solicitud() {
-		super();
+	public Solicitud(Long Id_Solicitud, Estado Estado, Universidad universidad, Proyecto proyecto) {
+		this.Id_Solicitud = Id_Solicitud;
+		this.Estado = Estado;
+		this.universidad = universidad;
+		this.proyecto = proyecto;
 	}   
+	
 	public Long getId_Solicitud() {
 		return this.Id_Solicitud;
 	}
