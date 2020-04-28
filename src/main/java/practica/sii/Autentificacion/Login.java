@@ -49,7 +49,11 @@ public class Login {
         usuarios.add(new Usuario(3L,"pasprueba","asdf","pasprueba@uma.es", Rol.PAS, Malaga));
     }
 
-    public List<Solicitud> getListaSolicitudes() {
+    public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
+
+	public List<Solicitud> getListaSolicitudes() {
 		return listaSolicitudes;
 	}
 
