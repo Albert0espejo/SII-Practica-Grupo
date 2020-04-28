@@ -33,6 +33,15 @@ public class Universidad implements Serializable{
 	public Universidad() {
 		super();
 	}
+	public Universidad(Long Id_Universidad, String Nombre, Address Direccion, String Direccion_Web, String Ciudad, Long Codigo_Postal) {
+		this.Id_Universidad = Id_Universidad;
+		this.Nombre = Nombre;
+		this.Direccion = Direccion;
+		this.Direccion_Web = Direccion_Web;
+		this.Ciudad = Ciudad;
+		this.Codigo_Postal = Codigo_Postal;
+		
+	}
 	public Long getId_Universidad() {
 		return this.Id_Universidad;
 	}

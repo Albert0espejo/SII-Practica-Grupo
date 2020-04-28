@@ -38,11 +38,13 @@ public class Usuario implements Serializable {
 		super();
 	}
 	
-	public Usuario(Long id, String usuario, String contrasena, Rol rol) {
+	public Usuario(Long id, String usuario, String contrasena, String correo, Rol rol, Universidad universidad) {
 		this.Id = id;
 		this.usuario = usuario;
 		this.contrasena = contrasena;
+		this.correo = correo;
 		this.rol = rol;
+		this.universidad = universidad;
 	}
 	
 	public Long getId() {

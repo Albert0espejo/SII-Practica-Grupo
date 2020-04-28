@@ -42,12 +42,46 @@ public class Login {
      * Creates a new instance of Login
      */
     public Login() {
+    	Universidad Malaga = new Universidad();
         usuarios = new ArrayList<Usuario>();
-        usuarios.add(new Usuario(1L,"pepe", "asdf", Rol.ALUMNO));
-        usuarios.add(new Usuario(2L,"manolo", "qwer", Rol.ADMINISTRADOR));
+        usuarios.add(new Usuario(1L,"pepe", "asdf","pepe@uma.es", Rol.ALUMNO, Malaga));
+        usuarios.add(new Usuario(2L,"manolo", "qwer", "manolo@uma.es",Rol.ADMINISTRADOR,Malaga));
+        usuarios.add(new Usuario(3L,"pasprueba","asdf","pasprueba@uma.es", Rol.PAS, Malaga));
     }
 
-    public String getUsuario() {
+    public List<Solicitud> getListaSolicitudes() {
+		return listaSolicitudes;
+	}
+
+	public void setListaSolicitudes(List<Solicitud> listaSolicitudes) {
+		this.listaSolicitudes = listaSolicitudes;
+	}
+
+	public List<Universidad> getListaUniversidades() {
+		return listaUniversidades;
+	}
+
+	public void setListaUniversidades(List<Universidad> listaUniversidades) {
+		this.listaUniversidades = listaUniversidades;
+	}
+
+	public List<Noticias> getListaNoticias() {
+		return listaNoticias;
+	}
+
+	public void setListaNoticias(List<Noticias> listaNoticias) {
+		this.listaNoticias = listaNoticias;
+	}
+
+	public List<Proyecto> getListaProyectos() {
+		return listaProyectos;
+	}
+
+	public void setListaProyectos(List<Proyecto> listaProyectos) {
+		this.listaProyectos = listaProyectos;
+	}
+
+	public String getUsuario() {
         return usuario;
     }
 
