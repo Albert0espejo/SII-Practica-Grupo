@@ -17,8 +17,6 @@ import practica.sii.Clases.Proyecto;
 import practica.sii.Clases.Solicitud;
 import practica.sii.Clases.Universidad;
 import practica.sii.Clases.Usuario;
-import practica.sii.Autentificacion.Login;
-
 
 @Named(value = "controlAdmin")
 @SessionScoped
@@ -37,14 +35,10 @@ public class ControlAdmin implements Serializable{
 	private Boolean showtableNoticias = false;
 	private Boolean showtableProyectos = false;
 	
-	private EntityManagerFactory emf;
-	private EntityManager em;
+	private Login listas;
 	
 	public ControlAdmin() {
-		emf = Persistence.createEntityManagerFactory("practica.sii");
-		em = emf.createEntityManager();
-		
-		
+		listas = new Login();
 		
 		listaUsuarios = new ArrayList<Usuario>();
 		listaNoticias = new ArrayList<Noticias>();
@@ -54,12 +48,8 @@ public class ControlAdmin implements Serializable{
 	}
 	
 	public List<Usuario> getListaUsuarios(){
-		Query query = (Query) em.createQuery("SELECT c.usuario, c.Id, c.rol FROM Usuario c");
+		listaUsuarios = listas.getUsuarios();
 		
-		//TypedQuery<Usuario> query = em.createQuery("SELECT c.usuario, c.Id, c.rol FROM Usuario c", Usuario.class);
-		List<Usuario> aux = query.getResultList();
-		listaUsuarios = aux;
-		listaUsuarios.add(new Usuario(1L, "hola", "adios", Usuario.Rol.ALUMNO));
 		return listaUsuarios;
 	}
 
@@ -77,15 +67,6 @@ public class ControlAdmin implements Serializable{
 
 	public List<Proyecto> getListaProyectos() {
 		return listaProyectos;
-	}
-
-	public void ListaUsuarios() {
-		/*emf = Persistence.createEntityManagerFactory("Practoca-SII");
-        em=emf.createEntityManager();
-		Query query = (Query) em.createNamedQuery("todosUsuarios");
-    	listaUsuarios = query.getResultList();
-    	emf.close();
-    	em.close();*/
 	}
 	
 	public Boolean getShowtableUsuarios() {
@@ -163,12 +144,8 @@ public class ControlAdmin implements Serializable{
 		showtableProyectos = !showtableProyectos;
 	}
 	
-	public void borrarUsuario(Integer id) {
-		for(int i = 0; i > listaUsuarios.size(); i++) {
-			if(id.equals(listaUsuarios.get(i).getId())) {
-				listaUsuarios.remove(i);
-			}
-		}
+	public void borrarUsuario(Usuario u) {
+		listaUsuarios.remove(u);
 	}
 	
 }
