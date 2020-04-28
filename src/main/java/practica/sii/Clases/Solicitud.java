@@ -5,8 +5,6 @@ import java.lang.Long;
 import java.lang.String;
 import javax.persistence.*;
 
-import Usuario.Rol;
-
 /**
  * Entity implementation class for Entity: Solicitud
  *

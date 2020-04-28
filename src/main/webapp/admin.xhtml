@@ -4,6 +4,7 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
+               	xmlns:p="http://primefaces.org/ui"
                 >
     <ui:define name="title">Página para el usuario administrador</ui:define>
     
@@ -16,7 +17,7 @@
     </ui:define>
     
     <ui:define name="content">
-            	<h:dataTable class="tabla" value="#{controlAdmin.listaUsuarios}" var="usuarios" rendered="#{controlAdmin.showtableUsuarios}">
+		<h:dataTable class="tabla" value="#{controlAdmin.listaUsuarios}" var="usuarios" rendered="#{controlAdmin.showtableUsuarios}">
       				<h:column>
       					<f:facet name = "header">Id</f:facet>
          				<h:outputText value="#{usuarios.id}"></h:outputText>
@@ -49,6 +50,35 @@
                			</h:form>
       				</h:column>
 				</h:dataTable>
+				
+				<h:form rendered="#{controlAdmin.showtableUsuarios}">
+					<h:panelGrid columns="2">
+						<h:outputText value="Id"></h:outputText>
+						<h:inputText id="id" converter="javax.faces.Long" value="#{controlAdmin.user.id}"></h:inputText>
+						
+						<h:outputText value="Usuario"></h:outputText>
+						<h:inputText id="usuario" value="#{controlAdmin.user.usuario}"></h:inputText>
+						
+						<h:outputText value="Contraseña"></h:outputText>
+						<h:inputText id="contrasena" value="#{controlAdmin.user.contrasena}"></h:inputText>
+						
+						<h:outputText value="Correo"></h:outputText>
+						<h:inputText id="correo" value="#{controlAdmin.user.correo}"></h:inputText>
+						
+						<h:outputText value="Rol"></h:outputText>
+						<h:inputText id="rol" value="#{controlAdmin.user.rol}"></h:inputText>
+						
+						<h:outputText value="Universidad"></h:outputText>
+						<h:selectOneMenu value="#{controlAdmin.user.universidad}">
+							<f:selectItems value="#{controlAdmin.listaUniversidades}" var="universidades" itemValue="#{universidades.id_Universidad}" itemLaber="#{universidades.nombre}"></f:selectItems>
+						</h:selectOneMenu>
+						
+						<br></br>	<br></br>	<br></br>
+						
+						<h:outputLabel></h:outputLabel>
+						<h:commandButton action="#{controlAdmin.crearUsuario}" value="Añadir" update="usuarios"></h:commandButton>
+					</h:panelGrid>
+				</h:form>
 				
 				<h:dataTable class="tabla" value="#{controlAdmin.listaSolicitudes}" var="solicitudes" rendered="#{controlAdmin.showtableSolicitudes}">
       				<h:column>

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.bean.ManagedProperty;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -19,6 +20,7 @@ import practica.sii.Clases.Universidad;
 import practica.sii.Clases.Usuario;
 
 @Named(value = "controlAdmin")
+
 @SessionScoped
 public class ControlAdmin implements Serializable{
 	
@@ -37,8 +39,11 @@ public class ControlAdmin implements Serializable{
 	
 	private Login listas;
 	
+	private Usuario user;
+	
 	public ControlAdmin() {
 		listas = new Login();
+		user = new Usuario();
 		
 		listaUsuarios = new ArrayList<Usuario>();
 		listaNoticias = new ArrayList<Noticias>();
@@ -54,18 +59,26 @@ public class ControlAdmin implements Serializable{
 	}
 
 	public List<Solicitud> getListaSolicitudes() {
+		listaSolicitudes = listas.getListaSolicitudes();
+		
 		return listaSolicitudes;
 	}
 
 	public List<Universidad> getListaUniversidades() {
+		listaUniversidades = listas.getListaUniversidades();
+		
 		return listaUniversidades;
 	}
 
 	public List<Noticias> getListaNoticias() {
+		listaNoticias = listas.getListaNoticias();
+		
 		return listaNoticias;
 	}
 
 	public List<Proyecto> getListaProyectos() {
+		listaProyectos = listas.getListaProyectos();
+		
 		return listaProyectos;
 	}
 	
@@ -146,6 +159,42 @@ public class ControlAdmin implements Serializable{
 	
 	public void borrarUsuario(Usuario u) {
 		listaUsuarios.remove(u);
+		listas.setUsuarios(listaUsuarios);
 	}
+	
+	public void borrarSolicitudes(Solicitud u) {
+		listaSolicitudes.remove(u);
+		listas.setListaSolicitudes(listaSolicitudes);
+	}
+	
+	public void borrarUniversidades(Universidad u) {
+		listaUniversidades.remove(u);
+		listas.setListaUniversidades(listaUniversidades);
+	}
+	
+	public void borrarNoticias(Noticias u) {
+		listaNoticias.remove(u);
+		listas.setListaNoticias(listaNoticias);
+	}
+	
+	public void borrarProyectos(Proyecto u) {
+		listaProyectos.remove(u);
+		listas.setListaProyectos(listaProyectos);
+	}
+	
+	public void setUser(Usuario u) {
+		user = u;
+	}
+	
+	public Usuario getUser() {
+		return user;
+	}
+	
+	public void crearUsuario() {
+		listaUsuarios.add(user);
+		listas.setUsuarios(listaUsuarios);
+	}
+	
+	
 	
 }

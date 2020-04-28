@@ -21,7 +21,7 @@ public class Actividades extends Proyecto implements Serializable {
 
 	public Actividades() {
 		super();
-	}   
+	}
 	public String getNombre_Actividad() {
 		return this.Nombre_Actividad;
 	}
