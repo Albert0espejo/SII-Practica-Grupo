@@ -2,25 +2,24 @@ package practica.sii.Autentificacion;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
-import javax.faces.bean.ManagedProperty;
+import javax.faces.application.FacesMessage;
+
 import javax.inject.Named;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
-import javax.persistence.TypedQuery;
+
+import org.primefaces.event.RowEditEvent;
 
 import practica.sii.Clases.Noticias;
 import practica.sii.Clases.Proyecto;
 import practica.sii.Clases.Solicitud;
 import practica.sii.Clases.Universidad;
 import practica.sii.Clases.Usuario;
+import practica.sii.Clases.Usuario.Rol;
 
 @Named(value = "controlAdmin")
-
 @SessionScoped
 public class ControlAdmin implements Serializable{
 	
@@ -30,6 +29,7 @@ public class ControlAdmin implements Serializable{
 	private List<Universidad> listaUniversidades;
 	private List<Noticias> listaNoticias;
 	private List<Proyecto> listaProyectos;
+	private List<Rol> listaRoles;
 	
 	private Boolean showtableUsuarios = false;
 	private Boolean showtableSolicitudes = false;
@@ -37,21 +37,37 @@ public class ControlAdmin implements Serializable{
 	private Boolean showtableNoticias = false;
 	private Boolean showtableProyectos = false;
 	
-	private Login listas;
+	private Usuario selectedUsuario;
 	
+	private Login listas;
 	private Usuario user;
+	
+	
 	
 	public ControlAdmin() {
 		listas = new Login();
 		user = new Usuario();
-		
 		listaUsuarios = new ArrayList<Usuario>();
 		listaNoticias = new ArrayList<Noticias>();
 		listaProyectos = new ArrayList<Proyecto>();
 		listaSolicitudes = new ArrayList<Solicitud>();
 		listaUniversidades = new ArrayList<Universidad>();
+		listaRoles = Arrays.asList(Rol.values());
 	}
 	
+	public Usuario getSelectedUsuario() {
+		return selectedUsuario;
+	}
+
+
+	public void setSelectedUsuario(Usuario selectedUsuario) {
+		this.selectedUsuario = selectedUsuario;
+	}
+
+	public List<Rol> getListaRoles() {
+		return listaRoles;
+	}
+
 	public List<Usuario> getListaUsuarios(){
 		listaUsuarios = listas.getUsuarios();
 		
@@ -157,8 +173,8 @@ public class ControlAdmin implements Serializable{
 		showtableProyectos = !showtableProyectos;
 	}
 	
-	public void borrarUsuario(Usuario u) {
-		listaUsuarios.remove(u);
+	public void borrarUsuario() {
+		listaUsuarios.remove(selectedUsuario);
 		listas.setUsuarios(listaUsuarios);
 	}
 	
@@ -194,7 +210,6 @@ public class ControlAdmin implements Serializable{
 		listaUsuarios.add(user);
 		listas.setUsuarios(listaUsuarios);
 	}
-	
 	
 	
 }

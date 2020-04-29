@@ -1,10 +1,10 @@
 <ui:composition template="/WEB-INF/Templates/plantilla.xhtml"
 	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
 	<ui:define name="title">Página para el usuario administrador</ui:define>
 
 	<ui:define name="botones">
@@ -24,45 +24,133 @@
 	</ui:define>
 
 	<ui:define name="content">
+	
 		<c:choose>
-			<c:when test="#{controlAutorizacion.usuario.rol == 'PAS'}">
-
-				<h:dataTable class="tabla" value="#{controlAdmin.listaUsuarios}"
-					var="usuarios" rendered="#{controlAdmin.showtableUsuarios}">
-					<h:column>
-						<f:facet name="header">Id</f:facet>
-						<h:outputText value="#{usuarios.id}"></h:outputText>
-					</h:column>
-					<h:column>
-						<f:facet name="header">Usuario</f:facet>
-						<h:outputText value="#{usuarios.usuario}"></h:outputText>
-					</h:column>
-					<h:column>
-						<f:facet name="header">Contraseña</f:facet>
-						<h:outputText value="#{usuarios.contrasena}"></h:outputText>
-					</h:column>
-					<h:column>
-						<f:facet name="header">Correo</f:facet>
-						<h:outputText value="#{usuarios.correo}"></h:outputText>
-					</h:column>
-					<h:column>
-						<f:facet name="header">Rol</f:facet>
-						<h:outputText value="#{usuarios.rol}"></h:outputText>
-					</h:column>
-					<h:column>
-						<f:facet name="header">Universidad</f:facet>
-						<h:outputText value="#{usuarios.universidad}"></h:outputText>
-					</h:column>
-					<h:column>
-						<h:form>
-							<h:commandButton action="#{controlAdmin.borrarUsuario(usuarios)}"
-								value="Borrar" update="usuarios">
-							</h:commandButton>
-						</h:form>
-					</h:column>
-				</h:dataTable>
-
+			<c:when test="#{controlAutorizacion.usuario.rol == 'ADMINISTRADOR'}">
+				
 				<h:form rendered="#{controlAdmin.showtableUsuarios}">
+					<p:dataTable class="tabla" id="users" value="#{controlAdmin.listaUsuarios}"
+					var="usuarios" editable="true" selection="#{controlAdmin.selectedUsuario}">
+
+						<p:column headerText="Id">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{usuarios.id}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText id="modelInput" value="#{usuarios.id}" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						
+						<p:column headerText="Usuario">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{usuarios.usuario}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{usuarios.usuario}" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						
+						<p:column headerText="Contraseña">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{usuarios.contrasena}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{usuarios.contrasena}" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						
+						<p:column headerText="Correo">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{usuarios.correo}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{usuarios.correo}" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						<p:column headerText="Rol">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{usuarios.rol}" />
+								</f:facet>
+								<f:facet name="input">
+									<h:selectOneMenu value="#{usuarios.rol}">
+                        				<f:selectItems value="#{controlAdmin.listaRoles}" var="rol" itemLabel="#{rol}" itemValue="#{rol}" />
+                    				</h:selectOneMenu>
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+
+						<p:column headerText="Universidad">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{usuarios.universidad}" />
+								</f:facet>
+								<f:facet name="input">
+									<h:selectOneMenu value="#{usuarios.universidad}">
+                        				<f:selectItems value="#{controlAdmin.listaUniversidades}" var="universidad" itemLabel="#{universidad.nombre}" itemValue="#{universidad}" />
+                    				</h:selectOneMenu>
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						
+						<p:column style="width:35px">
+							<p:rowEditor />
+						</p:column>
+					</p:dataTable>
+
+					<p:contextMenu for="users">
+						<p:menuitem value="Add" update="addPanelUser"
+							oncomplete="PF('addUser').show()" />
+						<p:menuitem value="Delete" update="users" 
+							action="#{controlAdmin.borrarUsuario}" />
+					</p:contextMenu>
+
+					<p:dialog header="Añadir Usuario" widgetVar="addUser" modal="true"
+						showEffect="fade" hideEffect="fade" resizable="false">
+						<p:outputPanel id="addPanelUser" style="text-align:center;">
+							<h:panelGrid columns="2">
+								<h:outputText value="Id"></h:outputText>
+								<h:inputText converter="javax.faces.Long"
+									value="#{controlAdmin.user.id}"></h:inputText>
+
+								<h:outputText value="Usuario"></h:outputText>
+								<h:inputText value="#{controlAdmin.user.usuario}"></h:inputText>
+
+								<h:outputText value="Contraseña"></h:outputText>
+								<h:inputText
+									value="#{controlAdmin.user.contrasena}"></h:inputText>
+
+								<h:outputText value="Correo"></h:outputText>
+								<h:inputText value="#{controlAdmin.user.correo}"></h:inputText>
+
+								<h:outputText value="Rol"></h:outputText>
+								<h:selectOneMenu value="#{controlAdmin.user.rol}">
+									<f:selectItems value="#{controlAdmin.listaRoles}" var="rol"
+										itemValue="#{rol}" itemLaber="#{rol}"></f:selectItems>
+								</h:selectOneMenu>
+
+								<h:outputText value="Universidad"></h:outputText>
+								<h:selectOneMenu value="#{controlAdmin.user.universidad}">
+									<f:selectItems value="#{controlAdmin.listaUniversidades}"
+										var="universidades" itemValue="#{universidades}"
+										itemLaber="#{universidades.nombre}"></f:selectItems>
+								</h:selectOneMenu>
+
+								<h:outputLabel></h:outputLabel>
+								<h:commandButton action="#{controlAdmin.crearUsuario}"
+									value="Añadir" update="usuarios"></h:commandButton>
+							</h:panelGrid>
+						</p:outputPanel>
+					</p:dialog>
+
 					<h:panelGrid columns="2">
 						<h:outputText value="Id"></h:outputText>
 						<h:inputText id="id" converter="javax.faces.Long"
@@ -79,18 +167,18 @@
 						<h:inputText id="correo" value="#{controlAdmin.user.correo}"></h:inputText>
 
 						<h:outputText value="Rol"></h:outputText>
-						<h:inputText id="rol" value="#{controlAdmin.user.rol}"></h:inputText>
+						<h:selectOneMenu value="#{controlAdmin.user.rol}">
+							<f:selectItems value="#{controlAdmin.listaRoles}"
+								var="rol" itemValue="#{rol}"
+								itemLaber="#{rol}"></f:selectItems>
+						</h:selectOneMenu>
 
 						<h:outputText value="Universidad"></h:outputText>
 						<h:selectOneMenu value="#{controlAdmin.user.universidad}">
 							<f:selectItems value="#{controlAdmin.listaUniversidades}"
-								var="universidades" itemValue="#{universidades.class}"
+								var="universidades" itemValue="#{universidades}"
 								itemLaber="#{universidades.nombre}"></f:selectItems>
 						</h:selectOneMenu>
-
-						<br></br>
-						<br></br>
-						<br></br>
 
 						<h:outputLabel></h:outputLabel>
 						<h:commandButton action="#{controlAdmin.crearUsuario}"
@@ -194,10 +282,9 @@
 						</h:form>
 					</h:column>
 				</h:dataTable>
-
 			</c:when>
 			<c:otherwise>
-				<ui:include src="/WEB-INF/templates/errorAutorizacion.xhtml" />
+				<ui:include src="/WEB-INF/Templates/errorAutorizacion.xhtml" />
 			</c:otherwise>
 		</c:choose>
 	</ui:define>
