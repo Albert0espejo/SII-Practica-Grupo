@@ -54,9 +54,11 @@ public class Login {
         usuarios.add(new Usuario(2L,"manolo", "qwer", "manolo@uma.es",Rol.ADMINISTRADOR,Malaga));
         usuarios.add(new Usuario(3L,"pasprueba","asdf","pasprueba@uma.es", Rol.PAS, Malaga));
         usuarios.add(new Usuario(4L,"pdiprueba","zxcv","pdiprueba@uma.es", Rol.PDI, Malaga));
-        //listaSolicitudes.add(new Solicitud("1", 1, Malaga, ProyectoA));
-        //listaSolicitudes.add(new Solicitud("2", 0, Malaga, ProyectoA));
+        //listaSolicitudes.add(new Solicitud("1", 1, Malaga, ProyectoA));´
+        long i = 2;
+        listaSolicitudes.add(new Solicitud(i, null, Malaga, null));
         listaUniversidades.add(Malaga);
+
     }
 
     public void setUsuarios(List<Usuario> usuarios) {
