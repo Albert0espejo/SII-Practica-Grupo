@@ -64,6 +64,7 @@ public class Login {
         //listaSolicitudes.add(new Solicitud("1", 1, Malaga, ProyectoA));
         listaSolicitudes.add(new Solicitud(1L, Estado.En_Espera, Malaga, ProyectoA));
         listaUniversidades.add(Malaga);
+        listaProyectos.add(ProyectoA);
 
     }
 
