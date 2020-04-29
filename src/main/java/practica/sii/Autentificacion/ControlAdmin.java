@@ -3,17 +3,14 @@ package practica.sii.Autentificacion;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
-import javax.inject.Inject;
+
 import javax.inject.Named;
 
-import practica.sii.Clases.Address;
+import practica.sii.Clases.Estado;
+
 import practica.sii.Clases.Noticias;
 import practica.sii.Clases.Proyecto;
 import practica.sii.Clases.Solicitud;
@@ -32,6 +29,7 @@ public class ControlAdmin implements Serializable{
 	private List<Noticias> listaNoticias;
 	private List<Proyecto> listaProyectos;
 	private List<Rol> listaRoles;
+	private List<Estado> listaEstado;
 	
 	private Boolean showtableUsuarios = false;
 	private Boolean showtableSolicitudes = false;
@@ -40,9 +38,18 @@ public class ControlAdmin implements Serializable{
 	private Boolean showtableProyectos = false;
 	
 	private Usuario selectedUsuario;
+	private Solicitud selectedSolicitud;
+	private Universidad selectedUniversidad;
+	private Noticias selectedNoticia;
+	private Proyecto selectedProyecto;
 	
 	private Login listas;
+	
 	private Usuario user;
+	private Solicitud sol;
+	private Universidad uni;
+	private Noticias news;
+	private Proyecto project;
 	
 	
 	public ControlAdmin() {
@@ -54,8 +61,49 @@ public class ControlAdmin implements Serializable{
 		listaSolicitudes = new ArrayList<Solicitud>();
 		listaUniversidades = new ArrayList<Universidad>();
 		listaRoles = Arrays.asList(Rol.values());
+		listaEstado = Arrays.asList(Estado.values());
 	}
 	
+	public Solicitud getSelectedSolicitud() {
+		return selectedSolicitud;
+	}
+
+
+	public void setSelectedSolicitud(Solicitud selectedSolicitud) {
+		this.selectedSolicitud = selectedSolicitud;
+	}
+
+
+	public Universidad getSelectedUniversidad() {
+		return selectedUniversidad;
+	}
+
+
+	public void setSelectedUniversidad(Universidad selectedUniversidad) {
+		this.selectedUniversidad = selectedUniversidad;
+	}
+
+
+	public Noticias getSelectedNoticia() {
+		return selectedNoticia;
+	}
+
+
+	public void setSelectedNoticia(Noticias selectedNoticia) {
+		this.selectedNoticia = selectedNoticia;
+	}
+
+
+	public Proyecto getSelectedProyecto() {
+		return selectedProyecto;
+	}
+
+
+	public void setSelectedProyecto(Proyecto selectedProyecto) {
+		this.selectedProyecto = selectedProyecto;
+	}
+
+
 	public Usuario getSelectedUsuario() {
 		return selectedUsuario;
 	}
@@ -63,6 +111,10 @@ public class ControlAdmin implements Serializable{
 
 	public void setSelectedUsuario(Usuario selectedUsuario) {
 		this.selectedUsuario = selectedUsuario;
+	}
+
+	public List<Estado> getListaEstado() {
+		return listaEstado;
 	}
 
 	public List<Rol> getListaRoles() {
@@ -180,23 +232,27 @@ public class ControlAdmin implements Serializable{
 		listas.setUsuarios(listaUsuarios);
 	}
 	
-	public void borrarSolicitudes(Solicitud u) {
-		listaSolicitudes.remove(u);
+	public void borrarSolicitudes() {
+		listaSolicitudes.remove(selectedSolicitud);
+		selectedSolicitud = null;
 		listas.setListaSolicitudes(listaSolicitudes);
 	}
 	
-	public void borrarUniversidades(Universidad u) {
-		listaUniversidades.remove(u);
+	public void borrarUniversidades() {
+		listaUniversidades.remove(selectedUniversidad);
+		selectedUniversidad = null;
 		listas.setListaUniversidades(listaUniversidades);
 	}
 	
-	public void borrarNoticias(Noticias u) {
-		listaNoticias.remove(u);
+	public void borrarNoticias() {
+		listaNoticias.remove(selectedNoticia);
+		selectedNoticia = null;
 		listas.setListaNoticias(listaNoticias);
 	}
 	
-	public void borrarProyectos(Proyecto u) {
-		listaProyectos.remove(u);
+	public void borrarProyectos() {
+		listaProyectos.remove(selectedProyecto);
+		selectedProyecto = null;
 		listas.setListaProyectos(listaProyectos);
 	}
 	
@@ -208,10 +264,56 @@ public class ControlAdmin implements Serializable{
 		return user;
 	}
 	
+	public Solicitud getSol() {
+		return sol;
+	}
+
+	public void setSol(Solicitud sol) {
+		this.sol = sol;
+	}
+
+	public Universidad getUni() {
+		return uni;
+	}
+
+	public void setUni(Universidad uni) {
+		this.uni = uni;
+	}
+
+	public Noticias getNews() {
+		return news;
+	}
+
+	public void setNews(Noticias news) {
+		this.news = news;
+	}
+
+	public Proyecto getProject() {
+		return project;
+	}
+
+	public void setProject(Proyecto project) {
+		this.project = project;
+	}
+
 	public void crearUsuario() {
 		listaUsuarios.add(user);
 		listas.setUsuarios(listaUsuarios);
 	}
 	
+	public void crearSolicitud() {
+		listaSolicitudes.add(sol);
+	}
 	
+	public void crearUniversidad() {
+		listaUniversidades.add(uni);
+	}
+	
+	public void crearNoticia() {
+		listaNoticias.add(news);
+	}
+	
+	public void crearProyecto() {
+		listaProyectos.add(project);
+	}
 }
