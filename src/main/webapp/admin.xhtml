@@ -9,31 +9,32 @@
 
 	<ui:define name="botones">
 		<li><h:commandButton action="#{controlAdmin.enabletableUsuarios}"
-				update="usuarios" value="Vista Usuarios" /></li>
+				update="usuarios" value="Lista Usuarios" /></li>
 		<li><h:commandButton
 				action="#{controlAdmin.enabletableSolicitudes}" update="solicitudes"
-				value="Vista Solicitudes" /></li>
+				value="Lista Solicitudes" /></li>
 		<li><h:commandButton
 				action="#{controlAdmin.enabletableUniversidades}"
-				update="universidades" value="Vista Universidades" /></li>
+				update="universidades" value="Lista Universidades" /></li>
 		<li><h:commandButton action="#{controlAdmin.enabletableNoticias}"
-				update="noticias" value="Vista Noticias" /></li>
+				update="noticias" value="Lista Noticias" /></li>
 		<li><h:commandButton
 				action="#{controlAdmin.enabletableProyectos}" update="proyectos"
-				value="Vista Proyectos" /></li>
+				value="Lista Proyectos" /></li>
 	</ui:define>
 
 	<ui:define name="content">
 	
 		<c:choose>
 			<c:when test="#{controlAutorizacion.usuario.rol == 'ADMINISTRADOR'}">
-				
+
+
+				<!-- Lista USUARIOS -->
 				<h:form rendered="#{controlAdmin.showtableUsuarios}">
 					<p:dataTable class="tabla" id="users"
 						value="#{controlAdmin.listaUsuarios}" var="usuarios"
 						editable="true" rowKey="#{usuarios.id}"
-						selection="#{controlAdmin.selectedUsuario}"
-						selectionMode="single">
+						selection="#{controlAdmin.selectedUsuario}" selectionMode="single">
 
 						<p:column headerText="Id">
 							<p:cellEditor>
@@ -100,12 +101,12 @@
 					<p:contextMenu>
 						<p:menuitem value="Add" update="addPanelUser"
 							oncomplete="PF('addUser').show()" />
-						<p:menuitem value="Delete" update="users" 
+						<p:menuitem value="Delete" update="users"
 							action="#{controlAdmin.borrarUsuario}" />
 					</p:contextMenu>
 				</h:form>
 
-					<p:dialog header="Añadir Usuario" widgetVar="addUser" modal="true"
+				<p:dialog header="Añadir Usuario" widgetVar="addUser" modal="true"
 						showEffect="fade" hideEffect="fade" resizable="false">
 						<p:outputPanel id="addPanelUser" style="text-align:center;">
 							<h:panelGrid columns="2">
@@ -143,30 +144,95 @@
 						</p:outputPanel>
 					</p:dialog>
 
-				<h:dataTable class="tabla" value="#{controlAdmin.listaSolicitudes}"
-					var="solicitudes" rendered="#{controlAdmin.showtableSolicitudes}">
-					<h:column>
-						<f:facet name="header">Id</f:facet>
-						<h:outputText value="#{usuarios.id}"></h:outputText>
-					</h:column>
-					<h:column>
-						<f:facet name="header">Usuario</f:facet>
-						<h:outputText value="#{usuarios.usuario}"></h:outputText>
-					</h:column>
-					<h:column>
-						<f:facet name="header">Rol</f:facet>
-						<h:outputText value="#{usuarios.rol}"></h:outputText>
-					</h:column>
-					<h:column>
-						<h:form>
-							<h:commandButton
-								action="#{controlAdmin.borrarUsuario(usuarios.id)}"
-								value="Borrar" update="usuarios">
-							</h:commandButton>
-						</h:form>
-					</h:column>
-				</h:dataTable>
 
+				<!--Lista SOLICITUDES  -->
+
+				<h:form rendered="#{controlAdmin.showtableSolicitudes}">
+					<p:dataTable class="tabla" id="solicitud"
+						value="#{controlAdmin.listaSolicitudes}" var="solicitudes"
+						editable="true" rowKey="#{solicitudes.id_Solicitud}"
+						selection="#{controlAdmin.selectedSolicitud}" selectionMode="single">
+
+						<p:column headerText="Id">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{solicitudes.id_Solicitud}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText id="modelInput" value="#{solicitudes.id_Solicitud}" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						<p:column headerText="Estado">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{solicitudes.estado}" />
+								</f:facet>
+								<f:facet name="input">
+									<h:selectOneMenu value="#{solicitudes.estado}">
+										<f:selectItems value="#{controlAdmin.listaEstado}" var="estado"
+											itemLabel="#{estado}" itemValue="#{estado}" />
+									</h:selectOneMenu>
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						<p:column headerText="Universidad">
+							<h:outputText value="#{solicitudes.universidad}" />
+						</p:column>
+						<p:column headerText="Proyecto">
+							<h:outputText value="#{solicitudes.proyecto}" />
+						</p:column>
+						<p:column style="width:35px">
+							<p:rowEditor />
+						</p:column>
+
+					</p:dataTable>
+
+					<p:contextMenu>
+						<p:menuitem value="Add" update="addPaneSoli"
+							oncomplete="PF('addSoli').show()" />
+						<p:menuitem value="Delete" update="solicitud"
+							action="#{controlAdmin.borrarSolicitudes}" />
+					</p:contextMenu>
+				</h:form>
+
+				<p:dialog header="Añadir Solicitud" widgetVar="addSoli" modal="true"
+						showEffect="fade" hideEffect="fade" resizable="false">
+						<p:outputPanel id="addPanelSoli" style="text-align:center;">
+							<h:panelGrid columns="2">
+								<h:outputText value="Id"></h:outputText>
+								<h:inputText converter="javax.faces.Long"
+									value="#{controlAdmin.sol.id_Solicitud}"></h:inputText>
+
+								<h:outputText value="Solicitud"></h:outputText>
+								<h:selectOneMenu value="#{controlAdmin.sol.estado}">
+									<f:selectItems value="#{controlAdmin.listaEstado}" var="sol"
+										itemValue="#{sol}" itemLaber="#{sol}"></f:selectItems>
+								</h:selectOneMenu>
+
+								<h:outputText value="Universidad"></h:outputText>
+								<h:selectOneMenu value="#{controlAdmin.sol.universidad}">
+									<f:selectItems value="#{controlAdmin.listaUniversidades}"
+										var="universidades" itemValue="#{universidades}"
+										itemLaber="#{universidades.nombre}"></f:selectItems>
+								</h:selectOneMenu>
+								
+								<h:outputText value="Proyecto"></h:outputText>
+								<h:selectOneMenu value="#{controlAdmin.sol.proyecto}">
+									<f:selectItems value="#{controlAdmin.listaProyectos}"
+										var="proyectos" itemValue="#{proyectos}"
+										itemLaber="#{proyectos.ID_Proyecto}"></f:selectItems>
+								</h:selectOneMenu>
+
+								<h:outputLabel></h:outputLabel>
+								<h:commandButton action="#{controlAdmin.crearSolicitud}"
+									value="Añadir" update="solicitud"></h:commandButton>
+							</h:panelGrid>
+						</p:outputPanel>
+					</p:dialog>
+
+
+				<!-- Lista UNIVERSIDADES  -->
 				<h:dataTable class="tabla"
 					value="#{controlAdmin.listaUniversidades}" var="universidades"
 					rendered="#{controlAdmin.showtableUniversidades}">
