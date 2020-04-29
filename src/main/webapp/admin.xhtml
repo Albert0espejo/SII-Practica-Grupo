@@ -29,8 +29,11 @@
 			<c:when test="#{controlAutorizacion.usuario.rol == 'ADMINISTRADOR'}">
 				
 				<h:form rendered="#{controlAdmin.showtableUsuarios}">
-					<p:dataTable class="tabla" id="users" value="#{controlAdmin.listaUsuarios}"
-					var="usuarios" editable="true" rowKey="#{usuarios.id}" selection="#{controlAdmin.selectedUsuario}">
+					<p:dataTable class="tabla" id="users"
+						value="#{controlAdmin.listaUsuarios}" var="usuarios"
+						editable="true" rowKey="#{usuarios.id}"
+						selection="#{controlAdmin.selectedUsuario}"
+						selectionMode="single">
 
 						<p:column headerText="Id">
 							<p:cellEditor>
@@ -51,7 +54,7 @@
 									<p:inputText value="#{usuarios.usuario}" />
 								</f:facet>
 							</p:cellEditor>
-						</p:column>					
+						</p:column>
 						<p:column headerText="Contraseña">
 							<p:cellEditor>
 								<f:facet name="output">
@@ -61,7 +64,7 @@
 									<p:inputText value="#{usuarios.contrasena}" />
 								</f:facet>
 							</p:cellEditor>
-						</p:column>					
+						</p:column>
 						<p:column headerText="Correo">
 							<p:cellEditor>
 								<f:facet name="output">
@@ -79,17 +82,19 @@
 								</f:facet>
 								<f:facet name="input">
 									<h:selectOneMenu value="#{usuarios.rol}">
-                        				<f:selectItems value="#{controlAdmin.listaRoles}" var="rol" itemLabel="#{rol}" itemValue="#{rol}" />
-                    				</h:selectOneMenu>
+										<f:selectItems value="#{controlAdmin.listaRoles}" var="rol"
+											itemLabel="#{rol}" itemValue="#{rol}" />
+									</h:selectOneMenu>
 								</f:facet>
 							</p:cellEditor>
 						</p:column>
 						<p:column headerText="Universidad">
-									<h:outputText value="#{usuarios.universidad}" />
-						</p:column>			
+							<h:outputText value="#{usuarios.universidad}" />
+						</p:column>
 						<p:column style="width:35px">
 							<p:rowEditor />
 						</p:column>
+
 					</p:dataTable>
 
 					<p:contextMenu>
@@ -98,6 +103,7 @@
 						<p:menuitem value="Delete" update="users" 
 							action="#{controlAdmin.borrarUsuario}" />
 					</p:contextMenu>
+				</h:form>
 
 					<p:dialog header="Añadir Usuario" widgetVar="addUser" modal="true"
 						showEffect="fade" hideEffect="fade" resizable="false">
@@ -136,41 +142,6 @@
 							</h:panelGrid>
 						</p:outputPanel>
 					</p:dialog>
-
-					<h:panelGrid columns="2">
-						<h:outputText value="Id"></h:outputText>
-						<h:inputText id="id" converter="javax.faces.Long"
-							value="#{controlAdmin.user.id}"></h:inputText>
-
-						<h:outputText value="Usuario"></h:outputText>
-						<h:inputText id="usuario" value="#{controlAdmin.user.usuario}"></h:inputText>
-
-						<h:outputText value="Contraseña"></h:outputText>
-						<h:inputText id="contrasena"
-							value="#{controlAdmin.user.contrasena}"></h:inputText>
-
-						<h:outputText value="Correo"></h:outputText>
-						<h:inputText id="correo" value="#{controlAdmin.user.correo}"></h:inputText>
-
-						<h:outputText value="Rol"></h:outputText>
-						<h:selectOneMenu value="#{controlAdmin.user.rol}">
-							<f:selectItems value="#{controlAdmin.listaRoles}"
-								var="rol" itemValue="#{rol}"
-								itemLaber="#{rol}"></f:selectItems>
-						</h:selectOneMenu>
-
-						<h:outputText value="Universidad"></h:outputText>
-						<h:selectOneMenu value="#{controlAdmin.user.universidad}">
-							<f:selectItems value="#{controlAdmin.listaUniversidades}"
-								var="universidades" itemValue="#{universidades}"
-								itemLaber="#{universidades.nombre}"></f:selectItems>
-						</h:selectOneMenu>
-
-						<h:outputLabel></h:outputLabel>
-						<h:commandButton action="#{controlAdmin.crearUsuario}"
-							value="Añadir" update="usuarios"></h:commandButton>
-					</h:panelGrid>
-				</h:form>
 
 				<h:dataTable class="tabla" value="#{controlAdmin.listaSolicitudes}"
 					var="solicitudes" rendered="#{controlAdmin.showtableSolicitudes}">

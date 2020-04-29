@@ -13,6 +13,7 @@ import javax.inject.Named;
 import org.primefaces.event.RowEditEvent;
 
 import practica.sii.Clases.Noticias;
+import practica.sii.Clases.PDI;
 import practica.sii.Clases.Proyecto;
 import practica.sii.Clases.Solicitud;
 import practica.sii.Clases.Universidad;
@@ -41,7 +42,6 @@ public class ControlAdmin implements Serializable{
 	
 	private Login listas;
 	private Usuario user;
-	
 	
 	
 	public ControlAdmin() {
@@ -175,6 +175,7 @@ public class ControlAdmin implements Serializable{
 	
 	public void borrarUsuario() {
 		listaUsuarios.remove(selectedUsuario);
+		selectedUsuario = null;
 		listas.setUsuarios(listaUsuarios);
 	}
 	

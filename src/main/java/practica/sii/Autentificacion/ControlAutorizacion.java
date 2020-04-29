@@ -33,8 +33,8 @@ public class ControlAutorizacion implements Serializable {
         // Si no hay usuario debe devolver la página de login
         // Si el usuario es el administrador debe devolver la página admin.xhtml
         // Si el usuario es un usuario normal debe devolver la página normal.xhtml
-    	if(usuario.getRol().equals(Usuario.Rol.ADMINISTRADOR)) {
-        	return "admin.xhtml";
+    	if(usuario == null) {
+        	return "login.xhtml";
         }else if(usuario.getRol().equals(Usuario.Rol.ALUMNO)){
         	return "alumno.xhtml";
         }else if(usuario.getRol().equals(Usuario.Rol.ONG)) {
@@ -43,6 +43,8 @@ public class ControlAutorizacion implements Serializable {
         	return "pas.xhtml";
         }else if(usuario.getRol().equals(Usuario.Rol.PDI)) {
         	return "pdi.xhtml";
+        }else if(usuario.getRol().equals(Usuario.Rol.ADMINISTRADOR)){
+        	return "admin.xhtml";
         }else {
         	return "login.xhtml";
         }
