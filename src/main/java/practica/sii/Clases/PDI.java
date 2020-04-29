@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.lang.String;
 import javax.persistence.*;
 
+import practica.sii.Clases.Usuario.Rol;
+
 /**
  * Entity implementation class for Entity: PDI
  *
@@ -24,7 +26,18 @@ public class PDI extends Usuario implements Serializable {
 
 	public PDI() {
 		super();
+	}
+	
+	public PDI(Long id, String usuario, String contrasena, String correo, Rol rol, Universidad universidad ,String Nombre, String Apellidos, String DNI, String Departamento, String Telefono, String Es_Gestor) {
+		super(id, usuario, contrasena, correo, rol, universidad);
+		this.Nombre = Nombre;
+		this.Apellidos = Apellidos;
+		this.DNI = DNI;
+		this.Departamento = Departamento;
+		this.Telefono = Telefono;
+		this.Es_Gestor = Es_Gestor;
 	}   
+	
 	public String getNombre() {
 		return this.Nombre;
 	}
