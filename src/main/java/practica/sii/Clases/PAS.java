@@ -24,7 +24,15 @@ public class PAS extends Usuario implements Serializable {
 
 	public PAS() {
 		super();
-	}   
+	}
+	public PAS(Long id, String usuario, String contrasena, String correo, Rol rol, Universidad universidad, String Facultad, String Servicio, Address Direccion, String Representante, String Telefono) {
+		super(id,usuario,contrasena,correo,rol,universidad);
+		this.Facultad = Facultad;
+		this.Servicio = Servicio;
+		this.Direccion = Direccion;
+		this.Representante = Representante;
+		this.Telefono = Telefono;
+	}
 	public String getFacultad() {
 		return this.Facultad;
 	}
