@@ -82,6 +82,4 @@ public class ControlONG implements Serializable{
 		listas.setListaProyectos(listaProyectos);
 	}
 	
-	
-	
 }
