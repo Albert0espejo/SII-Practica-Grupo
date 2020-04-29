@@ -54,6 +54,7 @@ public class ControlPAS implements Serializable{
 	}
 
 	public List<Solicitud> getListaSolicitudes() {
+		listaSolicitudes = listas.getListaSolicitudes();
 		return listaSolicitudes;
 	}
 

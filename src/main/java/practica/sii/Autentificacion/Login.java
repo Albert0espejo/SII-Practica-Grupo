@@ -5,6 +5,7 @@
 package practica.sii.Autentificacion;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -15,6 +16,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import practica.sii.Clases.Address;
+import practica.sii.Clases.Estado;
 import practica.sii.Clases.Noticias;
 import practica.sii.Clases.Proyecto;
 import practica.sii.Clases.Solicitud;
@@ -43,8 +45,10 @@ public class Login {
      * Creates a new instance of Login
      */
     public Login() {
+    	Date finicio = new Date(01/06/2020);
+    	Date ffinal = new Date(21/07/2020);
     	Universidad Malaga = new Universidad(1L,"Malaga", new Address("Avd.Cervantes","","Malaga","Andalucia",29010L,"España"),"uma.es","Malaga",29010L);
-        //Proyecto ProyectoA = new Proyecto(1L , "Hospital Carlos Haya", 01/06/2020, 21/07/2020, "Descripcion del proyecto", 1);
+        Proyecto ProyectoA = new Proyecto(1L , "Hospital Carlos Haya", finicio, ffinal, "Descripcion del proyecto", Estado.En_Espera);
         //Proyecto ProyectoB = new Proyecto(2L , "Casa de la Juventud", 15/12/2020, 08/02/2021, "Descripcion del proyecto", 1);
     	usuarios = new ArrayList<Usuario>();
     	listaSolicitudes = new ArrayList<Solicitud>();
@@ -54,9 +58,8 @@ public class Login {
         usuarios.add(new Usuario(2L,"manolo", "qwer", "manolo@uma.es",Rol.ADMINISTRADOR,Malaga));
         usuarios.add(new Usuario(3L,"pasprueba","asdf","pasprueba@uma.es", Rol.PAS, Malaga));
         usuarios.add(new Usuario(4L,"pdiprueba","zxcv","pdiprueba@uma.es", Rol.PDI, Malaga));
-        //listaSolicitudes.add(new Solicitud("1", 1, Malaga, ProyectoA));´
-        long i = 2;
-        listaSolicitudes.add(new Solicitud(i, null, Malaga, null));
+        //listaSolicitudes.add(new Solicitud("1", 1, Malaga, ProyectoA));
+        listaSolicitudes.add(new Solicitud(1L, Estado.En_Espera, Malaga, ProyectoA));
         listaUniversidades.add(Malaga);
 
     }
