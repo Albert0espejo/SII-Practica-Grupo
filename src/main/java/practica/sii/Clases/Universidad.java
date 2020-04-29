@@ -24,6 +24,7 @@ public class Universidad implements Serializable{
 	private String Direccion_Web;
 	private String Ciudad;
 	private Long Codigo_Postal;
+	private List<String> Facultades;
 	@OneToMany(mappedBy = "universidad")
 	private List<Usuario> usuarios;
 	@OneToMany(mappedBy = "universidad")
@@ -33,14 +34,21 @@ public class Universidad implements Serializable{
 	public Universidad() {
 		super();
 	}
-	public Universidad(Long Id_Universidad, String Nombre, Address Direccion, String Direccion_Web, String Ciudad, Long Codigo_Postal) {
+	public Universidad(Long Id_Universidad, String Nombre, List<String> Facultades, Address Direccion, String Direccion_Web, String Ciudad, Long Codigo_Postal) {
 		this.Id_Universidad = Id_Universidad;
 		this.Nombre = Nombre;
+		this.Facultades = Facultades;
 		this.Direccion = Direccion;
 		this.Direccion_Web = Direccion_Web;
 		this.Ciudad = Ciudad;
 		this.Codigo_Postal = Codigo_Postal;
 		
+	}
+	public List<String> getFacultades() {
+		return Facultades;
+	}
+	public void setFacultades(List<String> facultades) {
+		Facultades = facultades;
 	}
 	public Long getId_Universidad() {
 		return this.Id_Universidad;

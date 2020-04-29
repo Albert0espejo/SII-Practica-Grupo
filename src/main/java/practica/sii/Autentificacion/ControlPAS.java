@@ -147,6 +147,7 @@ public class ControlPAS implements Serializable{
 	
 	public void borrarSolicitudes(Solicitud s) {
 		listaSolicitudes.remove(s);
+		listas.setListaSolicitudes(listaSolicitudes);
 	}
 	
 }
