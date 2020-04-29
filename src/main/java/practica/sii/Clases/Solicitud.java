@@ -23,6 +23,10 @@ public class Solicitud implements Serializable {
 	@ManyToOne
 	private Proyecto proyecto;
 	private static final long serialVersionUID = 1L;
+	
+	public Solicitud() {
+		super();
+	}
 
 	public Solicitud(Long Id_Solicitud, Estado Estado, Universidad universidad, Proyecto proyecto) {
 		this.Id_Solicitud = Id_Solicitud;
