@@ -26,19 +26,19 @@
     	<h:dataTable class="tabla" value="#{controlPAS.listaSolicitudes}" var="solicitudes" rendered="#{controlPAS.showtableSolicitudes}">
       				<h:column>
       					<f:facet name = "header">Id</f:facet>
-         				<h:outputText value="#{listaSolicitudes.id}"></h:outputText>
+         				<h:outputText value="#{listaSolicitudes.Id_Solicitud}"></h:outputText>
       				</h:column>
      				<h:column>
      					<f:facet name = "header">Estado</f:facet>
-         				<h:outputText value="#{listaSolicitud.Estado}"></h:outputText>
+         				<h:outputText value="#{listaSolicitudes.Estado}"></h:outputText>
       				</h:column>
       				<h:column >
       					<f:facet name = "header">Universidad</f:facet>
-         				<h:outputText value="#{listaSolicitud.universidad}"></h:outputText>
+         				<h:outputText value="#{listaSolicitudes.universidad}"></h:outputText>
       				</h:column>
       				<h:column >
       					<f:facet name = "header">Proyecto</f:facet>
-         				<h:outputText value="#{listaSolicitud.proyecto}"></h:outputText>
+         				<h:outputText value="#{listaSolicitudes.proyecto}"></h:outputText>
       				</h:column>
       				<h:column>
       					<h:form>
