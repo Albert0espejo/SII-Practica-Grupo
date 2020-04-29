@@ -8,19 +8,7 @@
     <ui:define name="content">
         <c:choose>
             <c:when test="#{controlPAS.usuario.rol == 'PAS'}">
-                <h1>Usuario PAS</h1>
-            </c:when>
-            <c:otherwise>
-                <ui:include src="/WEB-INF/templates/errorAutorizacion.xhtml"/>
-            </c:otherwise>
-        </c:choose>
-    </ui:define>
-    
-    <ui:define name="botones">
-    
-    	<li><h:commandButton action="#{controlPAS.enabletableSolicitudes}" update="solicitudes" value="Vista Solicitudes"/></li>
-    
-    </ui:define>
+                </ui:define>
     
     <ui:define name="content">
     	<h:dataTable class="tabla" value="#{controlPAS.listaSolicitudes}" var="solicitudes" rendered="#{controlPAS.showtableSolicitudes}">
@@ -49,4 +37,16 @@
       				</h:column>
 				</h:dataTable>
 		</ui:define>
+            </c:when>
+            <c:otherwise>
+                <ui:include src="/WEB-INF/templates/errorAutorizacion.xhtml"/>
+            </c:otherwise>
+        </c:choose>
+    </ui:define>
+    
+    <ui:define name="botones">
+    
+    	<li><h:commandButton action="#{controlPAS.enabletableSolicitudes}" update="solicitudes" value="Vista Solicitudes"/></li>
+    
+    
 </ui:composition>
