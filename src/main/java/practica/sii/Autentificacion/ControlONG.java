@@ -10,7 +10,7 @@ import practica.sii.Clases.Noticias;
 import practica.sii.Clases.Proyecto;
 
 
-@Named(value = "controlAdmin")
+@Named(value = "controlONG")
 
 @SessionScoped
 
