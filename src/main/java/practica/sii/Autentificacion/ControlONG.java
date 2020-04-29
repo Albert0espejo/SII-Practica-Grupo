@@ -1,6 +1,8 @@
 package practica.sii.Autentificacion;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
@@ -8,6 +10,10 @@ import javax.inject.Named;
 
 import practica.sii.Clases.Noticias;
 import practica.sii.Clases.Proyecto;
+import practica.sii.Clases.Solicitud;
+import practica.sii.Clases.Universidad;
+import practica.sii.Clases.Usuario;
+import practica.sii.Clases.Usuario.Rol;
 
 
 @Named(value = "controlONG") 
@@ -27,6 +33,14 @@ public class ControlONG implements Serializable{
 
 	
 	private Login listas;
+	
+	public ControlONG() {
+		listas = new Login();
+
+		listaNoticias = new ArrayList<Noticias>();
+		listaProyectos = new ArrayList<Proyecto>();
+
+	}
 	
 	
 	public List<Proyecto> getListaProyectos() {
