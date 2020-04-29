@@ -58,13 +58,9 @@ public class Login {
         usuarios.add(new Usuario(2L,"manolo", "qwer", "manolo@uma.es",Rol.ADMINISTRADOR,Malaga));
         usuarios.add(new Usuario(3L,"pasprueba","asdf","pasprueba@uma.es", Rol.PAS, Malaga));
         usuarios.add(new Usuario(4L,"pdiprueba","zxcv","pdiprueba@uma.es", Rol.PDI, Malaga));
-<<<<<<< HEAD
         //listaSolicitudes.add(new Solicitud("1", 1, Malaga, ProyectoA));
-        long i = 3;
-=======
         listaSolicitudes.add(new Solicitud(1L, Estado.En_Espera, Malaga, ProyectoA));
         long i = 2;
->>>>>>> branch 'master' of https://github.com/Albert0espejo/SII-Practica-Grupo
         listaSolicitudes.add(new Solicitud(i, null, Malaga, null));
         listaUniversidades.add(Malaga);
 
