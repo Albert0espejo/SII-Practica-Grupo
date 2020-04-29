@@ -55,6 +55,10 @@ public class ControlAdmin implements Serializable{
 	public ControlAdmin() {
 		listas = new Login();
 		user = new Usuario();
+		sol = new Solicitud();
+		uni = new Universidad();
+		news = new Noticias();
+		project = new Proyecto();
 		listaUsuarios = new ArrayList<Usuario>();
 		listaNoticias = new ArrayList<Noticias>();
 		listaProyectos = new ArrayList<Proyecto>();

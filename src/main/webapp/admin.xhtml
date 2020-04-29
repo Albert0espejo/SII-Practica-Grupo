@@ -179,7 +179,7 @@
 							<h:outputText value="#{solicitudes.universidad}" />
 						</p:column>
 						<p:column headerText="Proyecto">
-							<h:outputText value="#{solicitudes.proyecto}" />
+							<h:outputText value="#{solicitudes.proyecto.ID_Proyecto}" />
 						</p:column>
 						<p:column style="width:35px">
 							<p:rowEditor />
@@ -188,7 +188,7 @@
 					</p:dataTable>
 
 					<p:contextMenu>
-						<p:menuitem value="Add" update="addPaneSoli"
+						<p:menuitem value="Add" update="addPanelSoli"
 							oncomplete="PF('addSoli').show()" />
 						<p:menuitem value="Delete" update="solicitud"
 							action="#{controlAdmin.borrarSolicitudes}" />
@@ -203,7 +203,7 @@
 								<h:inputText converter="javax.faces.Long"
 									value="#{controlAdmin.sol.id_Solicitud}"></h:inputText>
 
-								<h:outputText value="Solicitud"></h:outputText>
+								<h:outputText value="Estado"></h:outputText>
 								<h:selectOneMenu value="#{controlAdmin.sol.estado}">
 									<f:selectItems value="#{controlAdmin.listaEstado}" var="sol"
 										itemValue="#{sol}" itemLaber="#{sol}"></f:selectItems>
@@ -220,7 +220,7 @@
 								<h:selectOneMenu value="#{controlAdmin.sol.proyecto}">
 									<f:selectItems value="#{controlAdmin.listaProyectos}"
 										var="proyectos" itemValue="#{proyectos}"
-										itemLaber="#{proyectos.ID_Proyecto}"></f:selectItems>
+										itemLabel="#{proyectos.ID_Proyecto}"></f:selectItems>
 								</h:selectOneMenu>
 
 								<h:outputLabel></h:outputLabel>
@@ -232,83 +232,329 @@
 
 
 				<!-- Lista UNIVERSIDADES  -->
-				<h:dataTable class="tabla"
-					value="#{controlAdmin.listaUniversidades}" var="universidades"
-					rendered="#{controlAdmin.showtableUniversidades}">
-					<h:column>
-						<f:facet name="header">Id</f:facet>
-						<h:outputText value="#{usuarios.id}"></h:outputText>
-					</h:column>
-					<h:column>
-						<f:facet name="header">Usuario</f:facet>
-						<h:outputText value="#{usuarios.usuario}"></h:outputText>
-					</h:column>
-					<h:column>
-						<f:facet name="header">Rol</f:facet>
-						<h:outputText value="#{usuarios.rol}"></h:outputText>
-					</h:column>
-					<h:column>
-						<h:form>
-							<h:commandButton
-								action="#{controlAdmin.borrarUsuario(usuarios.id)}"
-								value="Borrar" update="usuarios">
-							</h:commandButton>
-						</h:form>
-					</h:column>
-				</h:dataTable>
-				
+				<h:form rendered="#{controlAdmin.showtableUniversidades}">
+					<p:dataTable class="tabla" id="universidad"
+						value="#{controlAdmin.listaUniversidades}" var="universidades"
+						editable="true" rowKey="#{universidades.id_Universidad}"
+						selection="#{controlAdmin.selectedUniversidad}" selectionMode="single">
+
+						<p:column headerText="Id">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{universidades.id_Universidad}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText id="modelInput" value="#{universidades.id_Universidad}" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						<p:column headerText="Nombre">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{universidades.nombre}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{universidades.nombre}" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						<p:column headerText="Direccion">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{universidades.direccion}" />
+								</f:facet>
+								<f:facet name="input">
+									<!-- String to Address -->
+									<p:inputText value="#{universidades.direccion}" /> 
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						<p:column headerText="Página WEB">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{universidades.direccion_Web}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{universidades.direccion_Web}" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						<p:column style="width:35px">
+							<p:rowEditor />
+						</p:column>
+
+					</p:dataTable>
+
+					<p:contextMenu>
+						<p:menuitem value="Add" update="addPanelUni"
+							oncomplete="PF('addUni').show()" />
+						<p:menuitem value="Delete" update="universidad"
+							action="#{controlAdmin.borrarUniversidades}" />
+					</p:contextMenu>
+				</h:form>
+
+
+				<!-- String to Address --> 
+				<p:dialog header="Añadir Universidad" widgetVar="addUni" modal="true"
+						showEffect="fade" hideEffect="fade" resizable="false">
+						<p:outputPanel id="addPanelUni" style="text-align:center;">
+							<h:panelGrid columns="2">
+								<h:outputText value="Id"></h:outputText>
+								<h:inputText converter="javax.faces.Long"
+									value="#{controlAdmin.uni.id_Universidad}"></h:inputText>
+
+								<h:outputText value="Nombre"></h:outputText>
+								<h:inputText value="#{controlAdmin.uni.nombre}"></h:inputText>
+
+								<h:outputText value="Contraseña"></h:outputText>
+								<h:inputText
+									value="#{controlAdmin.user.contrasena}"></h:inputText>
+
+								
+							 	<h:outputText value="Dirección"></h:outputText>
+								<h:inputText value="#{controlAdmin.uni.direccion}"></h:inputText>
+
+								<h:outputText value="Página WEB"></h:outputText>
+								<h:inputText value="#{controlAdmin.uni.direccion_Web}"></h:inputText>
+
+								<h:outputLabel></h:outputLabel>
+								<h:commandButton action="#{controlAdmin.crearUniversidad}"
+									value="Añadir" update="universidades"></h:commandButton>
+							</h:panelGrid>
+						</p:outputPanel>
+					</p:dialog>
+
+
 				
 				<!-- Lista NOTICIAS  -->
 
-				<h:dataTable class="tabla" value="#{controlAdmin.listaNoticias}"
-					var="noticias" rendered="#{controlAdmin.showtableNoticias}">
-					<h:column>
-						<f:facet name="header">Id</f:facet>
-						<h:outputText value="#{usuarios.id}"></h:outputText>
-					</h:column>
-					<h:column>
-						<f:facet name="header">Usuario</f:facet>
-						<h:outputText value="#{usuarios.usuario}"></h:outputText>
-					</h:column>
-					<h:column>
-						<f:facet name="header">Rol</f:facet>
-						<h:outputText value="#{usuarios.rol}"></h:outputText>
-					</h:column>
-					<h:column>
-						<h:form>
-							<h:commandButton
-								action="#{controlAdmin.borrarUsuario(usuarios.id)}"
-								value="Borrar" update="usuarios">
-							</h:commandButton>
-						</h:form>
-					</h:column>
-				</h:dataTable>
+				<h:form rendered="#{controlAdmin.showtableNoticias}">
+					<p:dataTable class="tabla" id="noticia"
+						value="#{controlAdmin.listaNoticias}" var="noticias"
+						editable="true" rowKey="#{noticias.id_Noticia}"
+						selection="#{controlAdmin.selectedNoticia}" selectionMode="single">
+
+						<p:column headerText="Id">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{noticias.id_Noticia}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText id="modelInput" value="#{noticias.id_Noticia}" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						<p:column headerText="Autor">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{noticias.autor}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{noticias.autor}" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						<p:column headerText="ONG">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{noticias.ong}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{noticias.ong}" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						<p:column headerText="Titulo">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{noticias.titulo}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{noticias.titulo}" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						<p:column headerText="Fecha Publicación">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{noticias.fecha_Publicacion}" />
+								</f:facet>
+								<!-- String to Date -->
+								<f:facet name="input">
+									<p:inputText value="#{noticias.fecha_Publicacion}" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						<p:column style="width:35px">
+							<p:rowEditor />
+						</p:column>
+
+					</p:dataTable>
+
+					<p:contextMenu>
+						<p:menuitem value="Add" update="addPanelNew"
+							oncomplete="PF('addNew').show()" />
+						<p:menuitem value="Delete" update="noticia"
+							action="#{controlAdmin.borrarNoticias}" />
+					</p:contextMenu>
+				</h:form>
+
+
+				<!-- String to Date -->
+				<p:dialog header="Añadir Noticia" widgetVar="addNew" modal="true"
+						showEffect="fade" hideEffect="fade" resizable="false">
+						<p:outputPanel id="addPanelNew" style="text-align:center;">
+							<h:panelGrid columns="2">
+								<h:outputText value="Id"></h:outputText>
+								<h:inputText converter="javax.faces.Long"
+									value="#{controlAdmin.news.id_Noticia}"></h:inputText>
+
+								<h:outputText value="Autor"></h:outputText>
+								<h:inputText value="#{controlAdmin.news.autor}"></h:inputText>
+
+								<h:outputText value="ONG"></h:outputText>
+								<h:inputText
+									value="#{controlAdmin.news.ong}"></h:inputText>
+
+								<h:outputText value="Fecha Publicación"></h:outputText>
+								<h:inputText value="#{controlAdmin.news.fecha_Publicacion}"></h:inputText>
+
+								<h:outputText value="Titulo"></h:outputText>
+								<h:inputText value="#{controlAdmin.news.titulo}"></h:inputText>
+								
+								<h:outputText value="Texto"></h:outputText>
+								<h:inputText value="#{controlAdmin.news.texto}"></h:inputText>
+								
+								<h:outputLabel></h:outputLabel>
+								<h:commandButton action="#{controlAdmin.crearNoticia}"
+									value="Añadir" update="noticia"></h:commandButton>
+							</h:panelGrid>
+						</p:outputPanel>
+					</p:dialog>
+
 
 
 				<!-- Lista PROYECTOS  -->
-				<h:dataTable class="tabla" value="#{controlAdmin.listaProyectos}"
-					var="proyectos" rendered="#{controlAdmin.showtableProyectos}">
-					<h:column>
-						<f:facet name="header">Id</f:facet>
-						<h:outputText value="#{usuarios.id}"></h:outputText>
-					</h:column>
-					<h:column>
-						<f:facet name="header">Usuario</f:facet>
-						<h:outputText value="#{usuarios.usuario}"></h:outputText>
-					</h:column>
-					<h:column>
-						<f:facet name="header">Rol</f:facet>
-						<h:outputText value="#{usuarios.rol}"></h:outputText>
-					</h:column>
-					<h:column>
-						<h:form>
-							<h:commandButton
-								action="#{controlAdmin.borrarUsuario(usuarios.id)}"
-								value="Borrar" update="usuarios">
-							</h:commandButton>
-						</h:form>
-					</h:column>
-				</h:dataTable>
+				<h:form rendered="#{controlAdmin.showtableProyectos}">
+					<p:dataTable class="tabla" id="proyecto"
+						value="#{controlAdmin.listaProyectos}" var="proyectos"
+						editable="true" rowKey="#{proyectos.ID_Proyecto}"
+						selection="#{controlAdmin.selectedProyecto}" selectionMode="single">
+
+						<p:column headerText="Id">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{proyectos.ID_Proyecto}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText id="modelInput" value="#{proyectos.ID_Proyecto}" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						<p:column headerText="ONG">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{proyectos.ong}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{proyectos.ong}" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						<p:column headerText="Lugar">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{proyectos.lugar}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{proyectos.lugar}" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						<p:column headerText="Fecha Inicio">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{proyectos.fecha_Inicio}" />
+								</f:facet>
+								<f:facet name="input">
+									<!-- String to Date -->
+									<p:inputText value="#{proyectos.fecha_Inicio}" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						<p:column headerText="Fecha Final">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{proyectos.fecha_Final}" />
+								</f:facet>
+								<!-- String to Date -->
+								<f:facet name="input">
+									<p:inputText value="#{proyectos.fecha_Final}" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						<p:column headerText="Estado">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{proyectos.estado}" />
+								</f:facet>
+								<f:facet name="input">
+									<h:selectOneMenu value="#{proyectos.estado}">
+										<f:selectItems value="#{controlAdmin.listaEstado}" var="estado"
+											itemLabel="#{estado}" itemValue="#{estado}" />
+									</h:selectOneMenu>
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						<p:column style="width:35px">
+							<p:rowEditor />
+						</p:column>
+
+					</p:dataTable>
+
+					<p:contextMenu>
+						<p:menuitem value="Add" update="addPanelProyecto"
+							oncomplete="PF('addProyecto').show()" />
+						<p:menuitem value="Delete" update="proyecto"
+							action="#{controlAdmin.borrarProyectos}" />
+					</p:contextMenu>
+				</h:form>
+
+
+				<!-- String to Date -->
+				<p:dialog header="Añadir Proyecto" widgetVar="addProyecto" modal="true"
+						showEffect="fade" hideEffect="fade" resizable="false">
+						<p:outputPanel id="addPanelProyecto" style="text-align:center;">
+							<h:panelGrid columns="2">
+								<h:outputText value="Id"></h:outputText>
+								<h:inputText converter="javax.faces.Long"
+									value="#{controlAdmin.project.ID_Proyecto}"></h:inputText>
+
+								<h:outputText value="ONG"></h:outputText>
+								<h:inputText
+									value="#{controlAdmin.project.ong}"></h:inputText>
+
+								<h:outputText value="Lugar"></h:outputText>
+								<h:inputText value="#{controlAdmin.project.lugar}"></h:inputText>
+								
+								<h:outputText value="Fecha Inicio"></h:outputText>
+								<h:inputText value="#{controlAdmin.project.fecha_Inicio}"></h:inputText>
+
+								<h:outputText value="Fecha Final"></h:outputText>
+								<h:inputText value="#{controlAdmin.project.fecha_Final}"></h:inputText>
+								
+								<h:outputText value="Estado"></h:outputText>
+								<h:selectOneMenu value="#{controlAdmin.project.estado}">
+									<f:selectItems value="#{controlAdmin.listaEstado}" var="sol"
+										itemValue="#{sol}" itemLaber="#{sol}"></f:selectItems>
+								</h:selectOneMenu>
+								
+								<h:outputLabel></h:outputLabel>
+								<h:commandButton action="#{controlAdmin.crearProyecto}"
+									value="Añadir" update="proyecto"></h:commandButton>
+							</h:panelGrid>
+						</p:outputPanel>
+					</p:dialog>
 			</c:when>
 			<c:otherwise>
 				<ui:include src="/WEB-INF/Templates/errorAutorizacion.xhtml" />
