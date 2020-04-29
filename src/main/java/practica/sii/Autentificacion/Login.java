@@ -47,7 +47,10 @@ public class Login {
     public Login() {
     	Date finicio = new Date(01/06/2020);
     	Date ffinal = new Date(21/07/2020);
-    	Universidad Malaga = new Universidad(1L,"Malaga", new Address("Avd.Cervantes","","Malaga","Andalucia",29010L,"España"),"uma.es","Malaga",29010L);
+    	List<String> facultades = new ArrayList<String>();
+    	facultades.add("ciencias");
+    	facultades.add("salud");
+    	Universidad Malaga = new Universidad(1L,"Malaga", facultades, new Address("Avd.Cervantes","","Malaga","Andalucia",29010L,"España"),"uma.es");
         Proyecto ProyectoA = new Proyecto(1L , "Hospital Carlos Haya", finicio, ffinal, "Descripcion del proyecto", Estado.En_Espera);
         //Proyecto ProyectoB = new Proyecto(2L , "Casa de la Juventud", 15/12/2020, 08/02/2021, "Descripcion del proyecto", 1);
     	usuarios = new ArrayList<Usuario>();
