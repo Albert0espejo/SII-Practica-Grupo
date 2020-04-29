@@ -53,4 +53,4 @@ public class ControlPDI implements Serializable{
 	public void setListaSolicitudes(List<Solicitud> listaSolicitudes) {
 		this.listaSolicitudes = listaSolicitudes;
 	}
-	
+}
