@@ -11,7 +11,7 @@ import practica.sii.Clases.Proyecto;
 
 
 @Named(value = "controlONG") 
-
+ 
 @SessionScoped
 
 public class ControlONG implements Serializable{
