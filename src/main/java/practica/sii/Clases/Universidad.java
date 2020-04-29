@@ -69,19 +69,7 @@ public class Universidad implements Serializable{
 	public void setDireccion_Web(String Direccion_Web) {
 		this.Direccion_Web = Direccion_Web;
 	}
-	public String getCiudad() {
-		return this.Ciudad;
-	}
-	public void setCiudad(String Ciudad) {
-		this.Ciudad = Ciudad;
-	}
-	public Long getCodigo_Postal() {
-		return this.Codigo_Postal;
-	}
-	public void setCodigo_Postal(Long Codigo_Postal) {
-		this.Codigo_Postal= Codigo_Postal;
-	}
-	
+
 	public List<Usuario> getUsuarios() {
 		return usuarios;
 	}

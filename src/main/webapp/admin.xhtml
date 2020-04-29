@@ -146,7 +146,6 @@
 
 
 				<!--Lista SOLICITUDES  -->
-
 				<h:form rendered="#{controlAdmin.showtableSolicitudes}">
 					<p:dataTable class="tabla" id="solicitud"
 						value="#{controlAdmin.listaSolicitudes}" var="solicitudes"
@@ -259,8 +258,7 @@
 				</h:dataTable>
 				
 				
-				
-				<!-- Lista UNIVERSIDADES  -->
+				<!-- Lista NOTICIAS  -->
 
 				<h:dataTable class="tabla" value="#{controlAdmin.listaNoticias}"
 					var="noticias" rendered="#{controlAdmin.showtableNoticias}">
@@ -286,6 +284,8 @@
 					</h:column>
 				</h:dataTable>
 
+
+				<!-- Lista PROYECTOS  -->
 				<h:dataTable class="tabla" value="#{controlAdmin.listaProyectos}"
 					var="proyectos" rendered="#{controlAdmin.showtableProyectos}">
 					<h:column>
