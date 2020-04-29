@@ -23,27 +23,32 @@ import practica.sii.Clases.Usuario.Rol;
 @Named(value = "controlPDI")
 @SessionScoped
 public class ControlPDI implements Serializable{
-
+	
+	
+	private List<Usuario> listaUsuarios;
 	private List<Solicitud> listaSolicitudes;
 	private List<Universidad> listaUniversidades;
 	private List<Noticias> listaNoticias;
 	private List<Proyecto> listaProyectos;
 	
+	private Boolean showtablePerfil = false;
 	private Boolean showtableSolicitudes = false;
 	private Boolean showtableUniversidades = false;
 	private Boolean showtableNoticias = false;
 	private Boolean showtableProyectos = false;
 	
 	private Login listas;
-
-    public ControlPDI() {
-    	listas = new Login();
-    	
-    	listaNoticias = new ArrayList<Noticias>();
-    	listaProyectos = new ArrayList<Proyecto>();
-    	listaSolicitudes = new ArrayList<Solicitud>();
-    	listaUniversidades = new ArrayList<Universidad>();
-    }
+	
+	public ControlPDI() {
+		listas = new Login();
+		
+		listaUsuarios = new ArrayList<Usuario>();
+		listaNoticias = new ArrayList<Noticias>();
+		listaProyectos = new ArrayList<Proyecto>();
+		listaSolicitudes = new ArrayList<Solicitud>();
+		listaUniversidades = new ArrayList<Universidad>();
+	}
+	
 
 	public List<Solicitud> getListaSolicitudes() {
 		return listaSolicitudes;
@@ -61,6 +66,10 @@ public class ControlPDI implements Serializable{
 		return listaProyectos;
 	}
 	
+	public Boolean getShowtablePerfil() {
+		return showtablePerfil;
+	}
+	
 	public Boolean getShowtableSolicitudes() {
 		return showtableSolicitudes;
 	}
@@ -76,10 +85,22 @@ public class ControlPDI implements Serializable{
 	public Boolean getShowtableProyectos() {
 		return showtableProyectos;
 	}
+
+	public void enabletablePerfil() {
+		if(showtableNoticias || showtableSolicitudes || showtableProyectos || showtableUniversidades) {
+			showtableNoticias = false;
+			showtableSolicitudes = false;
+			showtableProyectos = false;
+			showtableUniversidades = false;
+		}
+
+		showtablePerfil = !showtablePerfil;
+	}
 	
 	public void enabletableSolicitudes() {
-		if(showtableNoticias || showtableProyectos || showtableUniversidades) {
+		if(showtableNoticias || showtablePerfil || showtableProyectos || showtableUniversidades) {
 			showtableNoticias = false;
+			showtablePerfil = false;
 			showtableProyectos = false;
 			showtableUniversidades = false;
 		}
@@ -88,8 +109,9 @@ public class ControlPDI implements Serializable{
 	}
 	
 	public void enabletableUniversidades() {
-		if(showtableNoticias || showtableProyectos || showtableSolicitudes) {
+		if(showtableNoticias || showtablePerfil || showtableProyectos || showtableSolicitudes) {
 			showtableNoticias = false;
+			showtablePerfil = false;
 			showtableProyectos = false;
 			showtableSolicitudes = false;
 		}
@@ -98,8 +120,9 @@ public class ControlPDI implements Serializable{
 	}
 	
 	public void enabletableNoticias() {
-		if(showtableUniversidades || showtableProyectos || showtableSolicitudes) {
+		if(showtableUniversidades || showtablePerfil || showtableProyectos || showtableSolicitudes) {
 			showtableUniversidades = false;
+			showtablePerfil = false;
 			showtableProyectos = false;
 			showtableSolicitudes = false;
 		}
@@ -108,8 +131,9 @@ public class ControlPDI implements Serializable{
 	}
 	
 	public void enabletableProyectos() {
-		if(showtableNoticias || showtableUniversidades || showtableSolicitudes) {
+		if(showtableNoticias || showtablePerfil || showtableUniversidades || showtableSolicitudes) {
 			showtableNoticias = false;
+			showtablePerfil = false;
 			showtableUniversidades = false;
 			showtableSolicitudes = false;
 		}
@@ -118,7 +142,3 @@ public class ControlPDI implements Serializable{
 	}
 
 }
-
-	
-
-	
