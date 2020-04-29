@@ -40,6 +40,10 @@ public class Proyecto implements Serializable {
 	
 	@ManyToMany
 	private List<ONG> ong;
+	
+	public Proyecto() {
+		super();
+	}
 
 	public Proyecto(Long ID_Proyecto, String Lugar, Date Fecha_Inicio, Date Fecha_Final, String Descripcion, Estado Estado) {
 		this.ID_Proyecto = ID_Proyecto;
