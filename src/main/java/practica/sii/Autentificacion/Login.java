@@ -60,8 +60,6 @@ public class Login {
         usuarios.add(new Usuario(4L,"pdiprueba","zxcv","pdiprueba@uma.es", Rol.PDI, Malaga));
         //listaSolicitudes.add(new Solicitud("1", 1, Malaga, ProyectoA));
         listaSolicitudes.add(new Solicitud(1L, Estado.En_Espera, Malaga, ProyectoA));
-        long i = 2;
-        listaSolicitudes.add(new Solicitud(i, null, Malaga, null));
         listaUniversidades.add(Malaga);
 
     }
