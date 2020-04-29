@@ -144,8 +144,8 @@ public class ControlPAS implements Serializable{
 		showtableProyectos = !showtableProyectos;
 	}
 	
-	public void borrarUsuario(Usuario u) {
-		listaUsuarios.remove(u);
+	public void borrarSolicitudes(Solicitud s) {
+		listaSolicitudes.remove(s);
 	}
 	
 }
