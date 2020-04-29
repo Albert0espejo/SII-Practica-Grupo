@@ -3,17 +3,18 @@ package practica.sii.Autentificacion;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
-
+import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.primefaces.event.RowEditEvent;
-
+import practica.sii.Clases.Address;
 import practica.sii.Clases.Noticias;
-import practica.sii.Clases.PDI;
 import practica.sii.Clases.Proyecto;
 import practica.sii.Clases.Solicitud;
 import practica.sii.Clases.Universidad;

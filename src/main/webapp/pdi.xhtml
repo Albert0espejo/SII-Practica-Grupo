@@ -1,22 +1,26 @@
 <ui:composition template="/WEB-INF/Templates/plantilla.xhtml"
-                xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-                xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
                 
    	<ui:define name="title">Página para usuarios PDI</ui:define>
     
     <ui:define name="botones">
-    	<li><h:commandButton action="#{controlPDI.enabletableSolicitudes}" update="solicitudes" value="Vista Solicitudes"/></li>
-    	<li><h:commandButton action="#{controlPDI.enabletablePerfil}" update="perfil" value="Editar perfil"/></li>	
+    	<li><h:commandButton action="#{controlPDI.enabletableSolicitudes}"
+    	update="solicitudes" value="Vista Solicitudes"/></li>
+    	<li><h:commandButton action="#{controlPDI.enabletablePerfil}"
+    	update="perfil" value="Editar perfil"/></li>	
     </ui:define>
 
 	<ui:define name="content">
 		<c:choose>
 			<c:when test="#{controlAutorizacion.usuario.rol == 'PDI'}">
 
-				<h:dataTable class="tabla" value="#{controlPDI.listaSolicitudes}" var="solicitudes" rendered="#{controlPDI.showtableSolicitudes}">
+				<h:dataTable class="tabla" value="#{controlPDI.listaSolicitudes}"
+				var="solicitudes" rendered="#{controlPDI.showtableSolicitudes}">
 					<h:column>
 						<f:facet name="header">Id</f:facet>
 						<h:outputText value="#{listaSolicitudeses.Id_Solicitud}"></h:outputText>
@@ -32,17 +36,41 @@
 					<h:column>
 						<f:facet name="header">Proyecto</f:facet>
 						<h:outputText value="#{listaSolicitudes.proyecto}"></h:outputText>
-					</h:column>
+					</h:column>	
 				</h:dataTable>
 
-<!--
-				<h:dataTable class="tabla" value="#{controlAutorizacion.usuario}" var="perfil" rendered="#{controlPDI.showtablePerfil}">
-					<h:column>
-						<f:facet name="header">Nombre</f:facet>
-						<h:outputText value="#{controlAutorizacion.usuario.usuario}"></h:outputText>
-					</h:column>
-				</h:dataTable>
--->
+				<h:form rendered="#{ControlPDI.showtablePerfil}">
+				<p:dataTable class="tabla" id="perfil"
+				value="#{controlPDI.getSelectedUsuario}"
+				var="perfil" editable="true" rowKey="#{usuarios.id}"
+				selection="#{controlPDI.selectedUsuario}" 
+				selectionMode="single">
+						<p:column headerText="Id">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{usuarios.id}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText id="modelInput" value="#{usuarios.id}" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						<p:column headerText="Universidad">
+							<h:outputText value="#{usuarios.universidad}" />
+						</p:column>
+º
+						<p:column style="width:35px">
+							<p:rowEditor />
+						</p:column>
+					</p:dataTable>
+
+					<p:contextMenu>
+						<p:menuitem value="Add" update="addPanelUser"
+							oncomplete="PF('addUser').show()" />
+						<p:menuitem value="Delete" update="users" 
+							action="#{controlPDI.borrarUsuario}" />
+					</p:contextMenu>
+				</h:form>
 				
 			</c:when>
 			<c:otherwise>
