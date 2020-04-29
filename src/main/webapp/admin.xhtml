@@ -30,7 +30,7 @@
 				
 				<h:form rendered="#{controlAdmin.showtableUsuarios}">
 					<p:dataTable class="tabla" id="users" value="#{controlAdmin.listaUsuarios}"
-					var="usuarios" editable="true" selection="#{controlAdmin.selectedUsuario}">
+					var="usuarios" editable="true" rowKey="#{usuarios.id}" selection="#{controlAdmin.selectedUsuario}">
 
 						<p:column headerText="Id">
 							<p:cellEditor>
@@ -42,7 +42,6 @@
 								</f:facet>
 							</p:cellEditor>
 						</p:column>
-						
 						<p:column headerText="Usuario">
 							<p:cellEditor>
 								<f:facet name="output">
@@ -52,8 +51,7 @@
 									<p:inputText value="#{usuarios.usuario}" />
 								</f:facet>
 							</p:cellEditor>
-						</p:column>
-						
+						</p:column>					
 						<p:column headerText="Contraseña">
 							<p:cellEditor>
 								<f:facet name="output">
@@ -63,8 +61,7 @@
 									<p:inputText value="#{usuarios.contrasena}" />
 								</f:facet>
 							</p:cellEditor>
-						</p:column>
-						
+						</p:column>					
 						<p:column headerText="Correo">
 							<p:cellEditor>
 								<f:facet name="output">
@@ -87,26 +84,15 @@
 								</f:facet>
 							</p:cellEditor>
 						</p:column>
-
 						<p:column headerText="Universidad">
-							<p:cellEditor>
-								<f:facet name="output">
 									<h:outputText value="#{usuarios.universidad}" />
-								</f:facet>
-								<f:facet name="input">
-									<h:selectOneMenu value="#{usuarios.universidad}">
-                        				<f:selectItems value="#{controlAdmin.listaUniversidades}" var="universidad" itemLabel="#{universidad.nombre}" itemValue="#{universidad}" />
-                    				</h:selectOneMenu>
-								</f:facet>
-							</p:cellEditor>
-						</p:column>
-						
+						</p:column>			
 						<p:column style="width:35px">
 							<p:rowEditor />
 						</p:column>
 					</p:dataTable>
 
-					<p:contextMenu for="users">
+					<p:contextMenu>
 						<p:menuitem value="Add" update="addPanelUser"
 							oncomplete="PF('addUser').show()" />
 						<p:menuitem value="Delete" update="users" 
