@@ -6,148 +6,116 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
-import practica.sii.Clases.Noticias;
-import practica.sii.Clases.Proyecto;
+import practica.sii.Clases.Estado;
 import practica.sii.Clases.Solicitud;
-import practica.sii.Clases.Universidad;
 import practica.sii.Clases.Usuario;
-import practica.sii.Clases.Usuario.Rol;
+
 
 @Named(value = "controlPDI")
 @SessionScoped
 public class ControlPDI implements Serializable{
 	
 	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private List<Usuario> listaUsuarios;
 	private List<Solicitud> listaSolicitudes;
-	private List<Universidad> listaUniversidades;
-	private List<Proyecto> listaProyectos;
-	private List<Rol> listaRoles;
+	private List<Estado> listaEstado;
+	private List<Usuario> listaUsuarios;
 	
 	private Boolean showtablePerfil = false;
-	private Boolean showtableUsuarios = false;
 	private Boolean showtableSolicitudes = false;
+	private Boolean showtableUniversidades = false;
+	private Boolean showtableNoticias = false;
+	private Boolean showtableProyectos = false;
+
 	
+	private Solicitud selectedSolicitud;
 	private Usuario selectedUsuario;
-	
+	@Inject
 	private Login listas;
-	private Usuario miUsuario;
-	
+	private Usuario miusuario;
 	
 	public ControlPDI() {
-		listas = new Login();
-		listaUsuarios = new ArrayList<Usuario>(); 
-		listaProyectos = new ArrayList<Proyecto>();
 		listaSolicitudes = new ArrayList<Solicitud>();
-		listaUniversidades = new ArrayList<Universidad>();
-		listaRoles = Arrays.asList(Rol.values());
+		listaEstado = Arrays.asList(Estado.values());
+		listaUsuarios = new ArrayList<Usuario>();
+	}
+
+
+	public void setMiUsuario(Usuario miusuario) {
+		this.miusuario = miusuario;
+	}
+	
+	
+	
+	
+	public Solicitud getSelectedSolicitud() {
+		return selectedSolicitud;
+	}
+
+	public void setSelectedSolicitud(Solicitud selectedSolicitud) {
+		this.selectedSolicitud = selectedSolicitud;
 	}
 	
 	public Usuario getSelectedUsuario() {
 		return selectedUsuario;
 	}
 
-
 	public void setSelectedUsuario(Usuario selectedUsuario) {
 		this.selectedUsuario = selectedUsuario;
 	}
-
-	public List<Rol> getListaRoles() {
-		return listaRoles;
-	}
+	
 	
 
-	public List<Usuario> getListaUsuarios(){
-		listaUsuarios = listas.getUsuarios();
-		
-		return listaUsuarios;
+	
+	public List<Estado> getListaEstado() {
+		return listaEstado;
 	}
-
+	
 	public List<Solicitud> getListaSolicitudes() {
-		listaSolicitudes = listas.getListaSolicitudes();
-		
+		listaSolicitudes = listas.getListaSolicitudes();	
 		return listaSolicitudes;
 	}
-
-	public List<Universidad> getListaUniversidades() {
-		listaUniversidades = listas.getListaUniversidades();
-		
-		return listaUniversidades;
-	}
-
-	public List<Proyecto> getListaProyectos() {
-		listaProyectos = listas.getListaProyectos();
-		
-		return listaProyectos;
-	}
 	
-	public Boolean getShowtableUsuarios() {
-		return showtableUsuarios;
-	}
+	
 	
 	public Boolean getShowtableSolicitudes() {
 		return showtableSolicitudes;
 	}
-
-	public void enabletablePerfil() {
-		if(showtableSolicitudes) {
-			showtableSolicitudes = false;
-		}
-
-		showtablePerfil = !showtablePerfil;
+	
+	public Boolean getShowtablePerfil() {
+		return showtablePerfil;
 	}
 	
-	public void enabletableUsuarios() {
-		if(showtableSolicitudes) {
-			showtableSolicitudes = false;
-		}
-
-		showtableUsuarios = !showtableUsuarios;
-	}
+	
+	
 	
 	public void enabletableSolicitudes() {
-		if(showtableUsuarios) {
-			showtableUsuarios = false;
+		if(showtableNoticias || showtablePerfil || showtableProyectos || showtableUniversidades) {
+			showtableNoticias = false;
+			showtablePerfil = false;
+			showtableProyectos = false;
+			showtableUniversidades = false;
 		}
 		
 		showtableSolicitudes = !showtableSolicitudes;
 	}
 	
-	
-	public void borrarUsuario() {
-		listaUsuarios.remove(selectedUsuario);
-		selectedUsuario = null;
-		listas.setUsuarios(listaUsuarios);
+	public void enabletablePerfil() {
+		if(showtableNoticias || showtableSolicitudes || showtableProyectos || showtableUniversidades) {
+			showtableNoticias = false;
+			showtableSolicitudes = false;
+			showtableProyectos = false;
+			showtableUniversidades = false;
+		}
+
+		showtablePerfil = !showtablePerfil;
 	}
-	
-	public void borrarSolicitudes(Solicitud u) {
-		listaSolicitudes.remove(u);
-		listas.setListaSolicitudes(listaSolicitudes);
-	}
-	
-	public void borrarUniversidades(Universidad u) {
-		listaUniversidades.remove(u);
-		listas.setListaUniversidades(listaUniversidades);
-	}
-	
-	public void borrarProyectos(Proyecto u) {
-		listaProyectos.remove(u);
-		listas.setListaProyectos(listaProyectos);
-	}
-	
-	public void setMiUsuario(Usuario u) {
-		miUsuario = u;
-	}
-	
-	public Usuario getMiUsuario() {
-		return miUsuario;
-	}
-	
-	
+
 }

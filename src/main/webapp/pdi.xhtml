@@ -5,73 +5,102 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core">
-                
-   	<ui:define name="title">Página para usuarios PDI</ui:define>
-    
-    <ui:define name="botones">
-    	<li><h:commandButton action="#{controlPDI.enabletableSolicitudes}"
-    	update="solicitudes" value="Vista Solicitudes"/></li>
-    	<li><h:commandButton action="#{controlPDI.enabletablePerfil}"
-    	update="perfil" value="Editar perfil"/></li>	
-    </ui:define>
+
+	<ui:define name="title">Página para usuarios PDI</ui:define>
+
+	<ui:define name="botones">
+		<li><h:commandButton
+				action="#{controlPDI.enabletableSolicitudes}" update="solicitudes"
+				value="Vista Solicitudes" /></li>
+		<li><h:commandButton
+				action="#{controlPDI.enabletablePerfil}" update="perfil"
+				value="Editar Perfil" /></li>
+	</ui:define>
 
 	<ui:define name="content">
 		<c:choose>
 			<c:when test="#{controlAutorizacion.usuario.rol == 'PDI'}">
 
-				<h:dataTable class="tabla" value="#{controlPDI.listaSolicitudes}"
-				var="solicitudes" rendered="#{controlPDI.showtableSolicitudes}">
-					<h:column>
-						<f:facet name="header">Id</f:facet>
-						<h:outputText value="#{listaSolicitudeses.Id_Solicitud}"></h:outputText>
-					</h:column>
-					<h:column>
-						<f:facet name="header">Estado</f:facet>
-						<h:outputText value="#{listaSolicitudes.Estado}"></h:outputText>
-					</h:column>
-					<h:column>
-						<f:facet name="header">Universidad</f:facet>
-						<h:outputText value="#{listaSolicitudes.universidad}"></h:outputText>
-					</h:column>
-					<h:column>
-						<f:facet name="header">Proyecto</f:facet>
-						<h:outputText value="#{listaSolicitudes.proyecto}"></h:outputText>
-					</h:column>	
-				</h:dataTable>
-
-				<h:form rendered="#{ControlPDI.showtablePerfil}">
-				<p:dataTable class="tabla" id="perfil"
-				value="#{controlPDI.getSelectedUsuario}"
-				var="perfil" editable="true" rowKey="#{usuarios.id}"
-				selection="#{controlPDI.selectedUsuario}" 
-				selectionMode="single">
+				<!--  Lista solicitudes  -->
+				<h:form rendered="#{controlPDI.showtableSolicitudes}">
+					<p:dataTable class="tabla" id="solicitud"
+						value="#{controlPDI.listaSolicitudes}" var="solicitudes"
+						editable="true" rowKey="#{solicitudes.id_Solicitud}"
+						selection="#{controlPDI.selectedSolicitud}" selectionMode="single">
 						<p:column headerText="Id">
+							<h:outputText value="#{solicitudes.id_Solicitud}" />
+						</p:column>
+						<p:column headerText="Estado">
 							<p:cellEditor>
 								<f:facet name="output">
-									<h:outputText value="#{usuarios.id}" />
+									<h:outputText value="#{solicitudes.estado}" />
 								</f:facet>
 								<f:facet name="input">
-									<p:inputText id="modelInput" value="#{usuarios.id}" />
+									<h:selectOneMenu value="#{solicitudes.estado}">
+										<f:selectItems value="#{controlPDI.listaEstado}" var="estado"
+											itemLabel="#{estado}" itemValue="#{estado}" />
+									</h:selectOneMenu>
 								</f:facet>
 							</p:cellEditor>
 						</p:column>
 						<p:column headerText="Universidad">
-							<h:outputText value="#{usuarios.universidad}" />
+							<h:outputText value="#{solicitudes.universidad}" />
 						</p:column>
-º
+						<p:column headerText="Proyecto">
+							<h:outputText value="#{solicitudes.proyecto.ID_Proyecto}" />
+						</p:column>
+						<p:column style="width:35px">
+							<p:rowEditor />
+						</p:column>
+					</p:dataTable>
+				</h:form>
+
+				<!--  Editar perfil  -->
+				<h:form rendered="#{controlPDI.showtablePerfil}">
+					<p:dataTable class="tabla" id="perfil"
+						value="#{controlPDI.listaUsuarios}" var="perfil"
+						editable="true" rowKey="#{perfil.id}"
+						selectionMode="single">
+
+						<p:column headerText="Id">
+							<h:outputText value="#{perfil.id}" />
+						</p:column>
+						<p:column headerText="Usuario">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{perfil.usuario}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{perfil.usuario}" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						<p:column headerText="Contraseña">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{perfil.contrasena}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{perfil.contrasena}" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						<p:column headerText="Correo">
+							<h:outputText value="#{perfil.correo}" />
+						</p:column>
+						<p:column headerText="Rol">
+							<h:outputText value="#{perfil.rol}" />
+						</p:column>
+						<p:column headerText="Universidad">
+							<h:outputText value="#{perfil.universidad}" />
+						</p:column>
 						<p:column style="width:35px">
 							<p:rowEditor />
 						</p:column>
 					</p:dataTable>
 
-					<p:contextMenu>
-						<p:menuitem value="Add" update="addPanelUser"
-							oncomplete="PF('addUser').show()" />
-						<p:menuitem value="Delete" update="users" 
-							action="#{controlPDI.borrarUsuario}" />
-					</p:contextMenu>
 				</h:form>
-				
+
 			</c:when>
 			<c:otherwise>
 				<ui:include src="/WEB-INF/Templates/errorAutorizacion.xhtml" />
