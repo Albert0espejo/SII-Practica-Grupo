@@ -25,7 +25,9 @@ public class Noticias implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@ManyToOne
-	private ONG ong;
+	private Usuario ong;
+	//private ONG ong; Cambio para que sea funcional la vista. Solo hace falta implementar ya que usamos la clase Usuario como general
+	//y deberiamos usar ONG. Este solo es un cambio para la tarea 2.
 
 	public Noticias() {
 		super();
@@ -89,10 +91,16 @@ public class Noticias implements Serializable {
 			return false;
 		return true;
 	}
-	public ONG getOng() {
+/*	public ONG getOng() {
 		return ong;
 	}
 	public void setOng(ONG ong) {
+		this.ong = ong;
+	}*/
+	public Usuario getOng() {
+		return ong;
+	}
+	public void setOng(Usuario ong) {
 		this.ong = ong;
 	}
 }

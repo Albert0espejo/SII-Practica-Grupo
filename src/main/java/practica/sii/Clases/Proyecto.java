@@ -30,21 +30,18 @@ public class Proyecto implements Serializable {
 	@OneToMany(mappedBy = "proyecto")
 	private List<Solicitud> solicitudes;
 	
-	public List<Solicitud> getSolicitudes() {
-		return solicitudes;
-	}
-	public void setSolicitudes(List<Solicitud> solicitudes) {
-		this.solicitudes = solicitudes;
-	}
+
 	private static final long serialVersionUID = 1L;
 	
 	@ManyToMany
-	private List<ONG> ong;
+	private List<Usuario> ong;
+	//private List<ONG> ong; Cambiamos List<ONG> a List<Usuario> solo en esta tarea 2 para las vista. Esto se implementará en la tarea 3
+	
 	
 	public Proyecto() {
 		super();
 	}
-
+	
 	public Proyecto(Long ID_Proyecto, String Lugar, Date Fecha_Inicio, Date Fecha_Final, String Descripcion, Estado Estado) {
 		this.ID_Proyecto = ID_Proyecto;
 		this.Lugar = Lugar;
@@ -54,6 +51,14 @@ public class Proyecto implements Serializable {
 		this.Estado = Estado;
 	}
 	
+	public List<Solicitud> getSolicitudes() {
+		return solicitudes;
+	}
+	
+	public void setSolicitudes(List<Solicitud> solicitudes) {
+		this.solicitudes = solicitudes;
+	}
+		
 	public Long getID_Proyecto() {
 		return this.ID_Proyecto;
 	}
@@ -120,10 +125,17 @@ public class Proyecto implements Serializable {
 			return false;
 		return true;
 	}
-	public List<ONG> getOng() {
+	/*public List<ONG> getOng() {
 		return ong;
 	}
 	public void setOng(List<ONG> ong) {
+		this.ong = ong;
+	}*/
+	
+	public List<Usuario> getOng() {
+		return ong;
+	}
+	public void setOng(List<Usuario> ong) {
 		this.ong = ong;
 	}
 }

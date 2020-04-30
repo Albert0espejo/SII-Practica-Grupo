@@ -9,6 +9,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 import practica.sii.Clases.Noticias;
+import practica.sii.Clases.ONG;
 import practica.sii.Clases.Proyecto;
 import practica.sii.Clases.Solicitud;
 import practica.sii.Clases.Universidad;
@@ -27,22 +28,41 @@ public class ControlONG implements Serializable{
 	
 	private Boolean showtableNoticias = false;
 	private Boolean showtableProyectos = false;
-	private Boolean showtableUsuarios = false;
-	private Boolean showtableSolicitudes = false;
-	private Boolean showtableUniversidades = false;
+	private Boolean showtablePerfil = false;
+	
+	private Noticias selectedNoticia;
+	private Proyecto selectedProyecto;
 
 	private Usuario miUsuario;
-	
+	private ONG miUsuarioONG;
+	private Noticias news;
+	private Proyecto project;
 	private Login listas;
 	
 	public ControlONG() {
 		listas = new Login();
-
+		news = new Noticias();
+		project = new Proyecto();
+		miUsuarioONG = new ONG();
 		listaNoticias = new ArrayList<Noticias>();
 		listaProyectos = new ArrayList<Proyecto>();
 
 	}
 	
+	
+	
+	public Proyecto getProject() {
+		return project;
+	}
+
+
+
+	public void setProject(Proyecto project) {
+		this.project = project;
+	}
+
+
+
 	public Usuario getMiUsuario() {
 		return miUsuario;
 	}
@@ -51,19 +71,64 @@ public class ControlONG implements Serializable{
 		this.miUsuario = miUsuario;
 	}
 
+	public Noticias getNews() {
+		return news;
+	}
+
+	public void setNews(Noticias news) {
+		this.news = news;
+	}
+
 	public List<Proyecto> getListaProyectos() {
-		listaProyectos = listas.getListaProyectos();
+		listaProyectos = miUsuarioONG.getProyecto();
 		
 		return listaProyectos;
 	}
 	
+	public Noticias getSelectedNoticia() {
+		return selectedNoticia;
+	}
+
+	public void setSelectedNoticia(Noticias selectedNoticia) {
+		this.selectedNoticia = selectedNoticia;
+	}
+
+	public Proyecto getSelectedProyecto() {
+		return selectedProyecto;
+	}
+
+	public void setSelectedProyecto(Proyecto selectedProyecto) {
+		this.selectedProyecto = selectedProyecto;
+	}
+
+	public ONG getMiUsuarioONG() {
+		return miUsuarioONG;
+	}
+
+
+
+	public void setMiUsuarioONG(ONG miUsuarioONG) {
+		this.miUsuarioONG = miUsuarioONG;
+	}
+
+
+
 	public List<Noticias> getListaNoticias() {
-		listaNoticias = listas.getListaNoticias();
+		/*List<Noticias> aux = listas.getListaNoticias();
+		for (int i = 0; i < aux.size(); i++) {
+			if (aux.get(i).getOng().equals(miUsuario)) {
+				listaNoticias.add(aux.get(i));
+			}
+		}*/
 		
+		listaNoticias = miUsuarioONG.getNoticias();
 		return listaNoticias;
 	}
 	
-	
+	public Boolean getShowtablePerfil() {
+		return showtablePerfil;
+	}
+
 	public Boolean getShowtableNoticias() {
 		return showtableNoticias;
 	}
@@ -73,35 +138,49 @@ public class ControlONG implements Serializable{
 	}
 	
 	public void enabletableNoticias() {
-		if(showtableUniversidades || showtableUsuarios || showtableProyectos || showtableSolicitudes) {
-			showtableUniversidades = false;
-			showtableUsuarios = false;
+		if(showtableProyectos || showtablePerfil) {
 			showtableProyectos = false;
-			showtableSolicitudes = false;
+			showtablePerfil = false;
 		}
 		
 		showtableNoticias = !showtableNoticias;
 	}
 	
 	public void enabletableProyectos() {
-		if(showtableNoticias || showtableUsuarios || showtableUniversidades || showtableSolicitudes) {
+		if(showtableNoticias || showtablePerfil) {
 			showtableNoticias = false;
-			showtableUsuarios = false;
-			showtableUniversidades = false;
-			showtableSolicitudes = false;
+			showtablePerfil = false;
 		}
 		
 		showtableProyectos = !showtableProyectos;
 	}
 	
-	public void borrarNoticias(Noticias u) {
-		listaNoticias.remove(u);
+	public void enabletablePerfil() {
+		if(showtableNoticias || showtableProyectos) {
+			showtableNoticias = false;
+			showtableProyectos = false;
+		}
+		
+		showtablePerfil = !showtablePerfil;
+	}
+
+	public void borrarNoticias() {
+		listaNoticias.remove(selectedNoticia);
+		selectedNoticia = null;
 		listas.setListaNoticias(listaNoticias);
 	}
 	
-	public void borrarProyectos(Proyecto u) {
-		listaProyectos.remove(u);
+	public void borrarProyectos() {
+		listaProyectos.remove(selectedProyecto);
+		selectedProyecto = null;
 		listas.setListaProyectos(listaProyectos);
 	}
 	
+	public void crearNoticia() {
+		listaNoticias.add(news);
+	}
+	
+	public void crearProyecto() {
+		listaProyectos.add(project);
+	}
 }
