@@ -6,16 +6,8 @@ import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
-import javax.persistence.TypedQuery;
 
-import practica.sii.Clases.Noticias;
-import practica.sii.Clases.Proyecto;
 import practica.sii.Clases.Solicitud;
-import practica.sii.Clases.Universidad;
 import practica.sii.Clases.Usuario;
 import practica.sii.Clases.Usuario.Rol;
 

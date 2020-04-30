@@ -23,7 +23,7 @@
 			<p:dataTable class="tabla" id="solicitud"
 				value="#{controlPAS.listaSolicitudes}" var="solicitudes"
 				rowKey="#{solicitudes.id_Solicitud}"
-				selection="#{controlPAS.selectedProyecto}" selectionMode="single">
+				selection="#{controlPAS.selectedSolicitud}" selectionMode="single">
 
 				<p:column headerText="Id">
 					<h:outputText value="#{solicitudes.id_Solicitud}" />

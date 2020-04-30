@@ -37,12 +37,11 @@ public class ControlPDI implements Serializable{
 	private Usuario selectedUsuario;
 	
 	private Login listas;
-	private Usuario user;
+	private Usuario miUsuario;
 	
 	
 	public ControlPDI() {
 		listas = new Login();
-		user = new Usuario();
 		listaUsuarios = new ArrayList<Usuario>(); 
 		listaProyectos = new ArrayList<Proyecto>();
 		listaSolicitudes = new ArrayList<Solicitud>();
@@ -142,17 +141,12 @@ public class ControlPDI implements Serializable{
 		listas.setListaProyectos(listaProyectos);
 	}
 	
-	public void setUser(Usuario u) {
-		user = u;
+	public void setMiUsuario(Usuario u) {
+		miUsuario = u;
 	}
 	
-	public Usuario getUser() {
-		return user;
-	}
-	
-	public void crearUsuario() {
-		listaUsuarios.add(user);
-		listas.setUsuarios(listaUsuarios);
+	public Usuario getMiUsuario() {
+		return miUsuario;
 	}
 	
 	
