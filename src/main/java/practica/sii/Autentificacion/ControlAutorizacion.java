@@ -4,6 +4,7 @@
  */
 package practica.sii.Autentificacion;
 
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import practica.sii.Clases.Usuario;
@@ -16,9 +17,10 @@ import javax.faces.context.FacesContext;
 @Named(value = "controlAutorizacion")
 @SessionScoped
 public class ControlAutorizacion implements Serializable {
-
+	
     private Usuario usuario;
-
+    @Inject
+    private ControlPAS controlPas;
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
@@ -40,6 +42,7 @@ public class ControlAutorizacion implements Serializable {
         }else if(usuario.getRol().equals(Usuario.Rol.ONG)) {
         	return "ong.xhtml";
         }else if(usuario.getRol().equals(Usuario.Rol.PAS)) {
+        	controlPas.setMiusuario(usuario);
         	return "pas.xhtml";
         }else if(usuario.getRol().equals(Usuario.Rol.PDI)) {
         	return "pdi.xhtml";

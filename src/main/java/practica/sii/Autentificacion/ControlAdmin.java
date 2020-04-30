@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
-
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import practica.sii.Clases.Estado;
@@ -43,6 +43,7 @@ public class ControlAdmin implements Serializable{
 	private Noticias selectedNoticia;
 	private Proyecto selectedProyecto;
 	
+	@Inject
 	private Login listas;
 	
 	private Usuario user;
@@ -53,7 +54,6 @@ public class ControlAdmin implements Serializable{
 	
 	
 	public ControlAdmin() {
-		listas = new Login();
 		user = new Usuario();
 		sol = new Solicitud();
 		uni = new Universidad();
