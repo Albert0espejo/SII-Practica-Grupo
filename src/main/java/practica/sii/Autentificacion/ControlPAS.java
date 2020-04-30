@@ -27,7 +27,7 @@ public class ControlPAS implements Serializable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L; 
 	private List<Usuario> listaUsuarios;
 	private List<Solicitud> listaSolicitudes;
 	private List<Universidad> listaUniversidades;
