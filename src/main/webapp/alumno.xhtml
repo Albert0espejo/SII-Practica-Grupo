@@ -341,9 +341,14 @@
 								
 								<h:outputLabel></h:outputLabel>
 								<h:commandButton action="#{controlAlumno.crearProyecto}"
-									value="Añadir" update="proyecto"></h:commandButton>
+									value="Añadir" update="proyecto" onclick="PF('dlg1').show();"></h:commandButton>
 							</h:panelGrid>
 						</p:outputPanel>
+						
+						<p:dialog header="Solicitud" widgetVar="dlg1" minHeight="40">
+    						<h:outputText value="Solicitud enviada!" />
+						</p:dialog>
+						
 					</p:dialog>
 			</c:when>
 			<c:otherwise>
