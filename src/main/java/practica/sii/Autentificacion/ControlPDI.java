@@ -27,7 +27,6 @@ public class ControlPDI implements Serializable{
 	private List<Usuario> listaUsuarios;
 	private List<Solicitud> listaSolicitudes;
 	private List<Universidad> listaUniversidades;
-	private List<Noticias> listaNoticias;
 	private List<Proyecto> listaProyectos;
 	private List<Rol> listaRoles;
 	
@@ -35,7 +34,6 @@ public class ControlPDI implements Serializable{
 	private Boolean showtableUsuarios = false;
 	private Boolean showtableSolicitudes = false;
 	private Boolean showtableUniversidades = false;
-	private Boolean showtableNoticias = false;
 	private Boolean showtableProyectos = false;
 	
 	private Usuario selectedUsuario;
@@ -48,7 +46,6 @@ public class ControlPDI implements Serializable{
 		listas = new Login();
 		user = new Usuario();
 		listaUsuarios = new ArrayList<Usuario>();
-		listaNoticias = new ArrayList<Noticias>();
 		listaProyectos = new ArrayList<Proyecto>();
 		listaSolicitudes = new ArrayList<Solicitud>();
 		listaUniversidades = new ArrayList<Universidad>();
@@ -87,12 +84,6 @@ public class ControlPDI implements Serializable{
 		return listaUniversidades;
 	}
 
-	public List<Noticias> getListaNoticias() {
-		listaNoticias = listas.getListaNoticias();
-		
-		return listaNoticias;
-	}
-
 	public List<Proyecto> getListaProyectos() {
 		listaProyectos = listas.getListaProyectos();
 		
@@ -111,17 +102,12 @@ public class ControlPDI implements Serializable{
 		return showtableUniversidades;
 	}
 
-	public Boolean getShowtableNoticias() {
-		return showtableNoticias;
-	}
-
 	public Boolean getShowtableProyectos() {
 		return showtableProyectos;
 	}
 
 	public void enabletablePerfil() {
-		if(showtableNoticias || showtableSolicitudes || showtableProyectos || showtableUniversidades) {
-			showtableNoticias = false;
+		if(showtableSolicitudes || showtableProyectos || showtableUniversidades) {
 			showtableSolicitudes = false;
 			showtableProyectos = false;
 			showtableUniversidades = false;
@@ -131,8 +117,7 @@ public class ControlPDI implements Serializable{
 	}
 	
 	public void enabletableUsuarios() {
-		if(showtableNoticias || showtableSolicitudes || showtableProyectos || showtableUniversidades) {
-			showtableNoticias = false;
+		if(showtableSolicitudes || showtableProyectos || showtableUniversidades) {
 			showtableSolicitudes = false;
 			showtableProyectos = false;
 			showtableUniversidades = false;
@@ -142,8 +127,7 @@ public class ControlPDI implements Serializable{
 	}
 	
 	public void enabletableSolicitudes() {
-		if(showtableNoticias || showtableUsuarios || showtableProyectos || showtableUniversidades) {
-			showtableNoticias = false;
+		if(showtableUsuarios || showtableProyectos || showtableUniversidades) {
 			showtableUsuarios = false;
 			showtableProyectos = false;
 			showtableUniversidades = false;
@@ -153,8 +137,7 @@ public class ControlPDI implements Serializable{
 	}
 	
 	public void enabletableUniversidades() {
-		if(showtableNoticias || showtableUsuarios || showtableProyectos || showtableSolicitudes) {
-			showtableNoticias = false;
+		if(showtableUsuarios || showtableProyectos || showtableSolicitudes) {
 			showtableUsuarios = false;
 			showtableProyectos = false;
 			showtableSolicitudes = false;
@@ -163,20 +146,8 @@ public class ControlPDI implements Serializable{
 		showtableUniversidades = !showtableUniversidades;
 	}
 	
-	public void enabletableNoticias() {
-		if(showtableUniversidades || showtableUsuarios || showtableProyectos || showtableSolicitudes) {
-			showtableUniversidades = false;
-			showtableUsuarios = false;
-			showtableProyectos = false;
-			showtableSolicitudes = false;
-		}
-		
-		showtableNoticias = !showtableNoticias;
-	}
-	
 	public void enabletableProyectos() {
-		if(showtableNoticias || showtableUsuarios || showtableUniversidades || showtableSolicitudes) {
-			showtableNoticias = false;
+		if(showtableUsuarios || showtableUniversidades || showtableSolicitudes) {
 			showtableUsuarios = false;
 			showtableUniversidades = false;
 			showtableSolicitudes = false;
@@ -199,11 +170,6 @@ public class ControlPDI implements Serializable{
 	public void borrarUniversidades(Universidad u) {
 		listaUniversidades.remove(u);
 		listas.setListaUniversidades(listaUniversidades);
-	}
-	
-	public void borrarNoticias(Noticias u) {
-		listaNoticias.remove(u);
-		listas.setListaNoticias(listaNoticias);
 	}
 	
 	public void borrarProyectos(Proyecto u) {
