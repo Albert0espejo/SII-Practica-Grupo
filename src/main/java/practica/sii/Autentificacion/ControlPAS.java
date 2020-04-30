@@ -70,7 +70,7 @@ public class ControlPAS implements Serializable{
 			if(aux.get(i).getUniversidad().equals(miusuario.getUniversidad())) {
 				listaSolicitudes.add(aux.get(i));
 			}
-		}
+		} 
 		return listaSolicitudes;
 	}
 
