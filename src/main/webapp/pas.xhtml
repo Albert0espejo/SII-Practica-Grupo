@@ -20,19 +20,19 @@
 					var="solicitudes" rendered="#{controlPAS.showtableSolicitudes}">
 					<h:column>
 						<f:facet name="header">Id</f:facet>
-						<h:outputText value="#{listaSolicitudes.Id_Solicitud}"></h:outputText>
+						<h:outputText value="#{solicitudes.Id_Solicitud}"></h:outputText>
 					</h:column>
 					<h:column>
 						<f:facet name="header">Estado</f:facet>
-						<h:outputText value="#{listaSolicitudes.Estado}"></h:outputText>
+						<h:outputText value="#{solicitudes.Estado}"></h:outputText>
 					</h:column>
 					<h:column>
 						<f:facet name="header">Universidad</f:facet>
-						<h:outputText value="#{listaSolicitudes.universidad}"></h:outputText>
+						<h:outputText value="#{solicitudes.universidad}"></h:outputText>
 					</h:column>
 					<h:column>
 						<f:facet name="header">Proyecto</f:facet>
-						<h:outputText value="#{listaSolicitudes.proyecto}"></h:outputText>
+						<h:outputText value="#{solicitudes.proyecto}"></h:outputText>
 					</h:column>
 					<h:column>
 						<h:form>
@@ -46,7 +46,7 @@
 
 		</c:when>
 	<c:otherwise>
-		<ui:include src="/WEB-INF/templates/errorAutorizacion.xhtml" />
+		<ui:include src="/WEB-INF/Templates/errorAutorizacion.xhtml" />
 	</c:otherwise>
 	</c:choose>
 	</ui:define>
