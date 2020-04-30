@@ -7,6 +7,7 @@ import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
+
 import practica.sii.Clases.Solicitud;
 import practica.sii.Clases.Usuario;
 import practica.sii.Clases.Usuario.Rol;
@@ -20,11 +21,10 @@ public class ControlPAS implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L; 
-	private List<Usuario> listaUsuarios;
 	private List<Solicitud> listaSolicitudes;
 	private List<Usuario> listaProfesores;
 	
-	private Boolean showtableUsuarios = false;
+	private Boolean showtablePerfil = false;
 	private Boolean showtableSolicitudes = false;
 	
 	private Login listas;
@@ -35,7 +35,6 @@ public class ControlPAS implements Serializable{
 		listas = new Login();
 		
 		listaProfesores = new ArrayList<Usuario>();
-		listaUsuarios = new ArrayList<Usuario>();
 		listaSolicitudes = new ArrayList<Solicitud>();
 	}
 	
@@ -55,11 +54,6 @@ public class ControlPAS implements Serializable{
 		this.miusuario = miusuario;
 	}
 
-	public List<Usuario> getListaUsuarios(){
-		this.listaUsuarios = listas.getUsuarios();
-		return listaUsuarios;
-	}
-
 	public List<Solicitud> getListaSolicitudes() {
 		List<Solicitud> aux = listas.getListaSolicitudes();
 		for(int i=0; i < aux.size();i++) {
@@ -70,7 +64,6 @@ public class ControlPAS implements Serializable{
 		return listaSolicitudes;
 	}
 
-	
 	public List<Usuario> getListaProfesores(){
 		List<Usuario> aux = listas.getUsuarios();
 		for(int i=0; i < aux.size();i++) {
@@ -81,9 +74,8 @@ public class ControlPAS implements Serializable{
 		return listaProfesores; //prueba
 	}
 
-	
 	public Boolean getShowtableUsuarios() {
-		return showtableUsuarios;
+		return showtablePerfil;
 	}
 	
 	public Boolean getShowtableSolicitudes() {
@@ -91,11 +83,19 @@ public class ControlPAS implements Serializable{
 	}
 	
 	public void enabletableSolicitudes() {
-		if(showtableUsuarios) {
-			showtableUsuarios = false;
+		if(showtablePerfil) {
+			showtablePerfil = false;
 		}
 		
 		showtableSolicitudes = !showtableSolicitudes;
+	}
+	
+	public void enabletablePerfil() {
+		if(showtableSolicitudes) {
+			showtableSolicitudes = false;
+		}
+		
+		showtablePerfil= !showtablePerfil;
 	}
 	
 	public void enviarA() {

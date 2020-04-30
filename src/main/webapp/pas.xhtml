@@ -9,66 +9,113 @@
 
 	<ui:define name="botones">
 		<li><h:commandButton
-				action="#{controlPAS.enabletableSolicitudes}" update="solicitudes"
+				action="#{controlPAS.enabletableSolicitudes}" update="solicitud"
 				value="Vista Solicitudes" /></li>
+		<li><h:commandButton action="#{controlPAS.enabletablePerfil}"
+				update="perfil" value="Editar perfil" /></li>
 	</ui:define>
 
+
 	<ui:define name="content">
+
 		<c:choose>
 			<c:when test="#{controlAutorizacion.usuario.rol == 'PAS'}">
+				<h:form rendered="#{controlPAS.showtableSolicitudes}">
+					<p:dataTable class="tabla" id="solicitud"
+						value="#{controlPAS.listaSolicitudes}" var="solicitudes"
+						rowKey="#{solicitudes.id_Solicitud}"
+						selection="#{controlPAS.selectedSolicitud}" selectionMode="single">
+
+						<p:column headerText="Id">
+							<h:outputText value="#{solicitudes.id_Solicitud}" />
+						</p:column>
+						<p:column headerText="Estado">
+							<h:outputText value="#{solicitudes.estado}" />
+						</p:column>
+						<p:column headerText="Universidad">
+							<h:outputText value="#{solicitudes.universidad}" />
+						</p:column>
+						<p:column headerText="Proyecto">
+							<h:outputText value="#{solicitudes.proyecto.ID_Proyecto}" />
+						</p:column>
+					</p:dataTable>
+
+					<p:contextMenu>
+						<p:menuitem value="Enviar a..." update="panelEnviar"
+							oncomplete="PF('enviarSoli').show()" />
+					</p:contextMenu>
+				</h:form>
+
+				<p:dialog header="Enviar a..." widgetVar="enviarSoli" modal="true"
+					showEffect="fade" hideEffect="fade" resizable="false">
+					<p:outputPanel id="panelEnviar" style="text-align:center;">
+						<h:panelGrid columns="2">
+							<h:outputText value="Id" />
+							<h:outputText value="#{solicitudes.id_Solicitud}" />
+
+							<h:outputText value="Profesor"></h:outputText>
+							<h:selectOneMenu
+								value="#{controlPAS.selectedSolicitud.supervisor}">
+								<f:selectItems value="#{controlPAS.listaProfesores}"
+									var="profesores" itemValue="#{profesores}"
+									itemLaber="#{profesores.Apellidos}"></f:selectItems>
+							</h:selectOneMenu>
+
+							<h:outputLabel></h:outputLabel>
+							<h:commandButton type="submit" action="#{controlPAS.enviarA}"
+								value="Enviar"></h:commandButton>
+						</h:panelGrid>
+					</p:outputPanel>
+				</p:dialog>
+
+				<h:form rendered="#{ControlPDI.showtablePerfil}">
+					<p:dataTable class="tabla" id="perfil"
+						value="#{controlPAS.miusuario}" var="perfiles" editable="true"
+						rowKey="#{usuarios.id}" selection="#{controlPDI.selectedUsuario}"
+						selectionMode="single">
+						<p:column headerText="Usuario">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{usuarios.usuario}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{usuarios.usuario}" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						<p:column headerText="Contraseña">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{usuarios.contrasena}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{usuarios.contrasena}" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						<p:column headerText="Correo">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{usuarios.correo}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{usuarios.correo}" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						<p:column headerText="Universidad">
+							<h:outputText value="#{usuarios.universidad}" />
+						</p:column>
+
+						<p:column style="width:35px">
+							<p:rowEditor />
+						</p:column>
+					</p:dataTable>
+				</h:form>
+			</c:when>
+			<c:otherwise>
+				<ui:include src="/WEB-INF/Templates/errorAutorizacion.xhtml" />
+			</c:otherwise>
+		</c:choose>
 	</ui:define>
-
-	<ui:define name="content">
-		<h:form rendered="#{controlPAS.showtableSolicitudes}">
-			<p:dataTable class="tabla" id="solicitud"
-				value="#{controlPAS.listaSolicitudes}" var="solicitudes"
-				rowKey="#{solicitudes.id_Solicitud}"
-				selection="#{controlPAS.selectedSolicitud}" selectionMode="single">
-
-				<p:column headerText="Id">
-					<h:outputText value="#{solicitudes.id_Solicitud}" />
-				</p:column>
-				<p:column headerText="Estado">
-					<h:outputText value="#{solicitudes.estado}" />
-				</p:column>
-				<p:column headerText="Universidad">
-					<h:outputText value="#{solicitudes.universidad}" />
-				</p:column>
-				<p:column headerText="Proyecto">
-					<h:outputText value="#{solicitudes.proyecto.ID_Proyecto}" />
-				</p:column>
-			</p:dataTable>
-
-			<p:contextMenu>
-				<p:menuitem value="Enviar a..." update="panelEnviar"
-					oncomplete="PF('enviarSoli').show()" />
-			</p:contextMenu>
-		</h:form>
-
-		<p:dialog header="Enviar a..." widgetVar="enviarSoli" modal="true"
-			showEffect="fade" hideEffect="fade" resizable="false">
-			<p:outputPanel id="panelEnviar" style="text-align:center;">
-				<h:panelGrid columns="2">
-					<h:outputText value="Id" />
-					<h:outputText value="#{solicitudes.id_Solicitud}" />
-
-					<h:outputText value="Profesor"></h:outputText>
-					<h:selectOneMenu value="#{controlPAS.selectedSolicitud.supervisor}">
-						<f:selectItems value="#{controlPAS.listaProfesores}"
-							var="profesores" itemValue="#{profesores}"
-							itemLaber="#{profesores.Apellidos}"></f:selectItems>
-					</h:selectOneMenu>
-
-					<h:outputLabel></h:outputLabel>
-					<h:commandButton type="submit" action="#{controlPAS.enviarA}"
-						value="Enviar" ></h:commandButton>
-				</h:panelGrid>
-			</p:outputPanel>
-		</p:dialog>
-	</ui:define>
-	</c:when>
-	<c:otherwise>
-		<ui:include src="/WEB-INF/Templates/errorAutorizacion.xhtml" />
-	</c:otherwise>
-	</c:choose>
-	</ui:define>
+</ui:composition>
