@@ -58,6 +58,11 @@ public class ControlPAS implements Serializable{
 
 	public List<Usuario> getListaUsuarios(){
 		List<Usuario> aux = listas.getUsuarios();
+		for(int i=0; i < aux.size();i++) {
+			if(aux.get(i).getUniversidad().equals(miusuario.getUniversidad())) {
+				listaUsuarios.add(aux.get(i));
+			}
+		}
 		
 		return listaUsuarios;
 	}
