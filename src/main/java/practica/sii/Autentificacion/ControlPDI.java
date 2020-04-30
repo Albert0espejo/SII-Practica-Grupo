@@ -43,7 +43,7 @@ public class ControlPDI implements Serializable{
 	public ControlPDI() {
 		listas = new Login();
 		user = new Usuario();
-		listaUsuarios = new ArrayList<Usuario>();
+		listaUsuarios = new ArrayList<Usuario>(); 
 		listaProyectos = new ArrayList<Proyecto>();
 		listaSolicitudes = new ArrayList<Solicitud>();
 		listaUniversidades = new ArrayList<Universidad>();
