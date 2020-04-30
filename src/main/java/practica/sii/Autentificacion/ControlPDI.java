@@ -33,8 +33,6 @@ public class ControlPDI implements Serializable{
 	private Boolean showtablePerfil = false;
 	private Boolean showtableUsuarios = false;
 	private Boolean showtableSolicitudes = false;
-	private Boolean showtableUniversidades = false;
-	private Boolean showtableProyectos = false;
 	
 	private Usuario selectedUsuario;
 	
@@ -98,63 +96,30 @@ public class ControlPDI implements Serializable{
 		return showtableSolicitudes;
 	}
 
-	public Boolean getShowtableUniversidades() {
-		return showtableUniversidades;
-	}
-
-	public Boolean getShowtableProyectos() {
-		return showtableProyectos;
-	}
-
 	public void enabletablePerfil() {
-		if(showtableSolicitudes || showtableProyectos || showtableUniversidades) {
+		if(showtableSolicitudes) {
 			showtableSolicitudes = false;
-			showtableProyectos = false;
-			showtableUniversidades = false;
 		}
 
 		showtablePerfil = !showtablePerfil;
 	}
 	
 	public void enabletableUsuarios() {
-		if(showtableSolicitudes || showtableProyectos || showtableUniversidades) {
+		if(showtableSolicitudes) {
 			showtableSolicitudes = false;
-			showtableProyectos = false;
-			showtableUniversidades = false;
 		}
 
 		showtableUsuarios = !showtableUsuarios;
 	}
 	
 	public void enabletableSolicitudes() {
-		if(showtableUsuarios || showtableProyectos || showtableUniversidades) {
+		if(showtableUsuarios) {
 			showtableUsuarios = false;
-			showtableProyectos = false;
-			showtableUniversidades = false;
 		}
 		
 		showtableSolicitudes = !showtableSolicitudes;
 	}
 	
-	public void enabletableUniversidades() {
-		if(showtableUsuarios || showtableProyectos || showtableSolicitudes) {
-			showtableUsuarios = false;
-			showtableProyectos = false;
-			showtableSolicitudes = false;
-		}
-		
-		showtableUniversidades = !showtableUniversidades;
-	}
-	
-	public void enabletableProyectos() {
-		if(showtableUsuarios || showtableUniversidades || showtableSolicitudes) {
-			showtableUsuarios = false;
-			showtableUniversidades = false;
-			showtableSolicitudes = false;
-		}
-		
-		showtableProyectos = !showtableProyectos;
-	}
 	
 	public void borrarUsuario() {
 		listaUsuarios.remove(selectedUsuario);
