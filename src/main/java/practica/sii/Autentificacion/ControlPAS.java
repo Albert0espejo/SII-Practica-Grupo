@@ -89,7 +89,7 @@ public class ControlPAS implements Serializable{
 				listaProfesores.add(aux.get(i));
 			}
 		}
-		return listaProfesores;
+		return listaProfesores; //prueba
 	}
 
 	public List<Noticias> getListaNoticias() {
