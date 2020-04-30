@@ -68,6 +68,15 @@ public class ControlAlumno implements Serializable{
 	public void setSelectedUsuario(Usuario selectedUsuario) {
 		this.selectedUsuario = selectedUsuario;
 	}
+	
+	public Noticias getSelectedNoticia() {
+		return selectedNoticia;
+	}
+
+
+	public void setSelectedNoticia(Noticias selectedNoticia) {
+		this.selectedNoticia = selectedNoticia;
+	}
 
 	public List<Estado> getListaEstado() {
 		return listaEstado;
@@ -223,6 +232,12 @@ public class ControlAlumno implements Serializable{
 		listaProyectos.remove(selectedProyecto);
 		selectedProyecto = null;
 		listas.setListaProyectos(listaProyectos);
+	}
+	
+	public void borrarNoticias() {
+		listaNoticias.remove(selectedNoticia);
+		selectedNoticia = null;
+		listas.setListaNoticias(listaNoticias);
 	}
 	
 	public void borrarNoticias(Noticias u) {
