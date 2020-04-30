@@ -66,6 +66,10 @@ public class ControlAlumno implements Serializable{
 		return selectedProyecto;
 	}
 
+	public Boolean getShowtablePerfil() {
+		return showtablePerfil;
+	}
+
 	public void setSelectedProyecto(Proyecto selectedProyecto) {
 		this.selectedProyecto = selectedProyecto;
 	}
