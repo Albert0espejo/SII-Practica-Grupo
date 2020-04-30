@@ -81,8 +81,7 @@ public class ControlAlumno implements Serializable{
 		
 		return listaProyectos;
 	}
-	
-	
+		
 	public Boolean getShowtableSolicitudes() {
 		return showtableSolicitudes;
 	}
