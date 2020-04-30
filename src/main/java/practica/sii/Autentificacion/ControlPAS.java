@@ -36,6 +36,7 @@ public class ControlPAS implements Serializable{
 	private Boolean showtableProyectos = false;
 	
 	private Login listas;
+	private Usuario miusuario;
 	
 	public ControlPAS() {
 		listas = new Login();
@@ -47,8 +48,16 @@ public class ControlPAS implements Serializable{
 		listaUniversidades = new ArrayList<Universidad>();
 	}
 	
+	public Usuario getMiusuario() {
+		return miusuario;
+	}
+
+	public void setMiusuario(Usuario miusuario) {
+		this.miusuario = miusuario;
+	}
+
 	public List<Usuario> getListaUsuarios(){
-		listaUsuarios = listas.getUsuarios();
+		List<Usuario> aux = listas.getUsuarios();
 		
 		return listaUsuarios;
 	}
@@ -60,6 +69,10 @@ public class ControlPAS implements Serializable{
 
 	public List<Universidad> getListaUniversidades() {
 		return listaUniversidades;
+	}
+	
+	public List<Usuario> getListaProfesores(){
+		listaUniversidades
 	}
 
 	public List<Noticias> getListaNoticias() {
