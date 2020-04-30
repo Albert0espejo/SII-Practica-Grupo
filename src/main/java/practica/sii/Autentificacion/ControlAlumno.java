@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
@@ -25,58 +26,26 @@ import practica.sii.Clases.Usuario.Rol;
 @SessionScoped
 public class ControlAlumno implements Serializable{
 	
-	
-	private List<Usuario> listaUsuarios;
 	private List<Solicitud> listaSolicitudes;
-	private List<Universidad> listaUniversidades;
 	private List<Noticias> listaNoticias;
 	private List<Proyecto> listaProyectos;
-	private List<Estado> listaEstado;
 	
-	private Boolean showtableUsuarios = false;
+	private Boolean showtablePerfil = false;
 	private Boolean showtableSolicitudes = false;
-	private Boolean showtableUniversidades = false;
 	private Boolean showtableNoticias = false;
 	private Boolean showtableProyectos = false;
 	
-	private Usuario selectedUsuario;
-	
 	private Login listas;
-	private Usuario user;
-	private Proyecto project;
-	private Noticias news;
+	private Usuario miUsuario;
+	private Solicitud solicitud;
 	private Proyecto selectedProyecto;
-	private Noticias selectedNoticia;
+	
 	public ControlAlumno() {
 		listas = new Login();
-		user = new Usuario();
-		project = new Proyecto();
-		news = new Noticias();
-		listaUsuarios = new ArrayList<Usuario>();
+		solicitud = new Solicitud();
 		listaNoticias = new ArrayList<Noticias>();
 		listaProyectos = new ArrayList<Proyecto>();
 		listaSolicitudes = new ArrayList<Solicitud>();
-		listaUniversidades = new ArrayList<Universidad>();
-		listaEstado = Arrays.asList(Estado.values());
-	}
-	
-	public Usuario getSelectedUsuario() {
-		return selectedUsuario;
-	}
-
-
-	public void setSelectedUsuario(Usuario selectedUsuario) {
-		this.selectedUsuario = selectedUsuario;
-	}
-
-	public List<Estado> getListaEstado() {
-		return listaEstado;
-	}
-
-	public List<Usuario> getListaUsuarios(){
-		listaUsuarios = listas.getUsuarios();
-		
-		return listaUsuarios;
 	}
 
 	public List<Solicitud> getListaSolicitudes() {
@@ -85,16 +54,17 @@ public class ControlAlumno implements Serializable{
 		return listaSolicitudes;
 	}
 
-	public List<Universidad> getListaUniversidades() {
-		listaUniversidades = listas.getListaUniversidades();
-		
-		return listaUniversidades;
+	public Usuario getMiUsuario() {
+		return miUsuario;
+	}
+
+	public void setMiUsuario(Usuario miUsuario) {
+		this.miUsuario = miUsuario;
 	}
 
 	public Proyecto getSelectedProyecto() {
 		return selectedProyecto;
 	}
-
 
 	public void setSelectedProyecto(Proyecto selectedProyecto) {
 		this.selectedProyecto = selectedProyecto;
@@ -112,16 +82,9 @@ public class ControlAlumno implements Serializable{
 		return listaProyectos;
 	}
 	
-	public Boolean getShowtableUsuarios() {
-		return showtableUsuarios;
-	}
 	
 	public Boolean getShowtableSolicitudes() {
 		return showtableSolicitudes;
-	}
-
-	public Boolean getShowtableUniversidades() {
-		return showtableUniversidades;
 	}
 
 	public Boolean getShowtableNoticias() {
@@ -131,129 +94,51 @@ public class ControlAlumno implements Serializable{
 	public Boolean getShowtableProyectos() {
 		return showtableProyectos;
 	}
-
-	public void enabletableUsuarios() {
-		if(showtableNoticias || showtableSolicitudes || showtableProyectos || showtableUniversidades) {
-			showtableNoticias = false;
-			showtableSolicitudes = false;
-			showtableProyectos = false;
-			showtableUniversidades = false;
-		}
-
-		showtableUsuarios = !showtableUsuarios;
-	}
 	
 	public void enabletableSolicitudes() {
-		if(showtableNoticias || showtableUsuarios || showtableProyectos || showtableUniversidades) {
+		if(showtableNoticias || showtableProyectos || showtablePerfil) {
 			showtableNoticias = false;
-			showtableUsuarios = false;
 			showtableProyectos = false;
-			showtableUniversidades = false;
+			showtablePerfil = false;
 		}
 		
 		showtableSolicitudes = !showtableSolicitudes;
 	}
 	
-	public void enabletableUniversidades() {
-		if(showtableNoticias || showtableUsuarios || showtableProyectos || showtableSolicitudes) {
-			showtableNoticias = false;
-			showtableUsuarios = false;
-			showtableProyectos = false;
-			showtableSolicitudes = false;
-		}
-		
-		showtableUniversidades = !showtableUniversidades;
-	}
-	
 	public void enabletableNoticias() {
-		if(showtableUniversidades || showtableUsuarios || showtableProyectos || showtableSolicitudes) {
-			showtableUniversidades = false;
-			showtableUsuarios = false;
+		if(showtableProyectos || showtableSolicitudes || showtablePerfil) {
 			showtableProyectos = false;
 			showtableSolicitudes = false;
+			showtablePerfil = false;
 		}
 		
 		showtableNoticias = !showtableNoticias;
 	}
 	
 	public void enabletableProyectos() {
-		if(showtableNoticias || showtableUsuarios || showtableUniversidades || showtableSolicitudes) {
+		if(showtableNoticias || showtableSolicitudes || showtablePerfil) {
 			showtableNoticias = false;
-			showtableUsuarios = false;
-			showtableUniversidades = false;
 			showtableSolicitudes = false;
+			showtablePerfil = false;
 		}
 		
 		showtableProyectos = !showtableProyectos;
 	}
 	
-	public void borrarUsuario() {
-		listaUsuarios.remove(selectedUsuario);
-		selectedUsuario = null;
-		listas.setUsuarios(listaUsuarios);
+	public void enabletablePerfil() {
+		if(showtableNoticias || showtableSolicitudes || showtableProyectos) {
+			showtableNoticias = false;
+			showtableSolicitudes = false;
+			showtableProyectos = false;
+		}
+		
+		showtablePerfil = !showtablePerfil;
 	}
 	
-	public void borrarSolicitudes(Solicitud u) {
-		listaSolicitudes.remove(u);
-		listas.setListaSolicitudes(listaSolicitudes);
-	}
-	
-	public void borrarUniversidades(Universidad u) {
-		listaUniversidades.remove(u);
-		listas.setListaUniversidades(listaUniversidades);
-	}
-	
-	public Proyecto getProject() {
-		return project;
-	}
-
-	public void setProject(Proyecto project) {
-		this.project = project;
-	}
-
-	public Noticias getNews() {
-		return news;
-	}
-
-	public void setNews(Noticias news) {
-		this.news = news;
-	}
-	
-	public void borrarProyectos() {
-		listaProyectos.remove(selectedProyecto);
-		selectedProyecto = null;
-		listas.setListaProyectos(listaProyectos);
-	}
-	
-	public void borrarNoticias(Noticias u) {
-		listaNoticias.remove(u);
-		listas.setListaNoticias(listaNoticias);
-	}
-	
-	public void borrarProyectos(Proyecto u) {
-		listaProyectos.remove(u);
-		listas.setListaProyectos(listaProyectos);
-	}
-	
-	public void setUser(Usuario u) {
-		user = u;
-	}
-	
-	public Usuario getUser() {
-		return user;
-	}
-	
-	public void crearUsuario() {
-		listaUsuarios.add(user);
-		listas.setUsuarios(listaUsuarios);
-	}
-	
-	public void crearNoticia() {
-		listaNoticias.add(news);
-	}
-	
-	public void crearProyecto() {
-		listaProyectos.add(project);
+	public void crearSolicitud() {
+		solicitud = new Solicitud(new Random().nextLong(), Estado.En_Espera, miUsuario.getUniversidad(), selectedProyecto);
+		listas.getListaSolicitudes().add(solicitud);
+		
 	}
 	
 }
