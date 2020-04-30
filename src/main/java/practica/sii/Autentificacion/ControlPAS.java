@@ -17,6 +17,7 @@ import practica.sii.Clases.Proyecto;
 import practica.sii.Clases.Solicitud;
 import practica.sii.Clases.Universidad;
 import practica.sii.Clases.Usuario;
+import practica.sii.Clases.Usuario.Rol;
 
 @Named(value = "controlPAS")
 @SessionScoped
@@ -28,6 +29,7 @@ public class ControlPAS implements Serializable{
 	private List<Universidad> listaUniversidades;
 	private List<Noticias> listaNoticias;
 	private List<Proyecto> listaProyectos;
+	private List<Usuario> listaProfesores;
 	
 	private Boolean showtableUsuarios = false;
 	private Boolean showtableSolicitudes = false;
@@ -41,6 +43,7 @@ public class ControlPAS implements Serializable{
 	public ControlPAS() {
 		listas = new Login();
 		
+		listaProfesores = new ArrayList<Usuario>();
 		listaUsuarios = new ArrayList<Usuario>();
 		listaNoticias = new ArrayList<Noticias>();
 		listaProyectos = new ArrayList<Proyecto>();
@@ -57,18 +60,17 @@ public class ControlPAS implements Serializable{
 	}
 
 	public List<Usuario> getListaUsuarios(){
-		List<Usuario> aux = listas.getUsuarios();
-		for(int i=0; i < aux.size();i++) {
-			if(aux.get(i).getUniversidad().equals(miusuario.getUniversidad())) {
-				listaUsuarios.add(aux.get(i));
-			}
-		}
-		
+		this.listaUsuarios = listas.getUsuarios();
 		return listaUsuarios;
 	}
 
 	public List<Solicitud> getListaSolicitudes() {
-		listaSolicitudes = listas.getListaSolicitudes();
+		List<Solicitud> aux = listas.getListaSolicitudes();
+		for(int i=0; i < aux.size();i++) {
+			if(aux.get(i).getUniversidad().equals(miusuario.getUniversidad())) {
+				listaSolicitudes.add(aux.get(i));
+			}
+		}
 		return listaSolicitudes;
 	}
 
@@ -77,7 +79,13 @@ public class ControlPAS implements Serializable{
 	}
 	
 	public List<Usuario> getListaProfesores(){
-		listaUniversidades
+		List<Usuario> aux = listas.getUsuarios();
+		for(int i=0; i < aux.size();i++) {
+			if(aux.get(i).getUniversidad().equals(miusuario.getUniversidad()) && aux.get(i).getRol().equals(Rol.PDI)) {
+				listaProfesores.add(aux.get(i));
+			}
+		}
+		return listaProfesores;
 	}
 
 	public List<Noticias> getListaNoticias() {
