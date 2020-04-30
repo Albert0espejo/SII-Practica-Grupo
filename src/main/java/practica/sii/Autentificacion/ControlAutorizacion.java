@@ -25,6 +25,8 @@ public class ControlAutorizacion implements Serializable {
     private ControlONG controlONG;
     @Inject
     private ControlPDI controlPDI;
+    @Inject
+    private ControlAlumno controlAlumno;
     
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
@@ -43,6 +45,7 @@ public class ControlAutorizacion implements Serializable {
     	if(usuario.getRol().equals(Usuario.Rol.ADMINISTRADOR)) {
         	return "admin.xhtml";
         }else if(usuario.getRol().equals(Usuario.Rol.ALUMNO)){
+        	controlAlumno.setMiUsuario(usuario);
         	return "alumno.xhtml";
         }else if(usuario.getRol().equals(Usuario.Rol.ONG)) {
         	controlONG.setMiUsuario(usuario);
