@@ -31,6 +31,7 @@ public class ControlONG implements Serializable{
 	private Boolean showtableSolicitudes = false;
 	private Boolean showtableUniversidades = false;
 
+	private Usuario miUsuario;
 	
 	private Login listas;
 	
@@ -42,7 +43,14 @@ public class ControlONG implements Serializable{
 
 	}
 	
-	
+	public Usuario getMiUsuario() {
+		return miUsuario;
+	}
+
+	public void setMiUsuario(Usuario miUsuario) {
+		this.miUsuario = miUsuario;
+	}
+
 	public List<Proyecto> getListaProyectos() {
 		listaProyectos = listas.getListaProyectos();
 		

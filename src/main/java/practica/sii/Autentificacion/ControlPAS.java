@@ -37,6 +37,7 @@ public class ControlPAS implements Serializable{
 	
 	private Login listas;
 	private Usuario miusuario;
+	private Solicitud selectedSolicitud;
 	
 	public ControlPAS() {
 		listas = new Login();
@@ -46,6 +47,14 @@ public class ControlPAS implements Serializable{
 		listaSolicitudes = new ArrayList<Solicitud>();
 	}
 	
+	public Solicitud getSelectedSolicitud() {
+		return selectedSolicitud;
+	}
+
+	public void setSelectedSolicitud(Solicitud selectedSolicitud) {
+		this.selectedSolicitud = selectedSolicitud;
+	}
+
 	public Usuario getMiusuario() {
 		return miusuario;
 	}
@@ -97,10 +106,8 @@ public class ControlPAS implements Serializable{
 		showtableSolicitudes = !showtableSolicitudes;
 	}
 	
-	
-	public void borrarSolicitudes(Solicitud s) {
-		listaSolicitudes.remove(s);
-		listas.setListaSolicitudes(listaSolicitudes);
+	public void enviarA() {
+		selectedSolicitud = null;
 	}
 	
 }
