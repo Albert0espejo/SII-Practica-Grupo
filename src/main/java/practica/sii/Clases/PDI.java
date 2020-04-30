@@ -86,4 +86,7 @@ public class PDI extends Usuario implements Serializable {
 	public void setUniversidad(Universidad universidad) {
 		this.universidad = universidad;
 	}
+	public String toString() {
+		return Nombre + Apellidos;
+	}
 }

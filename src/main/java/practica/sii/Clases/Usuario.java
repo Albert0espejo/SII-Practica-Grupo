@@ -88,6 +88,9 @@ public class Usuario implements Serializable {
 	public void setRol(Rol rol) {
 		this.rol = rol;
 	}
+	public String toString() {
+		return Id + "-" + correo;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
