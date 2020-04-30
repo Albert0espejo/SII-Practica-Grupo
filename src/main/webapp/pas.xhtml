@@ -51,14 +51,14 @@
 					<p:outputPanel id="panelEnviar" style="text-align:center;">
 						<h:panelGrid columns="2">
 							<h:outputText value="Id" />
-							<h:outputText value="#{solicitudes.id_Solicitud}" />
+							<h:outputText value="#{controlPAS.selectedSolicitud.id_Solicitud}" />
 
 							<h:outputText value="Profesor"></h:outputText>
 							<h:selectOneMenu
-								value="#{controlPAS.selectedSolicitud.supervisor}">
+								value="#{controlPAS.supervisor}">
 								<f:selectItems value="#{controlPAS.listaProfesores}"
-									var="profesores" itemValue="#{profesores}"
-									itemLaber="#{profesores.Apellidos}"></f:selectItems>
+									var="profesores" itemLaber="#{profesores.id}" 
+									itemValue="#{profesores}"></f:selectItems>
 							</h:selectOneMenu>
 
 							<h:outputLabel></h:outputLabel>
@@ -68,11 +68,9 @@
 					</p:outputPanel>
 				</p:dialog>
 
-				<h:form rendered="#{ControlPDI.showtablePerfil}">
+				<h:form rendered="#{controlPAS.showtablePerfil}">
 					<p:dataTable class="tabla" id="perfil"
-						value="#{controlPAS.miusuario}" var="perfiles" editable="true"
-						rowKey="#{usuarios.id}" selection="#{controlPDI.selectedUsuario}"
-						selectionMode="single">
+						value="#{controlPAS.miusuario}" var="usuarios" editable="true">
 						<p:column headerText="Usuario">
 							<p:cellEditor>
 								<f:facet name="output">

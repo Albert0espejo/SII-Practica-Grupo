@@ -51,7 +51,7 @@ public class ControlAutorizacion implements Serializable {
         	controlPas.setMiusuario(usuario);
         	return "pas.xhtml";
         }else if(usuario.getRol().equals(Usuario.Rol.PDI)) {
-        	controlPDI.setMiUsuario(usuario);
+        	controlPDI.setMiusuario(usuario);
         	return "pdi.xhtml";
         }else {
         	return "login.xhtml";

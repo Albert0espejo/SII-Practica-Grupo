@@ -30,14 +30,40 @@ public class ControlPAS implements Serializable{
 	private Login listas;
 	private Usuario miusuario;
 	private Solicitud selectedSolicitud;
+	private Usuario supervisor;
+	private Usuario selectedUsuario;
 	
 	public ControlPAS() {
 		listas = new Login();
-		
+		supervisor = new Usuario();
 		listaProfesores = new ArrayList<Usuario>();
 		listaSolicitudes = new ArrayList<Solicitud>();
 	}
 	
+	
+	
+	public Usuario getSupervisor() {
+		return supervisor;
+	}
+
+	public void setSupervisor(Usuario supervisor) {
+		this.supervisor = supervisor;
+	}
+
+	
+	
+	public Usuario getSelectedUsuario() {
+		return selectedUsuario;
+	}
+
+
+
+	public void setSelectedUsuario(Usuario selectedUsuario) {
+		this.selectedUsuario = selectedUsuario;
+	}
+
+
+
 	public Solicitud getSelectedSolicitud() {
 		return selectedSolicitud;
 	}
@@ -74,7 +100,7 @@ public class ControlPAS implements Serializable{
 		return listaProfesores; //prueba
 	}
 
-	public Boolean getShowtableUsuarios() {
+	public Boolean getShowtablePerfil() {
 		return showtablePerfil;
 	}
 	
@@ -99,6 +125,7 @@ public class ControlPAS implements Serializable{
 	}
 	
 	public void enviarA() {
+		selectedSolicitud.setSupervisor(supervisor);
 		selectedSolicitud = null;
 	}
 	

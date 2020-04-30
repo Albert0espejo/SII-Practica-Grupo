@@ -22,7 +22,7 @@ public class Solicitud implements Serializable {
 	private Universidad universidad;
 	@ManyToOne
 	private Proyecto proyecto;
-	private PDI supervisor;
+	private Usuario supervisor;
 	private static final long serialVersionUID = 1L;
 	
 	public Solicitud() {
@@ -36,11 +36,11 @@ public class Solicitud implements Serializable {
 		this.proyecto = proyecto;
 	} 
 	
-	public PDI getSupervisor() {
+	public Usuario getSupervisor() {
 		return supervisor;
 	}
 
-	public void setSupervisor(PDI supervisor) {
+	public void setSupervisor(Usuario supervisor) {
 		this.supervisor = supervisor;
 	}
 

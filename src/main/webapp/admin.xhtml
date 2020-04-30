@@ -381,7 +381,7 @@
 								</f:facet>
 								<!-- String to Date -->
 								<f:facet name="input">
-									<p:inputText value="#{noticias.fecha_Publicacion}" />
+									<p:calendar value="#{noticias.fecha_Publicacion}" showOn="button"></p:calendar>
 								</f:facet>
 							</p:cellEditor>
 						</p:column>
@@ -417,7 +417,7 @@
 									value="#{controlAdmin.news.ong}"></h:inputText>
 
 								<h:outputText value="Fecha Publicación"></h:outputText>
-								<h:inputText value="#{controlAdmin.news.fecha_Publicacion}"></h:inputText>
+								<p:calendar value="#{controlAdmin.news.fecha_Publicacion}" showOn="button"></p:calendar>
 
 								<h:outputText value="Titulo"></h:outputText>
 								<h:inputText value="#{controlAdmin.news.titulo}"></h:inputText>
@@ -478,7 +478,7 @@
 								</f:facet>
 								<f:facet name="input">
 									<!-- String to Date -->
-									<p:inputText value="#{proyectos.fecha_Inicio}" />
+									<p:calendar value="#{proyectos.fecha_Inicio}" showOn="button"></p:calendar>
 								</f:facet>
 							</p:cellEditor>
 						</p:column>
@@ -489,7 +489,7 @@
 								</f:facet>
 								<!-- String to Date -->
 								<f:facet name="input">
-									<p:inputText value="#{proyectos.fecha_Final}" />
+									<p:calendar value="#{proyectos.fecha_Final}" showOn="button"></p:calendar>
 								</f:facet>
 							</p:cellEditor>
 						</p:column>
@@ -538,10 +538,10 @@
 								<h:inputText value="#{controlAdmin.project.lugar}"></h:inputText>
 								
 								<h:outputText value="Fecha Inicio"></h:outputText>
-								<h:inputText value="#{controlAdmin.project.fecha_Inicio}"></h:inputText>
+								<p:calendar value="#{controlAdmin.project.fecha_Inicio}" showOn="button"></p:calendar>
 
 								<h:outputText value="Fecha Final"></h:outputText>
-								<h:inputText value="#{controlAdmin.project.fecha_Final}"></h:inputText>
+								<p:calendar value="#{controlAdmin.project.fecha_Final}" showOn="button"></p:calendar>
 								
 								<h:outputText value="Estado"></h:outputText>
 								<h:selectOneMenu value="#{controlAdmin.project.estado}">

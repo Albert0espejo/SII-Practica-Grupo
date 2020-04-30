@@ -25,8 +25,7 @@
 				<h:form rendered="#{controlPDI.showtableSolicitudes}">
 					<p:dataTable class="tabla" id="solicitud"
 						value="#{controlPDI.listaSolicitudes}" var="solicitudes"
-						editable="true" rowKey="#{solicitudes.id_Solicitud}"
-						selection="#{controlPDI.selectedSolicitud}" selectionMode="single">
+						editable="true">
 						<p:column headerText="Id">
 							<h:outputText value="#{solicitudes.id_Solicitud}" />
 						</p:column>
@@ -58,13 +57,9 @@
 				<!--  Editar perfil  -->
 				<h:form rendered="#{controlPDI.showtablePerfil}">
 					<p:dataTable class="tabla" id="perfil"
-						value="#{controlPDI.listaUsuarios}" var="perfil"
-						editable="true" rowKey="#{perfil.id}"
-						selectionMode="single">
+						value="#{controlPDI.miusuario}" var="perfil"
+						editable="true">
 
-						<p:column headerText="Id">
-							<h:outputText value="#{perfil.id}" />
-						</p:column>
 						<p:column headerText="Usuario">
 							<p:cellEditor>
 								<f:facet name="output">
@@ -86,10 +81,14 @@
 							</p:cellEditor>
 						</p:column>
 						<p:column headerText="Correo">
-							<h:outputText value="#{perfil.correo}" />
-						</p:column>
-						<p:column headerText="Rol">
-							<h:outputText value="#{perfil.rol}" />
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{perfil.correo}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{perfil.correo}" />
+								</f:facet>
+							</p:cellEditor>
 						</p:column>
 						<p:column headerText="Universidad">
 							<h:outputText value="#{perfil.universidad}" />

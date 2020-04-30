@@ -26,14 +26,9 @@ public class ControlPDI implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private List<Solicitud> listaSolicitudes;
 	private List<Estado> listaEstado;
-	private List<Usuario> listaUsuarios;
 	
 	private Boolean showtablePerfil = false;
 	private Boolean showtableSolicitudes = false;
-	private Boolean showtableUniversidades = false;
-	private Boolean showtableNoticias = false;
-	private Boolean showtableProyectos = false;
-
 	
 	private Solicitud selectedSolicitud;
 	private Usuario selectedUsuario;
@@ -44,17 +39,17 @@ public class ControlPDI implements Serializable{
 	public ControlPDI() {
 		listaSolicitudes = new ArrayList<Solicitud>();
 		listaEstado = Arrays.asList(Estado.values());
-		listaUsuarios = new ArrayList<Usuario>();
+
+	}
+	
+	public Usuario getMiusuario() {
+		return miusuario;
 	}
 
-
-	public void setMiUsuario(Usuario miusuario) {
+	public void setMiusuario(Usuario miusuario) {
 		this.miusuario = miusuario;
 	}
-	
-	
-	
-	
+
 	public Solicitud getSelectedSolicitud() {
 		return selectedSolicitud;
 	}
@@ -71,9 +66,6 @@ public class ControlPDI implements Serializable{
 		this.selectedUsuario = selectedUsuario;
 	}
 	
-	
-
-	
 	public List<Estado> getListaEstado() {
 		return listaEstado;
 	}
@@ -83,8 +75,6 @@ public class ControlPDI implements Serializable{
 		return listaSolicitudes;
 	}
 	
-	
-	
 	public Boolean getShowtableSolicitudes() {
 		return showtableSolicitudes;
 	}
@@ -93,26 +83,17 @@ public class ControlPDI implements Serializable{
 		return showtablePerfil;
 	}
 	
-	
-	
-	
 	public void enabletableSolicitudes() {
-		if(showtableNoticias || showtablePerfil || showtableProyectos || showtableUniversidades) {
-			showtableNoticias = false;
+		if(showtablePerfil) {
 			showtablePerfil = false;
-			showtableProyectos = false;
-			showtableUniversidades = false;
 		}
 		
 		showtableSolicitudes = !showtableSolicitudes;
 	}
 	
 	public void enabletablePerfil() {
-		if(showtableNoticias || showtableSolicitudes || showtableProyectos || showtableUniversidades) {
-			showtableNoticias = false;
+		if( showtableSolicitudes) {
 			showtableSolicitudes = false;
-			showtableProyectos = false;
-			showtableUniversidades = false;
 		}
 
 		showtablePerfil = !showtablePerfil;
