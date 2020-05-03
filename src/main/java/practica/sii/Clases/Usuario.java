@@ -30,8 +30,6 @@ public class Usuario implements Serializable {
 	private String contrasena;
 	private String correo;
 	private Rol rol;
-	@ManyToOne
-	private Universidad universidad;
 	private static final long serialVersionUID = 1L;
 
 	public Usuario() {
