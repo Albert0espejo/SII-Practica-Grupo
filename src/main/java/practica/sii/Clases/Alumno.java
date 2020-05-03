@@ -24,6 +24,8 @@ public class Alumno extends Usuario implements Serializable {
 	private Integer Numero_Expediente;
 	@ManyToOne
 	private Universidad universidad;
+	@OneToMany (mappedBy = "alumno")
+	private List<Solicitud> solicitudes;
 	private static final long serialVersionUID = 1L;
 
 	public Alumno() {

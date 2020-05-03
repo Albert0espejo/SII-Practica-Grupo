@@ -22,7 +22,12 @@ public class Solicitud implements Serializable {
 	private Universidad universidad;
 	@ManyToOne
 	private Proyecto proyecto;
-	private Usuario supervisor;
+	@ManyToOne
+	private PDI pdi;
+	@ManyToOne
+	private PAS pas;
+	@ManyToOne
+	private Alumno alumno;
 	private static final long serialVersionUID = 1L;
 	
 	public Solicitud() {
