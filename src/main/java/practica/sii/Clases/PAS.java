@@ -78,5 +78,11 @@ public class PAS extends Usuario implements Serializable {
 	public void setUniversidad(Universidad universidad) {
 		this.universidad = universidad;
 	}
+	public List<Solicitud> getSolicitudes() {
+		return solicitudes;
+	}
+	public void setSolicitudes(List<Solicitud> solicitudes) {
+		this.solicitudes = solicitudes;
+	}
 	
 }

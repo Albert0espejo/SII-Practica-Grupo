@@ -93,4 +93,13 @@ public class PDI extends Usuario implements Serializable {
 	public String toString() {
 		return Nombre + Apellidos;
 	}
+
+	public List<Solicitud> getSolicitudes() {
+		return solicitudes;
+	}
+
+	public void setSolicitudes(List<Solicitud> solicitudes) {
+		this.solicitudes = solicitudes;
+	}
+	
 }

@@ -41,14 +41,6 @@ public class Solicitud implements Serializable {
 		this.proyecto = proyecto;
 	} 
 	
-	public Usuario getSupervisor() {
-		return supervisor;
-	}
-
-	public void setSupervisor(Usuario supervisor) {
-		this.supervisor = supervisor;
-	}
-
 	public Long getId_Solicitud() {
 		return this.Id_Solicitud;
 	}
@@ -63,8 +55,31 @@ public class Solicitud implements Serializable {
 	public void setEstado(Estado Estado) {
 		this.Estado = Estado;
 	}
-	
-	
+
+	public PDI getPdi() {
+		return pdi;
+	}
+
+	public void setPdi(PDI pdi) {
+		this.pdi = pdi;
+	}
+
+	public PAS getPas() {
+		return pas;
+	}
+
+	public void setPas(PAS pas) {
+		this.pas = pas;
+	}
+
+	public Alumno getAlumno() {
+		return alumno;
+	}
+
+	public void setAlumno(Alumno alumno) {
+		this.alumno = alumno;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -100,4 +115,5 @@ public class Solicitud implements Serializable {
 	public void setProyecto(Proyecto proyecto) {
 		this.proyecto = proyecto;
 	}
+	
 }
