@@ -42,7 +42,6 @@ public class Usuario implements Serializable {
 		this.contrasena = contrasena;
 		this.correo = correo;
 		this.rol = rol;
-		this.universidad = universidad;
 	}
 	
 	public Long getId() {
@@ -74,12 +73,6 @@ public class Usuario implements Serializable {
 		this.correo = correo;
 	}
 	
-	public Universidad getUniversidad() {
-		return universidad;
-	}
-	public void setUniversidad(Universidad universidad) {
-		this.universidad = universidad;
-	}
 	public Rol getRol() {
 		return rol;
 	}

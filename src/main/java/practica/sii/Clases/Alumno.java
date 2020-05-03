@@ -3,6 +3,8 @@ package practica.sii.Clases;
 import java.io.Serializable;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
+
 import javax.persistence.*;
 
 /**
@@ -16,9 +18,9 @@ public class Alumno extends Usuario implements Serializable {
 	private String Nombre;
 	private String Alumno;
 	private String DNI;
-	private String Destinos_Deseados;
+	private List<Paises> Destinos_Deseados;
 	private String Direccion;
-	private String Idiomas;
+	private List<Paises> Idiomas;
 	private Integer Numero_Expediente;
 	@ManyToOne
 	private Universidad universidad;
@@ -48,11 +50,11 @@ public class Alumno extends Usuario implements Serializable {
 	public void setDNI(String DNI) {
 		this.DNI = DNI;
 	}   
-	public String getDestinos_Deseados() {
+	public List<Paises> getDestinos_Deseados() {
 		return this.Destinos_Deseados;
 	}
 
-	public void setDestinos_Deseados(String Destinos_Deseados) {
+	public void setDestinos_Deseados(List<Paises> Destinos_Deseados) {
 		this.Destinos_Deseados = Destinos_Deseados;
 	}   
 	public String getDireccion() {
@@ -62,11 +64,11 @@ public class Alumno extends Usuario implements Serializable {
 	public void setDireccion(String Direccion) {
 		this.Direccion = Direccion;
 	}   
-	public String getIdiomas() {
+	public List<Paises> getIdiomas() {
 		return this.Idiomas;
 	}
 
-	public void setIdiomas(String Idiomas) {
+	public void setIdiomas(List<Paises> Idiomas) {
 		this.Idiomas = Idiomas;
 	}   
 	public Integer getNumero_Expediente() {
