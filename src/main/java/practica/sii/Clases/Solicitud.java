@@ -28,6 +28,9 @@ public class Solicitud implements Serializable {
 	private PAS pas;
 	@ManyToOne
 	private Alumno alumno;
+	@OneToOne
+    @JoinColumn(name = "fk_feedback")
+	private FeedBack comentarios;
 	private static final long serialVersionUID = 1L;
 	
 	public Solicitud() {
@@ -78,6 +81,13 @@ public class Solicitud implements Serializable {
 
 	public void setAlumno(Alumno alumno) {
 		this.alumno = alumno;
+	}
+	public FeedBack getComentarios() {
+		return comentarios;
+	}
+
+	public void setComentarios(FeedBack comentarios) {
+		this.comentarios = comentarios;
 	}
 
 	@Override
