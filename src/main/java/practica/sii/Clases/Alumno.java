@@ -3,6 +3,7 @@ package practica.sii.Clases;
 import java.io.Serializable;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -18,14 +19,23 @@ public class Alumno extends Usuario implements Serializable {
 	private String Nombre;
 	private String Alumno;
 	private String DNI;
-	private List<Paises> Destinos_Deseados;
+	@ElementCollection
+	@CollectionTable(name = "Destinos deseados")
+	@Column(name = "Paises")
+	private List<Paises> Destinos_Deseados = new ArrayList<Paises>();
 	private String Direccion;
-	private List<Paises> Idiomas;
+	@ElementCollection
+	@CollectionTable(name = "Idiomas")
+	@Column(name = "Idioma")
+	private List<Paises> Idiomas = new ArrayList<Paises>();
 	private Integer Numero_Expediente;
 	@ManyToOne
 	private Universidad universidad;
+	@ElementCollection
+	@CollectionTable(name = "Solicitudes")
+	@Column(name = "Solicitud")
 	@OneToMany (mappedBy = "alumno")
-	private List<Solicitud> solicitudes;
+	private List<Solicitud> solicitudes = new ArrayList<Solicitud>();
 	private static final long serialVersionUID = 1L;
 
 	public Alumno() {

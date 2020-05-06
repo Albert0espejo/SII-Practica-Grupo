@@ -29,6 +29,7 @@ public class Usuario implements Serializable {
 	private String usuario;
 	private String contrasena;
 	private String correo;
+	@Enumerated(EnumType.STRING)
 	private Rol rol;
 	private static final long serialVersionUID = 1L;
 

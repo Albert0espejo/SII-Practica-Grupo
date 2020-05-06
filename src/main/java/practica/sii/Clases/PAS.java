@@ -2,6 +2,7 @@ package practica.sii.Clases;
 
 import java.io.Serializable;
 import java.lang.String;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -22,8 +23,11 @@ public class PAS extends Usuario implements Serializable {
 	private String Telefono;
 	@ManyToOne
 	private Universidad universidad;
+	@ElementCollection
+	@CollectionTable(name = "Solicitudes")
+	@Column(name = "Solicitud")
 	@OneToMany (mappedBy = "pas")
-	private List<Solicitud> solicitudes;
+	private List<Solicitud> solicitudes = new ArrayList<Solicitud>();
 	private static final long serialVersionUID = 1L;
 
 	public PAS() {

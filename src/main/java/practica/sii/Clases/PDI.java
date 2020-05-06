@@ -2,6 +2,7 @@ package practica.sii.Clases;
 
 import java.io.Serializable;
 import java.lang.String;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -24,8 +25,11 @@ public class PDI extends Usuario implements Serializable {
 	private String Es_Gestor;
 	@ManyToOne
 	private Universidad universidad;
+	@ElementCollection
+	@CollectionTable(name = "Solicitudes")
+	@Column(name = "Solicitud")
 	@OneToMany (mappedBy = "pdi")
-	private List<Solicitud> solicitudes;
+	private List<Solicitud> solicitudes = new ArrayList<Solicitud>();
 	private static final long serialVersionUID = 1L;
 
 	public PDI() {

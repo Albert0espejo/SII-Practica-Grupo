@@ -3,6 +3,7 @@ package practica.sii.Clases;
 import java.io.Serializable;
 import java.lang.Long;
 import java.lang.String;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -27,14 +28,20 @@ public class Proyecto implements Serializable {
 	private String Descripcion;
 	@Enumerated(EnumType.STRING)
 	private Estado Estado;
+	@ElementCollection
+	@CollectionTable(name = "Solicitudes")
+	@Column(name = "Solicitud")
 	@OneToMany(mappedBy = "proyecto")
-	private List<Solicitud> solicitudes;
-	
+	private List<Solicitud> solicitudes = new ArrayList<Solicitud>();
+	@ElementCollection
+	@CollectionTable(name = "ONGs")
+	@Column(name = "ONG")
+	@ManyToMany
+	private List<Usuario> ong = new ArrayList<Usuario>();	
 
 	private static final long serialVersionUID = 1L;
 	
-	@ManyToMany
-	private List<Usuario> ong;
+
 	//private List<ONG> ong; Cambiamos List<ONG> a List<Usuario> solo en esta tarea 2 para las vista. Esto se implementará en la tarea 3
 	
 	

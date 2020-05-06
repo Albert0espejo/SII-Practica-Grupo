@@ -22,10 +22,10 @@ public class Noticias implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date Fecha_Publicacion;
 	private String Autor;
-	private static final long serialVersionUID = 1L;
-	
 	@ManyToOne
-	private Usuario ong;
+	private Usuario ong;	
+	private static final long serialVersionUID = 1L;
+
 	//private ONG ong; Cambio para que sea funcional la vista. Solo hace falta implementar ya que usamos la clase Usuario como general
 	//y deberiamos usar ONG. Este solo es un cambio para la tarea 2.
 
