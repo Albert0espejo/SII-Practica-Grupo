@@ -13,6 +13,7 @@ import javax.inject.Named;
 
 import org.primefaces.event.RowEditEvent;
 
+import practica.sii.Clases.Alumno;
 import practica.sii.Clases.Estado;
 import practica.sii.Clases.Noticias;
 import practica.sii.Clases.PDI;
@@ -36,7 +37,7 @@ public class ControlAlumno implements Serializable{
 	private Boolean showtableProyectos = false;
 	
 	private Login listas;
-	private Usuario miUsuario;
+	private Alumno miUsuario;
 	private Solicitud solicitud;
 	private Proyecto selectedProyecto;
 	
@@ -58,7 +59,7 @@ public class ControlAlumno implements Serializable{
 		return miUsuario;
 	}
 
-	public void setMiUsuario(Usuario miUsuario) {
+	public void setMiUsuario(Alumno miUsuario) {
 		this.miUsuario = miUsuario;
 	}
 
