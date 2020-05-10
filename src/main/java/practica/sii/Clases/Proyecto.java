@@ -29,13 +29,9 @@ public class Proyecto implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private Estado Estado;
 	@ElementCollection
-	@CollectionTable(name = "Solicitudes")
-	@Column(name = "Solicitud")
 	@OneToMany(mappedBy = "proyecto")
 	private List<Solicitud> solicitudes = new ArrayList<Solicitud>();
 	@ElementCollection
-	@CollectionTable(name = "ONGs")
-	@Column(name = "ONG")
 	@ManyToMany
 	private List<Usuario> ong = new ArrayList<Usuario>();	
 

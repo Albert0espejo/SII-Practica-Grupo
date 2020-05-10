@@ -26,8 +26,6 @@ public class PDI extends Usuario implements Serializable {
 	@ManyToOne
 	private Universidad universidad;
 	@ElementCollection
-	@CollectionTable(name = "Solicitudes")
-	@Column(name = "Solicitud")
 	@OneToMany (mappedBy = "pdi")
 	private List<Solicitud> solicitudes = new ArrayList<Solicitud>();
 	private static final long serialVersionUID = 1L;

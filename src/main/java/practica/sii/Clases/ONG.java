@@ -25,13 +25,9 @@ public class ONG extends Usuario implements Serializable {
 	private String Representante;
 	private String Direccion_Web;
 	@ElementCollection
-	@CollectionTable(name = "Proyectos")
-	@Column(name = "Proyecto")
 	@ManyToMany (mappedBy="ong")
 	private List<Proyecto> proyecto = new ArrayList<Proyecto>();
 	@ElementCollection
-	@CollectionTable(name = "Noticias")
-	@Column(name = "Noticia")
 	@OneToMany (mappedBy = "ong")
 	private List<Noticias> noticias = new ArrayList<Noticias>();	
 	private static final long serialVersionUID = 1L;

@@ -25,13 +25,9 @@ public class Universidad implements Serializable{
 	private String Direccion_Web;
 	private List<String> Facultades;
 	@ElementCollection
-	@CollectionTable(name = "Usuarios")
-	@Column(name = "Usuario")
 	@OneToMany(mappedBy = "universidad")
 	private List<Usuario> usuarios = new ArrayList<Usuario>();
 	@ElementCollection
-	@CollectionTable(name = "Solicitudes")
-	@Column(name = "Solicitud")
 	@OneToMany(mappedBy = "universidad")
 	private List<Solicitud> solicitudes = new ArrayList<Solicitud>();
 	private static final long serialVersionUID = 1L;

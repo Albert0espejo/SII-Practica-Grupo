@@ -24,8 +24,6 @@ public class PAS extends Usuario implements Serializable {
 	@ManyToOne
 	private Universidad universidad;
 	@ElementCollection
-	@CollectionTable(name = "Solicitudes")
-	@Column(name = "Solicitud")
 	@OneToMany (mappedBy = "pas")
 	private List<Solicitud> solicitudes = new ArrayList<Solicitud>();
 	private static final long serialVersionUID = 1L;

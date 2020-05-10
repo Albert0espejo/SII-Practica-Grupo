@@ -20,20 +20,14 @@ public class Alumno extends Usuario implements Serializable {
 	private String Alumno;
 	private String DNI;
 	@ElementCollection
-	@CollectionTable(name = "Destinos deseados")
-	@Column(name = "Paises")
 	private List<Paises> Destinos_Deseados = new ArrayList<Paises>();
 	private String Direccion;
 	@ElementCollection
-	@CollectionTable(name = "Idiomas")
-	@Column(name = "Idioma")
 	private List<Paises> Idiomas = new ArrayList<Paises>();
 	private Integer Numero_Expediente;
 	@ManyToOne
 	private Universidad universidad;
 	@ElementCollection
-	@CollectionTable(name = "Solicitudes")
-	@Column(name = "Solicitud")
 	@OneToMany (mappedBy = "alumno")
 	private List<Solicitud> solicitudes = new ArrayList<Solicitud>();
 	private static final long serialVersionUID = 1L;
