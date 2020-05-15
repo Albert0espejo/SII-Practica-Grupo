@@ -151,6 +151,29 @@
 								</f:facet>
 							</p:cellEditor>
 						</p:column>
+						
+						<p:column headerText="Descripcion">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{proyectos.descripcion}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{proyectos.descripcion}" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						
+						<p:column headerText="Reconocimiento">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{proyectos.reconocimiento}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{proyectos.reconocimiento}" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						
 						<p:column headerText="Estado">
 							<p:cellEditor>
 								<f:facet name="output">
