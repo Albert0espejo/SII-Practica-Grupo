@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
@@ -18,8 +19,7 @@ import practica.sii.Clases.Usuario.Rol;
 
 
 @Named(value = "controlONG") 
- 
-@SessionScoped
+@RequestScoped
 
 public class ControlONG implements Serializable{
 

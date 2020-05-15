@@ -1,10 +1,11 @@
 package practica.sii.Autentificacion;
 
 import java.io.Serializable;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 import practica.sii.Clases.PAS;
@@ -14,8 +15,8 @@ import practica.sii.Clases.Usuario;
 import practica.sii.Clases.Usuario.Rol;
 
 @Named(value = "controlPAS")
-@SessionScoped
-public class ControlPAS implements Serializable{
+@RequestScoped
+public class ControlPAS{
 	
 	
 	/**
@@ -23,13 +24,13 @@ public class ControlPAS implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L; 
 	private List<Solicitud> listaSolicitudes;
-	private List<PDI> listaProfesores;
+	private List<Usuario> listaProfesores;
 	
 	private Boolean showtablePerfil = false;
 	private Boolean showtableSolicitudes = false;
 	
 	private Login listas;
-	private PAS miusuario;
+	private Usuario miusuario;
 	private Solicitud selectedSolicitud;
 	private PDI supervisor;
 	private Usuario selectedUsuario;
@@ -37,7 +38,7 @@ public class ControlPAS implements Serializable{
 	public ControlPAS() {
 		listas = new Login();
 		supervisor = new PDI();
-		listaProfesores = new ArrayList<PDI>();
+		listaProfesores = new ArrayList<Usuario>();
 		listaSolicitudes = new ArrayList<Solicitud>();
 	}
 	
@@ -77,7 +78,7 @@ public class ControlPAS implements Serializable{
 		return miusuario;
 	}
 
-	public void setMiusuario(PAS miusuario) {
+	public void setMiusuario(Usuario miusuario) {
 		this.miusuario = miusuario;
 	}
 
@@ -91,14 +92,14 @@ public class ControlPAS implements Serializable{
 		return listaSolicitudes;
 	}
 
-	public List<PDI> getListaProfesores(){
+	public List<Usuario> getListaProfesores(){
 		List<Usuario> aux = listas.getUsuarios();
 		for(int i=0; i < aux.size();i++) {
 			if(aux.get(i).getRol().equals(Rol.PDI)) {
-				listaProfesores.add((PDI)aux.get(i));
+				listaProfesores.add(aux.get(i));
 			}
 		}
-		return listaProfesores; //prueba
+		return listaProfesores;
 	}
 
 	public Boolean getShowtablePerfil() {

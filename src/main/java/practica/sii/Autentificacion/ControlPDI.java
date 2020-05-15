@@ -1,11 +1,12 @@
 package practica.sii.Autentificacion;
 
 import java.io.Serializable;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -15,7 +16,8 @@ import practica.sii.Clases.Usuario;
 
 
 @Named(value = "controlPDI")
-@SessionScoped
+@RequestScoped
+
 public class ControlPDI implements Serializable{
 	
 	
@@ -39,7 +41,6 @@ public class ControlPDI implements Serializable{
 	public ControlPDI() {
 		listaSolicitudes = new ArrayList<Solicitud>();
 		listaEstado = Arrays.asList(Estado.values());
-
 	}
 	
 	public Usuario getMiusuario() {
