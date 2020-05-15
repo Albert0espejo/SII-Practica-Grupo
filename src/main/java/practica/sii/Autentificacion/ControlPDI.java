@@ -17,6 +17,7 @@ import practica.sii.Clases.Usuario;
 
 @Named(value = "controlPDI")
 @RequestScoped
+
 public class ControlPDI implements Serializable{
 	
 	
