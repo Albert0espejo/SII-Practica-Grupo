@@ -33,8 +33,16 @@ public class Proyecto implements Serializable {
 	private List<Solicitud> solicitudes = new ArrayList<Solicitud>();
 	@ElementCollection
 	@ManyToMany
-	private List<Usuario> ong = new ArrayList<Usuario>();	
+	private List<Usuario> ong = new ArrayList<Usuario>();
+	private String reconocimiento;
 
+	public String getReconocimiento() {
+		return reconocimiento;
+	}
+
+	public void setReconocimiento(String reconocimiento) {
+		this.reconocimiento = reconocimiento;
+	}
 	private static final long serialVersionUID = 1L;
 	
 
