@@ -144,16 +144,35 @@
 								</f:facet>
 								<f:facet name="input">
 									<p:inputText value="#{perfil.correo}" />
-								</f:facet>
+								</f:facet> 
 							</p:cellEditor>
 						</p:column>
 						<p:column headerText="Universidad">
 							<h:outputText value="#{perfil.universidad}" />
 						</p:column>
 						<p:column style="width:35px">
-							<p:rowEditor />
+							<p:rowEditor /> 
 						</p:column>
-
+						<p:column headerText="Idioma">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{perfil.Idiomas}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{perfil.Idiomas}" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						<p:column headerText="Dirección">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{perfil.Direccion}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{perfil.Direccion}" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
 					</p:dataTable>
 
 				</h:form>

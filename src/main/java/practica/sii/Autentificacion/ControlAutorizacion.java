@@ -47,7 +47,7 @@ public class ControlAutorizacion implements Serializable {
     	if(usuario.getRol().equals(Usuario.Rol.ADMINISTRADOR)) {
         	return "admin.xhtml";
         }else if(usuario.getRol().equals(Usuario.Rol.ALUMNO)){
-        	controlAlumno.setMiUsuario((Alumno)usuario);
+        	controlAlumno.setMiUsuario(usuario);
         	return "alumno.xhtml";
         }else if(usuario.getRol().equals(Usuario.Rol.ONG)) {
         	controlONG.setMiUsuario(usuario);
