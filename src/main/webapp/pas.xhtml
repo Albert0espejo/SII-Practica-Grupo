@@ -8,14 +8,20 @@
 	<ui:define name="title">Página para usuarios PAS</ui:define>
 
 	<ui:define name="botones">
-		<li><h:commandButton
-				action="#{controlPAS.enabletableSolicitudes}" update="solicitud"
-				value="Vista Solicitudes" /></li>
 		<li><h:commandButton action="#{controlPAS.enabletablePerfil}"
 				update="perfil" value="Editar perfil" /></li>
 	</ui:define>
 
+	<h:form>
+		<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
 
+		<h3 style="margin-top: 0">Basic OrderList</h3>
+		<p:orderList value="#{controlPAS.listaSolicitudes}" var="solicitudes"
+			controlsLocation="none" itemLabel="#{solicitudes}" itemValue="#{solicitudes}" />
+		<p:commandButton value="Submit" update="displaySolicitudes"
+			oncomplete="PF('listaSolicitudes').show()" style="margin-top:5px" />
+	</h:form>
+	
 	<ui:define name="content">
 
 		<c:choose>
