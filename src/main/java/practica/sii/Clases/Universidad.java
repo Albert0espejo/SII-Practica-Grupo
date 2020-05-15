@@ -23,6 +23,7 @@ public class Universidad implements Serializable{
 	@Embedded
 	private Address Direccion;
 	private String Direccion_Web;
+	@ElementCollection
 	private List<String> Facultades;
 	@ElementCollection
 	@OneToMany(mappedBy = "universidad")

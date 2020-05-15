@@ -28,6 +28,7 @@ public class Usuario implements Serializable {
 	private Long Id;
 	private String usuario;
 	private String contrasena;
+	private Universidad universidad;
 	private String correo;
 	@Enumerated(EnumType.STRING)
 	private Rol rol;
@@ -43,6 +44,7 @@ public class Usuario implements Serializable {
 		this.contrasena = contrasena;
 		this.correo = correo;
 		this.rol = rol;
+		this.universidad=universidad;
 	}
 	
 	public Long getId() {
