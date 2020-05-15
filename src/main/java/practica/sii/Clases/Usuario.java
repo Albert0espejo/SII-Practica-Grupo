@@ -82,6 +82,13 @@ public class Usuario implements Serializable {
 	public void setRol(Rol rol) {
 		this.rol = rol;
 	}
+	public Universidad getUniversidad() {
+		return universidad;
+	}
+
+	public void setUniversidad(Universidad universidad) {
+		this.universidad = universidad;
+	}
 	public String toString() {
 		return Id + "-" + correo;
 	}
