@@ -19,7 +19,6 @@ import practica.sii.Clases.Usuario.Rol;
 
 
 @Named(value = "controlONG") 
- 
 @RequestScoped
 
 public class ControlONG implements Serializable{
