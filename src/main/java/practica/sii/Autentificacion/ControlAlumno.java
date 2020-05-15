@@ -37,7 +37,7 @@ public class ControlAlumno implements Serializable{
 	private Boolean showtableProyectos = false;
 	
 	private Login listas;
-	private Alumno miUsuario;
+	private Usuario miUsuario;
 	private Solicitud solicitud;
 	private Proyecto selectedProyecto;
 	
@@ -59,7 +59,7 @@ public class ControlAlumno implements Serializable{
 		return miUsuario;
 	}
 
-	public void setMiUsuario(Alumno miUsuario) {
+	public void setMiUsuario(Usuario miUsuario) {
 		this.miUsuario = miUsuario;
 	}
 
