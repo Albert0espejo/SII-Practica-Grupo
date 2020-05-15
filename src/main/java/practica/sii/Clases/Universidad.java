@@ -20,7 +20,7 @@ public class Universidad implements Serializable{
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long Id_Universidad;
 	private String Nombre;
-	@Embedded
+	@Embedded 
 	private Address Direccion;
 	private String Direccion_Web;
 	@ElementCollection

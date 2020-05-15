@@ -35,7 +35,7 @@ public class ControlAlumno implements Serializable{
 	private Boolean showtableSolicitudes = false;
 	private Boolean showtableNoticias = false;
 	private Boolean showtableProyectos = false;
-	  
+	   
 	private Login listas;
 	private Usuario miUsuario;
 	private Alumno miAlumno;

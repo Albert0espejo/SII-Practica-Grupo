@@ -16,7 +16,7 @@ import practica.sii.Clases.Usuario.Rol;
  */
 @Entity
 public class Alumno extends Usuario implements Serializable {
-
+ 
 	
 	private String Nombre;
 	private String Alumno;
