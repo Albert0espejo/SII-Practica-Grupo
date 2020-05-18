@@ -24,7 +24,7 @@ public class ControlONG {
 	private Boolean showtableProyectos = false;
 	private Boolean showtablePerfil = false;
 	
-	private Noticias selectedNoticia;
+	private Noticias selectedNoticia; 
 	private Proyecto selectedProyecto;
 
 	private Usuario miUsuario;
