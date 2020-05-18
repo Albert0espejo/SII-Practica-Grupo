@@ -1,27 +1,21 @@
 package practica.sii.Autentificacion;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 import practica.sii.Clases.Noticias;
 import practica.sii.Clases.ONG;
 import practica.sii.Clases.Proyecto;
-import practica.sii.Clases.Solicitud;
-import practica.sii.Clases.Universidad;
 import practica.sii.Clases.Usuario;
-import practica.sii.Clases.Usuario.Rol;
 
 
 @Named(value = "controlONG") 
 @RequestScoped
 
-public class ControlONG implements Serializable{
+public class ControlONG {
 
 	private List<Noticias> listaNoticias;
 	private List<Proyecto> listaProyectos;

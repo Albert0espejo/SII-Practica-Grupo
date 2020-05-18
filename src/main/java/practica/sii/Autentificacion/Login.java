@@ -51,7 +51,7 @@ public class Login {
     	facultades.add("ciencias");
     	facultades.add("salud");
     	Universidad Malaga = new Universidad(1L,"Malaga", facultades, new Address("Avd.Cervantes","","Malaga","Andalucia",29010L,"España"),"uma.es");
-        Proyecto ProyectoA = new Proyecto(1L , "Hospital Carlos Haya", finicio, ffinal, "Descripcion del proyecto", Estado.En_Espera);
+        Proyecto ProyectoA = new Proyecto(1L , "Hospital Carlos Haya", finicio, ffinal, "Descripcion del proyecto", Estado.En_Espera,"2 creditos");
         //Proyecto ProyectoB = new Proyecto(2L , "Casa de la Juventud", 15/12/2020, 08/02/2021, "Descripcion del proyecto", 1);
     	usuarios = new ArrayList<Usuario>();
     	listaSolicitudes = new ArrayList<Solicitud>();
