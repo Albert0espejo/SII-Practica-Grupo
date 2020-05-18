@@ -35,9 +35,19 @@ public class ControlAlumno implements Serializable{
 	private Boolean showtableSolicitudes = false;
 	private Boolean showtableNoticias = false;
 	private Boolean showtableProyectos = false;
-	  
+	   
 	private Login listas;
 	private Usuario miUsuario;
+	private Alumno miAlumno;
+	
+	public Alumno getMiAlumno() {
+		return miAlumno;
+	}
+
+	public void setMiAlumno(Alumno miAlumno) {
+		this.miAlumno = miAlumno;
+	}
+
 	private Solicitud solicitud;
 	private Proyecto selectedProyecto;
 	
@@ -61,6 +71,7 @@ public class ControlAlumno implements Serializable{
 
 	public void setMiUsuario(Usuario miUsuario) {
 		this.miUsuario = miUsuario;
+		this.miAlumno=new Alumno(miUsuario.getId(), miUsuario.getUsuario(),miUsuario.getContrasena(),miUsuario.getCorreo(),miUsuario.getRol(),miUsuario.getUniversidad());
 	}
 
 	public Proyecto getSelectedProyecto() {

@@ -115,7 +115,7 @@
 
 				<h:form rendered="#{controlAlumno.showtablePerfil}">
 					<p:dataTable class="tabla" id="perfil"
-						value="#{controlAlumno.miUsuario}" var="perfil" editable="true">
+						value="#{controlAlumno.miAlumno}" var="perfil" editable="true">
 
 						<p:column headerText="Usuario">
 							<p:cellEditor>
@@ -150,29 +150,33 @@
 						<p:column headerText="Universidad">
 							<h:outputText value="#{perfil.universidad}" />
 						</p:column>
-						<p:column style="width:35px">
-							<p:rowEditor /> 
-						</p:column>
-						<p:column headerText="Idioma">
-							<p:cellEditor>
-								<f:facet name="output">
-									<h:outputText value="#{perfil.Idiomas}" />
-								</f:facet>
-								<f:facet name="input">
-									<p:inputText value="#{perfil.Idiomas}" />
-								</f:facet>
-							</p:cellEditor>
-						</p:column>
+						
 						<p:column headerText="Dirección">
 							<p:cellEditor>
 								<f:facet name="output">
-									<h:outputText value="#{perfil.Direccion}" />
+									<h:outputText value="#{perfil.direccion}" />
 								</f:facet>
 								<f:facet name="input">
-									<p:inputText value="#{perfil.Direccion}" />
-								</f:facet>
+									<p:inputText value="#{perfil.direccion}" />
+								</f:facet> 
 							</p:cellEditor>
 						</p:column>
+						<p:column headerText="Idiomas">
+							<p:cellEditor>
+								<f:facet name="output">
+									<p:dataList value="#{perfil.idiomas}" var="idioma" type="ordered">
+								        #{idioma.name}
+								    </p:dataList>
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{perfil.idiomas}" />
+								</f:facet> 
+							</p:cellEditor>
+						</p:column>
+						<p:column style="width:35px">
+							<p:rowEditor /> 
+						</p:column>
+						
 					</p:dataTable>
 
 				</h:form>

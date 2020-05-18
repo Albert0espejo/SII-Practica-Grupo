@@ -19,7 +19,7 @@ public class Usuario implements Serializable {
 	public enum Rol {
 	      ADMINISTRADOR,
 	      PAS,
-	      PDI,
+	      PDI, 
 	      ONG,
 	      ALUMNO
 	};
