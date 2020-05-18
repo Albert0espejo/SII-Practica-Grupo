@@ -53,7 +53,7 @@ public class ControlAutorizacion implements Serializable {
         	controlONG.setMiUsuario(usuario);
         	return "ong.xhtml";
         }else if(usuario.getRol().equals(Usuario.Rol.PAS)) {
-        	controlPas.setMiusuario((usuario));
+        	controlPas.setMiusuario(usuario);
         	return "pas.xhtml";
         }else if(usuario.getRol().equals(Usuario.Rol.PDI)) {
         	controlPDI.setMiusuario(usuario);
