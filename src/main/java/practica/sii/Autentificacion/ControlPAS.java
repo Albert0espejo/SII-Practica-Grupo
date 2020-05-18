@@ -26,11 +26,11 @@ public class ControlPAS{
 	private List<Solicitud> listaSolicitudes;
 	private List<Usuario> listaProfesores;
 	
-	private Boolean showtablePerfil = false;
 	private Boolean showtableSolicitudes = false;
 	
 	private Login listas;
 	private Usuario miusuario;
+	private PAS miPAS;
 	private Solicitud selectedSolicitud;
 	private PDI supervisor;
 	private Usuario selectedUsuario;
@@ -80,6 +80,7 @@ public class ControlPAS{
 
 	public void setMiusuario(Usuario miusuario) {
 		this.miusuario = miusuario;
+		this.miPAS = new PAS(miusuario.getId(),miusuario.getUsuario(),miusuario.getContrasena(),miusuario.getCorreo(),miusuario.getRol(),miusuario.getUniversidad(),null,null,null,null,null);
 	}
 
 	public List<Solicitud> getListaSolicitudes() {
@@ -118,12 +119,8 @@ public class ControlPAS{
 		showtableSolicitudes = !showtableSolicitudes;
 	}
 	
-	public void enabletablePerfil() {
-		if(showtableSolicitudes) {
-			showtableSolicitudes = false;
-		}
-		
-		showtablePerfil= !showtablePerfil;
+	public String enabletablePerfil() {
+		return "editarPerfil.xhtml";
 	}
 	
 	public void enviarA() {
