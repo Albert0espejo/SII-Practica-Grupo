@@ -26,7 +26,7 @@
 					<p:orderList value="#{controlPAS.listaSolicitudes}"
 						var="solicitudes" controlsLocation="none"
 						itemLabel="#{solicitudes}" itemValue="#{solicitudes}" />
-					<p:commandButton value="Submit" action=#{controlPAS.enviarA}
+					<p:commandButton value="Submit" action="#{controlPAS.enviarA}"
 						oncomplete="PF('listaSolicitudes').show()" style="margin-top:5px" />
 				</h:form>
 
@@ -54,48 +54,7 @@
 					</p:outputPanel>
 				</p:dialog>
 
-				<h:form rendered="#{controlPAS.showtablePerfil}">
-					<p:dataTable class="tabla" id="perfil"
-						value="#{controlPAS.miusuario}" var="usuarios" editable="true">
-						<p:column headerText="Usuario">
-							<p:cellEditor>
-								<f:facet name="output">
-									<h:outputText value="#{usuarios.usuario}" />
-								</f:facet>
-								<f:facet name="input">
-									<p:inputText value="#{usuarios.usuario}" />
-								</f:facet>
-							</p:cellEditor>
-						</p:column>
-						<p:column headerText="Contraseña">
-							<p:cellEditor>
-								<f:facet name="output">
-									<h:outputText value="#{usuarios.contrasena}" />
-								</f:facet>
-								<f:facet name="input">
-									<p:inputText value="#{usuarios.contrasena}" />
-								</f:facet>
-							</p:cellEditor>
-						</p:column>
-						<p:column headerText="Correo">
-							<p:cellEditor>
-								<f:facet name="output">
-									<h:outputText value="#{usuarios.correo}" />
-								</f:facet>
-								<f:facet name="input">
-									<p:inputText value="#{usuarios.correo}" />
-								</f:facet>
-							</p:cellEditor>
-						</p:column>
-						<p:column headerText="Universidad">
-							<h:outputText value="#{usuarios.universidad}" />
-						</p:column>
-
-						<p:column style="width:35px">
-							<p:rowEditor />
-						</p:column>
-					</p:dataTable>
-				</h:form>
+				
 			</c:when>
 			<c:otherwise>
 				<ui:include src="/WEB-INF/Templates/errorAutorizacion.xhtml" />
