@@ -22,7 +22,7 @@ public class PDI extends Usuario implements Serializable {
 	private String DNI;
 	private String Departamento;
 	private String Telefono;
-	private String Es_Gestor;
+	private String Es_Gestor; 
 	@ManyToOne
 	private Universidad universidad;
 	@ElementCollection

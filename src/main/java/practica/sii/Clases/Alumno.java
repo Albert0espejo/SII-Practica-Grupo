@@ -8,20 +8,22 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import practica.sii.Clases.Usuario.Rol;
+
 /**
  * Entity implementation class for Entity: Alumno
  *
  */
 @Entity
 public class Alumno extends Usuario implements Serializable {
-
+ 
 	
 	private String Nombre;
 	private String Alumno;
 	private String DNI;
 	@ElementCollection
 	private List<Paises> Destinos_Deseados = new ArrayList<Paises>();
-	private String Direccion;
+	private String Direccion=null;
 	@ElementCollection
 	private List<Paises> Idiomas = new ArrayList<Paises>();
 	private Integer Numero_Expediente;
@@ -35,6 +37,11 @@ public class Alumno extends Usuario implements Serializable {
 	public Alumno() {
 		super();
 	}   
+	
+	public Alumno(Long id, String usuario, String contrasena, String correo, Rol rol, Universidad universidad) {
+		super(id,usuario,contrasena,correo,rol,universidad);
+	}
+	
 	public String getNombre() {
 		return this.Nombre;
 	}
