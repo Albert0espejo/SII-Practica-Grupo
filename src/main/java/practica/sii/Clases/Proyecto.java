@@ -33,7 +33,7 @@ public class Proyecto implements Serializable {
 	private List<Solicitud> solicitudes = new ArrayList<Solicitud>();
 	@ElementCollection
 	@ManyToOne
-	private ONG participantes;
+	private Usuario participantes;
 	private String Reconocimiento;
 
 	public String getReconocimiento() {
@@ -114,10 +114,10 @@ public class Proyecto implements Serializable {
 		this.Estado = Estado;
 	}
 	
-	public ONG getParticipantes() {
+	public Usuario getParticipantes() {
 		return participantes;
 	}
-	public void setParticipantes(ONG participantes) {
+	public void setParticipantes(Usuario participantes) {
 		this.participantes = participantes;
 	}
 	
