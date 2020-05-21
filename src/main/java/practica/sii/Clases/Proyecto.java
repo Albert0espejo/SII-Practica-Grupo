@@ -32,16 +32,16 @@ public class Proyecto implements Serializable {
 	@OneToMany(mappedBy = "proyecto")
 	private List<Solicitud> solicitudes = new ArrayList<Solicitud>();
 	@ElementCollection
-	@ManyToMany
-	private List<Usuario> ong = new ArrayList<Usuario>();
-	private String reconocimiento;
+	@ManyToOne
+	private Usuario participantes;
+	private String Reconocimiento;
 
 	public String getReconocimiento() {
-		return reconocimiento;
+		return Reconocimiento;
 	}
 
 	public void setReconocimiento(String reconocimiento) {
-		this.reconocimiento = reconocimiento;
+		this.Reconocimiento = reconocimiento;
 	}
 	private static final long serialVersionUID = 1L;
 	
@@ -53,13 +53,14 @@ public class Proyecto implements Serializable {
 		super();
 	}
 	
-	public Proyecto(Long ID_Proyecto, String Lugar, Date Fecha_Inicio, Date Fecha_Final, String Descripcion, Estado Estado) {
+	public Proyecto(Long ID_Proyecto, String Lugar, Date Fecha_Inicio, Date Fecha_Final, String Descripcion, Estado Estado,String Reconocimiento) {
 		this.ID_Proyecto = ID_Proyecto;
 		this.Lugar = Lugar;
 		this.Fecha_Inicio = Fecha_Inicio;
 		this.Fecha_Final = Fecha_Final;
 		this.Descripcion = Descripcion;
 		this.Estado = Estado;
+		this.Reconocimiento = Reconocimiento;
 	}
 	
 	public List<Solicitud> getSolicitudes() {
@@ -113,6 +114,13 @@ public class Proyecto implements Serializable {
 		this.Estado = Estado;
 	}
 	
+	public Usuario getParticipantes() {
+		return participantes;
+	}
+	public void setParticipantes(Usuario participantes) {
+		this.participantes = participantes;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -136,17 +144,5 @@ public class Proyecto implements Serializable {
 			return false;
 		return true;
 	}
-	/*public List<ONG> getOng() {
-		return ong;
-	}
-	public void setOng(List<ONG> ong) {
-		this.ong = ong;
-	}*/
 	
-	public List<Usuario> getOng() {
-		return ong;
-	}
-	public void setOng(List<Usuario> ong) {
-		this.ong = ong;
-	}
 }

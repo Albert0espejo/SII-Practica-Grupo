@@ -90,20 +90,12 @@ public class ControlPDI implements Serializable{
 		return showtablePerfil;
 	}
 	
-	public void enabletableSolicitudes() {
-		if(showtablePerfil) {
-			showtablePerfil = false;
-		}
-		
-		showtableSolicitudes = !showtableSolicitudes;
+	public String enabletableSolicitudes() {
+		return "tablaSolicitudesPDI.xhtml";
 	}
 	
-	public void enabletablePerfil() {
-		if( showtableSolicitudes) {
-			showtableSolicitudes = false;
-		}
-
-		showtablePerfil = !showtablePerfil;
+	public String enabletablePerfil() {
+		return "editarPerfil.xhtml";
 	}
 
 }

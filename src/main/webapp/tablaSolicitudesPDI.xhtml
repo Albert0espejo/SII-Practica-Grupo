@@ -6,19 +6,10 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core">
 
-	<ui:define name="title">Página para usuarios PDI</ui:define>
-
-	<ui:define name="botones">
-		<li><h:commandButton
-				action="#{controlPDI.enabletableSolicitudes}" update="solicitudes"
-				value="Vista Solicitudes" /></li>
-		<li><h:commandButton action="#{controlPDI.enabletablePerfil}"
-				update="perfil" value="Editar Perfil" /></li>
-	</ui:define>
+	<ui:define name="title">Vista de las solicitudes PDI</ui:define>
 
 	<ui:define name="content">
-		<c:choose>
-			<c:when test="#{controlAutorizacion.usuario.rol == 'PDI'}">
+	
 				<h:form rendered="#{controlPDI.showtableSolicitudes}">
 					<p:dataTable class="tabla" id="solicitud"
 						value="#{controlPDI.listaSolicitudes}" var="solicitudes"
@@ -50,10 +41,6 @@
 						</p:column>
 					</p:dataTable>
 				</h:form>
-			</c:when>
-			<c:otherwise>
-				<ui:include src="/WEB-INF/Templates/errorAutorizacion.xhtml" />
-			</c:otherwise>
-		</c:choose>
+
 	</ui:define>
 </ui:composition>

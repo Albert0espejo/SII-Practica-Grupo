@@ -66,13 +66,12 @@
 						</p:column>
 
 					</p:dataTable>
-
-					<p:contextMenu>
-						<p:menuitem value="Add" update="addPanelNew"
-							oncomplete="PF('addNew').show()" />
-						<p:menuitem value="Delete" update="noticia"
-							action="#{controlONG.borrarNoticias}" />
-					</p:contextMenu>
+	
+					<li><h:commandButton action="#{controlONG.borrarNoticias}"
+						update="noticias" value="Borrar Noticia"/></li>
+						
+					<li><p:commandButton value="Add" update="addPanelNew"
+							onclick="PF('addNew').show()"/></li>
 				</h:form>
 
 
@@ -174,6 +173,7 @@
 							</p:cellEditor>
 						</p:column>
 						
+						
 						<p:column headerText="Estado">
 							<p:cellEditor>
 								<f:facet name="output">
@@ -193,12 +193,12 @@
 
 					</p:dataTable>
 
-					<p:contextMenu>
-						<p:menuitem value="Add" update="addPanelProyecto"
-							oncomplete="PF('addProyecto').show()" />
-						<p:menuitem value="Delete" update="proyecto"
-							action="#{controlONG.borrarProyectos}" />
-					</p:contextMenu>
+					<li><h:commandButton action="#{controlONG.borrarProyectos}"
+						update="proyecto" value="Borrar Proyectos"/></li>
+						
+					<li><p:commandButton value="Add" update="addPanelProyecto"
+							onclick="PF('addProyecto').show()"/></li>
+
 				</h:form>
 
 
@@ -210,9 +210,6 @@
 							<h:outputText value="Id"></h:outputText>
 							<h:inputText converter="javax.faces.Long"
 								value="#{controlONG.project.ID_Proyecto}"></h:inputText>
-
-							<h:outputText value="ONG"></h:outputText>
-							<h:inputText value="#{controlONG.project.ong}"></h:inputText>
 
 							<h:outputText value="Lugar"></h:outputText>
 							<h:inputText value="#{controlONG.project.lugar}"></h:inputText>
