@@ -32,6 +32,16 @@ public class Noticias implements Serializable {
 	public Noticias() {
 		super();
 	}   
+	
+	public Noticias(Long ID,String Titulo,String Texto,String Autor, Date F_public,Usuario ONG) {
+		this.Id_Noticia=ID;
+		this.Titulo=Titulo;
+		this.Texto=Texto;
+		this.Fecha_Publicacion=F_public;
+		this.Autor=Autor;
+		this.ong=ONG;
+	}
+	
 	public Long getId_Noticia() {
 		return this.Id_Noticia;
 	}

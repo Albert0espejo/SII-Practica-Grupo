@@ -65,6 +65,8 @@ public class Login {
         usuarios.add(new Usuario(5L, "ongprueba", "qwer", "ong@uma.es", Rol.ONG, Malaga));
         //listaSolicitudes.add(new Solicitud("1", 1, Malaga, ProyectoA));
         listaSolicitudes.add(new Solicitud(1L, Estado.En_Espera, Malaga, ProyectoA));
+        listaSolicitudes.add(new Solicitud(1L, Estado.En_Espera, Malaga, ProyectoA));
+        listaNoticias.add(new Noticias(new Long("3"), "El PP gana las elecciones", "Por cansinos", "Eduardo Inda", new Date(), new Usuario()));
         listaUniversidades.add(Malaga);
         listaProyectos.add(ProyectoA);
 

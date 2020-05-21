@@ -29,6 +29,8 @@ public class Proyecto implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private Estado Estado;
 	@ElementCollection
+	private List<ONG> ong;
+	@ElementCollection
 	@OneToMany(mappedBy = "proyecto")
 	private List<Solicitud> solicitudes = new ArrayList<Solicitud>();
 	@ElementCollection
@@ -61,6 +63,14 @@ public class Proyecto implements Serializable {
 		this.Descripcion = Descripcion;
 		this.Estado = Estado;
 		this.Reconocimiento = Reconocimiento;
+	}
+	
+	public List<ONG> getOng() {
+		return ong;
+	}
+
+	public void setOng(List<ONG> ong) {
+		this.ong = ong;
 	}
 	
 	public List<Solicitud> getSolicitudes() {
