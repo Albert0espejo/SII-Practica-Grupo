@@ -83,6 +83,14 @@ public class ControlPAS{
 		this.miPAS = new PAS(miusuario.getId(),miusuario.getUsuario(),miusuario.getContrasena(),miusuario.getCorreo(),miusuario.getRol(),miusuario.getUniversidad(),null,null,null,null,null);
 	}
 
+	public PAS getMiPAS() {
+		return miPAS;
+	}
+
+	public void setMiPAS(PAS miPAS) {
+		this.miPAS = miPAS;
+	}
+
 	public List<Solicitud> getListaSolicitudes() {
 		List<Solicitud> aux = listas.getListaSolicitudes();
 		for(int i=0; i < aux.size();i++) {
@@ -103,18 +111,12 @@ public class ControlPAS{
 		return listaProfesores;
 	}
 
-	public Boolean getShowtablePerfil() {
-		return showtablePerfil;
-	}
 	
 	public Boolean getShowtableSolicitudes() {
 		return showtableSolicitudes;
 	}
 	
 	public void enabletableSolicitudes() {
-		if(showtablePerfil) {
-			showtablePerfil = false;
-		}
 		
 		showtableSolicitudes = !showtableSolicitudes;
 	}

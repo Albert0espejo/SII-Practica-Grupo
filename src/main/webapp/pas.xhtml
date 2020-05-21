@@ -18,84 +18,26 @@
 		<c:choose>
 			<c:when test="#{controlAutorizacion.usuario.rol == 'PAS'}">
 
+				<h:form id="solicitudes_css">
+					<p:growl id="msgs" showDetail="true"
+						skipDetailIfEqualsSummary="true" />
+
+					<h3>Solicitudes</h3>
+					<p:orderList value="#{controlPAS.listaSolicitudes}"
+						var="solicitudes" controlsLocation="none"
+						itemLabel="#{solicitudes}" itemValue="#{solicitudes}" />
+					<p:commandButton value="Enviar" action="#{controlPAS.enviarA}" valuestyle="margin-top:5px" />
+				</h:form>
+				
 				<h:form>
 					<p:growl id="msgs" showDetail="true"
 						skipDetailIfEqualsSummary="true" />
 
-					<h3 style="margin-top: 0">Solicitudes</h3>
-					<p:orderList value="#{controlPAS.listaSolicitudes}"
-						var="solicitudes" controlsLocation="none"
-						itemLabel="#{solicitudes}" itemValue="#{solicitudes}" />
-					<p:commandButton value="Submit" action=#{controlPAS.enviarA}
-						oncomplete="PF('listaSolicitudes').show()" style="margin-top:5px" />
-				</h:form>
-
-				
-
-				<p:dialog header="Enviar a..." widgetVar="enviarSoli" modal="true"
-					showEffect="fade" hideEffect="fade" resizable="false">
-					<p:outputPanel id="panelEnviar" style="text-align:center;">
-						<h:panelGrid columns="2">
-							<h:outputText value="Id" />
-							<h:outputText value="#{controlPAS.selectedSolicitud.id_Solicitud}" />
-
-							<h:outputText value="Profesor"></h:outputText>
-							<h:selectOneMenu
-								value="#{controlPAS.supervisor}">
-								<f:selectItems value="#{controlPAS.listaProfesores}"
-									var="profesores" itemLaber="#{profesores.id}" 
-									itemValue="#{profesores}"></f:selectItems>
-							</h:selectOneMenu>
-
-							<h:outputLabel></h:outputLabel>
-							<h:commandButton type="submit" action="#{controlPAS.enviarA}"
-								value="Enviar"></h:commandButton>
-						</h:panelGrid>
-					</p:outputPanel>
-				</p:dialog>
-
-				<h:form rendered="#{controlPAS.showtablePerfil}">
-					<p:dataTable class="tabla" id="perfil"
-						value="#{controlPAS.miusuario}" var="usuarios" editable="true">
-						<p:column headerText="Usuario">
-							<p:cellEditor>
-								<f:facet name="output">
-									<h:outputText value="#{usuarios.usuario}" />
-								</f:facet>
-								<f:facet name="input">
-									<p:inputText value="#{usuarios.usuario}" />
-								</f:facet>
-							</p:cellEditor>
-						</p:column>
-						<p:column headerText="Contraseña">
-							<p:cellEditor>
-								<f:facet name="output">
-									<h:outputText value="#{usuarios.contrasena}" />
-								</f:facet>
-								<f:facet name="input">
-									<p:inputText value="#{usuarios.contrasena}" />
-								</f:facet>
-							</p:cellEditor>
-						</p:column>
-						<p:column headerText="Correo">
-							<p:cellEditor>
-								<f:facet name="output">
-									<h:outputText value="#{usuarios.correo}" />
-								</f:facet>
-								<f:facet name="input">
-									<p:inputText value="#{usuarios.correo}" />
-								</f:facet>
-							</p:cellEditor>
-						</p:column>
-						<p:column headerText="Universidad">
-							<h:outputText value="#{usuarios.universidad}" />
-						</p:column>
-
-						<p:column style="width:35px">
-							<p:rowEditor />
-						</p:column>
-					</p:dataTable>
-				</h:form>
+					<h3>Profesores</h3>
+					<p:orderList value="#{controlPAS.listaProfesores}"
+						var="profesores" controlsLocation="none"
+						itemLabel="#{profesores}" itemValue="#{profesores}" />
+				</h:form>				
 			</c:when>
 			<c:otherwise>
 				<ui:include src="/WEB-INF/Templates/errorAutorizacion.xhtml" />

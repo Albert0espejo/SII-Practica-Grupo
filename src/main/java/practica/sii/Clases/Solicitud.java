@@ -125,5 +125,9 @@ public class Solicitud implements Serializable {
 	public void setProyecto(Proyecto proyecto) {
 		this.proyecto = proyecto;
 	}
+	public String toString() {
+		return "Id:" + this.Id_Solicitud + "/" +this.proyecto.getDescripcion() +" Universidad:" + this.universidad.getNombre()  + " Estado:" + this.Estado;
+		
+	}
 	
 }
