@@ -303,16 +303,6 @@
 										</f:facet>
 									</p:cellEditor>
 								</p:column>
-								<p:column headerText="ONG">
-									<p:cellEditor>
-										<f:facet name="output">
-											<h:outputText value="#{proyectos.ong}" />
-										</f:facet>
-										<f:facet name="input">
-											<p:inputText value="#{proyectos.ong}" />
-										</f:facet>
-									</p:cellEditor>
-								</p:column>
 								<p:column headerText="Lugar">
 									<p:cellEditor>
 										<f:facet name="output">
@@ -543,10 +533,6 @@
 									<h:outputText value="Id"></h:outputText>
 									<h:inputText converter="javax.faces.Long"
 										value="#{controlAdmin.project.ID_Proyecto}"></h:inputText>
-	
-									<h:outputText value="ONG"></h:outputText>
-									<h:inputText
-										value="#{controlAdmin.project.ong}"></h:inputText>
 	
 									<h:outputText value="Lugar"></h:outputText>
 									<h:inputText value="#{controlAdmin.project.lugar}"></h:inputText>
