@@ -3,10 +3,7 @@ package practica.sii.Clases;
 import java.io.Serializable;
 import java.lang.Long;
 import java.lang.String;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-
 import javax.persistence.*;
 
 /**
@@ -29,8 +26,8 @@ public class Proyecto implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private Estado Estado;
 	@ElementCollection
-	@OneToMany(mappedBy = "proyecto")
-	private List<Solicitud> solicitudes = new ArrayList<Solicitud>();
+	@ManyToOne
+	private ONG solicitudes;
 	@ElementCollection
 	@ManyToOne
 	private Usuario participantes;
@@ -63,11 +60,11 @@ public class Proyecto implements Serializable {
 		this.Reconocimiento = Reconocimiento;
 	}
 	
-	public List<Solicitud> getSolicitudes() {
+	public ONG getSolicitudes() {
 		return solicitudes;
 	}
 	
-	public void setSolicitudes(List<Solicitud> solicitudes) {
+	public void setSolicitudes(ONG solicitudes) {
 		this.solicitudes = solicitudes;
 	}
 		
