@@ -16,14 +16,14 @@ import practica.sii.Clases.Demanda;
 import practica.sii.Clases.Universidad;
 import practica.sii.Clases.Usuario;
 import practica.sii.Clases.Usuario.Rol;
-import practica.sii.ejb.BaseDeDatos;
+import practica.sii.ejb.BaseDeDatosLocal;
 
 @Named(value = "controlAdmin")
 @RequestScoped
 public class ControlAdmin{
 	
 	@Inject
-	private BaseDeDatos bbdd;
+	private BaseDeDatosLocal bbdd;
 	
 	private List<Usuario> listaUsuarios;
 	private List<Demanda> listaSolicitudes;
