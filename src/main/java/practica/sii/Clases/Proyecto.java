@@ -32,10 +32,8 @@ public class Proyecto implements Serializable {
 	@ManyToOne
 	private ONG ong;
 	@ElementCollection
-	@ManyToOne
-	private Demanda participantes;
-	@OneToMany (mappedBy = "participantes")
-	private List<Proyecto> proyecto;
+	@OneToMany (mappedBy = "proyecto")
+	private List<Demanda> participantes;
 	private String Reconocimiento;
 
 	public String getReconocimiento() {
