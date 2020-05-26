@@ -114,10 +114,10 @@ public class Proyecto implements Serializable {
 		this.Estado = Estado;
 	}
 	
-	public Demanda getSolicitud() {
+	public List<Demanda> getSolicitud() {
 		return participantes;
 	}
-	public void setSolicitud(Demanda participantes) {
+	public void setSolicitud(List<Demanda> participantes) {
 		this.participantes = participantes;
 	}
 	
