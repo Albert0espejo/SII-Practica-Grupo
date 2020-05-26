@@ -6,7 +6,7 @@ import java.lang.String;
 import javax.persistence.*;
 
 /**
- * Entity implementation class for Entity: Solicitud
+ * Entity implementation class for Entity: Demanda
  *
  */
 @Entity
