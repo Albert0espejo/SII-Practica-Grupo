@@ -8,7 +8,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import practica.sii.Clases.Usuario;
-
+ 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 
