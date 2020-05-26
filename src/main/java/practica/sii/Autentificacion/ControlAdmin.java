@@ -188,11 +188,11 @@ public class ControlAdmin{
 		return user;
 	}
 	
-	public Solicitud getSol() {
+	public Demanda getSol() {
 		return sol;
 	}
 
-	public void setSol(Solicitud sol) {
+	public void setSol(Demanda sol) {
 		this.sol = sol;
 	}
 
