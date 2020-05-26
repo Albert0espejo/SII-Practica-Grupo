@@ -34,14 +34,22 @@
 					widgetVar="enviarAProfe">
 
 					<h:form>
-						<p:growl id="msgs" showDetail="true"
-							skipDetailIfEqualsSummary="true" />
+						<p:dataTable class="tabla"
+								value="#{controlPAS.listaProfesores}" var="profesores" rowKey="#{profesores.id}"
+								selection="#{controlPAS.selectedUsuario}" selectionMode="single">
 
-						<h3>Profesores</h3>
-						<p:orderList value="#{controlPAS.listaProfesores}" selectionMode="single"
-							var="profesores" controlsLocation="none"
-							itemLabel="#{profesores}" itemValue="#{profesores}" onclick="#{controlPAS.enviarA}"/>
-					</h:form>
+							<p:column headerText="Profesor">
+								<f:facet name="output">
+									<h:outputText value="#{profesores}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText id="modelInput" value="#{profesores}" />
+								</f:facet>
+							</p:column>
+							<p:column headerText="Enviar">
+								<p:commandButton action="#{controlPAS.enviarA}" update="listaSolicitudes"/>
+							</p:column>
+						</h:form>
 
 				</p:dialog>
 			</c:when>

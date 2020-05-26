@@ -13,7 +13,7 @@ import practica.sii.Clases.Estado;
 
 import practica.sii.Clases.Noticias;
 import practica.sii.Clases.Proyecto;
-import practica.sii.Clases.Solicitud;
+import practica.sii.Clases.Demanda;
 import practica.sii.Clases.Universidad;
 import practica.sii.Clases.Usuario;
 import practica.sii.Clases.Usuario.Rol;
@@ -24,7 +24,7 @@ public class ControlAdmin implements Serializable{
 	
 	
 	private List<Usuario> listaUsuarios;
-	private List<Solicitud> listaSolicitudes;
+	private List<Demanda> listaSolicitudes;
 	private List<Universidad> listaUniversidades;
 	private List<Noticias> listaNoticias;
 	private List<Proyecto> listaProyectos;
@@ -38,7 +38,7 @@ public class ControlAdmin implements Serializable{
 	private Boolean showtableProyectos = false;
 	
 	private Usuario selectedUsuario;
-	private Solicitud selectedSolicitud;
+	private Demanda selectedSolicitud;
 	private Universidad selectedUniversidad;
 	private Noticias selectedNoticia;
 	private Proyecto selectedProyecto;
@@ -47,7 +47,7 @@ public class ControlAdmin implements Serializable{
 	private Login listas;
 	
 	private Usuario user;
-	private Solicitud sol;
+	private Demanda sol;
 	private Universidad uni;
 	private Noticias news;
 	private Proyecto project;
@@ -55,25 +55,25 @@ public class ControlAdmin implements Serializable{
 	
 	public ControlAdmin() {
 		user = new Usuario();
-		sol = new Solicitud();
+		sol = new Demanda();
 		uni = new Universidad();
 		news = new Noticias();
 		project = new Proyecto();
 		listaUsuarios = new ArrayList<Usuario>();
 		listaNoticias = new ArrayList<Noticias>();
 		listaProyectos = new ArrayList<Proyecto>();
-		listaSolicitudes = new ArrayList<Solicitud>();
+		listaSolicitudes = new ArrayList<Demanda>();
 		listaUniversidades = new ArrayList<Universidad>();
 		listaRoles = Arrays.asList(Rol.values());
 		listaEstado = Arrays.asList(Estado.values());
 	}
 	
-	public Solicitud getSelectedSolicitud() {
+	public Demanda getSelectedSolicitud() {
 		return selectedSolicitud;
 	}
 
 
-	public void setSelectedSolicitud(Solicitud selectedSolicitud) {
+	public void setSelectedSolicitud(Demanda selectedSolicitud) {
 		this.selectedSolicitud = selectedSolicitud;
 	}
 
@@ -131,7 +131,7 @@ public class ControlAdmin implements Serializable{
 		return listaUsuarios;
 	}
 
-	public List<Solicitud> getListaSolicitudes() {
+	public List<Demanda> getListaSolicitudes() {
 		listaSolicitudes = listas.getListaSolicitudes();
 		
 		return listaSolicitudes;
@@ -268,11 +268,11 @@ public class ControlAdmin implements Serializable{
 		return user;
 	}
 	
-	public Solicitud getSol() {
+	public Demanda getSol() {
 		return sol;
 	}
 
-	public void setSol(Solicitud sol) {
+	public void setSol(Demanda sol) {
 		this.sol = sol;
 	}
 

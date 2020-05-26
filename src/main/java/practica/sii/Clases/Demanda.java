@@ -11,7 +11,7 @@ import javax.persistence.*;
  */
 @Entity
 
-public class Solicitud implements Serializable {
+public class Demanda implements Serializable {
 
 	   
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,11 +33,11 @@ public class Solicitud implements Serializable {
 	private FeedBack comentarios;
 	private static final long serialVersionUID = 1L;
 	
-	public Solicitud() {
+	public Demanda() {
 		super();
 	}
 
-	public Solicitud(Long Id_Solicitud, Estado Estado, Universidad universidad, Proyecto proyecto) {
+	public Demanda(Long Id_Solicitud, Estado Estado, Universidad universidad, Proyecto proyecto) {
 		this.Id_Solicitud = Id_Solicitud;
 		this.Estado = Estado;
 		this.universidad = universidad;
@@ -105,7 +105,7 @@ public class Solicitud implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Solicitud other = (Solicitud) obj;
+		Demanda other = (Demanda) obj;
 		if (Id_Solicitud == null) {
 			if (other.Id_Solicitud != null)
 				return false;

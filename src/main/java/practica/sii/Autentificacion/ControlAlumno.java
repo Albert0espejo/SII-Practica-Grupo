@@ -18,7 +18,7 @@ import practica.sii.Clases.Estado;
 import practica.sii.Clases.Noticias;
 import practica.sii.Clases.PDI;
 import practica.sii.Clases.Proyecto;
-import practica.sii.Clases.Solicitud;
+import practica.sii.Clases.Demanda;
 import practica.sii.Clases.Universidad;
 import practica.sii.Clases.Usuario;
 import practica.sii.Clases.Usuario.Rol;
@@ -27,7 +27,7 @@ import practica.sii.Clases.Usuario.Rol;
 @SessionScoped
 public class ControlAlumno implements Serializable{
 	
-	private List<Solicitud> listaSolicitudes;
+	private List<Demanda> listaSolicitudes;
 	private List<Noticias> listaNoticias;
 	private List<Proyecto> listaProyectos;
 	
@@ -48,18 +48,18 @@ public class ControlAlumno implements Serializable{
 		this.miAlumno = miAlumno;
 	}
 
-	private Solicitud solicitud;
+	private Demanda solicitud;
 	private Proyecto selectedProyecto;
 	
 	public ControlAlumno() {
 		listas = new Login();
-		solicitud = new Solicitud();
+		solicitud = new Demanda();
 		listaNoticias = new ArrayList<Noticias>();
 		listaProyectos = new ArrayList<Proyecto>();
-		listaSolicitudes = new ArrayList<Solicitud>();
+		listaSolicitudes = new ArrayList<Demanda>();
 	}
 
-	public List<Solicitud> getListaSolicitudes() {
+	public List<Demanda> getListaSolicitudes() {
 		listaSolicitudes = listas.getListaSolicitudes();
 		
 		return listaSolicitudes;
@@ -151,7 +151,7 @@ public class ControlAlumno implements Serializable{
 	}
 	
 	public void crearSolicitud() {
-		solicitud = new Solicitud(new Random().nextLong(), Estado.En_Espera, miUsuario.getUniversidad(), selectedProyecto);
+		solicitud = new Demanda(new Random().nextLong(), Estado.En_Espera, miUsuario.getUniversidad(), selectedProyecto);
 		listas.getListaSolicitudes().add(solicitud);
 		
 	}

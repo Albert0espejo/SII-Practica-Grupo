@@ -30,7 +30,7 @@ public class Universidad implements Serializable{
 	private List<Usuario> usuarios = new ArrayList<Usuario>();
 	@ElementCollection
 	@OneToMany(mappedBy = "universidad")
-	private List<Solicitud> solicitudes = new ArrayList<Solicitud>();
+	private List<Demanda> solicitudes = new ArrayList<Demanda>();
 	private static final long serialVersionUID = 1L;
 	
 	public Universidad() {
@@ -81,10 +81,10 @@ public class Universidad implements Serializable{
 		this.usuarios = usuarios;
 	}
 	
-	public List<Solicitud> getSolicitudes() {
+	public List<Demanda> getSolicitudes() {
 		return solicitudes;
 	}
-	public void setSolicitudes(List<Solicitud> solicitudes) {
+	public void setSolicitudes(List<Demanda> solicitudes) {
 		this.solicitudes = solicitudes;
 	}
 	public String toString() {
