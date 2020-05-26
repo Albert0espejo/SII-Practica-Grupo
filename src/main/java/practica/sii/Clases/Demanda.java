@@ -115,14 +115,7 @@ public class Demanda implements Serializable {
 	public void setAlumno(Alumno alumno) {
 		this.alumno = alumno;
 	}
-	public FeedBack getComentarios() {
-		return comentarios;
-	}
-
-	public void setComentarios(FeedBack comentarios) {
-		this.comentarios = comentarios;
-	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
