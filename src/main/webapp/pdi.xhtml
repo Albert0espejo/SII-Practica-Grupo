@@ -19,6 +19,7 @@
 	<ui:define name="content">
 		<c:choose>
 			<c:when test="#{controlAutorizacion.usuario.rol == 'PDI'}">
+
 				<h:form rendered="#{controlPDI.showtableSolicitudes}">
 					<p:dataTable class="tabla" id="solicitud"
 						value="#{controlPDI.listaSolicitudes}" var="solicitudes"
@@ -50,6 +51,7 @@
 						</p:column>
 					</p:dataTable>
 				</h:form>
+				
 			</c:when>
 			<c:otherwise>
 				<ui:include src="/WEB-INF/Templates/errorAutorizacion.xhtml" />
