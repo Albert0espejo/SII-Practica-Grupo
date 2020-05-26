@@ -7,18 +7,14 @@ package practica.sii.Autentificacion;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import practica.sii.Clases.Alumno;
-import practica.sii.Clases.PAS;
 import practica.sii.Clases.Usuario;
 
-import javax.enterprise.context.SessionScoped;
-
-import java.io.Serializable;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 
 @Named(value = "controlAutorizacion")
-@SessionScoped
-public class ControlAutorizacion implements Serializable {
+@RequestScoped
+public class ControlAutorizacion {
 	
     private Usuario usuario;
     @Inject
