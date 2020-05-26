@@ -4,7 +4,7 @@
 		<jta-data-source>java:jboss/datasources/sii</jta-data-source>
 		<class>practica.sii.Clases.Noticias</class>
 		<class>practica.sii.Clases.Actividades</class>
-		<class>practica.sii.Clases.Solicitud</class>
+		<class>practica.sii.Clases.Demanda</class>
 		<class>practica.sii.Clases.Alumno</class>
 		<class>practica.sii.Clases.ONG</class>
 		<class>practica.sii.Clases.PAS</class>
@@ -14,7 +14,6 @@
 		<class>practica.sii.Clases.Usuario</class>
 		<class>practica.sii.Clases.Voluntariado</class>
 		<class>practica.sii.Clases.Address</class>
-		<class>practica.sii.Clases.FeedBack</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.168.99.100:3306/sii"/>
 			<property name="javax.persistence.jdbc.user" value="siiuser"/>
