@@ -33,7 +33,7 @@ public class Proyecto implements Serializable {
 	private ONG ong;
 	@ElementCollection
 	@ManyToOne
-	private Usuario participantes;
+	private Demanda participantes;
 	@OneToMany (mappedBy = "participantes")
 	private List<Proyecto> proyecto;
 	private String Reconocimiento;
@@ -116,10 +116,10 @@ public class Proyecto implements Serializable {
 		this.Estado = Estado;
 	}
 	
-	public Solicitud getSolicitud() {
+	public Demanda getSolicitud() {
 		return participantes;
 	}
-	public void setSolicitud(Solicitud participantes) {
+	public void setSolicitud(Demanda participantes) {
 		this.participantes = participantes;
 	}
 	
