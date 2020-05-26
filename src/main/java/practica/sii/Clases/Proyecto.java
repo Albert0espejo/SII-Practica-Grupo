@@ -27,10 +27,10 @@ public class Proyecto implements Serializable {
 	private Estado Estado;
 	@ElementCollection
 	@ManyToOne
-	private ONG solicitudes;
+	private ONG ong;
 	@ElementCollection
 	@ManyToOne
-	private Usuario participantes;
+	private Solicitud participantes;
 	private String Reconocimiento;
 
 	public String getReconocimiento() {
@@ -60,12 +60,12 @@ public class Proyecto implements Serializable {
 		this.Reconocimiento = Reconocimiento;
 	}
 	
-	public ONG getSolicitudes() {
-		return solicitudes;
+	public ONG getOng() {
+		return ong;
 	}
 	
-	public void setSolicitudes(ONG solicitudes) {
-		this.solicitudes = solicitudes;
+	public void setOng(ONG ong) {
+		this.ong = ong;
 	}
 		
 	public Long getID_Proyecto() {
@@ -111,10 +111,10 @@ public class Proyecto implements Serializable {
 		this.Estado = Estado;
 	}
 	
-	public Usuario getParticipantes() {
+	public Solicitud getSolicitud() {
 		return participantes;
 	}
-	public void setParticipantes(Usuario participantes) {
+	public void setSolicitud(Solicitud participantes) {
 		this.participantes = participantes;
 	}
 	

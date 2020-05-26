@@ -25,7 +25,7 @@ public class ONG extends Usuario implements Serializable {
 	private String Representante;
 	private String Direccion_Web;
 	@ElementCollection
-	@OneToMany (mappedBy = "solicitudes") 
+	@OneToMany (mappedBy = "ong") 
 	private List<Proyecto> proyecto = new ArrayList<Proyecto>();
 	@ElementCollection
 	@OneToMany (mappedBy = "ong")
