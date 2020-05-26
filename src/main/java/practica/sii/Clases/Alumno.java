@@ -30,7 +30,7 @@ public class Alumno extends Usuario implements Serializable {
 	@ManyToOne
 	private Universidad universidad;
 	@ElementCollection
-	@OneToMany (mappedBy = "alumno")
+	@OneToMany (mappedBy = "alumno") 
 	private List<Solicitud> solicitudes = new ArrayList<Solicitud>();
 	private static final long serialVersionUID = 1L;
 

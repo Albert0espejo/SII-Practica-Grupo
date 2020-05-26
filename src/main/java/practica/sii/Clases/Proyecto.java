@@ -5,7 +5,7 @@ import java.lang.Long;
 import java.lang.String;
 import java.util.Date;
 import javax.persistence.*;
-
+ 
 /**
  * Entity implementation class for Entity: Proyecto
  *

@@ -74,7 +74,7 @@ public class Login {
 
     }
 
-    public void setUsuarios(List<Usuario> usuarios) {
+    public void setUsuarios(List<Usuario> usuarios) { 
 		this.usuarios = usuarios;
 	}
 
