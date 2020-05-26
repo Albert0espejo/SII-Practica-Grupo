@@ -17,12 +17,6 @@ import practica.sii.Clases.Usuario.Rol;
 @Named(value = "controlPAS")
 @RequestScoped
 public class ControlPAS{
-	
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L; 
 	private List<Demanda> listaSolicitudes;
 	private List<Usuario> listaProfesores;
 	

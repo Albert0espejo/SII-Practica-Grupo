@@ -28,9 +28,42 @@ public class Demanda implements Serializable {
 	private PAS pas;
 	@ManyToOne
 	private Alumno alumno;
-	@OneToOne
-    @JoinColumn(name = "fk_feedback")
-	private FeedBack comentarios;
+	private String Comentarios_Profesor;
+	private String Comentarios_Alumno;
+	private String Comentarios_ONG;
+	private Float Nota;
+	
+	public String getComentarios_Profesor() {
+		return Comentarios_Profesor;
+	}
+
+	public void setComentarios_Profesor(String comentarios_Profesor) {
+		Comentarios_Profesor = comentarios_Profesor;
+	}
+
+	public String getComentarios_Alumno() {
+		return Comentarios_Alumno;
+	}
+
+	public void setComentarios_Alumno(String comentarios_Alumno) {
+		Comentarios_Alumno = comentarios_Alumno;
+	}
+
+	public String getComentarios_ONG() {
+		return Comentarios_ONG;
+	}
+
+	public void setComentarios_ONG(String comentarios_ONG) {
+		Comentarios_ONG = comentarios_ONG;
+	}
+
+	public Float getNota() {
+		return Nota;
+	}
+
+	public void setNota(Float nota) {
+		Nota = nota;
+	}
 	private static final long serialVersionUID = 1L;
 	
 	public Demanda() {
