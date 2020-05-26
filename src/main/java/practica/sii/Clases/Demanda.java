@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Entity
 
 public class Demanda implements Serializable {
-
+ 
 	   
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long Id_Solicitud;
