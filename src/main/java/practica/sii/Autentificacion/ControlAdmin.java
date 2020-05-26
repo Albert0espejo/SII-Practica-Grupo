@@ -1,11 +1,10 @@
 package practica.sii.Autentificacion;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -13,32 +12,29 @@ import practica.sii.Clases.Estado;
 
 import practica.sii.Clases.Noticias;
 import practica.sii.Clases.Proyecto;
-import practica.sii.Clases.Solicitud;
+import practica.sii.Clases.Demanda;
 import practica.sii.Clases.Universidad;
 import practica.sii.Clases.Usuario;
 import practica.sii.Clases.Usuario.Rol;
+import practica.sii.ejb.BaseDeDatos;
 
 @Named(value = "controlAdmin")
-@SessionScoped
-public class ControlAdmin implements Serializable{
+@RequestScoped
+public class ControlAdmin{
 	
+	@Inject
+	private BaseDeDatos bbdd;
 	
 	private List<Usuario> listaUsuarios;
-	private List<Solicitud> listaSolicitudes;
+	private List<Demanda> listaSolicitudes;
 	private List<Universidad> listaUniversidades;
 	private List<Noticias> listaNoticias;
 	private List<Proyecto> listaProyectos;
 	private List<Rol> listaRoles;
 	private List<Estado> listaEstado;
 	
-	private Boolean showtableUsuarios = false;
-	private Boolean showtableSolicitudes = false;
-	private Boolean showtableUniversidades = false;
-	private Boolean showtableNoticias = false;
-	private Boolean showtableProyectos = false;
-	
 	private Usuario selectedUsuario;
-	private Solicitud selectedSolicitud;
+	private Demanda selectedSolicitud;
 	private Universidad selectedUniversidad;
 	private Noticias selectedNoticia;
 	private Proyecto selectedProyecto;
@@ -47,7 +43,7 @@ public class ControlAdmin implements Serializable{
 	private Login listas;
 	
 	private Usuario user;
-	private Solicitud sol;
+	private Demanda sol;
 	private Universidad uni;
 	private Noticias news;
 	private Proyecto project;
@@ -55,25 +51,25 @@ public class ControlAdmin implements Serializable{
 	
 	public ControlAdmin() {
 		user = new Usuario();
-		sol = new Solicitud();
+		sol = new Demanda();
 		uni = new Universidad();
 		news = new Noticias();
 		project = new Proyecto();
 		listaUsuarios = new ArrayList<Usuario>();
 		listaNoticias = new ArrayList<Noticias>();
 		listaProyectos = new ArrayList<Proyecto>();
-		listaSolicitudes = new ArrayList<Solicitud>();
+		listaSolicitudes = new ArrayList<Demanda>();
 		listaUniversidades = new ArrayList<Universidad>();
 		listaRoles = Arrays.asList(Rol.values());
 		listaEstado = Arrays.asList(Estado.values());
 	}
 	
-	public Solicitud getSelectedSolicitud() {
+	public Demanda getSelectedSolicitud() {
 		return selectedSolicitud;
 	}
 
 
-	public void setSelectedSolicitud(Solicitud selectedSolicitud) {
+	public void setSelectedSolicitud(Demanda selectedSolicitud) {
 		this.selectedSolicitud = selectedSolicitud;
 	}
 
@@ -126,12 +122,11 @@ public class ControlAdmin implements Serializable{
 	}
 
 	public List<Usuario> getListaUsuarios(){
-		listaUsuarios = listas.getUsuarios();
 		
-		return listaUsuarios;
+		return bbdd.todoContactos();
 	}
 
-	public List<Solicitud> getListaSolicitudes() {
+	public List<Demanda> getListaSolicitudes() {
 		listaSolicitudes = listas.getListaSolicitudes();
 		
 		return listaSolicitudes;
@@ -153,81 +148,6 @@ public class ControlAdmin implements Serializable{
 		listaProyectos = listas.getListaProyectos();
 		
 		return listaProyectos;
-	}
-	
-	public Boolean getShowtableUsuarios() {
-		return showtableUsuarios;
-	}
-	
-	public Boolean getShowtableSolicitudes() {
-		return showtableSolicitudes;
-	}
-
-	public Boolean getShowtableUniversidades() {
-		return showtableUniversidades;
-	}
-
-	public Boolean getShowtableNoticias() {
-		return showtableNoticias;
-	}
-
-	public Boolean getShowtableProyectos() {
-		return showtableProyectos;
-	}
-
-	public void enabletableUsuarios() {
-		if(showtableNoticias || showtableSolicitudes || showtableProyectos || showtableUniversidades) {
-			showtableNoticias = false;
-			showtableSolicitudes = false;
-			showtableProyectos = false;
-			showtableUniversidades = false;
-		}
-
-		showtableUsuarios = !showtableUsuarios;
-	}
-	
-	public void enabletableSolicitudes() {
-		if(showtableNoticias || showtableUsuarios || showtableProyectos || showtableUniversidades) {
-			showtableNoticias = false;
-			showtableUsuarios = false;
-			showtableProyectos = false;
-			showtableUniversidades = false;
-		}
-		
-		showtableSolicitudes = !showtableSolicitudes;
-	}
-	
-	public void enabletableUniversidades() {
-		if(showtableNoticias || showtableUsuarios || showtableProyectos || showtableSolicitudes) {
-			showtableNoticias = false;
-			showtableUsuarios = false;
-			showtableProyectos = false;
-			showtableSolicitudes = false;
-		}
-		
-		showtableUniversidades = !showtableUniversidades;
-	}
-	
-	public void enabletableNoticias() {
-		if(showtableUniversidades || showtableUsuarios || showtableProyectos || showtableSolicitudes) {
-			showtableUniversidades = false;
-			showtableUsuarios = false;
-			showtableProyectos = false;
-			showtableSolicitudes = false;
-		}
-		
-		showtableNoticias = !showtableNoticias;
-	}
-	
-	public void enabletableProyectos() {
-		if(showtableNoticias || showtableUsuarios || showtableUniversidades || showtableSolicitudes) {
-			showtableNoticias = false;
-			showtableUsuarios = false;
-			showtableUniversidades = false;
-			showtableSolicitudes = false;
-		}
-		
-		showtableProyectos = !showtableProyectos;
 	}
 	
 	public void borrarUsuario() {
@@ -268,11 +188,11 @@ public class ControlAdmin implements Serializable{
 		return user;
 	}
 	
-	public Solicitud getSol() {
+	public Demanda getSol() {
 		return sol;
 	}
 
-	public void setSol(Solicitud sol) {
+	public void setSol(Demanda sol) {
 		this.sol = sol;
 	}
 

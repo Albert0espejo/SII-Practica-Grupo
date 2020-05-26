@@ -19,7 +19,7 @@ import practica.sii.Clases.Address;
 import practica.sii.Clases.Estado;
 import practica.sii.Clases.Noticias;
 import practica.sii.Clases.Proyecto;
-import practica.sii.Clases.Solicitud;
+import practica.sii.Clases.Demanda;
 import practica.sii.Clases.Universidad;
 import practica.sii.Clases.Usuario;
 import practica.sii.Clases.Usuario.Rol;
@@ -33,7 +33,7 @@ public class Login {
     private String usuario;
     private String contrasenia;
     private List<Usuario> usuarios;
-	private List<Solicitud> listaSolicitudes;
+	private List<Demanda> listaSolicitudes;
 	private List<Universidad> listaUniversidades;
 	private List<Noticias> listaNoticias;
 	private List<Proyecto> listaProyectos;
@@ -55,7 +55,7 @@ public class Login {
         Proyecto ProyectoB = new Proyecto(2L , "Hospital Carlos Cipres", finicio, ffinal, "prueba segundo proyecto", Estado.En_Espera,"2 creditos");
         //Proyecto ProyectoB = new Proyecto(2L , "Casa de la Juventud", 15/12/2020, 08/02/2021, "Descripcion del proyecto", 1);
     	usuarios = new ArrayList<Usuario>();
-    	listaSolicitudes = new ArrayList<Solicitud>();
+    	listaSolicitudes = new ArrayList<Demanda>();
     	listaProyectos = new ArrayList<Proyecto>();
     	listaUniversidades = new ArrayList<Universidad>();
     	listaNoticias = new ArrayList<Noticias>();
@@ -65,9 +65,9 @@ public class Login {
         usuarios.add(new Usuario(6L,"pdiprueba2","zxcv","pdiprueba2@uma.es", Rol.PDI, Malaga));
         usuarios.add(new Usuario(4L,"pdiprueba","zxcv","pdiprueba@uma.es", Rol.PDI, Malaga));
         usuarios.add(new Usuario(5L, "ongprueba", "qwer", "ong@uma.es", Rol.ONG, Malaga));
-        listaSolicitudes.add(new Solicitud(2L, Estado.Aceptado, Malaga, ProyectoB));
-        listaSolicitudes.add(new Solicitud(1L, Estado.En_Espera, Malaga, ProyectoA));
-        listaSolicitudes.add(new Solicitud(1L, Estado.En_Espera, Malaga, ProyectoA));
+        listaSolicitudes.add(new Demanda(2L, Estado.Aceptado, Malaga, ProyectoB));
+        listaSolicitudes.add(new Demanda(1L, Estado.En_Espera, Malaga, ProyectoA));
+        listaSolicitudes.add(new Demanda(1L, Estado.En_Espera, Malaga, ProyectoA));
         listaNoticias.add(new Noticias(new Long("3"), "El PP gana las elecciones", "Por cansinos", "Eduardo Inda", new Date(), new Usuario()));
         listaUniversidades.add(Malaga);
         listaProyectos.add(ProyectoA);
@@ -78,11 +78,11 @@ public class Login {
 		this.usuarios = usuarios;
 	}
 
-	public List<Solicitud> getListaSolicitudes() {
+	public List<Demanda> getListaSolicitudes() {
 		return listaSolicitudes;
 	}
 
-	public void setListaSolicitudes(List<Solicitud> listaSolicitudes) {
+	public void setListaSolicitudes(List<Demanda> listaSolicitudes) {
 		this.listaSolicitudes = listaSolicitudes;
 	}
 

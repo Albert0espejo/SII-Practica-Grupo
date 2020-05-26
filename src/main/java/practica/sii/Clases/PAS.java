@@ -25,7 +25,7 @@ public class PAS extends Usuario implements Serializable {
 	private Universidad universidad;
 	@ElementCollection
 	@OneToMany (mappedBy = "pas")
-	private List<Solicitud> solicitudes = new ArrayList<Solicitud>();
+	private List<Demanda> solicitudes = new ArrayList<Demanda>();
 	private static final long serialVersionUID = 1L;
 
 	public PAS() {
@@ -80,10 +80,10 @@ public class PAS extends Usuario implements Serializable {
 	public void setUniversidad(Universidad universidad) {
 		this.universidad = universidad;
 	}
-	public List<Solicitud> getSolicitudes() {
+	public List<Demanda> getSolicitudes() {
 		return solicitudes;
 	}
-	public void setSolicitudes(List<Solicitud> solicitudes) {
+	public void setSolicitudes(List<Demanda> solicitudes) {
 		this.solicitudes = solicitudes;
 	}
 	

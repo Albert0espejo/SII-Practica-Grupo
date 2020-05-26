@@ -10,20 +10,14 @@ import javax.inject.Named;
 
 import practica.sii.Clases.PAS;
 import practica.sii.Clases.PDI;
-import practica.sii.Clases.Solicitud;
+import practica.sii.Clases.Demanda;
 import practica.sii.Clases.Usuario;
 import practica.sii.Clases.Usuario.Rol;
 
 @Named(value = "controlPAS")
 @RequestScoped
 public class ControlPAS{
-	
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L; 
-	private List<Solicitud> listaSolicitudes;
+	private List<Demanda> listaSolicitudes;
 	private List<Usuario> listaProfesores;
 	
 	private Boolean showtableSolicitudes = false;
@@ -31,7 +25,7 @@ public class ControlPAS{
 	private Login listas;
 	private Usuario miusuario;
 	private PAS miPAS;
-	private Solicitud selectedSolicitud;
+	private Demanda selectedSolicitud;
 	private PDI supervisor;
 	private Usuario selectedUsuario;
 	
@@ -39,7 +33,7 @@ public class ControlPAS{
 		listas = new Login();
 		supervisor = new PDI();
 		listaProfesores = new ArrayList<Usuario>();
-		listaSolicitudes = new ArrayList<Solicitud>();
+		listaSolicitudes = new ArrayList<Demanda>();
 	}
 	
 	
@@ -66,11 +60,11 @@ public class ControlPAS{
 
 
 
-	public Solicitud getSelectedSolicitud() {
+	public Demanda getSelectedSolicitud() {
 		return selectedSolicitud;
 	}
 
-	public void setSelectedSolicitud(Solicitud selectedSolicitud) {
+	public void setSelectedSolicitud(Demanda selectedSolicitud) {
 		this.selectedSolicitud = selectedSolicitud;
 	}
 
@@ -91,8 +85,8 @@ public class ControlPAS{
 		this.miPAS = miPAS;
 	}
 
-	public List<Solicitud> getListaSolicitudes() {
-		List<Solicitud> aux = listas.getListaSolicitudes();
+	public List<Demanda> getListaSolicitudes() {
+		List<Demanda> aux = listas.getListaSolicitudes();
 		for(int i=0; i < aux.size();i++) {
 			if(aux.get(i).getUniversidad().equals(miusuario.getUniversidad())) {
 				listaSolicitudes.add(aux.get(i));

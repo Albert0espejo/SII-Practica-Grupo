@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @NamedQueries ({
-    @NamedQuery(name="todosUsuarios", query="SELECT c FROM Usuario c")
+    @NamedQuery(name="Usuario.todos", query="SELECT c FROM Usuario c")
 })
 public class Usuario implements Serializable {
 

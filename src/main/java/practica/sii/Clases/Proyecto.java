@@ -1,9 +1,12 @@
 package practica.sii.Clases;
 
+
 import java.io.Serializable;
 import java.lang.Long;
 import java.lang.String;
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.*;
  
 /**
@@ -30,7 +33,9 @@ public class Proyecto implements Serializable {
 	private ONG ong;
 	@ElementCollection
 	@ManyToOne
-	private Solicitud participantes;
+	private Usuario participantes;
+	@OneToMany (mappedBy = "participantes")
+	private List<Proyecto> proyecto;
 	private String Reconocimiento;
 
 	public String getReconocimiento() {

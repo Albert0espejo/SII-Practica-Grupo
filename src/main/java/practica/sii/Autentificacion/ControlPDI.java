@@ -11,7 +11,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import practica.sii.Clases.Estado;
-import practica.sii.Clases.Solicitud;
+import practica.sii.Clases.Demanda;
 import practica.sii.Clases.Usuario;
 
 
@@ -26,20 +26,20 @@ public class ControlPDI implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private List<Solicitud> listaSolicitudes;
+	private List<Demanda> listaSolicitudes;
 	private List<Estado> listaEstado;
 	
 	private Boolean showtablePerfil = false;
 	private Boolean showtableSolicitudes = false;
 	
-	private Solicitud selectedSolicitud;
+	private Demanda selectedSolicitud;
 	private Usuario selectedUsuario;
 	@Inject
 	private Login listas;
 	private Usuario miusuario;
 	
 	public ControlPDI() {
-		listaSolicitudes = new ArrayList<Solicitud>();
+		listaSolicitudes = new ArrayList<Demanda>();
 		listaEstado = Arrays.asList(Estado.values());
 	}
 	
@@ -51,11 +51,11 @@ public class ControlPDI implements Serializable{
 		this.miusuario = miusuario;
 	}
 
-	public Solicitud getSelectedSolicitud() {
+	public Demanda getSelectedSolicitud() {
 		return selectedSolicitud;
 	}
 
-	public void setSelectedSolicitud(Solicitud selectedSolicitud) {
+	public void setSelectedSolicitud(Demanda selectedSolicitud) {
 		this.selectedSolicitud = selectedSolicitud;
 	}
 	
@@ -71,8 +71,8 @@ public class ControlPDI implements Serializable{
 		return listaEstado;
 	}
 	
-	public List<Solicitud> getListaSolicitudes() {
-		List<Solicitud> aux = listas.getListaSolicitudes();
+	public List<Demanda> getListaSolicitudes() {
+		List<Demanda> aux = listas.getListaSolicitudes();
 		for(int i=0; i < aux.size();i++) {
 			if(aux.get(i).getPdi().equals(miusuario)) {
 				listaSolicitudes.add(aux.get(i));
