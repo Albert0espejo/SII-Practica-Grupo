@@ -15,7 +15,6 @@ import javax.persistence.*;
 @Entity
 public class ONG extends Usuario implements Serializable {
 
-	 
 	private String Nombre;
 	private String Descripcion;
 	@Embedded
