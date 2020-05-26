@@ -12,18 +12,21 @@ import practica.sii.Clases.Estado;
 
 import practica.sii.Clases.Noticias;
 import practica.sii.Clases.Proyecto;
-import practica.sii.Clases.Solicitud;
+import practica.sii.Clases.Demanda;
 import practica.sii.Clases.Universidad;
 import practica.sii.Clases.Usuario;
 import practica.sii.Clases.Usuario.Rol;
+import practica.sii.ejb.BaseDeDatos;
 
 @Named(value = "controlAdmin")
 @RequestScoped
 public class ControlAdmin{
 	
+	@Inject
+	private BaseDeDatos bbdd;
 	
 	private List<Usuario> listaUsuarios;
-	private List<Solicitud> listaSolicitudes;
+	private List<Demanda> listaSolicitudes;
 	private List<Universidad> listaUniversidades;
 	private List<Noticias> listaNoticias;
 	private List<Proyecto> listaProyectos;
@@ -31,7 +34,7 @@ public class ControlAdmin{
 	private List<Estado> listaEstado;
 	
 	private Usuario selectedUsuario;
-	private Solicitud selectedSolicitud;
+	private Demanda selectedSolicitud;
 	private Universidad selectedUniversidad;
 	private Noticias selectedNoticia;
 	private Proyecto selectedProyecto;
@@ -40,7 +43,7 @@ public class ControlAdmin{
 	private Login listas;
 	
 	private Usuario user;
-	private Solicitud sol;
+	private Demanda sol;
 	private Universidad uni;
 	private Noticias news;
 	private Proyecto project;
@@ -48,25 +51,25 @@ public class ControlAdmin{
 	
 	public ControlAdmin() {
 		user = new Usuario();
-		sol = new Solicitud();
+		sol = new Demanda();
 		uni = new Universidad();
 		news = new Noticias();
 		project = new Proyecto();
 		listaUsuarios = new ArrayList<Usuario>();
 		listaNoticias = new ArrayList<Noticias>();
 		listaProyectos = new ArrayList<Proyecto>();
-		listaSolicitudes = new ArrayList<Solicitud>();
+		listaSolicitudes = new ArrayList<Demanda>();
 		listaUniversidades = new ArrayList<Universidad>();
 		listaRoles = Arrays.asList(Rol.values());
 		listaEstado = Arrays.asList(Estado.values());
 	}
 	
-	public Solicitud getSelectedSolicitud() {
+	public Demanda getSelectedSolicitud() {
 		return selectedSolicitud;
 	}
 
 
-	public void setSelectedSolicitud(Solicitud selectedSolicitud) {
+	public void setSelectedSolicitud(Demanda selectedSolicitud) {
 		this.selectedSolicitud = selectedSolicitud;
 	}
 
@@ -119,12 +122,11 @@ public class ControlAdmin{
 	}
 
 	public List<Usuario> getListaUsuarios(){
-		listaUsuarios = listas.getUsuarios();
 		
-		return listaUsuarios;
+		return bbdd.todoContactos();
 	}
 
-	public List<Solicitud> getListaSolicitudes() {
+	public List<Demanda> getListaSolicitudes() {
 		listaSolicitudes = listas.getListaSolicitudes();
 		
 		return listaSolicitudes;
