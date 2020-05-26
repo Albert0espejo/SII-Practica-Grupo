@@ -8,10 +8,6 @@
 	<ui:define name="title">Pagina para usuarios de la ONG</ui:define>
 
 	<ui:define name="botones">
-		<li><h:commandButton action="#{controlONG.enabletableNoticias}"
-				update="noticias" value="Vista Noticias" /></li>
-		<li><h:commandButton action="#{controlONG.enabletableProyectos}"
-				update="proyectos" value="Vista Proyectos" /></li>
 		<li><h:commandButton action="#{controlONG.enabletablePerfil}"
 				update="perfil" value="Editar Perfil" /></li>
 	</ui:define>
@@ -19,16 +15,25 @@
 	<ui:define name="content">
 		<c:choose>
 			<c:when test="#{controlAutorizacion.usuario.rol == 'ONG'}">
+				<h:form>
+					<p:accordionPanel>
+					
+						<p:tab title="Noticias">
+						<!-- Lista NOTICIAS -->
+							<p:dataTable class="tabla" id="noticia"
+								value="#{controlONG.listaNoticias}" var="noticias" editable="true"
+								rowKey="#{noticias.id_Noticia}"
+								selection="#{controlONG.selectedNoticia}" selectionMode="single">
 
-				<!-- Lista NOTICIAS -->
-				<h:form rendered="#{controlONG.showtableNoticias}">
-					<p:dataTable class="tabla" id="noticia"
-						value="#{controlONG.listaNoticias}" var="noticias" editable="true"
-						rowKey="#{noticias.id_Noticia}"
-						selection="#{controlONG.selectedNoticia}" selectionMode="single">
-
-						<p:column headerText="Id">
-							<h:outputText value="#{noticias.id_Noticia}" />
+							<p:column headerText="Id">
+								<p:cellEditor>
+									<f:facet name="output">
+										<h:outputText value="#{noticias.id_Noticia}"/>
+									</f:facet>
+									<f:facet name="input">
+											<p:inputText id="modelInput" value="#{noticias.id_Noticia}" />
+										</f:facet>
+									</p:cellEditor>
 						</p:column>
 						<p:column headerText="Autor">
 							<p:cellEditor>
@@ -67,12 +72,14 @@
 
 					</p:dataTable>
 	
-					<li><h:commandButton action="#{controlONG.borrarNoticias}"
-						update="noticias" value="Borrar Noticia"/></li>
-						
-					<li><p:commandButton value="Add" update="addPanelNew"
-							onclick="PF('addNew').show()"/></li>
-				</h:form>
+					<h:panelGrid columns="2">
+								<p:commandButton onclick="PF('addNew').show()"
+										value="Añadir"></p:commandButton>
+								<p:commandButton action="#{controlAdmin.borrarNoticias}" 
+										value="Eliminar" update="noticia"></p:commandButton>
+							</h:panelGrid>
+		
+					</p:tab>
 
 
 				<!-- String to Date -->
@@ -108,7 +115,7 @@
 				</p:dialog>
 
 				<!-- Lista PROYECTOS  -->
-				<h:form rendered="#{controlONG.showtableProyectos}">
+				<p:tab title="Proyectos">
 					<p:dataTable class="tabla" id="proyecto"
 						value="#{controlONG.listaProyectos}" var="proyectos"
 						editable="true" rowKey="#{proyectos.ID_Proyecto}"
@@ -116,7 +123,14 @@
 						selectionMode="single">
 
 						<p:column headerText="Id">
-							<h:outputText value="#{proyectos.ID_Proyecto}" />
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{proyectos.ID_Proyecto}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText id="modelInput" value="#{proyectos.ID_Proyecto}" />
+								</f:facet>
+							</p:cellEditor>
 						</p:column>
 						<p:column headerText="Lugar">
 							<p:cellEditor>
@@ -190,16 +204,28 @@
 						<p:column style="width:35px">
 							<p:rowEditor />
 						</p:column>
+						
+						<p:column headerText="Solicitudes">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{proyectos.solicitudes}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{proyectos.solicitudes}" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
 
 					</p:dataTable>
 
-					<li><h:commandButton action="#{controlONG.borrarProyectos}"
-						update="proyecto" value="Borrar Proyectos"/></li>
-						
-					<li><p:commandButton value="Add" update="addPanelProyecto"
-							onclick="PF('addProyecto').show()"/></li>
-
-				</h:form>
+					<h:panelGrid columns="2">
+							<p:commandButton onclick="PF('addProyecto').show()"
+									value="Añadir"></p:commandButton>
+							<p:commandButton action="#{controlAdmin.borrarProyectos}" 
+									value="Eliminar" update="proyecto"></p:commandButton>
+						</h:panelGrid>
+		
+					</p:tab>
 
 
 				<!-- String to Date -->
@@ -240,6 +266,8 @@
 						</h:panelGrid>
 					</p:outputPanel>
 				</p:dialog>
+				
+				</p:accordionPanel>
 
 				<!--  Editar perfil  -->
 				<h:form rendered="#{controlONG.showtablePerfil}">
@@ -284,6 +312,8 @@
 						</p:column>
 					</p:dataTable>
 
+				</h:form>
+				
 				</h:form>
 			</c:when>
 			<c:otherwise>

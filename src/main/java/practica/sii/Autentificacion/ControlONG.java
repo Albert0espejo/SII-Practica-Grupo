@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import practica.sii.Clases.Noticias;
@@ -31,10 +32,10 @@ public class ControlONG {
 	private ONG miUsuarioONG;
 	private Noticias news;
 	private Proyecto project;
+	@Inject
 	private Login listas;
 	
 	public ControlONG() {
-		listas = new Login();
 		news = new Noticias();
 		project = new Proyecto();
 		miUsuarioONG = new ONG();
@@ -74,7 +75,7 @@ public class ControlONG {
 	}
 
 	public List<Proyecto> getListaProyectos() {
-		listaProyectos = miUsuarioONG.getProyecto();
+		listaProyectos = listas.getListaProyectos();
 		
 		return listaProyectos;
 	}
@@ -87,6 +88,12 @@ public class ControlONG {
 		this.selectedNoticia = selectedNoticia;
 	}
 
+	public List<Noticias> getListaNoticias() {
+
+		listaNoticias = listas.getListaNoticias();
+		return listaNoticias;
+	}
+	
 	public Proyecto getSelectedProyecto() {
 		return selectedProyecto;
 	}
@@ -105,19 +112,7 @@ public class ControlONG {
 		this.miUsuarioONG = miUsuarioONG;
 	}
 
-
-
-	public List<Noticias> getListaNoticias() {
-		/*List<Noticias> aux = listas.getListaNoticias();
-		for (int i = 0; i < aux.size(); i++) {
-			if (aux.get(i).getOng().equals(miUsuario)) {
-				listaNoticias.add(aux.get(i));
-			}
-		}*/
-		
-		listaNoticias = miUsuarioONG.getNoticias();
-		return listaNoticias;
-	}
+	
 	
 	public Boolean getShowtablePerfil() {
 		return showtablePerfil;

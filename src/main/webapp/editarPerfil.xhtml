@@ -10,22 +10,22 @@
 		<c:choose>
 			<c:when test="#{controlAutorizacion.usuario.rol == 'PAS'}">
 			<h:form>
-				<p:panel header="Personal Details">
+				<p:panel header="Informacion personal">
                 <p:messages />
-                <h:panelGrid columns="2" columnClasses="label, value">
+                <h:panelGrid class="tabla" columns="2" columnClasses="label, value">
                     <h:outputText value="Usuario: *" />
                     <p:inputText value="#{controlPAS.miPAS.usuario}"  required="true" label="Usuario"/>
  
                     <h:outputText value="Contraseña *" />
                     <p:password value="#{controlPAS.miPAS.contraseña}" required="true" label="Contraseña"/>
  
-                    <h:outputText value="Correo" />
+                    <h:outputText value="Correo *" />
                     <p:inputText value="#{controlPAS.miPAS.correo}" label="Correo"/>
                     
                     <h:outputText value="Facultad" />
                     <p:inputText value="#{controlPAS.miPAS.facultad}" label="Facultad"/>
                     
-                    <h:outputText value="Correo" />
+                    <h:outputText value="Correo *" />
                     <p:inputText value="#{controlPAS.miPAS.correo}" label="Correo"/>
                     
                     <h:outputText value="Servicio" />

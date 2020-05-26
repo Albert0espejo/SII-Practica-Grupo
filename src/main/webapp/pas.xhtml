@@ -18,26 +18,32 @@
 		<c:choose>
 			<c:when test="#{controlAutorizacion.usuario.rol == 'PAS'}">
 
-				<h:form id="solicitudes_css">
-					<p:growl id="msgs" showDetail="true"
-						skipDetailIfEqualsSummary="true" />
+				<h:form>
+					<p:growl showDetail="true"
+						skipDetailIfEqualsSummary="true"/>
 
 					<h3>Solicitudes</h3>
 					<p:orderList value="#{controlPAS.listaSolicitudes}"
 						var="solicitudes" controlsLocation="none"
 						itemLabel="#{solicitudes}" itemValue="#{solicitudes}" />
-					<p:commandButton value="Enviar" action="#{controlPAS.enviarA}" valuestyle="margin-top:5px" />
+					<p:commandButton value="Enviar" onclick="PF('enviarAProfe').show()"/>
 				</h:form>
-				
-				<h:form>
-					<p:growl id="msgs" showDetail="true"
-						skipDetailIfEqualsSummary="true" />
 
-					<h3>Profesores</h3>
-					<p:orderList value="#{controlPAS.listaProfesores}"
-						var="profesores" controlsLocation="none"
-						itemLabel="#{profesores}" itemValue="#{profesores}" />
-				</h:form>				
+				<p:dialog header="Enviar solicitud al profesor:" modal="true"
+					showEffect="fade" hideEffect="fade" resizable="true"
+					widgetVar="enviarAProfe">
+
+					<h:form>
+						<p:growl id="msgs" showDetail="true"
+							skipDetailIfEqualsSummary="true" />
+
+						<h3>Profesores</h3>
+						<p:orderList value="#{controlPAS.listaProfesores}" selectionMode="single"
+							var="profesores" controlsLocation="none"
+							itemLabel="#{profesores}" itemValue="#{profesores}" onclick="#{controlPAS.enviarA}"/>
+					</h:form>
+
+				</p:dialog>
 			</c:when>
 			<c:otherwise>
 				<ui:include src="/WEB-INF/Templates/errorAutorizacion.xhtml" />

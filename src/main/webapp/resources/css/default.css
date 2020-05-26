@@ -28,8 +28,6 @@ a:link:hover, a:visited:hover  {
   text-decoration : underline;
 }
 
-#solicitudes_css {
-	background-color:red;
-	border: 200px 100px 200px 100px;
-	background-color: red;
+.ui-orderlist .ui-orderlist-list {
+	width:100% !important;
 }

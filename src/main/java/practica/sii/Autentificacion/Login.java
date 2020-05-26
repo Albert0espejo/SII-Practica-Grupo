@@ -52,6 +52,7 @@ public class Login {
     	facultades.add("salud");
     	Universidad Malaga = new Universidad(1L,"Malaga", facultades, new Address("Avd.Cervantes","","Malaga","Andalucia",29010L,"España"),"uma.es");
         Proyecto ProyectoA = new Proyecto(1L , "Hospital Carlos Haya", finicio, ffinal, "Descripcion del proyecto", Estado.En_Espera,"2 creditos");
+        Proyecto ProyectoB = new Proyecto(2L , "Hospital Carlos Cipres", finicio, ffinal, "prueba segundo proyecto", Estado.En_Espera,"2 creditos");
         //Proyecto ProyectoB = new Proyecto(2L , "Casa de la Juventud", 15/12/2020, 08/02/2021, "Descripcion del proyecto", 1);
     	usuarios = new ArrayList<Usuario>();
     	listaSolicitudes = new ArrayList<Solicitud>();
@@ -61,9 +62,10 @@ public class Login {
         usuarios.add(new Usuario(1L,"pepe", "asdf","pepe@uma.es", Rol.ALUMNO, Malaga));
         usuarios.add(new Usuario(2L,"manolo", "qwer", "manolo@uma.es",Rol.ADMINISTRADOR,Malaga));
         usuarios.add(new Usuario(3L,"pasprueba","asdf","pasprueba@uma.es", Rol.PAS, Malaga));
+        usuarios.add(new Usuario(6L,"pdiprueba2","zxcv","pdiprueba2@uma.es", Rol.PDI, Malaga));
         usuarios.add(new Usuario(4L,"pdiprueba","zxcv","pdiprueba@uma.es", Rol.PDI, Malaga));
         usuarios.add(new Usuario(5L, "ongprueba", "qwer", "ong@uma.es", Rol.ONG, Malaga));
-        //listaSolicitudes.add(new Solicitud("1", 1, Malaga, ProyectoA));
+        listaSolicitudes.add(new Solicitud(2L, Estado.Aceptado, Malaga, ProyectoB));
         listaSolicitudes.add(new Solicitud(1L, Estado.En_Espera, Malaga, ProyectoA));
         listaSolicitudes.add(new Solicitud(1L, Estado.En_Espera, Malaga, ProyectoA));
         listaNoticias.add(new Noticias(new Long("3"), "El PP gana las elecciones", "Por cansinos", "Eduardo Inda", new Date(), new Usuario()));
