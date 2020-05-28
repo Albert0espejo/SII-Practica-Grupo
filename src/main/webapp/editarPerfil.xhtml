@@ -1,0 +1,64 @@
+<ui:composition template="/WEB-INF/Templates/plantilla.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+	
+	<ui:define name="content">
+		<c:choose>
+			<c:when test="#{controlAutorizacion.usuario.rol == 'PAS'}">
+			<h:form>
+				<p:panel header="Informacion personal">
+                <p:messages />
+                <h:panelGrid class="tabla" columns="2" columnClasses="label, value">
+                    <h:outputText value="Usuario: *" />
+                    <p:inputText value="#{controlPAS.miPAS.usuario}"  required="true" label="Usuario"/>
+ 
+                    <h:outputText value="Contraseña *" />
+                    <p:password value="#{controlPAS.miPAS.contraseña}" required="true" label="Contraseña"/>
+ 
+                    <h:outputText value="Correo *" />
+                    <p:inputText value="#{controlPAS.miPAS.correo}" label="Correo"/>
+                    
+                    <h:outputText value="Facultad" />
+                    <p:inputText value="#{controlPAS.miPAS.facultad}" label="Facultad"/>
+                    
+                    <h:outputText value="Servicio" />
+                    <p:inputText value="#{controlPAS.miPAS.servicio}" label="Servicio"/>
+                    
+                    <h:outputText value="Direccion" />
+                    <p:inputText value="#{controlPAS.miPAS.direccion}" label="Direccion"/>
+                    
+                    <h:outputText value="Representante" />
+                    <p:inputText value="#{controlPAS.miPAS.representante}" label="Representante"/>
+                    
+                    <h:outputText value="Telefono" />
+                    <p:inputText value="#{controlPAS.miPAS.telefono}" label="Telefono"/>
+ 
+                </h:panelGrid>
+            </p:panel>
+            </h:form>
+            
+			</c:when>
+			
+			<c:when test="#{controlAutorizacion.usuario.rol == 'PDI'}">
+			
+			</c:when>
+			
+			<c:when test="#{controlAutorizacion.usuario.rol == 'ONG'}">
+			
+			</c:when>
+			
+			<c:when test="#{controlAutorizacion.usuario.rol == 'Alumno'}">
+			
+			</c:when>
+			
+			<c:otherwise>
+				<ui:include src="/WEB-INF/Templates/errorAutorizacion.xhtml" />
+			</c:otherwise>
+		</c:choose>		
+	</ui:define>
+	
+</ui:composition>

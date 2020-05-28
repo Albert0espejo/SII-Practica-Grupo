@@ -1,0 +1,61 @@
+<ui:composition template="/WEB-INF/Templates/plantilla.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+	<ui:define name="title">Página para usuarios PAS</ui:define>
+
+	<ui:define name="botones">
+		<li><h:commandButton action="#{controlPAS.enabletablePerfil}"
+				update="perfil" value="Editar perfil" /></li>
+	</ui:define>
+
+	
+	<ui:define name="content">
+
+		<c:choose>
+			<c:when test="#{controlAutorizacion.usuario.rol == 'PAS'}">
+
+				<h:form>
+					<p:growl showDetail="true"
+						skipDetailIfEqualsSummary="true"/>
+
+					<h3>Solicitudes</h3>
+					<p:orderList value="#{controlPAS.listaSolicitudes}"
+						var="solicitudes" controlsLocation="none"
+						itemLabel="#{solicitudes}" itemValue="#{solicitudes}" />
+					<p:commandButton value="Enviar" onclick="PF('enviarAProfe').show()"/>
+				</h:form>
+
+				<p:dialog header="Enviar solicitud al profesor:" modal="true"
+					showEffect="fade" hideEffect="fade" resizable="true"
+					widgetVar="enviarAProfe">
+
+					<h:form>
+						<p:dataTable class="tabla"
+								value="#{controlPAS.listaProfesores}" var="profesores" rowKey="#{profesores.id}"
+								selection="#{controlPAS.selectedUsuario}" selectionMode="single">
+
+							<p:column headerText="Profesor">
+								<f:facet name="output">
+									<h:outputText value="#{profesores}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText id="modelInput" value="#{profesores}" />
+								</f:facet>
+							</p:column>
+							<p:column headerText="Enviar">
+								<p:commandButton action="#{controlPAS.enviarA}" update="listaSolicitudes"/>
+							</p:column>
+						</h:form>
+
+				</p:dialog>
+			</c:when>
+			<c:otherwise>
+				<ui:include src="/WEB-INF/Templates/errorAutorizacion.xhtml" />
+			</c:otherwise>
+		</c:choose>
+	</ui:define>
+</ui:composition>
