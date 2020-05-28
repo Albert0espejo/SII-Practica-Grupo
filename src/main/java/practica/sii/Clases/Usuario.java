@@ -12,6 +12,7 @@ import javax.persistence.*;
 @NamedQuery(name = "Usuario.todos", query="select c from Usuario c")
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "USUARIO")
 public class Usuario implements Serializable {
 
 	public enum Rol {
