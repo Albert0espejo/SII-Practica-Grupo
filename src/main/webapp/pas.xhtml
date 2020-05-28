@@ -14,7 +14,7 @@
 
 	
 	<ui:define name="content">
-
+ 
 		<c:choose>
 			<c:when test="#{controlAutorizacion.usuario.rol == 'PAS'}">
 
@@ -29,29 +29,24 @@
 					<p:commandButton value="Enviar" onclick="PF('enviarAProfe').show()"/>
 				</h:form>
 
-				<p:dialog header="Enviar solicitud al profesor:" modal="true"
-					showEffect="fade" hideEffect="fade" resizable="true"
-					widgetVar="enviarAProfe">
-
-					<h:form>
-						<p:dataTable class="tabla"
-								value="#{controlPAS.listaProfesores}" var="profesores" rowKey="#{profesores.id}"
-								selection="#{controlPAS.selectedUsuario}" selectionMode="single">
+				<h:form>
+					<p:dialog header="Enviar solicitud al profesor:" modal="true"
+						showEffect="fade" hideEffect="fade" resizable="true"
+						widgetVar="enviarAProfe">
+						
+						<p:dataTable class="tabla" value="#{controlPAS.listaProfesores}"
+							var="profesores" rowKey="#{profesores.id}"
+							selection="#{controlPAS.selectedUsuario}" selectionMode="single">
 
 							<p:column headerText="Profesor">
-								<f:facet name="output">
-									<h:outputText value="#{profesores}" />
-								</f:facet>
-								<f:facet name="input">
-									<p:inputText id="modelInput" value="#{profesores}" />
-								</f:facet>
+									<h:outputText value="#{profesores.correo}" />
 							</p:column>
 							<p:column headerText="Enviar">
-								<p:commandButton action="#{controlPAS.enviarA}" update="listaSolicitudes"/>
+								<p:commandButton value="Enviar" action="#{controlPAS.enviarA}" onclick="PF('enviarAProfe').close()"/>
 							</p:column>
-						</h:form>
-
-				</p:dialog>
+						</p:dataTable>
+					</p:dialog>
+				</h:form>
 			</c:when>
 			<c:otherwise>
 				<ui:include src="/WEB-INF/Templates/errorAutorizacion.xhtml" />

@@ -71,12 +71,15 @@ public class ControlPDI implements Serializable{
 	}
 	
 	public List<Demanda> getListaSolicitudes() {
+		/*
 		List<Demanda> aux = listas.getListaSolicitudes();
 		for(int i=0; i < aux.size();i++) {
 			if(aux.get(i).getPdi().equals(miusuario)) {
 				listaSolicitudes.add(aux.get(i));
 			}
 		} 
+		*/
+		listaSolicitudes = listas.getListaSolicitudes();
 
 		return listaSolicitudes;
 	}

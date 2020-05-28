@@ -10,38 +10,35 @@
 		<c:choose>
 			<c:when test="#{controlAutorizacion.usuario.rol == 'PDI'}">
 
-				<!--  Lista solicitudes  -->
-				<h:form rendered="#{controlPDI.showtableSolicitudes}">
-					<p:dataTable class="tabla" id="solicitud"
-						value="#{controlPDI.listaSolicitudes}" var="solicitudes"
-						editable="true">
-						<p:column headerText="Id">
-							<h:outputText value="#{solicitudes.id_Solicitud}" />
-						</p:column>
-						<p:column headerText="Estado">
-							<p:cellEditor>
-								<f:facet name="output">
-									<h:outputText value="#{solicitudes.estado}" />
-								</f:facet>
-								<f:facet name="input">
-									<h:selectOneMenu value="#{solicitudes.estado}">
-										<f:selectItems value="#{controlPDI.listaEstado}" var="estado"
-											itemLabel="#{estado}" itemValue="#{estado}" />
-									</h:selectOneMenu>
-								</f:facet>
-							</p:cellEditor>
-						</p:column>
-						<p:column headerText="Universidad">
-							<h:outputText value="#{solicitudes.universidad}" />
-						</p:column>
-						<p:column headerText="Proyecto">
-							<h:outputText value="#{solicitudes.proyecto.ID_Proyecto}" />
-						</p:column>
-						<p:column style="width:35px">
-							<p:rowEditor />
-						</p:column>
-					</p:dataTable>
-				</h:form>
+
+		<h:dataTable class="tabla" value="#{controlPDI.listaSolicitudes}" var="solicitudes">
+			<h:column>
+				<f:facet name="header">ID</f:facet>    				
+      			#{solicitudes.id_Solicitud}
+  			 </h:column>	 
+			<h:column headerText="Estado">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value=" " />
+					</f:facet>
+					<f:facet name="input">
+							<h:selectOneMenu value="#{solicitudes.estado}">
+								<f:selectItems value="#{controlPDI.listaEstado}" var="estado"
+									itemLabel="#{estado}" itemValue="#{estado}" />
+							</h:selectOneMenu>
+					</f:facet>
+				</p:cellEditor>
+			</h:column>		
+			<h:column>		
+			<f:facet name="header">Universidad</f:facet>    				
+      			#{solicitudes.universidad}
+  			 </h:column>			 
+			<h:column>
+				<f:facet name="header">Proyecto</f:facet>    				
+      			#{solicitudes.proyecto.ID_Proyecto}
+  			 </h:column>
+		</h:dataTable>
+
 
 
 			</c:when>
