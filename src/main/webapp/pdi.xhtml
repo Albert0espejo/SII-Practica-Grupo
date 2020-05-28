@@ -17,45 +17,5 @@
 	</ui:define>
 
 	<ui:define name="content">
-		<c:choose>
-			<c:when test="#{controlAutorizacion.usuario.rol == 'PDI'}">
-
-				<h:form rendered="#{controlPDI.showtableSolicitudes}">
-					<p:dataTable class="tabla" id="solicitud"
-						value="#{controlPDI.listaSolicitudes}" var="solicitudes"
-						editable="true">
-						<p:column headerText="Id">
-							<h:outputText value="#{solicitudes.id_Solicitud}" />
-						</p:column>
-						<p:column headerText="Estado">
-							<p:cellEditor>
-								<f:facet name="output">
-									<h:outputText value="#{solicitudes.estado}" />
-								</f:facet>
-								<f:facet name="input">
-									<h:selectOneMenu value="#{solicitudes.estado}">
-										<f:selectItems value="#{controlPDI.listaEstado}" var="estado"
-											itemLabel="#{estado}" itemValue="#{estado}" />
-									</h:selectOneMenu>
-								</f:facet>
-							</p:cellEditor>
-						</p:column>
-						<p:column headerText="Universidad">
-							<h:outputText value="#{solicitudes.universidad}" />
-						</p:column>
-						<p:column headerText="Proyecto">
-							<h:outputText value="#{solicitudes.proyecto.ID_Proyecto}" />
-						</p:column>
-						<p:column style="width:35px">
-							<p:rowEditor />
-						</p:column>
-					</p:dataTable>
-				</h:form>
-				
-			</c:when>
-			<c:otherwise>
-				<ui:include src="/WEB-INF/Templates/errorAutorizacion.xhtml" />
-			</c:otherwise>
-		</c:choose>
 	</ui:define>
 </ui:composition>
