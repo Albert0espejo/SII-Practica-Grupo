@@ -17,7 +17,6 @@ import javax.persistence.*;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Proyecto implements Serializable {
 
-	   
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long ID_Proyecto;
 	private String Lugar;
@@ -28,7 +27,6 @@ public class Proyecto implements Serializable {
 	private String Descripcion;
 	@Enumerated(EnumType.STRING)
 	private Estado Estado;
-	@ElementCollection
 	@ManyToOne
 	private ONG ong;
 	@ElementCollection
