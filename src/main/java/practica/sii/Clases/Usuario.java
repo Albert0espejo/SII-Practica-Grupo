@@ -36,7 +36,6 @@ public class Usuario implements Serializable {
 	public Usuario() {
 		super();
 	}
-	
 	public Usuario(Long id, String usuario, String contrasena, String correo, Rol rol, Universidad universidad) {
 		this.Id = id;
 		this.usuario = usuario;
