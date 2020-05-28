@@ -8,8 +8,6 @@ import java.util.List;
 
 import javax.persistence.*;
 
-import practica.sii.Clases.Usuario.Rol;
-
 /**
  * Entity implementation class for Entity: Alumno
  *
@@ -19,7 +17,7 @@ public class Alumno extends Usuario implements Serializable {
  
 	
 	private String Nombre;
-	private String Alumno;
+	private String Apellido;
 	private String DNI;
 	@ElementCollection
 	private List<Paises> Destinos_Deseados = new ArrayList<Paises>();
@@ -49,12 +47,12 @@ public class Alumno extends Usuario implements Serializable {
 	public void setNombre(String Nombre) {
 		this.Nombre = Nombre;
 	}   
-	public String getAlumno() {
-		return this.Alumno;
+	public String getApellido() {
+		return this.Apellido;
 	}
 
-	public void setAlumno(String Alumno) {
-		this.Alumno = Alumno;
+	public void setApellido(String Apellido) {
+		this.Apellido = Apellido;
 	}   
 	public String getDNI() {
 		return this.DNI;
