@@ -20,7 +20,7 @@
 						<p:tab title="Lista Usuarios">
 						<!-- Lista USUARIOS -->
 							<p:dataTable class="tabla" id="users"
-								value="#{controlAdmin.listaUsuarios}" var="usuarios"
+								value="#{controlAdmin.todosUsuarios}" var="usuarios"
 								editable="true" rowKey="#{usuarios.id}"
 								selection="#{controlAdmin.selectedUsuario}" selectionMode="single">
 		
@@ -78,7 +78,7 @@
 									</p:cellEditor>
 								</p:column>
 								<p:column headerText="Universidad">
-									<h:outputText value="#{usuarios.universidad}" />
+									<h:outputText value="#{usuarios.id}" />
 								</p:column>
 								<p:column style="width:35px">
 									<p:rowEditor />
@@ -92,7 +92,6 @@
 										value="Eliminar" update="users"></p:commandButton>
 							</h:panelGrid>
 						</p:tab>
-	
 	
 						<p:tab title="Lista Solicitudes">
 							<!--Lista SOLICITUDES  -->

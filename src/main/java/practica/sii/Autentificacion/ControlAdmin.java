@@ -55,7 +55,6 @@ public class ControlAdmin{
 		uni = new Universidad();
 		news = new Noticias();
 		project = new Proyecto();
-		listaUsuarios = new ArrayList<Usuario>();
 		listaNoticias = new ArrayList<Noticias>();
 		listaProyectos = new ArrayList<Proyecto>();
 		listaSolicitudes = new ArrayList<Demanda>();
@@ -121,7 +120,7 @@ public class ControlAdmin{
 		return listaRoles;
 	}
 
-	public List<Usuario> getListaUsuarios(){
+	public List<Usuario> getTodosUsuarios(){
 		
 		return bbdd.todoContactos();
 	}

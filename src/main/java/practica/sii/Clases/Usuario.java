@@ -9,9 +9,9 @@ import javax.persistence.*;
  * Entity implementation class for Entity: usuario
  *
  */
+@NamedQuery(name = "Usuario.todos", query="select c from Usuario c")
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@NamedQuery(name="Usuario.todos", query="select c from Usuario c")
 public class Usuario implements Serializable {
 
 	public enum Rol {
