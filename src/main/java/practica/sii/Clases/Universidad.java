@@ -12,8 +12,9 @@ import javax.persistence.*;
 * Entity implementation class for Entity: Universidad
 *
 */
+@NamedQuery(name = "Universidad.todos", query="select c from Universidad c")
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "Universidad")
 public class Universidad implements Serializable{
 
 	

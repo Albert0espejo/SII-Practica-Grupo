@@ -1,10 +1,11 @@
 package practica.sii.Autentificacion;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.enterprise.context.RequestScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -19,8 +20,8 @@ import practica.sii.Clases.Usuario.Rol;
 import practica.sii.ejb.BaseDeDatosLocal;
 
 @Named(value = "controlAdmin")
-@RequestScoped
-public class ControlAdmin{
+@ViewScoped
+public class ControlAdmin implements Serializable{
 	
 	@Inject
 	private BaseDeDatosLocal bbdd;
@@ -39,7 +40,6 @@ public class ControlAdmin{
 	private Noticias selectedNoticia;
 	private Proyecto selectedProyecto;
 	
-	@Inject
 	private Login listas;
 	
 	private Usuario user;
@@ -55,6 +55,7 @@ public class ControlAdmin{
 		uni = new Universidad();
 		news = new Noticias();
 		project = new Proyecto();
+		listas = new Login();
 		listaNoticias = new ArrayList<Noticias>();
 		listaProyectos = new ArrayList<Proyecto>();
 		listaSolicitudes = new ArrayList<Demanda>();
@@ -122,7 +123,7 @@ public class ControlAdmin{
 
 	public List<Usuario> getTodosUsuarios(){
 		
-		return bbdd.todoContactos();
+		return bbdd.todoUsuarios();
 	}
 
 	public List<Demanda> getListaSolicitudes() {
@@ -150,13 +151,11 @@ public class ControlAdmin{
 	}
 	
 	public void borrarUsuario() {
-		listaUsuarios.remove(selectedUsuario);
-		selectedUsuario = null;
-		listas.setUsuarios(listaUsuarios);
+		bbdd.eliminarUsuario(selectedUsuario);
 	}
 	
-	public void borrarSolicitudes() {
-		listaSolicitudes.remove(selectedSolicitud);
+	public void borrarSolicitudes(Demanda solicitud) {
+		listaSolicitudes.remove(solicitud);
 		selectedSolicitud = null;
 		listas.setListaSolicitudes(listaSolicitudes);
 	}

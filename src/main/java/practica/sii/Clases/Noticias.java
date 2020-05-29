@@ -11,7 +11,9 @@ import javax.persistence.*;
  * Entity implementation class for Entity: Noticias
  *
  */
+@NamedQuery(name = "Noticias.todos", query="select c from Noticias c")
 @Entity
+@Table(name = "Noticias")
 public class Noticias implements Serializable {
 
 	   

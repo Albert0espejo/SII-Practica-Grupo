@@ -18,17 +18,17 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 	private EntityManager em;
 	
 	@Override
-	public List<Usuario> todoContactos() {
+	public List<Usuario> todoUsuarios() {
 		return em.createNamedQuery("Usuario.todos", Usuario.class).getResultList();
 	}
 
 	@Override
-	public void aniadirContacto(Usuario c) {
+	public void aniadirUsuario(Usuario c) {
 		em.persist(c);
 	}
 
 	@Override
-	public void eliminarContacto(Usuario c) {
+	public void eliminarUsuario(Usuario c) {
 		em.remove(em.merge(c));
 	}
 

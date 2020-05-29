@@ -8,7 +8,7 @@ import practica.sii.Clases.Usuario;
 
 @Local
 public interface BaseDeDatosLocal {
-	List<Usuario> todoContactos();
-	void aniadirContacto(Usuario c);
-	void eliminarContacto(Usuario c);
+	List<Usuario> todoUsuarios();
+	void aniadirUsuario(Usuario c);
+	void eliminarUsuario(Usuario c);
 }

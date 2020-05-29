@@ -13,7 +13,9 @@ import javax.persistence.*;
  * Entity implementation class for Entity: Proyecto
  *
  */
+@NamedQuery(name = "Proyecto.todos", query="select c from Proyecto c")
 @Entity
+@Table(name = "Proyecto")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Proyecto implements Serializable {
 
