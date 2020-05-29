@@ -45,7 +45,7 @@ public class ControlAutorizacion implements Serializable{
         // Si el usuario es un usuario normal debe devolver la página normal.xhtml
     	if(usuario != null) {
 	    	if(usuario.getRol().equals(Usuario.Rol.ADMINISTRADOR)) {
-	        	return "admin.xhtml"; 
+	        	return "admin.xhtml?faces-redirect=true"; 
 	        }else if(usuario.getRol().equals(Usuario.Rol.ALUMNO)){
 	        	controlAlumno.setMiUsuario(usuario);
 	        	return "alumno.xhtml";

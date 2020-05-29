@@ -74,7 +74,7 @@ public class ControlPAS{
 
 	public void setMiusuario(Usuario miusuario) {
 		this.miusuario = miusuario;
-		this.miPAS = new PAS(miusuario.getId(),miusuario.getUsuario(),miusuario.getContrasena(),miusuario.getCorreo(),miusuario.getRol(),miusuario.getUniversidad(),null,null,null,null,null);
+		this.miPAS = new PAS(miusuario.getId(),miusuario.getUsuario(),miusuario.getContrasena(),miusuario.getCorreo(),miusuario.getRol(), null ,null,null,null,null,null);
 	}
 
 	public PAS getMiPAS() {
@@ -88,7 +88,7 @@ public class ControlPAS{
 	public List<Demanda> getListaSolicitudes() {
 		List<Demanda> aux = listas.getListaSolicitudes();
 		for(int i=0; i < aux.size();i++) {
-			if(aux.get(i).getUniversidad().equals(miusuario.getUniversidad())) {
+			if(aux.get(i).getUniversidad().equals(null)) {
 				listaSolicitudes.add(aux.get(i));
 			}
 		} 

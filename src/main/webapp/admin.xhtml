@@ -74,9 +74,6 @@
 										</f:facet>
 									</p:cellEditor>
 								</p:column>
-								<p:column headerText="Universidad">
-									<h:outputText value="#{usuarios.id}" />
-								</p:column>
 								<p:column style="width:35px">
 									<p:rowEditor />
 								</p:column>
@@ -407,13 +404,6 @@
 									<h:selectOneMenu value="#{controlAdmin.user.rol}">
 										<f:selectItems value="#{controlAdmin.listaRoles}" var="rol"
 											itemValue="#{rol}" itemLaber="#{rol}"></f:selectItems>
-									</h:selectOneMenu>
-	
-									<h:outputText value="Universidad"></h:outputText>
-									<h:selectOneMenu value="#{controlAdmin.user.universidad}">
-										<f:selectItems value="#{controlAdmin.listaUniversidades}"
-											var="universidades" itemValue="#{universidades}"
-											itemLaber="#{universidades.nombre}"></f:selectItems>
 									</h:selectOneMenu>
 	
 									<h:outputLabel></h:outputLabel>

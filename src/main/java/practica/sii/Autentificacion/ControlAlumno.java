@@ -71,7 +71,7 @@ public class ControlAlumno implements Serializable{
 
 	public void setMiUsuario(Usuario miUsuario) {
 		this.miUsuario = miUsuario;
-		this.miAlumno=new Alumno(miUsuario.getId(), miUsuario.getUsuario(),miUsuario.getContrasena(),miUsuario.getCorreo(),miUsuario.getRol(),miUsuario.getUniversidad());
+		this.miAlumno=new Alumno(miUsuario.getId(), miUsuario.getUsuario(),miUsuario.getContrasena(),miUsuario.getCorreo(),miUsuario.getRol(), null);
 	}
 
 	public Proyecto getSelectedProyecto() {
@@ -151,7 +151,7 @@ public class ControlAlumno implements Serializable{
 	}
 	
 	public void crearSolicitud() {
-		solicitud = new Demanda(new Random().nextLong(), Estado.En_Espera, miUsuario.getUniversidad(), selectedProyecto);
+		solicitud = new Demanda(new Random().nextLong(), Estado.En_Espera, null, selectedProyecto);
 		listas.getListaSolicitudes().add(solicitud);
 		
 	}

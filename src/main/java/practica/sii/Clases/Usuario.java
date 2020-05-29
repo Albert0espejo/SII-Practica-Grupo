@@ -12,7 +12,7 @@ import javax.persistence.*;
 @NamedQuery(name = "Usuario.todos", query="select c from Usuario c")
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@Table(name = "USUARIO")
+@Table(name = "Usuario")
 public class Usuario implements Serializable {
 
 	public enum Rol {
@@ -27,7 +27,6 @@ public class Usuario implements Serializable {
 	private Long Id;
 	private String usuario;
 	private String contrasena;
-	private Universidad universidad;
 	private String correo;
 	@Enumerated(EnumType.STRING)
 	private Rol rol;
@@ -36,13 +35,12 @@ public class Usuario implements Serializable {
 	public Usuario() {
 		super();
 	}
-	public Usuario(Long id, String usuario, String contrasena, String correo, Rol rol, Universidad universidad) {
+	public Usuario(Long id, String usuario, String contrasena, String correo, Rol rol) {
 		this.Id = id;
 		this.usuario = usuario;
 		this.contrasena = contrasena;
 		this.correo = correo;
 		this.rol = rol;
-		this.universidad=universidad;
 	}
 	
 	public Long getId() {
@@ -80,13 +78,7 @@ public class Usuario implements Serializable {
 	public void setRol(Rol rol) {
 		this.rol = rol;
 	}
-	public Universidad getUniversidad() {
-		return universidad;
-	}
 
-	public void setUniversidad(Universidad universidad) {
-		this.universidad = universidad;
-	}
 	public String toString() {
 		return Id + "-" + correo;
 	}

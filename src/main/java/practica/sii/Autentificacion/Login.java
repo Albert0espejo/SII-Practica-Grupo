@@ -61,12 +61,12 @@ public class Login implements Serializable{
     	listaProyectos = new ArrayList<Proyecto>();
     	listaUniversidades = new ArrayList<Universidad>();
     	listaNoticias = new ArrayList<Noticias>();
-        usuarios.add(new Usuario(1L,"pepe", "asdf","pepe@uma.es", Rol.ALUMNO, Malaga));
-        usuarios.add(new Usuario(2L,"manolo", "qwer", "manolo@uma.es",Rol.ADMINISTRADOR,Malaga));
-        usuarios.add(new Usuario(3L,"pasprueba","asdf","pasprueba@uma.es", Rol.PAS, Malaga));
-        usuarios.add(new Usuario(6L,"pdiprueba2","zxcv","pdiprueba2@uma.es", Rol.PDI, Malaga));
-        usuarios.add(new Usuario(4L,"pdiprueba","zxcv","pdiprueba@uma.es", Rol.PDI, Malaga));
-        usuarios.add(new Usuario(5L, "ongprueba", "qwer", "ong@uma.es", Rol.ONG, Malaga));
+        usuarios.add(new Usuario(1L,"pepe", "asdf","pepe@uma.es", Rol.ALUMNO));
+        usuarios.add(new Usuario(2L,"manolo", "qwer", "manolo@uma.es",Rol.ADMINISTRADOR));
+        usuarios.add(new Usuario(3L,"pasprueba","asdf","pasprueba@uma.es", Rol.PAS));
+        usuarios.add(new Usuario(6L,"pdiprueba2","zxcv","pdiprueba2@uma.es", Rol.PDI));
+        usuarios.add(new Usuario(4L,"pdiprueba","zxcv","pdiprueba@uma.es", Rol.PDI));
+        usuarios.add(new Usuario(5L, "ongprueba", "qwer", "ong@uma.es", Rol.ONG));
         listaSolicitudes.add(new Demanda(2L, Estado.Aceptado, Malaga, ProyectoB));
         listaSolicitudes.add(new Demanda(1L, Estado.En_Espera, Malaga, ProyectoA));
         listaSolicitudes.add(new Demanda(1L, Estado.En_Espera, Malaga, ProyectoA));

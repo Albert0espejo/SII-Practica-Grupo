@@ -35,7 +35,7 @@ public class PDI extends Usuario implements Serializable {
 	}
 	
 	public PDI(Long id, String usuario, String contrasena, String correo, Rol rol, Universidad universidad ,String Nombre, String Apellidos, String DNI, String Departamento, String Telefono, String Es_Gestor) {
-		super(id, usuario, contrasena, correo, rol, universidad);
+		super(id, usuario, contrasena, correo, rol);
 		this.Nombre = Nombre;
 		this.Apellidos = Apellidos;
 		this.DNI = DNI;

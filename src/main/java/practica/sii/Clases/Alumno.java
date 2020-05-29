@@ -13,6 +13,7 @@ import javax.persistence.*;
  *
  */
 @Entity
+@Table(name="Alumno")
 public class Alumno extends Usuario implements Serializable {
  
 	
@@ -37,7 +38,7 @@ public class Alumno extends Usuario implements Serializable {
 	}   
 	
 	public Alumno(Long id, String usuario, String contrasena, String correo, Rol rol, Universidad universidad) {
-		super(id,usuario,contrasena,correo,rol,universidad);
+		super(id,usuario,contrasena,correo,rol);
 	}
 	
 	public String getNombre() {

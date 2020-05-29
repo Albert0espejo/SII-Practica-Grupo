@@ -27,7 +27,11 @@ public class Universidad implements Serializable{
 	private List<String> Facultades;
 	@ElementCollection
 	@OneToMany(mappedBy = "universidad")
-	private List<Usuario> usuarios = new ArrayList<Usuario>();
+	private List<Alumno> alumnos = new ArrayList<Alumno>();
+	@OneToMany(mappedBy = "universidad")
+	private List<PDI> pdi = new ArrayList<PDI>();
+	@OneToMany(mappedBy = "universidad")
+	private List<PAS> pas = new ArrayList<PAS>();
 	@ElementCollection
 	@OneToMany(mappedBy = "universidad")
 	private List<Demanda> solicitudes = new ArrayList<Demanda>();
@@ -74,13 +78,25 @@ public class Universidad implements Serializable{
 		this.Direccion_Web = Direccion_Web;
 	}
 
-	public List<Usuario> getUsuarios() {
-		return usuarios;
+	public List<Alumno> getAlumnos() {
+		return alumnos;
 	}
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
+	public void setAlumnos(List<Alumno> usuarios) {
+		this.alumnos = usuarios;
 	}
 	
+	public List<PDI> getPdi() {
+		return pdi;
+	}
+	public void setPdi(List<PDI> pdi) {
+		this.pdi = pdi;
+	}
+	public List<PAS> getPas() {
+		return pas;
+	}
+	public void setPas(List<PAS> pas) {
+		this.pas = pas;
+	}
 	public List<Demanda> getSolicitudes() {
 		return solicitudes;
 	}
