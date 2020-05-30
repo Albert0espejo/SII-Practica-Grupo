@@ -150,6 +150,10 @@ public class ControlAlumno implements Serializable{
 		showtablePerfil = !showtablePerfil;
 	}
 	
+	public String enableEditPerfil() {
+		return "editarPerfil.xhtml";
+	}
+	
 	public void crearSolicitud() {
 		solicitud = new Demanda(new Random().nextLong(), Estado.En_Espera, null, selectedProyecto);
 		listas.getListaSolicitudes().add(solicitud);

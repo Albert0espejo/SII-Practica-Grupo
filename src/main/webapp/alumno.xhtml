@@ -6,6 +6,12 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core">
 	<ui:define name="title">Página para el alumno</ui:define>
+	
+	<ui:define name="botones">
+			<li><h:commandButton action="#{controlAlumno.enableEditPerfil}"
+			update="perfil" value="Editar perfil" /></li>
+	</ui:define>
+
 
 	<ui:define name="content">
 	
@@ -54,115 +60,41 @@
 		                	<c:choose>
 								<c:when test="#{controlAutorizacion.usuario.rol == 'ALUMNO'}">
 									<h:form>
-										<p:accordionPanel>
-											<p:tab title="Vista Proyectos">
-		            							<h:form>
-													<p:dataTable class="tabla" id="proyecto"
-														value="#{controlAlumno.listaProyectos}" var="proyectos" rowKey="#{proyectos.ID_Proyecto}"
-														selection="#{controlAlumno.selectedProyecto}" selectionMode="single">
+											
+		           						<h:form>
+											<p:dataTable class="tabla" id="proyecto"
+												value="#{controlAlumno.listaProyectos}" var="proyectos" rowKey="#{proyectos.ID_Proyecto}"
+												selection="#{controlAlumno.selectedProyecto}" selectionMode="single">
 								
-														<p:column headerText="Id">
-																<h:outputText value="#{proyectos.ID_Proyecto}" />
-														</p:column>
-														<p:column headerText="Lugar">
-																<h:outputText value="#{proyectos.lugar}" />
-														</p:column>
-														<p:column headerText="Fecha Inicio">
-																<h:outputText value="#{proyectos.fecha_Inicio}" />
-														</p:column>
-														<p:column headerText="Fecha Final">
-																<h:outputText value="#{proyectos.fecha_Final}" />
-														</p:column>
-														<p:column headerText="Estado">
-																<h:outputText value="#{proyectos.estado}" />
-														</p:column>
-														
-								
-													</p:dataTable>
-								
-													<p:contextMenu>
-														<p:menuitem value="Enviar solicitud" action="#{controlAlumno.crearSolicitud}" 
-														onclick="PF('dlg1').show()"/>
-													</p:contextMenu>
-													<p:dialog header="Solicitud" widgetVar="dlg1" minHeight="40">
-								    						<h:outputText value="Solicitud enviada!" />
-													</p:dialog>
-												</h:form>						
-		            						</p:tab>
+													<p:column headerText="Id">
+														<h:outputText value="#{proyectos.ID_Proyecto}" />
+													</p:column>
+													<p:column headerText="Lugar">
+														<h:outputText value="#{proyectos.lugar}" />
+													</p:column>
+													<p:column headerText="Fecha Inicio">
+															<h:outputText value="#{proyectos.fecha_Inicio}" />
+													</p:column>
+													<p:column headerText="Fecha Final">
+														<h:outputText value="#{proyectos.fecha_Final}" />
+													</p:column>
+													<p:column headerText="Estado">
+														<h:outputText value="#{proyectos.estado}" />
+												</p:column>
+											</p:dataTable>
+						
+											<p:contextMenu>
+												<p:menuitem value="Enviar solicitud" action="#{controlAlumno.crearSolicitud}" 
+												onclick="PF('dlg1').show()"/>
+											</p:contextMenu>
+											<p:dialog header="Solicitud" widgetVar="dlg1" minHeight="40">
+						    						<h:outputText value="Solicitud enviada!" />
+											</p:dialog>
+										</h:form>						
 		            						
-		            						<p:tab title="Editar Perfil">
 		            						
-		            							<h:form>
-													<p:dataTable class="tabla" id="perfil"
-														value="#{controlAlumno.miAlumno}" var="perfil" editable="true">
-								
-														<p:column headerText="Usuario">
-															<p:cellEditor>
-																<f:facet name="output">
-																	<h:outputText value="#{perfil.usuario}" />
-																</f:facet>
-																<f:facet name="input">
-																	<p:inputText value="#{perfil.usuario}" />
-																</f:facet>
-															</p:cellEditor>
-														</p:column>
-														<p:column headerText="Contraseña">
-															<p:cellEditor>
-																<f:facet name="output">
-																	<h:outputText value="#{perfil.contrasena}" />
-																</f:facet>
-																<f:facet name="input">
-																	<p:inputText value="#{perfil.contrasena}" />
-																</f:facet>
-															</p:cellEditor>
-														</p:column>
-														<p:column headerText="Correo">
-															<p:cellEditor>
-																<f:facet name="output">
-																	<h:outputText value="#{perfil.correo}" />
-																</f:facet>
-																<f:facet name="input">
-																	<p:inputText value="#{perfil.correo}" />
-																</f:facet> 
-															</p:cellEditor>
-														</p:column>
-														<p:column headerText="Universidad">
-															<h:outputText value="#{perfil.universidad}" />
-														</p:column>
-														
-														<p:column headerText="Dirección">
-															<p:cellEditor>
-																<f:facet name="output">
-																	<h:outputText value="#{perfil.direccion}" />
-																</f:facet>
-																<f:facet name="input">
-																	<p:inputText value="#{perfil.direccion}" />
-																</f:facet> 
-															</p:cellEditor>
-														</p:column>
-														<p:column headerText="Idiomas">
-															<p:cellEditor>
-																<f:facet name="output">
-																	<p:dataList value="#{perfil.idiomas}" var="idioma" type="ordered">
-																        #{idioma.name}
-																    </p:dataList>
-																</f:facet>
-																<f:facet name="input">
-																	<p:inputText value="#{perfil.idiomas}" />
-																</f:facet> 
-															</p:cellEditor>
-														</p:column>
-														<p:column style="width:35px">
-															<p:rowEditor /> 
-														</p:column>
-														
-													</p:dataTable>
-			            		
-												</h:form>
 		            						
-		            						</p:tab> 
-		            						
-		            					</p:accordionPanel>   
+		            					   
 		                			</h:form>
 		                		</c:when>
 		                	</c:choose>
