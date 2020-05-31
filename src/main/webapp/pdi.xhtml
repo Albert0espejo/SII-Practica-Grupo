@@ -10,8 +10,10 @@
 
 	<ui:define name="botones">
 		<li><h:commandButton
-				action="#{controlPDI.enabletableSolicitudes}" update="solicitudes"
-				value="Vista Solicitudes" /></li>
+				action="#{controlPDI.enabletableSolicitudes}"
+				update="solicitudes" value="Vista Solicitudes" /></li>
+		<li><h:commandButton action="#{controlPDI.enabletableProyectos}"
+				update="proyectos" value="Vista Proyectos" /></li>
 		<li><h:commandButton action="#{controlPDI.enabletablePerfil}"
 				update="perfil" value="Editar Perfil" /></li>
 	</ui:define>
