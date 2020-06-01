@@ -89,6 +89,37 @@
 			</c:when>
 
 			<c:when test="#{controlAutorizacion.usuario.rol == 'ONG'}">
+			<h:form>
+					<p:panel header="Informacion del Perfil">
+		                <p:messages />
+		                <h:panelGrid class="tabla" columns="2" columnClasses="label, value">
+		                    <h:outputText value="Usuario: *" />
+		                    <p:inputText value="#{controlONG.miUsuario.usuario}"  required="true" label="Usuario"/>
+		 
+		                    <h:outputText value="Contraseña *" />
+		                    <p:password value="#{controlONG.miUsuario.contrasena}" required="true" label="Contraseña"/>
+		 
+		                    <h:outputText value="Correo *" />
+		                    <p:inputText value="#{controlONG.miUsuario.correo}" label="Correo"/>
+		                    
+		                    <h:outputText value="Facultad" />
+		                    <p:inputText value="#{controlONG.miUsuarioONG.nombre}" label="Nombre"/>
+		                    
+		                    <h:outputText value="Direccion" />
+		                    <p:inputText value="#{controlONG.miUsuarioONG.direccion}" label="Direccion"/>
+		                    
+		                    <h:outputText value="Telefono" />
+		                    <p:inputText value="#{controlONG.miUsuarioONG.telefono}" label="Telefono"/>
+		                    
+		                    <h:outputText value="Direccion_Web" />
+		                    <p:inputText value="#{controlONG.miUsuarioONG.direccion_Web}" label="Direccion Web"/>
+		                    
+		                    <h:outputText value="Representante" />
+		                    <p:inputText value="#{controlONG.miUsuarioONG.representante}" label="Representante"/>
+		                   
+		                </h:panelGrid>
+		            </p:panel>
+	            </h:form>
 			
 			</c:when>
 			

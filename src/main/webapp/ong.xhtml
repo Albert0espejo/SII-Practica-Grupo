@@ -8,7 +8,7 @@
 	<ui:define name="title">Pagina para usuarios de la ONG</ui:define>
 
 	<ui:define name="botones">
-		<li><h:commandButton action="#{controlONG.enabletablePerfil}"
+		<li><h:commandButton action="#{controlONG.enableEditarPerfil}"
 				update="perfil" value="Editar Perfil" /></li>
 	</ui:define>
 
@@ -317,52 +317,6 @@
 												</p:dialog>
 
 											</p:accordionPanel>
-
-											<!--  Editar perfil  -->
-											<h:form rendered="#{controlONG.showtablePerfil}">
-												<p:dataTable class="tabla" id="perfil"
-													value="#{controlONG.miUsuario}" var="perfil"
-													editable="true">
-
-													<p:column headerText="Usuario">
-														<p:cellEditor>
-															<f:facet name="output">
-																<h:outputText value="#{perfil.usuario}" />
-															</f:facet>
-															<f:facet name="input">
-																<p:inputText value="#{perfil.usuario}" />
-															</f:facet>
-														</p:cellEditor>
-													</p:column>
-													<p:column headerText="Contraseña">
-														<p:cellEditor>
-															<f:facet name="output">
-																<h:outputText value="#{perfil.contrasena}" />
-															</f:facet>
-															<f:facet name="input">
-																<p:inputText value="#{perfil.contrasena}" />
-															</f:facet>
-														</p:cellEditor>
-													</p:column>
-													<p:column headerText="Correo">
-														<p:cellEditor>
-															<f:facet name="output">
-																<h:outputText value="#{perfil.correo}" />
-															</f:facet>
-															<f:facet name="input">
-																<p:inputText value="#{perfil.correo}" />
-															</f:facet>
-														</p:cellEditor>
-													</p:column>
-													<p:column headerText="Universidad">
-														<h:outputText value="#{perfil.universidad}" />
-													</p:column>
-													<p:column style="width:35px">
-														<p:rowEditor />
-													</p:column>
-												</p:dataTable>
-
-											</h:form>
 
 										</h:form>
 									</h:form>

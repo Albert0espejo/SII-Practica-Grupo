@@ -190,4 +190,8 @@ public class ControlONG {
 	public void crearProyecto() {
 		listaProyectos.add(project);
 	}
+	
+	public String enableEditarPerfil() {
+		return "editarPerfil.xhtml";
+	}
 }
