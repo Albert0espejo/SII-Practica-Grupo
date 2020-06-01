@@ -13,312 +13,368 @@
 	</ui:define>
 
 	<ui:define name="content">
-		<c:choose>
-			<c:when test="#{controlAutorizacion.usuario.rol == 'ONG'}">
-				<h:form>
-					<p:accordionPanel>
-					
-						<p:tab title="Noticias">
-						<!-- Lista NOTICIAS -->
-							<p:dataTable class="tabla" id="noticia"
-								value="#{controlONG.listaNoticias}" var="noticias" editable="true"
-								rowKey="#{noticias.id_Noticia}"
-								selection="#{controlONG.selectedNoticia}" selectionMode="single">
 
-							<p:column headerText="Id">
-								<p:cellEditor>
-									<f:facet name="output">
-										<h:outputText value="#{noticias.id_Noticia}"/>
-									</f:facet>
-									<f:facet name="input">
-											<p:inputText id="modelInput" value="#{noticias.id_Noticia}" />
-										</f:facet>
-									</p:cellEditor>
-						</p:column>
-						<p:column headerText="Autor">
-							<p:cellEditor>
-								<f:facet name="output">
-									<h:outputText value="#{noticias.autor}" />
-								</f:facet>
-								<f:facet name="input">
-									<p:inputText value="#{noticias.autor}" />
-								</f:facet>
-							</p:cellEditor>
-						</p:column>
-						<p:column headerText="Titulo">
-							<p:cellEditor>
-								<f:facet name="output">
-									<h:outputText value="#{noticias.titulo}" />
-								</f:facet>
-								<f:facet name="input">
-									<p:inputText value="#{noticias.titulo}" />
-								</f:facet>
-							</p:cellEditor>
-						</p:column>
-						<p:column headerText="Fecha Publicación">
-							<p:cellEditor>
-								<f:facet name="output">
-									<h:outputText value="#{noticias.fecha_Publicacion}" />
-								</f:facet>
-								<f:facet name="input">
-									<p:calendar value="#{noticias.fecha_Publicacion}"
-										showOn="button"></p:calendar>
-								</f:facet>
-							</p:cellEditor>
-						</p:column>
-						<p:column style="width:35px">
-							<p:rowEditor />
-						</p:column>
+		<style type="text/css">
+.ui-g div {
+	text-align: center;
+}
+</style>
 
-					</p:dataTable>
-	
-					<h:panelGrid columns="2">
-								<p:commandButton onclick="PF('addNew').show()"
-										value="Añadir"></p:commandButton>
-								<p:commandButton action="#{controlAdmin.borrarNoticias}" 
-										value="Eliminar" update="noticia"></p:commandButton>
-							</h:panelGrid>
-		
-					</p:tab>
+		<div class="ui-g">
+			<div class="ui-g-12 ui-md-10 ui-g-nopad">
+				<div class="ui-g-12 ui-g-nopad">
+					<div class="ui-g">
+						<div class="ui-g-3">
+
+							<h:form id="form">
+								<p:dataList value="#{controlONG.listaSolicitudes}"
+									var="solicitudes" type="definition">
+									<f:facet name="header">
+							            Solicitudes
+							        </f:facet>
+									<h:panelGrid columns="2" style="width:100%"
+										columnClasses="logo,detail">
+										<p:outputPanel>
+											<h:panelGrid columns="2" cellpadding="5">
+												<h:outputText value="Id:" />
+												<h:outputText value="#{solicitudes.id_Solicitud}"
+													style="font-weight: bold" />
+
+												<h:outputText value="Estado:" />
+												<h:outputText value="#{solicitudes.estado}"
+													style="font-weight: bold" />
+
+												<h:outputText value="Universidad:" />
+												<h:outputText value="#{solicitudes.universidad}"
+													style="font-weight: bold" />
+
+												<h:outputText value="Proyecto:" />
+												<h:outputText value="#{solicitudes.proyecto.ID_Proyecto}"
+													style="font-weight: bold" />
+											</h:panelGrid>
+										</p:outputPanel>
+									</h:panelGrid>
+									<hr />
+								</p:dataList>
+							</h:form>
 
 
-				<!-- String to Date -->
-				<p:dialog header="Añadir Noticia" widgetVar="addNew" modal="true"
-					showEffect="fade" hideEffect="fade" resizable="false">
-					<p:outputPanel id="addPanelNew" style="text-align:center;">
-						<h:panelGrid columns="2">
-							<h:outputText value="Id"></h:outputText>
-							<h:inputText converter="javax.faces.Long"
-								value="#{controlONG.news.id_Noticia}"></h:inputText>
 
-							<h:outputText value="Autor"></h:outputText>
-							<h:inputText value="#{controlONG.news.autor}"></h:inputText>
+						</div>
+						<div class="ui-g-6">
 
-							<h:outputText value="ONG"></h:outputText>
-							<h:inputText value="#{controlONG.news.ong}"></h:inputText>
+							<c:choose>
+								<c:when test="#{controlAutorizacion.usuario.rol == 'ONG'}">
+									<h:form>
 
-							<h:outputText value="Fecha Publicación"></h:outputText>
-							<p:calendar value="#{controlONG.news.fecha_Publicacion}"
-								showOn="button"></p:calendar>
+										<h:form>
+											<p:accordionPanel>
 
-							<h:outputText value="Titulo"></h:outputText>
-							<h:inputText value="#{controlONG.news.titulo}"></h:inputText>
+												<p:tab title="Noticias">
+													<!-- Lista NOTICIAS -->
+													<p:dataTable class="tabla" id="noticia"
+														value="#{controlONG.listaNoticias}" var="noticias"
+														editable="true" rowKey="#{noticias.id_Noticia}"
+														selection="#{controlONG.selectedNoticia}"
+														selectionMode="single">
 
-							<h:outputText value="Texto"></h:outputText>
-							<h:inputText value="#{controlONG.news.texto}"></h:inputText>
+														<p:column headerText="Id">
+															<p:cellEditor>
+																<f:facet name="output">
+																	<h:outputText value="#{noticias.id_Noticia}" />
+																</f:facet>
+																<f:facet name="input">
+																	<p:inputText id="modelInput"
+																		value="#{noticias.id_Noticia}" />
+																</f:facet>
+															</p:cellEditor>
+														</p:column>
+														<p:column headerText="Autor">
+															<p:cellEditor>
+																<f:facet name="output">
+																	<h:outputText value="#{noticias.autor}" />
+																</f:facet>
+																<f:facet name="input">
+																	<p:inputText value="#{noticias.autor}" />
+																</f:facet>
+															</p:cellEditor>
+														</p:column>
+														<p:column headerText="Titulo">
+															<p:cellEditor>
+																<f:facet name="output">
+																	<h:outputText value="#{noticias.titulo}" />
+																</f:facet>
+																<f:facet name="input">
+																	<p:inputText value="#{noticias.titulo}" />
+																</f:facet>
+															</p:cellEditor>
+														</p:column>
+														<p:column headerText="Fecha Publicación">
+															<p:cellEditor>
+																<f:facet name="output">
+																	<h:outputText value="#{noticias.fecha_Publicacion}" />
+																</f:facet>
+																<f:facet name="input">
+																	<p:calendar value="#{noticias.fecha_Publicacion}"
+																		showOn="button"></p:calendar>
+																</f:facet>
+															</p:cellEditor>
+														</p:column>
+														<p:column style="width:35px">
+															<p:rowEditor />
+														</p:column>
 
-							<h:outputLabel></h:outputLabel>
-							<h:commandButton action="#{controlONG.crearNoticia}"
-								value="Añadir" update="noticia"></h:commandButton>
-						</h:panelGrid>
-					</p:outputPanel>
-				</p:dialog>
+													</p:dataTable>
 
-				<!-- Lista PROYECTOS  -->
-				<p:tab title="Proyectos">
-					<p:dataTable class="tabla" id="proyecto"
-						value="#{controlONG.listaProyectos}" var="proyectos"
-						editable="true" rowKey="#{proyectos.ID_Proyecto}"
-						selection="#{controlAdmin.selectedProyecto}"
-						selectionMode="single">
+													<h:panelGrid columns="2">
+														<p:commandButton onclick="PF('addNew').show()"
+															value="Añadir"></p:commandButton>
+														<p:commandButton action="#{controlAdmin.borrarNoticias}"
+															value="Eliminar" update="noticia"></p:commandButton>
+													</h:panelGrid>
 
-						<p:column headerText="Id">
-							<p:cellEditor>
-								<f:facet name="output">
-									<h:outputText value="#{proyectos.ID_Proyecto}" />
-								</f:facet>
-								<f:facet name="input">
-									<p:inputText id="modelInput" value="#{proyectos.ID_Proyecto}" />
-								</f:facet>
-							</p:cellEditor>
-						</p:column>
-						<p:column headerText="Lugar">
-							<p:cellEditor>
-								<f:facet name="output">
-									<h:outputText value="#{proyectos.lugar}" />
-								</f:facet>
-								<f:facet name="input">
-									<p:inputText value="#{proyectos.lugar}" />
-								</f:facet>
-							</p:cellEditor>
-						</p:column>
-						<p:column headerText="Fecha Inicio">
-							<p:cellEditor>
-								<f:facet name="output">
-									<h:outputText value="#{proyectos.fecha_Inicio}" />
-								</f:facet>
-								<f:facet name="input">
-									<!-- String to Date -->
-									<p:calendar value="#{proyectos.fecha_Inicio}" showOn="button"></p:calendar>
-								</f:facet>
-							</p:cellEditor>
-						</p:column>
-						<p:column headerText="Fecha Final">
-							<p:cellEditor>
-								<f:facet name="output">
-									<h:outputText value="#{proyectos.fecha_Final}" />
-								</f:facet>
-								<!-- String to Date -->
-								<f:facet name="input">
-									<p:calendar value="#{proyectos.fecha_Final}" showOn="button"></p:calendar>
-								</f:facet>
-							</p:cellEditor>
-						</p:column>
-						
-						<p:column headerText="Descripcion">
-							<p:cellEditor>
-								<f:facet name="output">
-									<h:outputText value="#{proyectos.descripcion}" />
-								</f:facet>
-								<f:facet name="input">
-									<p:inputText value="#{proyectos.descripcion}" />
-								</f:facet>
-							</p:cellEditor>
-						</p:column>
-						
-						<p:column headerText="Reconocimiento">
-							<p:cellEditor>
-								<f:facet name="output">
-									<h:outputText value="#{proyectos.reconocimiento}" />
-								</f:facet>
-								<f:facet name="input">
-									<p:inputText value="#{proyectos.reconocimiento}" />
-								</f:facet>
-							</p:cellEditor>
-						</p:column>
-						
-						
-						<p:column headerText="Estado">
-							<p:cellEditor>
-								<f:facet name="output">
-									<h:outputText value="#{proyectos.estado}" />
-								</f:facet>
-								<f:facet name="input">
-									<h:selectOneMenu value="#{proyectos.estado}">
-										<f:selectItems value="#{controlAdmin.listaEstado}"
-											var="estado" itemLabel="#{estado}" itemValue="#{estado}" />
-									</h:selectOneMenu>
-								</f:facet>
-							</p:cellEditor>
-						</p:column>
-						<p:column style="width:35px">
-							<p:rowEditor />
-						</p:column>
-						
-						<p:column headerText="Solicitudes">
-							<p:cellEditor>
-								<f:facet name="output">
-									<h:outputText value="#{proyectos.solicitudes}" />
-								</f:facet>
-								<f:facet name="input">
-									<p:inputText value="#{proyectos.solicitudes}" />
-								</f:facet>
-							</p:cellEditor>
-						</p:column>
-
-					</p:dataTable>
-
-					<h:panelGrid columns="2">
-							<p:commandButton onclick="PF('addProyecto').show()"
-									value="Añadir"></p:commandButton>
-							<p:commandButton action="#{controlAdmin.borrarProyectos}" 
-									value="Eliminar" update="proyecto"></p:commandButton>
-						</h:panelGrid>
-		
-					</p:tab>
+												</p:tab>
 
 
-				<!-- String to Date -->
-				<p:dialog header="Añadir Proyecto" widgetVar="addProyecto"
-					modal="true" showEffect="fade" hideEffect="fade" resizable="false">
-					<p:outputPanel id="addPanelProyecto" style="text-align:center;">
-						<h:panelGrid columns="2">
-							<h:outputText value="Id"></h:outputText>
-							<h:inputText converter="javax.faces.Long"
-								value="#{controlONG.project.ID_Proyecto}"></h:inputText>
+												<!-- String to Date -->
+												<p:dialog header="Añadir Noticia" widgetVar="addNew"
+													modal="true" showEffect="fade" hideEffect="fade"
+													resizable="false">
+													<p:outputPanel id="addPanelNew" style="text-align:center;">
+														<h:panelGrid columns="2">
+															<h:outputText value="Id"></h:outputText>
+															<h:inputText converter="javax.faces.Long"
+																value="#{controlONG.news.id_Noticia}"></h:inputText>
 
-							<h:outputText value="Lugar"></h:outputText>
-							<h:inputText value="#{controlONG.project.lugar}"></h:inputText>
+															<h:outputText value="Autor"></h:outputText>
+															<h:inputText value="#{controlONG.news.autor}"></h:inputText>
 
-							<h:outputText value="Fecha Inicio"></h:outputText>
-							<p:calendar value="#{controlONG.project.fecha_Inicio}"
-								showOn="button"></p:calendar>
+															<h:outputText value="ONG"></h:outputText>
+															<h:inputText value="#{controlONG.news.ong}"></h:inputText>
 
-							<h:outputText value="Fecha Final"></h:outputText>
-							<p:calendar value="#{controlONG.project.fecha_Final}"
-								showOn="button"></p:calendar>
-								
-							<h:outputText value="Descripcion"></h:outputText>
-							<h:inputText value="#{controlONG.project.descripcion}"></h:inputText>
-							
-							<h:outputText value="Reconocimiento"></h:outputText>
-							<h:inputText value="#{controlONG.project.reconocimiento}"></h:inputText>
+															<h:outputText value="Fecha Publicación"></h:outputText>
+															<p:calendar value="#{controlONG.news.fecha_Publicacion}"
+																showOn="button"></p:calendar>
 
-							<h:outputText value="Estado"></h:outputText>
-							<h:selectOneMenu value="#{controlONG.project.estado}">
-								<f:selectItems value="#{controlAdmin.listaEstado}" var="sol"
-									itemValue="#{sol}" itemLaber="#{sol}"></f:selectItems>
-							</h:selectOneMenu>
+															<h:outputText value="Titulo"></h:outputText>
+															<h:inputText value="#{controlONG.news.titulo}"></h:inputText>
 
-							<h:outputLabel></h:outputLabel>
-							<h:commandButton action="#{controlONG.crearProyecto}"
-								value="Añadir" update="proyecto"></h:commandButton>
-						</h:panelGrid>
-					</p:outputPanel>
-				</p:dialog>
-				
-				</p:accordionPanel>
+															<h:outputText value="Texto"></h:outputText>
+															<h:inputText value="#{controlONG.news.texto}"></h:inputText>
 
-				<!--  Editar perfil  -->
-				<h:form rendered="#{controlONG.showtablePerfil}">
-					<p:dataTable class="tabla" id="perfil"
-						value="#{controlONG.miUsuario}" var="perfil" editable="true">
+															<h:outputLabel></h:outputLabel>
+															<h:commandButton action="#{controlONG.crearNoticia}"
+																value="Añadir" update="noticia"></h:commandButton>
+														</h:panelGrid>
+													</p:outputPanel>
+												</p:dialog>
 
-						<p:column headerText="Usuario">
-							<p:cellEditor>
-								<f:facet name="output">
-									<h:outputText value="#{perfil.usuario}" />
-								</f:facet>
-								<f:facet name="input">
-									<p:inputText value="#{perfil.usuario}" />
-								</f:facet>
-							</p:cellEditor>
-						</p:column>
-						<p:column headerText="Contraseña">
-							<p:cellEditor>
-								<f:facet name="output">
-									<h:outputText value="#{perfil.contrasena}" />
-								</f:facet>
-								<f:facet name="input">
-									<p:inputText value="#{perfil.contrasena}" />
-								</f:facet>
-							</p:cellEditor>
-						</p:column>
-						<p:column headerText="Correo">
-							<p:cellEditor>
-								<f:facet name="output">
-									<h:outputText value="#{perfil.correo}" />
-								</f:facet>
-								<f:facet name="input">
-									<p:inputText value="#{perfil.correo}" />
-								</f:facet>
-							</p:cellEditor>
-						</p:column>
-						<p:column headerText="Universidad">
-							<h:outputText value="#{perfil.universidad}" />
-						</p:column>
-						<p:column style="width:35px">
-							<p:rowEditor />
-						</p:column>
-					</p:dataTable>
+												<!-- Lista PROYECTOS  -->
+												<p:tab title="Proyectos">
+													<p:dataTable class="tabla" id="proyecto"
+														value="#{controlONG.listaProyectos}" var="proyectos"
+														editable="true" rowKey="#{proyectos.ID_Proyecto}"
+														selection="#{controlAdmin.selectedProyecto}"
+														selectionMode="single">
 
-				</h:form>
-				
-				</h:form>
-			</c:when>
-			<c:otherwise>
-				<ui:include src="/WEB-INF/Templates/errorAutorizacion.xhtml" />
-			</c:otherwise>
-		</c:choose>
+														<p:column headerText="Id">
+															<p:cellEditor>
+																<f:facet name="output">
+																	<h:outputText value="#{proyectos.ID_Proyecto}" />
+																</f:facet>
+																<f:facet name="input">
+																	<p:inputText id="modelInput"
+																		value="#{proyectos.ID_Proyecto}" />
+																</f:facet>
+															</p:cellEditor>
+														</p:column>
+														<p:column headerText="Lugar">
+															<p:cellEditor>
+																<f:facet name="output">
+																	<h:outputText value="#{proyectos.lugar}" />
+																</f:facet>
+																<f:facet name="input">
+																	<p:inputText value="#{proyectos.lugar}" />
+																</f:facet>
+															</p:cellEditor>
+														</p:column>
+														<p:column headerText="Fecha Inicio">
+															<p:cellEditor>
+																<f:facet name="output">
+																	<h:outputText value="#{proyectos.fecha_Inicio}" />
+																</f:facet>
+																<f:facet name="input">
+																	<!-- String to Date -->
+																	<p:calendar value="#{proyectos.fecha_Inicio}"
+																		showOn="button"></p:calendar>
+																</f:facet>
+															</p:cellEditor>
+														</p:column>
+														<p:column headerText="Fecha Final">
+															<p:cellEditor>
+																<f:facet name="output">
+																	<h:outputText value="#{proyectos.fecha_Final}" />
+																</f:facet>
+																<!-- String to Date -->
+																<f:facet name="input">
+																	<p:calendar value="#{proyectos.fecha_Final}"
+																		showOn="button"></p:calendar>
+																</f:facet>
+															</p:cellEditor>
+														</p:column>
+
+														<p:column headerText="Descripcion">
+															<p:cellEditor>
+																<f:facet name="output">
+																	<h:outputText value="#{proyectos.descripcion}" />
+																</f:facet>
+																<f:facet name="input">
+																	<p:inputText value="#{proyectos.descripcion}" />
+																</f:facet>
+															</p:cellEditor>
+														</p:column>
+
+														<p:column headerText="Reconocimiento">
+															<p:cellEditor>
+																<f:facet name="output">
+																	<h:outputText value="#{proyectos.reconocimiento}" />
+																</f:facet>
+																<f:facet name="input">
+																	<p:inputText value="#{proyectos.reconocimiento}" />
+																</f:facet>
+															</p:cellEditor>
+														</p:column>
+
+
+														<p:column headerText="Estado">
+															<p:cellEditor>
+																<f:facet name="output">
+																	<h:outputText value="#{proyectos.estado}" />
+																</f:facet>
+																<f:facet name="input">
+																	<h:selectOneMenu value="#{proyectos.estado}">
+																		<f:selectItems value="#{controlAdmin.listaEstado}"
+																			var="estado" itemLabel="#{estado}"
+																			itemValue="#{estado}" />
+																	</h:selectOneMenu>
+																</f:facet>
+															</p:cellEditor>
+														</p:column>
+														<p:column style="width:35px">
+															<p:rowEditor />
+														</p:column>
+
+													</p:dataTable>
+
+													<h:panelGrid columns="2">
+														<p:commandButton onclick="PF('addProyecto').show()"
+															value="Añadir"></p:commandButton>
+														<p:commandButton action="#{controlAdmin.borrarProyectos}"
+															value="Eliminar" update="proyecto"></p:commandButton>
+													</h:panelGrid>
+
+												</p:tab>
+
+												<!-- String to Date -->
+												<p:dialog header="Añadir Proyecto" widgetVar="addProyecto"
+													modal="true" showEffect="fade" hideEffect="fade"
+													resizable="false">
+													<p:outputPanel id="addPanelProyecto"
+														style="text-align:center;">
+														<h:panelGrid columns="2">
+															<h:outputText value="Id"></h:outputText>
+															<h:inputText converter="javax.faces.Long"
+																value="#{controlONG.project.ID_Proyecto}"></h:inputText>
+
+															<h:outputText value="Lugar"></h:outputText>
+															<h:inputText value="#{controlONG.project.lugar}"></h:inputText>
+
+															<h:outputText value="Fecha Inicio"></h:outputText>
+															<p:calendar value="#{controlONG.project.fecha_Inicio}"
+																showOn="button"></p:calendar>
+
+															<h:outputText value="Fecha Final"></h:outputText>
+															<p:calendar value="#{controlONG.project.fecha_Final}"
+																showOn="button"></p:calendar>
+
+															<h:outputText value="Descripcion"></h:outputText>
+															<h:inputText value="#{controlONG.project.descripcion}"></h:inputText>
+
+															<h:outputText value="Reconocimiento"></h:outputText>
+															<h:inputText value="#{controlONG.project.reconocimiento}"></h:inputText>
+
+															<h:outputText value="Estado"></h:outputText>
+															<h:selectOneMenu value="#{controlONG.project.estado}">
+																<f:selectItems value="#{controlAdmin.listaEstado}"
+																	var="sol" itemValue="#{sol}" itemLaber="#{sol}"></f:selectItems>
+															</h:selectOneMenu>
+
+															<h:outputLabel></h:outputLabel>
+															<h:commandButton action="#{controlONG.crearProyecto}"
+																value="Añadir" update="proyecto"></h:commandButton>
+														</h:panelGrid>
+													</p:outputPanel>
+												</p:dialog>
+
+											</p:accordionPanel>
+
+											<!--  Editar perfil  -->
+											<h:form rendered="#{controlONG.showtablePerfil}">
+												<p:dataTable class="tabla" id="perfil"
+													value="#{controlONG.miUsuario}" var="perfil"
+													editable="true">
+
+													<p:column headerText="Usuario">
+														<p:cellEditor>
+															<f:facet name="output">
+																<h:outputText value="#{perfil.usuario}" />
+															</f:facet>
+															<f:facet name="input">
+																<p:inputText value="#{perfil.usuario}" />
+															</f:facet>
+														</p:cellEditor>
+													</p:column>
+													<p:column headerText="Contraseña">
+														<p:cellEditor>
+															<f:facet name="output">
+																<h:outputText value="#{perfil.contrasena}" />
+															</f:facet>
+															<f:facet name="input">
+																<p:inputText value="#{perfil.contrasena}" />
+															</f:facet>
+														</p:cellEditor>
+													</p:column>
+													<p:column headerText="Correo">
+														<p:cellEditor>
+															<f:facet name="output">
+																<h:outputText value="#{perfil.correo}" />
+															</f:facet>
+															<f:facet name="input">
+																<p:inputText value="#{perfil.correo}" />
+															</f:facet>
+														</p:cellEditor>
+													</p:column>
+													<p:column headerText="Universidad">
+														<h:outputText value="#{perfil.universidad}" />
+													</p:column>
+													<p:column style="width:35px">
+														<p:rowEditor />
+													</p:column>
+												</p:dataTable>
+
+											</h:form>
+
+										</h:form>
+									</h:form>
+								</c:when>
+								<c:otherwise>
+									<ui:include src="/WEB-INF/Templates/errorAutorizacion.xhtml" />
+								</c:otherwise>
+							</c:choose>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</ui:define>
 </ui:composition>

@@ -7,6 +7,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import practica.sii.Clases.Demanda;
 import practica.sii.Clases.Noticias;
 import practica.sii.Clases.ONG;
 import practica.sii.Clases.Proyecto;
@@ -20,10 +21,12 @@ public class ControlONG {
 
 	private List<Noticias> listaNoticias;
 	private List<Proyecto> listaProyectos;
+	private List<Demanda> listaSolicitudes; 
 	
 	private Boolean showtableNoticias = false;
 	private Boolean showtableProyectos = false;
 	private Boolean showtablePerfil = false;
+	private Boolean showtableSolicitudes = false;
 	
 	private Noticias selectedNoticia; 
 	private Proyecto selectedProyecto;
@@ -41,22 +44,24 @@ public class ControlONG {
 		miUsuarioONG = new ONG();
 		listaNoticias = new ArrayList<Noticias>();
 		listaProyectos = new ArrayList<Proyecto>();
+		listaSolicitudes = new ArrayList<Demanda>();
 
 	}
 	
 	
+	public List<Demanda> getListaSolicitudes() {
+		listaSolicitudes = listas.getListaSolicitudes();
+		
+		return listaSolicitudes;
+	}
 	
 	public Proyecto getProject() {
 		return project;
 	}
 
-
-
 	public void setProject(Proyecto project) {
 		this.project = project;
 	}
-
-
 
 	public Usuario getMiUsuario() {
 		return miUsuario;
@@ -113,6 +118,9 @@ public class ControlONG {
 	}
 
 	
+	public Boolean getShowtableSolicitudes() {
+		return showtableSolicitudes;
+	}
 	
 	public Boolean getShowtablePerfil() {
 		return showtablePerfil;
@@ -127,7 +135,7 @@ public class ControlONG {
 	}
 	
 	public void enabletableNoticias() {
-		if(showtableProyectos || showtablePerfil) {
+		if(showtableProyectos || showtablePerfil || showtableSolicitudes) {
 			showtableProyectos = false;
 			showtablePerfil = false;
 		}
@@ -136,7 +144,7 @@ public class ControlONG {
 	}
 	
 	public void enabletableProyectos() {
-		if(showtableNoticias || showtablePerfil) {
+		if(showtableNoticias || showtablePerfil || showtableSolicitudes) {
 			showtableNoticias = false;
 			showtablePerfil = false;
 		}
@@ -145,12 +153,22 @@ public class ControlONG {
 	}
 	
 	public void enabletablePerfil() {
-		if(showtableNoticias || showtableProyectos) {
+		if(showtableNoticias || showtableProyectos || showtableSolicitudes) {
 			showtableNoticias = false;
 			showtableProyectos = false;
 		}
 		
 		showtablePerfil = !showtablePerfil;
+	}
+	
+	public void enabletableSolicitudes() {
+		if(showtableNoticias || showtableProyectos || showtablePerfil) {
+			showtableNoticias = false;
+			showtableProyectos = false;
+			showtablePerfil = false;
+		}
+		
+		showtableSolicitudes = !showtableSolicitudes;
 	}
 
 	public void borrarNoticias() {
