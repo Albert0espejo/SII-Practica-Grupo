@@ -12,6 +12,7 @@ import javax.persistence.*;
  *
  */
 @Entity
+@Table(name="PAS")
 public class PAS extends Usuario implements Serializable {
 
 	
