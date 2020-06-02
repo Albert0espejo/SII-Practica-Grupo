@@ -6,6 +6,10 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import practica.sii.Clases.Demanda;
+import practica.sii.Clases.Noticias;
+import practica.sii.Clases.Proyecto;
+import practica.sii.Clases.Universidad;
 import practica.sii.Clases.Usuario;
 
 /**
@@ -25,6 +29,7 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 	@Override
 	public void aniadirUsuario(Usuario c) {
 		em.persist(c);
+		
 	}
 
 	@Override
@@ -32,4 +37,23 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 		em.remove(em.merge(c));
 	}
 
+	@Override
+	public List<Universidad> todoUniversidad() {
+		return em.createNamedQuery("Universidad.todos", Universidad.class).getResultList();
+	}
+	
+	@Override
+	public List<Demanda> todoSolicitudes() {
+		return em.createNamedQuery("Demanda.todos", Demanda.class).getResultList();
+	}
+	
+	@Override
+	public List<Noticias> todoNoticias() {
+		return em.createNamedQuery("Noticias.todos", Noticias.class).getResultList();
+	}
+	
+	@Override
+	public List<Proyecto> todoProyectos() {
+		return em.createNamedQuery("Proyecto.todos", Proyecto.class).getResultList();
+	}
 }

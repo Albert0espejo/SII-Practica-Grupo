@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.faces.view.ViewScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -20,8 +20,8 @@ import practica.sii.Clases.Usuario.Rol;
 import practica.sii.ejb.BaseDeDatosLocal;
 
 @Named(value = "controlAdmin")
-@ViewScoped
-public class ControlAdmin implements Serializable{
+@RequestScoped
+public class ControlAdmin{
 	
 	@Inject
 	private BaseDeDatosLocal bbdd;
@@ -127,27 +127,23 @@ public class ControlAdmin implements Serializable{
 	}
 
 	public List<Demanda> getListaSolicitudes() {
-		listaSolicitudes = listas.getListaSolicitudes();
 		
-		return listaSolicitudes;
+		return bbdd.todoSolicitudes();
 	}
 
 	public List<Universidad> getListaUniversidades() {
-		listaUniversidades = listas.getListaUniversidades();
 		
-		return listaUniversidades;
+		return bbdd.todoUniversidad();
 	}
 
 	public List<Noticias> getListaNoticias() {
-		listaNoticias = listas.getListaNoticias();
 		
-		return listaNoticias;
+		return bbdd.todoNoticias();
 	}
 
 	public List<Proyecto> getListaProyectos() {
-		listaProyectos = listas.getListaProyectos();
 		
-		return listaProyectos;
+		return bbdd.todoProyectos();
 	}
 	
 	public void borrarUsuario() {
@@ -219,8 +215,8 @@ public class ControlAdmin implements Serializable{
 	}
 
 	public void crearUsuario() {
-		listaUsuarios.add(user);
-		listas.setUsuarios(listaUsuarios);
+		bbdd.aniadirUsuario(user);
+		user = new Usuario();
 	}
 	
 	public void crearSolicitud() {

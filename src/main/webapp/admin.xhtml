@@ -15,6 +15,7 @@
 					<p:accordionPanel>
 					
 						<p:tab title="Lista Usuarios">
+						<h:form>
 						<!-- Lista USUARIOS -->
 							<p:dataTable class="tabla" id="users"
 								value="#{controlAdmin.todosUsuarios}" var="usuarios"
@@ -78,15 +79,16 @@
 									<p:rowEditor />
 								</p:column>
 							</p:dataTable>
-	
+
 							<h:panelGrid columns="2">
 								<p:commandButton onclick="PF('addUser').show()"
 										value="Añadir"></p:commandButton>
 								<p:commandButton action="#{controlAdmin.borrarUsuario}"
 										value="Eliminar" update="users"></p:commandButton>
 							</h:panelGrid>
+						</h:form>
 						</p:tab>
-	
+
 						<p:tab title="Lista Solicitudes">
 							<!--Lista SOLICITUDES  -->
 							<p:dataTable class="tabla" id="solicitud"
@@ -139,6 +141,7 @@
 					
 	
 						<p:tab title="Lista Universidades">
+						<h:form>
 							<!-- Lista UNIVERSIDADES  -->
 							<p:dataTable class="tabla" id="universidad"
 								value="#{controlAdmin.listaUniversidades}" var="universidades"
@@ -196,8 +199,10 @@
 								<p:commandButton onclick="PF('addUni').show()"
 										value="Añadir"></p:commandButton>
 								<p:commandButton action="#{controlAdmin.borrarUniversidades}" 
-										value="Eliminar" update="universidad"></p:commandButton>
+										value="Eliminar" update="universidad" immediate="true"></p:commandButton>
 							</h:panelGrid>
+							
+						</h:form>
 						</p:tab>
 
 	
@@ -406,7 +411,7 @@
 	
 									<h:outputLabel></h:outputLabel>
 									<h:commandButton action="#{controlAdmin.crearUsuario}"
-										value="Añadir" update="usuarios"></h:commandButton>
+										value="Añadir" update="users"></h:commandButton>
 								</h:panelGrid>
 							</p:outputPanel>
 						</p:dialog>
