@@ -14,30 +14,31 @@
                 <p:messages />
                 <h:panelGrid class="tabla" columns="2" columnClasses="label, value">
                     <h:outputText value="Usuario: *" />
-                    <p:inputText value="#{controlPAS.miPAS.usuario}"  required="true" label="Usuario"/>
+                    <h:inputText value="#{controlPAS.miPAS.usuario}"  required="true" label="Usuario"/>
  
                     <h:outputText value="Contraseña *" />
-                    <p:password value="#{controlPAS.miPAS.contrasena}" required="true" label="Contraseña"/>
+                    <h:inputSecret value="#{controlPAS.miPAS.contrasena}" required="true" label="Contraseña"/>
  
                     <h:outputText value="Correo *" />
-                    <p:inputText value="#{controlPAS.miPAS.correo}" label="Correo"/>
+                    <h:inputText value="#{controlPAS.miPAS.correo}" label="Correo"/>
                     
                     <h:outputText value="Facultad" />
-                    <p:inputText value="#{controlPAS.miPAS.facultad}" label="Facultad"/>
+                    <h:inputText value="#{controlPAS.miPAS.facultad}" label="Facultad"/>
                     
                     <h:outputText value="Servicio" />
-                    <p:inputText value="#{controlPAS.miPAS.servicio}" label="Servicio"/>
+                    <h:inputText value="#{controlPAS.miPAS.servicio}" label="Servicio"/>
                     
                     <h:outputText value="Direccion" />
-                    <p:inputText value="#{controlPAS.miPAS.direccion}" label="Direccion"/>
+                    <h:inputText value="#{controlPAS.miPAS.direccion}" label="Direccion"/>
                     
                     <h:outputText value="Representante" />
-                    <p:inputText value="#{controlPAS.miPAS.representante}" label="Representante"/>
-                    
+                    <h:inputText value="#{controlPAS.miPAS.representante}" label="Representante"/>
+                     
                     <h:outputText value="Telefono" />
-                    <p:inputText value="#{controlPAS.miPAS.telefono}" label="Telefono"/>
+                    <h:inputText value="#{controlPAS.miPAS.telefono}" label="Telefono"/> 
  
                 </h:panelGrid>
+                <p:commandButton value="Aplicar cambios" action="#{controlPAS.aplicarCambios}"/>
             </p:panel>
             </h:form>
             

@@ -123,5 +123,14 @@ public class ControlPAS{
 		selectedSolicitud.setPdi(supervisor);
 		selectedSolicitud = null;
 	}
+	public void aplicarCambios() {
+		setMiusuario(miusuario);
+		miPAS.setContrasena(miPAS.getContrasena());
+		miPAS.setCorreo(miPAS.getCorreo());
+		miPAS.setDireccion(miPAS.getDireccion());
+		miPAS.setFacultad(miPAS.getFacultad());
+		miPAS.setRepresentante(miPAS.getRepresentante());
+		miPAS.setTelefono(miPAS.getTelefono());
+	}
 	
 }
