@@ -1,0 +1,59 @@
+<ui:composition template="/WEB-INF/Templates/plantilla.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<ui:define name="botones">
+		<li><h:commandButton
+				action="#{controlPDI.enabletableSolicitudes}" update="solicitudes"
+				value="Vista Solicitudes" /></li>
+		<li><h:commandButton action="#{controlPDI.enabletableProyectos}"
+				update="proyectos" value="Vista Proyectos" /></li>
+		<li><h:commandButton action="#{controlPDI.enabletablePerfil}"
+				update="perfil" value="Editar Perfil" /></li>
+	</ui:define>
+
+	<ui:define name="content">
+		<c:choose>
+			<c:when test="#{controlAutorizacion.usuario.rol == 'PDI'}">
+				<p:dataTable class="tabla" id="solicitud"
+					value="#{controlPDI.listaSolicitudes}" var="solicitudes"
+					editable="true" rowKey="#{solicitudes.id_Solicitud}"
+					selection="#{controlPDI.selectedSolicitud}" selectionMode="single">
+
+					<p:column headerText="Id">
+						<h:outputText value="#{solicitudes.id_Solicitud}" />
+					</p:column>
+					<p:column headerText="Estado">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{solicitudes.estado}" />
+							</f:facet>
+							<f:facet name="input">
+								<h:selectOneMenu value="#{solicitudes.estado}">
+									<f:selectItems value="#{controlPDI.listaEstado}" var="estado"
+										itemLabel="#{estado}" itemValue="#{estado}" />
+								</h:selectOneMenu>
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+					<p:column headerText="Universidad">
+						<h:outputText value="#{solicitudes.universidad}" />
+					</p:column>
+					<p:column headerText="Proyecto">
+						<h:outputText value="#{solicitudes.proyecto.ID_Proyecto}" />
+					</p:column>
+					<p:column style="width:35px">
+						<p:rowEditor />
+					</p:column>
+				</p:dataTable>
+			</c:when>
+			<c:otherwise>
+				<ui:include src="/WEB-INF/Templates/errorAutorizacion.xhtml" />
+			</c:otherwise>
+		</c:choose>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,23 @@
+<ui:composition template="/WEB-INF/Templates/plantilla.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<ui:define name="title">Página para usuarios PDI</ui:define>
+
+	<ui:define name="botones">
+		<li><h:commandButton
+				action="#{controlPDI.enabletableSolicitudes}"
+				update="solicitudes" value="Vista Solicitudes" /></li>
+		<li><h:commandButton action="#{controlPDI.enabletableProyectos}"
+				update="proyectos" value="Vista Proyectos" /></li>
+		<li><h:commandButton action="#{controlPDI.enabletablePerfil}"
+				update="perfil" value="Editar Perfil" /></li>
+	</ui:define>
+
+	<ui:define name="content">
+	</ui:define>
+</ui:composition>

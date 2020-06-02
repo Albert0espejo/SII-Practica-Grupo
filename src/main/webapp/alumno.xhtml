@@ -1,0 +1,146 @@
+<ui:composition template="/WEB-INF/Templates/plantilla.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+	<ui:define name="title">Página para el alumno</ui:define>
+	
+	<ui:define name="botones">
+			<li><h:commandButton action="#{controlAlumno.enableEditPerfil}"
+			update="perfil" value="Editar perfil" /></li>
+	</ui:define>
+
+
+	<ui:define name="content">
+	
+	<style type="text/css">
+	.ui-g div {
+	    text-align: center;
+	}</style>
+		
+		<div class="ui-g">
+		    <div class="ui-g-12 ui-md-10 ui-g-nopad">
+		        <div class="ui-g-12 ui-g-nopad">
+		            <div class="ui-g">
+		                <div class="ui-g-3"> 
+		                
+		                	<h:form id="form">
+		                	    <p:dataList value="#{controlAlumno.listaSolicitudes}" var="solicitudes" type="definition">
+							    	<f:facet name="header">
+							            Solicitudes
+							        </f:facet>
+							    	<h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
+							            <p:outputPanel>
+							                <h:panelGrid columns="2" cellpadding="5">
+							                    <h:outputText value="Id:" />
+							                    <h:outputText value="#{solicitudes.id_Solicitud}" style="font-weight: bold"/>
+							 
+							                    <h:outputText value="Estado:" />
+							                    <h:outputText value="#{solicitudes.estado}" style="font-weight: bold"/>
+							 
+							                    <h:outputText value="Universidad:" />
+							                    <h:outputText value="#{solicitudes.universidad}" style="font-weight: bold"/>
+							 
+							                    <h:outputText value="Proyecto:" />
+							                    <h:outputText value="#{solicitudes.proyecto.ID_Proyecto}" style="font-weight: bold"/>						 
+							                </h:panelGrid>
+							            </p:outputPanel>
+							        </h:panelGrid>
+							        <hr />
+							    </p:dataList>
+							</h:form>
+		                
+		                
+		                
+		                </div>
+		                <div class="ui-g-6"> 
+		                
+		                	<c:choose>
+								<c:when test="#{controlAutorizacion.usuario.rol == 'ALUMNO'}">
+									<h:form>
+											
+		           						<h:form>
+											<p:dataTable class="tabla" id="proyecto"
+												value="#{controlAlumno.listaProyectos}" var="proyectos" rowKey="#{proyectos.ID_Proyecto}"
+												selection="#{controlAlumno.selectedProyecto}" selectionMode="single">
+								
+													<p:column headerText="Id">
+														<h:outputText value="#{proyectos.ID_Proyecto}" />
+													</p:column>
+													<p:column headerText="Lugar">
+														<h:outputText value="#{proyectos.lugar}" />
+													</p:column>
+													<p:column headerText="Fecha Inicio">
+															<h:outputText value="#{proyectos.fecha_Inicio}" />
+													</p:column>
+													<p:column headerText="Fecha Final">
+														<h:outputText value="#{proyectos.fecha_Final}" />
+													</p:column>
+													<p:column headerText="Estado">
+														<h:outputText value="#{proyectos.estado}" />
+												</p:column>
+											</p:dataTable>
+						
+											<p:contextMenu>
+												<p:menuitem value="Enviar solicitud" action="#{controlAlumno.crearSolicitud}" 
+												onclick="PF('dlg1').show()"/>
+											</p:contextMenu>
+											<p:dialog header="Solicitud" widgetVar="dlg1" minHeight="40">
+						    						<h:outputText value="Solicitud enviada!" />
+											</p:dialog>
+										</h:form>						
+		            						
+		            						
+		            						
+		            					   
+		                			</h:form>
+		                		</c:when>
+		                	</c:choose>
+		                </div>
+		                <div class="ui-g-3">
+		                
+		                	<h:form id="form2">
+							    <p:dataList value="#{controlAlumno.listaNoticias}" var="noticias" type="definition">
+							    	<f:facet name="header">
+							            Noticias
+							        </f:facet>
+							        <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
+							            <p:outputPanel>
+							                <h:panelGrid columns="2" cellpadding="5">
+							                    <h:outputText value="Id:" />
+							                    <h:outputText value="#{noticias.id_Noticia}" style="font-weight: bold"/>
+							 
+							                    <h:outputText value="Autor:" />
+							                    <h:outputText value="#{noticias.autor}" style="font-weight: bold"/>
+							 
+							                    <h:outputText value="ONG:" />
+							                    <h:outputText value="#{noticias.ong}" style="font-weight: bold"/>
+							 
+							                    <h:outputText value="Título" />
+							                    <h:outputText value="#{noticias.titulo}" style="font-weight: bold"/>						 
+							 
+							 					<h:outputText value="Texto:" />
+							                    <h:outputText value="#{noticias.texto}" style="font-weight: bold"/>
+							 
+							                    <h:outputText value="Fecha Publicación:" />
+							                    <h:outputText value="#{noticias.fecha_Publicacion}" style="font-weight: bold"/>						 
+							 
+							                </h:panelGrid>
+							            </p:outputPanel>
+							        </h:panelGrid>
+							        <hr />
+							    </p:dataList>
+							</h:form>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+		
+		
+		
+		
+	</ui:define>
+</ui:composition>
