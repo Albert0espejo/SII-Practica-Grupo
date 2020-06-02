@@ -27,7 +27,7 @@ public class Alumno extends Usuario implements Serializable {
 	private List<Paises> Idiomas = new ArrayList<Paises>();
 	private Integer Numero_Expediente;
 	@ManyToOne
-	private Universidad universidad;
+	private Universidad universidad; 
 	@ElementCollection
 	@OneToMany (mappedBy = "alumno") 
 	private List<Demanda> solicitudes = new ArrayList<Demanda>();
