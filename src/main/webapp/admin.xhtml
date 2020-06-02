@@ -81,8 +81,8 @@
 							</p:dataTable>
 
 							<h:panelGrid columns="2">
-								<h:commandButton onclick="PF('addUser').show()"
-										value="Añadir"></h:commandButton>
+								<p:commandButton onclick="PF('addUser').show()"
+										value="Añadir"></p:commandButton>
 								<h:commandButton action="#{controlAdmin.borrarUsuario}"
 										value="Eliminar" update="users"></h:commandButton>
 							</h:panelGrid>
@@ -132,8 +132,8 @@
 							</p:dataTable>
 							
 							<h:panelGrid columns="2">
-								<h:commandButton onclick="PF('addSoli').show()"
-										value="Añadir"></h:commandButton>
+								<p:commandButton onclick="PF('addSoli').show()"
+										value="Añadir"></p:commandButton>
 								<h:commandButton action="#{controlAdmin.borrarSolicitudes}" 
 										value="Eliminar" update="solicitud"></h:commandButton>
 							</h:panelGrid>
@@ -196,8 +196,8 @@
 							</p:dataTable>
 							
 							<h:panelGrid columns="2">
-								<h:commandButton onclick="PF('addUni').show()"
-										value="Añadir"></h:commandButton>
+								<p:commandButton onclick="PF('addUni').show()"
+										value="Añadir"></p:commandButton>
 								<h:commandButton action="#{controlAdmin.borrarUniversidades}" 
 										value="Eliminar" update="universidad" immediate="true"></h:commandButton>
 							</h:panelGrid>
@@ -271,8 +271,8 @@
 							</p:dataTable>
 		
 							<h:panelGrid columns="2">
-								<h:commandButton onclick="PF('addNew').show()"
-										value="Añadir"></h:commandButton>
+								<p:commandButton onclick="PF('addNew').show()"
+										value="Añadir"></p:commandButton>
 								<h:commandButton action="#{controlAdmin.borrarNoticias}" 
 										value="Eliminar" update="noticia"></h:commandButton>
 							</h:panelGrid>
@@ -374,8 +374,8 @@
 							</p:dataTable>
 		
 							<h:panelGrid columns="2">
-								<h:commandButton onclick="PF('addProyecto').show()"
-										value="Añadir"></h:commandButton>
+								<p:commandButton onclick="PF('addProyecto').show()"
+										value="Añadir"></p:commandButton>
 								<h:commandButton action="#{controlAdmin.borrarProyectos}" 
 										value="Eliminar" update="proyecto"></h:commandButton>
 							</h:panelGrid>
@@ -384,6 +384,7 @@
 
 					</p:accordionPanel>
 					
+					<h:form>
 						<!-- añadir usuario -->
 						<p:dialog header="Añadir Usuario" widgetVar="addUser" modal="true"
 							showEffect="fade" hideEffect="fade" resizable="false">
@@ -402,19 +403,14 @@
 									<h:outputText value="Correo"></h:outputText>
 									<h:inputText value="#{controlAdmin.user.correo}" required="true"></h:inputText>
 	
-									<h:outputText value="Rol"></h:outputText>
-									<h:selectOneMenu value="#{controlAdmin.user.rol}">
-										<f:selectItems value="#{controlAdmin.listaRoles}" var="rol"
-											itemValue="#{rol}" itemLaber="#{rol}"></f:selectItems>
-									</h:selectOneMenu>
 	
 									<h:outputLabel></h:outputLabel>
-									<h:commandButton type="submit" action="#{controlAdmin.crearUsuario}"
+									<h:commandButton action="#{controlAdmin.crearUsuario}"
 										value="Añadir" update="users"></h:commandButton>
 								</h:panelGrid>
 							</p:outputPanel>
 						</p:dialog>
-						
+					
 						<!-- Añadir solicitud -->
 						<p:dialog header="Añadir Solicitud" widgetVar="addSoli" modal="true"
 							showEffect="fade" hideEffect="fade" resizable="false">
@@ -549,6 +545,7 @@
 								</h:panelGrid>
 							</p:outputPanel>
 						</p:dialog>
+						</h:form>
 	
 				</h:form>
 			</c:when>
