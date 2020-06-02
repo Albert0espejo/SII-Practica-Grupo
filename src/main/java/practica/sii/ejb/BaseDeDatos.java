@@ -38,6 +38,12 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 	}
 
 	@Override
+	public void actualizarUsuario(Usuario c) {
+		em.merge(c);
+		
+	}
+	
+	@Override
 	public List<Universidad> todoUniversidad() {
 		return em.createNamedQuery("Universidad.todos", Universidad.class).getResultList();
 	}

@@ -15,6 +15,7 @@ public interface BaseDeDatosLocal {
 	List<Usuario> todoUsuarios();
 	void aniadirUsuario(Usuario c);
 	void eliminarUsuario(Usuario c);
+	void actualizarUsuario(Usuario c);
 	List<Demanda> todoSolicitudes();
 	void aniadirSolicitud(Demanda c);
 	void eliminarSolicitud(Demanda c);
