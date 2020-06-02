@@ -43,8 +43,18 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 	}
 	
 	@Override
+	public void eliminarUniversidad(Universidad c) {
+		em.remove(em.merge(c));
+	}
+	
+	@Override
 	public List<Demanda> todoSolicitudes() {
 		return em.createNamedQuery("Demanda.todos", Demanda.class).getResultList();
+	}
+	
+	@Override
+	public void eliminarSolicitud(Demanda c) {
+		em.remove(em.merge(c));
 	}
 	
 	@Override
@@ -53,7 +63,18 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 	}
 	
 	@Override
+	public void eliminarNoticia(Noticias c) {
+		em.remove(em.merge(c));
+	}
+	
+	@Override
 	public List<Proyecto> todoProyectos() {
 		return em.createNamedQuery("Proyecto.todos", Proyecto.class).getResultList();
 	}
+	
+	@Override
+	public void eliminarProyecto(Proyecto c) {
+		em.remove(em.merge(c));
+	}
+
 }

@@ -81,10 +81,10 @@
 							</p:dataTable>
 
 							<h:panelGrid columns="2">
-								<p:commandButton onclick="PF('addUser').show()"
-										value="Añadir"></p:commandButton>
-								<p:commandButton action="#{controlAdmin.borrarUsuario}"
-										value="Eliminar" update="users"></p:commandButton>
+								<h:commandButton onclick="PF('addUser').show()"
+										value="Añadir"></h:commandButton>
+								<h:commandButton action="#{controlAdmin.borrarUsuario}"
+										value="Eliminar" update="users"></h:commandButton>
 							</h:panelGrid>
 						</h:form>
 						</p:tab>
@@ -132,10 +132,10 @@
 							</p:dataTable>
 							
 							<h:panelGrid columns="2">
-								<p:commandButton onclick="PF('addSoli').show()"
-										value="Añadir"></p:commandButton>
-								<p:commandButton action="#{controlAdmin.borrarSolicitudes}" 
-										value="Eliminar" update="solicitud"></p:commandButton>
+								<h:commandButton onclick="PF('addSoli').show()"
+										value="Añadir"></h:commandButton>
+								<h:commandButton action="#{controlAdmin.borrarSolicitudes}" 
+										value="Eliminar" update="solicitud"></h:commandButton>
 							</h:panelGrid>
 						</p:tab>
 					
@@ -196,10 +196,10 @@
 							</p:dataTable>
 							
 							<h:panelGrid columns="2">
-								<p:commandButton onclick="PF('addUni').show()"
-										value="Añadir"></p:commandButton>
-								<p:commandButton action="#{controlAdmin.borrarUniversidades}" 
-										value="Eliminar" update="universidad" immediate="true"></p:commandButton>
+								<h:commandButton onclick="PF('addUni').show()"
+										value="Añadir"></h:commandButton>
+								<h:commandButton action="#{controlAdmin.borrarUniversidades}" 
+										value="Eliminar" update="universidad" immediate="true"></h:commandButton>
 							</h:panelGrid>
 							
 						</h:form>
@@ -271,10 +271,10 @@
 							</p:dataTable>
 		
 							<h:panelGrid columns="2">
-								<p:commandButton onclick="PF('addNew').show()"
-										value="Añadir"></p:commandButton>
-								<p:commandButton action="#{controlAdmin.borrarNoticias}" 
-										value="Eliminar" update="noticia"></p:commandButton>
+								<h:commandButton onclick="PF('addNew').show()"
+										value="Añadir"></h:commandButton>
+								<h:commandButton action="#{controlAdmin.borrarNoticias}" 
+										value="Eliminar" update="noticia"></h:commandButton>
 							</h:panelGrid>
 		
 						</p:tab>
@@ -374,10 +374,10 @@
 							</p:dataTable>
 		
 							<h:panelGrid columns="2">
-								<p:commandButton onclick="PF('addProyecto').show()"
-										value="Añadir"></p:commandButton>
-								<p:commandButton action="#{controlAdmin.borrarProyectos}" 
-										value="Eliminar" update="proyecto"></p:commandButton>
+								<h:commandButton onclick="PF('addProyecto').show()"
+										value="Añadir"></h:commandButton>
+								<h:commandButton action="#{controlAdmin.borrarProyectos}" 
+										value="Eliminar" update="proyecto"></h:commandButton>
 							</h:panelGrid>
 		
 						</p:tab>
@@ -391,17 +391,16 @@
 								<h:panelGrid columns="2">
 									<h:outputText value="Id"></h:outputText>
 									<h:inputText converter="javax.faces.Long"
-										value="#{controlAdmin.user.id}"></h:inputText>
+										value="#{controlAdmin.user.id}" required="true"></h:inputText>
 	
 									<h:outputText value="Usuario"></h:outputText>
-									<h:inputText value="#{controlAdmin.user.usuario}"></h:inputText>
+									<h:inputText value="#{controlAdmin.user.usuario}" required="true"></h:inputText>
 	
 									<h:outputText value="Contraseña"></h:outputText>
-									<h:inputText
-										value="#{controlAdmin.user.contrasena}"></h:inputText>
+									<p:password value="#{controlAdmin.user.contrasena}" required="true" label="Contraseña"/>
 	
 									<h:outputText value="Correo"></h:outputText>
-									<h:inputText value="#{controlAdmin.user.correo}"></h:inputText>
+									<h:inputText value="#{controlAdmin.user.correo}" required="true"></h:inputText>
 	
 									<h:outputText value="Rol"></h:outputText>
 									<h:selectOneMenu value="#{controlAdmin.user.rol}">
@@ -410,7 +409,7 @@
 									</h:selectOneMenu>
 	
 									<h:outputLabel></h:outputLabel>
-									<h:commandButton action="#{controlAdmin.crearUsuario}"
+									<h:commandButton type="submit" action="#{controlAdmin.crearUsuario}"
 										value="Añadir" update="users"></h:commandButton>
 								</h:panelGrid>
 							</p:outputPanel>
@@ -423,7 +422,7 @@
 								<h:panelGrid columns="2">
 									<h:outputText value="Id"></h:outputText>
 									<h:inputText converter="javax.faces.Long"
-										value="#{controlAdmin.sol.id_Solicitud}"></h:inputText>
+										value="#{controlAdmin.sol.id_Solicitud}" required="true"></h:inputText>
 	
 									<h:outputText value="Estado"></h:outputText>
 									<h:selectOneMenu value="#{controlAdmin.sol.estado}">
@@ -459,21 +458,21 @@
 								<h:panelGrid columns="2">
 									<h:outputText value="Id"></h:outputText>
 									<h:inputText converter="javax.faces.Long"
-										value="#{controlAdmin.uni.id_Universidad}"></h:inputText>
+										value="#{controlAdmin.uni.id_Universidad}" required="true"></h:inputText>
 	
 									<h:outputText value="Nombre"></h:outputText>
-									<h:inputText value="#{controlAdmin.uni.nombre}"></h:inputText>
+									<h:inputText value="#{controlAdmin.uni.nombre}" required="true"></h:inputText>
 	
 									<h:outputText value="Contraseña"></h:outputText>
 									<h:inputText
-										value="#{controlAdmin.user.contrasena}"></h:inputText>
+										value="#{controlAdmin.user.contrasena}" required="true"></h:inputText>
 	
 									
 								 	<h:outputText value="Dirección"></h:outputText>
-									<h:inputText value="#{controlAdmin.uni.direccion}"></h:inputText>
+									<h:inputText value="#{controlAdmin.uni.direccion}" required="true"></h:inputText>
 	
 									<h:outputText value="Página WEB"></h:outputText>
-									<h:inputText value="#{controlAdmin.uni.direccion_Web}"></h:inputText>
+									<h:inputText value="#{controlAdmin.uni.direccion_Web}" required="true"></h:inputText>
 	
 									<h:outputLabel></h:outputLabel>
 									<h:commandButton action="#{controlAdmin.crearUniversidad}"
@@ -489,23 +488,23 @@
 								<h:panelGrid columns="2">
 									<h:outputText value="Id"></h:outputText>
 									<h:inputText converter="javax.faces.Long"
-										value="#{controlAdmin.news.id_Noticia}"></h:inputText>
+										value="#{controlAdmin.news.id_Noticia}" required="true"></h:inputText>
 	
 									<h:outputText value="Autor"></h:outputText>
-									<h:inputText value="#{controlAdmin.news.autor}"></h:inputText>
+									<h:inputText value="#{controlAdmin.news.autor}" required="true"></h:inputText>
 	
 									<h:outputText value="ONG"></h:outputText>
 									<h:inputText
-										value="#{controlAdmin.news.ong}"></h:inputText>
+										value="#{controlAdmin.news.ong}" required="true"></h:inputText>
 	
 									<h:outputText value="Fecha Publicación"></h:outputText>
-									<p:calendar value="#{controlAdmin.news.fecha_Publicacion}" showOn="button"></p:calendar>
+									<p:calendar value="#{controlAdmin.news.fecha_Publicacion}" showOn="button" required="true"></p:calendar>
 	
 									<h:outputText value="Titulo"></h:outputText>
-									<h:inputText value="#{controlAdmin.news.titulo}"></h:inputText>
+									<h:inputText value="#{controlAdmin.news.titulo}" required="true"></h:inputText>
 									
 									<h:outputText value="Texto"></h:outputText>
-									<h:inputText value="#{controlAdmin.news.texto}"></h:inputText>
+									<h:inputText value="#{controlAdmin.news.texto}" required="true"></h:inputText>
 									
 									<h:outputLabel></h:outputLabel>
 									<h:commandButton action="#{controlAdmin.crearNoticia}"
@@ -521,22 +520,22 @@
 								<h:panelGrid columns="2">
 									<h:outputText value="Id"></h:outputText>
 									<h:inputText converter="javax.faces.Long"
-										value="#{controlAdmin.project.ID_Proyecto}"></h:inputText>
+										value="#{controlAdmin.project.ID_Proyecto}" required="true"></h:inputText>
 	
 									<h:outputText value="Lugar"></h:outputText>
-									<h:inputText value="#{controlAdmin.project.lugar}"></h:inputText>
+									<h:inputText value="#{controlAdmin.project.lugar}" required="true"></h:inputText>
 									
 									<h:outputText value="Fecha Inicio"></h:outputText>
-									<p:calendar value="#{controlAdmin.project.fecha_Inicio}" showOn="button"></p:calendar>
+									<p:calendar value="#{controlAdmin.project.fecha_Inicio}" showOn="button" required="true"></p:calendar>
 	
 									<h:outputText value="Fecha Final"></h:outputText>
-									<p:calendar value="#{controlAdmin.project.fecha_Final}" showOn="button"></p:calendar>
+									<p:calendar value="#{controlAdmin.project.fecha_Final}" showOn="button" required="true"></p:calendar>
 									
 									<h:outputText value="Descripcion"></h:outputText>
-									<h:inputText value="#{controlONG.project.descripcion}"></h:inputText>
+									<h:inputText value="#{controlONG.project.descripcion}" required="true"></h:inputText>
 								
 									<h:outputText value="Reconocimiento"></h:outputText>
-									<h:inputText value="#{controlONG.project.reconocimiento}"></h:inputText>
+									<h:inputText value="#{controlONG.project.reconocimiento}" required="true"></h:inputText>
 									
 									<h:outputText value="Estado"></h:outputText>
 									<h:selectOneMenu value="#{controlAdmin.project.estado}">

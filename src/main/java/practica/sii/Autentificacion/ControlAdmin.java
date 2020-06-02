@@ -148,6 +148,7 @@ public class ControlAdmin{
 	
 	public void borrarUsuario() {
 		bbdd.eliminarUsuario(selectedUsuario);
+		selectedUsuario = null;
 	}
 	
 	public void borrarSolicitudes(Demanda solicitud) {
