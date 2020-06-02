@@ -23,6 +23,9 @@
 									selection="#{controlAdmin.selectedUsuario}"
 									selectionMode="single">
 
+
+									<p:ajax event="rowEdit"  listener="#{controlAdmin.actualizarUsuario}"/>
+        
 									<p:column headerText="Id">
 										<p:cellEditor>
 											<f:facet name="output">

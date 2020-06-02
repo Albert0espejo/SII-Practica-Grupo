@@ -9,6 +9,8 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.event.RowEditEvent;
+
 import practica.sii.Clases.Estado;
 
 import practica.sii.Clases.Noticias;
@@ -241,4 +243,9 @@ public class ControlAdmin{
 		bbdd.aniadirProyecto(project);
 		project = new Proyecto();
 	}
+	
+	public void actualizarUsuario(RowEditEvent<Usuario> event) {
+		bbdd.actualizarUsuario(event.getObject());
+	}
+	
 }
