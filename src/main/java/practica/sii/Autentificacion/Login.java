@@ -70,7 +70,6 @@ public class Login implements Serializable{
         listaSolicitudes.add(new Demanda(2L, Estado.Aceptado, Malaga, ProyectoB));
         listaSolicitudes.add(new Demanda(1L, Estado.En_Espera, Malaga, ProyectoA));
         listaSolicitudes.add(new Demanda(1L, Estado.En_Espera, Malaga, ProyectoA));
-        listaNoticias.add(new Noticias(new Long("3"), "El PP gana las elecciones", "Por cansinos", "Eduardo Inda", new Date(), new Usuario()));
         listaUniversidades.add(Malaga);
         listaProyectos.add(ProyectoA);
         listaProyectos.add(ProyectoB);

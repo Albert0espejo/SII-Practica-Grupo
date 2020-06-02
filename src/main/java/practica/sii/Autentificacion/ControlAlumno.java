@@ -30,7 +30,7 @@ import practica.sii.ejb.BaseDeDatosLocal;
 @RequestScoped
 public class ControlAlumno implements Serializable{
 	
-	@EJB
+	@Inject
 	private BaseDeDatosLocal bbdd;
 	
 	
