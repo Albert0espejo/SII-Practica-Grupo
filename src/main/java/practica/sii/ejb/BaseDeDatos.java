@@ -43,6 +43,12 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 	}
 	
 	@Override
+	public void aniadirUniversidad(Universidad c) {
+		em.persist(c);
+		
+	}
+	
+	@Override
 	public void eliminarUniversidad(Universidad c) {
 		em.remove(em.merge(c));
 	}
@@ -50,6 +56,12 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 	@Override
 	public List<Demanda> todoSolicitudes() {
 		return em.createNamedQuery("Demanda.todos", Demanda.class).getResultList();
+	}
+	
+	@Override
+	public void aniadirSolicitud(Demanda c) {
+		em.persist(c);
+		
 	}
 	
 	@Override
@@ -63,6 +75,12 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 	}
 	
 	@Override
+	public void aniadirNoticia(Noticias c) {
+		em.persist(c);
+		
+	}
+	
+	@Override
 	public void eliminarNoticia(Noticias c) {
 		em.remove(em.merge(c));
 	}
@@ -70,6 +88,12 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 	@Override
 	public List<Proyecto> todoProyectos() {
 		return em.createNamedQuery("Proyecto.todos", Proyecto.class).getResultList();
+	}
+	
+	@Override
+	public void aniadirProyecto(Proyecto c) {
+		em.persist(c);
+		
 	}
 	
 	@Override

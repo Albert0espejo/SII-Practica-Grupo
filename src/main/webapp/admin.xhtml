@@ -80,11 +80,29 @@
 								</p:column>
 							</p:dataTable>
 
-							<h:panelGrid columns="2">
-								<p:commandButton onclick="PF('addUser').show()"
-										value="Añadir"></p:commandButton>
+							<h:panelGrid columns="2" class="tabla">
+								
 								<h:commandButton action="#{controlAdmin.borrarUsuario}"
-										value="Eliminar" update="users"></h:commandButton>
+										value="Eliminar" ></h:commandButton>
+										
+									<h:outputText value="Usuario"></h:outputText>
+									<h:inputText value="#{controlAdmin.user.usuario}" required="true"></h:inputText>
+	
+									<h:outputText value="Contraseña"></h:outputText>
+									<p:password value="#{controlAdmin.user.contrasena}" required="true" label="Contraseña"/>
+	
+									<h:outputText value="Correo"></h:outputText>
+									<h:inputText value="#{controlAdmin.user.correo}" required="true"></h:inputText>
+	
+									<h:outputText value="Rol"></h:outputText>
+									<h:selectOneMenu value="#{controlAdmin.user.rol}">
+										<f:selectItems value="#{controlAdmin.listaRoles}" var="rol"
+											itemValue="#{rol}" itemLaber="#{rol}"></f:selectItems>
+									</h:selectOneMenu>
+	
+									<h:outputLabel></h:outputLabel>
+									<h:commandButton action="#{controlAdmin.crearUsuario}"
+										value="Añadir" ></h:commandButton>
 							</h:panelGrid>
 						</h:form>
 						</p:tab>
@@ -385,32 +403,6 @@
 					</p:accordionPanel>
 					
 					<h:form>
-						<!-- añadir usuario -->
-						<p:dialog header="Añadir Usuario" widgetVar="addUser" modal="true"
-							showEffect="fade" hideEffect="fade" resizable="false">
-							<p:outputPanel id="addPanelUser" style="text-align:center;">
-								<h:panelGrid columns="2">
-									<h:outputText value="Id"></h:outputText>
-									<h:inputText converter="javax.faces.Long"
-										value="#{controlAdmin.user.id}" required="true"></h:inputText>
-	
-									<h:outputText value="Usuario"></h:outputText>
-									<h:inputText value="#{controlAdmin.user.usuario}" required="true"></h:inputText>
-	
-									<h:outputText value="Contraseña"></h:outputText>
-									<p:password value="#{controlAdmin.user.contrasena}" required="true" label="Contraseña"/>
-	
-									<h:outputText value="Correo"></h:outputText>
-									<h:inputText value="#{controlAdmin.user.correo}" required="true"></h:inputText>
-	
-	
-									<h:outputLabel></h:outputLabel>
-									<h:commandButton action="#{controlAdmin.crearUsuario}"
-										value="Añadir" update="users"></h:commandButton>
-								</h:panelGrid>
-							</p:outputPanel>
-						</p:dialog>
-					
 						<!-- Añadir solicitud -->
 						<p:dialog header="Añadir Solicitud" widgetVar="addSoli" modal="true"
 							showEffect="fade" hideEffect="fade" resizable="false">

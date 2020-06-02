@@ -16,11 +16,15 @@ public interface BaseDeDatosLocal {
 	void aniadirUsuario(Usuario c);
 	void eliminarUsuario(Usuario c);
 	List<Demanda> todoSolicitudes();
+	void aniadirSolicitud(Demanda c);
 	void eliminarSolicitud(Demanda c);
 	List<Universidad> todoUniversidad();
+	void aniadirUniversidad(Universidad c);
 	void eliminarUniversidad(Universidad c);
 	List<Noticias> todoNoticias();
+	void aniadirNoticia(Noticias c);
 	void eliminarNoticia(Noticias c);
 	List<Proyecto> todoProyectos();
+	void aniadirProyecto(Proyecto c);
 	void eliminarProyecto(Proyecto c);
 }

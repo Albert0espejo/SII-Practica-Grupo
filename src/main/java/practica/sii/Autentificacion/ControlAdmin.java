@@ -147,36 +147,38 @@ public class ControlAdmin{
 	}
 	
 	public void borrarUsuario() {
-		bbdd.eliminarUsuario(selectedUsuario);
-		selectedUsuario = null;
+		if(selectedUsuario != null) {
+			bbdd.eliminarUsuario(selectedUsuario);
+			selectedUsuario = null;
+		}
 	}
 	
 	public void borrarSolicitudes(Demanda solicitud) {
-		listaSolicitudes.remove(solicitud);
-		selectedSolicitud = null;
-		listas.setListaSolicitudes(listaSolicitudes);
+		if(selectedSolicitud != null) {
+			bbdd.eliminarSolicitud(selectedSolicitud);
+			selectedSolicitud = null;
+		}
 	}
 	
 	public void borrarUniversidades() {
-		listaUniversidades.remove(selectedUniversidad);
-		selectedUniversidad = null;
-		listas.setListaUniversidades(listaUniversidades);
+		if(selectedUniversidad != null) {
+			bbdd.eliminarUniversidad(selectedUniversidad);
+			selectedUniversidad = null;
+		}
 	}
 	
 	public void borrarNoticias() {
-		listaNoticias.remove(selectedNoticia);
-		selectedNoticia = null;
-		listas.setListaNoticias(listaNoticias);
+		if(selectedNoticia != null) {
+			bbdd.eliminarNoticia(selectedNoticia);
+			selectedNoticia = null;
+		}
 	}
 	
 	public void borrarProyectos() {
-		listaProyectos.remove(selectedProyecto);
-		selectedProyecto = null;
-		listas.setListaProyectos(listaProyectos);
-	}
-	
-	public void setUser(Usuario u) {
-		user = u;
+		if(selectedProyecto != null) {
+			bbdd.eliminarProyecto(selectedProyecto);;
+			selectedProyecto = null;
+		}
 	}
 	
 	public Usuario getUser() {
@@ -221,18 +223,22 @@ public class ControlAdmin{
 	}
 	
 	public void crearSolicitud() {
-		listaSolicitudes.add(sol);
+		bbdd.aniadirSolicitud(sol);
+		sol = new Demanda();
 	}
 	
 	public void crearUniversidad() {
-		listaUniversidades.add(uni);
+		bbdd.aniadirUniversidad(uni);
+		uni = new Universidad();
 	}
 	
 	public void crearNoticia() {
-		listaNoticias.add(news);
+		bbdd.aniadirNoticia(news);
+		news = new Noticias();
 	}
 	
 	public void crearProyecto() {
-		listaProyectos.add(project);
+		bbdd.aniadirProyecto(project);
+		project = new Proyecto();
 	}
 }
