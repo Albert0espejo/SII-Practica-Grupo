@@ -6,9 +6,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import javax.ejb.EJB;
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
-
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.primefaces.event.RowEditEvent;
@@ -22,10 +24,15 @@ import practica.sii.Clases.Demanda;
 import practica.sii.Clases.Universidad;
 import practica.sii.Clases.Usuario;
 import practica.sii.Clases.Usuario.Rol;
+import practica.sii.ejb.BaseDeDatosLocal;
 
 @Named(value = "controlAlumno")
-@SessionScoped
+@RequestScoped
 public class ControlAlumno implements Serializable{
+	
+	@EJB
+	private BaseDeDatosLocal bbdd;
+	
 	
 	private List<Demanda> listaSolicitudes;
 	private List<Noticias> listaNoticias;
@@ -87,9 +94,7 @@ public class ControlAlumno implements Serializable{
 	}
 	
 	public List<Noticias> getListaNoticias() {
-		listaNoticias = listas.getListaNoticias();
-		
-		return listaNoticias;
+		return bbdd.todoNoticias();
 	}
 
 	public List<Proyecto> getListaProyectos() {
