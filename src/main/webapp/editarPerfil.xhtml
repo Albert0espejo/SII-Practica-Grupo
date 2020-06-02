@@ -5,7 +5,22 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core">
-	
+
+	<ui:define name="botones">
+		<c:choose>
+			<c:when test="#{controlAutorizacion.usuario.rol == 'PAS'}">
+				<li><h:commandButton
+						action="#{controlPDI.enabletableSolicitudes}" update="solicitudes"
+						value="Vista Solicitudes" /></li>
+				<li><h:commandButton
+						action="#{controlPDI.enabletableProyectos}" update="proyectos"
+						value="Vista Proyectos" /></li>
+				<li><h:commandButton action="#{controlPDI.enabletablePerfil}"
+						update="perfil" value="Editar Perfil" /></li>
+			</c:when>
+		</c:choose>
+	</ui:define>
+
 	<ui:define name="content">
 		<c:choose>
 			<c:when test="#{controlAutorizacion.usuario.rol == 'PAS'}">
