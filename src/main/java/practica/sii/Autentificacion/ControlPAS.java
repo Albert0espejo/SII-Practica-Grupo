@@ -24,7 +24,7 @@ import practica.sii.ejb.BaseDeDatosLocal;
 @RequestScoped
 public class ControlPAS{
 	@Inject
-	private BaseDeDatosLocal bbdd;
+	private BaseDeDatosLocal bbdd; 
 	
 	private List<Demanda> listaSolicitudes;
 	private List<Usuario> listaProfesores;
