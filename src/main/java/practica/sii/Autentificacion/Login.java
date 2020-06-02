@@ -73,6 +73,7 @@ public class Login implements Serializable{
         listaNoticias.add(new Noticias(new Long("3"), "El PP gana las elecciones", "Por cansinos", "Eduardo Inda", new Date(), new Usuario()));
         listaUniversidades.add(Malaga);
         listaProyectos.add(ProyectoA);
+        listaProyectos.add(ProyectoB);
 
     }
 
