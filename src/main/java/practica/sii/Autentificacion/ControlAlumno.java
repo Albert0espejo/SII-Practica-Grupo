@@ -96,7 +96,7 @@ public class ControlAlumno implements Serializable{
 	public List<Noticias> getListaNoticias() {
 		return bbdd.todoNoticias();
 	}
-
+ 
 	public List<Proyecto> getListaProyectos() {
 		listaProyectos = listas.getListaProyectos();
 		
