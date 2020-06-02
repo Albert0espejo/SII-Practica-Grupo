@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import practica.sii.Autentificacion.ControlPAS;
 import practica.sii.Clases.Demanda;
 import practica.sii.Clases.Noticias;
 import practica.sii.Clases.Proyecto;
@@ -105,6 +106,16 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 	@Override
 	public void eliminarProyecto(Proyecto c) {
 		em.remove(em.merge(c));
+	}
+
+	@Override
+	public List<Demanda> listaSolicitudes() {
+		return em.createNamedQuery("listaSolicitudes.todos", Demanda.class).getResultList();
+	}
+
+	@Override
+	public List<Usuario> listaProfesores() {
+		return em.createNamedQuery("listaProfesores.todos", Usuario.class).getResultList();
 	}
 
 }

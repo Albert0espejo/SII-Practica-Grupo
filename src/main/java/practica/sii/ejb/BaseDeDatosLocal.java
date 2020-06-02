@@ -28,4 +28,6 @@ public interface BaseDeDatosLocal {
 	List<Proyecto> todoProyectos();
 	void aniadirProyecto(Proyecto c);
 	void eliminarProyecto(Proyecto c);
+	List<Demanda> listaSolicitudes();
+	List<Usuario> listaProfesores();
 }

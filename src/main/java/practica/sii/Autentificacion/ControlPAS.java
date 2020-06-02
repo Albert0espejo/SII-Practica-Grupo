@@ -7,16 +7,22 @@ import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
+import javax.persistence.NamedQuery;
 
 import practica.sii.Clases.PAS;
 import practica.sii.Clases.PDI;
 import practica.sii.Clases.Demanda;
 import practica.sii.Clases.Usuario;
 import practica.sii.Clases.Usuario.Rol;
+import practica.sii.ejb.BaseDeDatosLocal;
 
 @Named(value = "controlPAS")
+@NamedQuery(name = "listaSolicitudes.todos", query="select c from Demanda where Universidad = 'Universidad de Malaga'")
+@NamedQuery(name = "listaProfesores.todos", query="select c from PDI where Universidad = 'Universidad de Malaga'")
 @RequestScoped
 public class ControlPAS{
+	private BaseDeDatosLocal bbdd;
+	
 	private List<Demanda> listaSolicitudes;
 	private List<Usuario> listaProfesores;
 	
@@ -86,23 +92,11 @@ public class ControlPAS{
 	}
 
 	public List<Demanda> getListaSolicitudes() {
-		List<Demanda> aux = listas.getListaSolicitudes();
-		for(int i=0; i < aux.size();i++) {
-			if(aux.get(i).getUniversidad().equals(null)) {
-				listaSolicitudes.add(aux.get(i));
-			}
-		} 
-		return listaSolicitudes;
+		return bbdd.listaSolicitudes();
 	}
 
 	public List<Usuario> getListaProfesores(){
-		List<Usuario> aux = listas.getUsuarios();
-		for(int i=0; i < aux.size();i++) {
-			if(aux.get(i).getRol().equals(Rol.PDI)) {
-				listaProfesores.add(aux.get(i));
-			}
-		}
-		return listaProfesores;
+		return bbdd.listaProfesores();
 	}
 
 	
