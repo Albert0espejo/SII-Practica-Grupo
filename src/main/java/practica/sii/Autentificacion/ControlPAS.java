@@ -5,7 +5,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.Init;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.NamedQuery;
 
@@ -21,7 +23,8 @@ import practica.sii.ejb.BaseDeDatosLocal;
 @NamedQuery(name = "listaProfesores.todos", query="select c from PDI where Universidad = 'Universidad de Malaga'")
 @RequestScoped
 public class ControlPAS{
-	private BaseDeDatosLocal bbdd;
+	@Inject
+	private BaseDeDatosLocal bbdd; 
 	
 	private List<Demanda> listaSolicitudes;
 	private List<Usuario> listaProfesores;
