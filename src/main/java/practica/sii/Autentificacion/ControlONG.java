@@ -30,6 +30,7 @@ public class ControlONG {
 	
 	private Noticias selectedNoticia; 
 	private Proyecto selectedProyecto;
+	private Demanda  selectedSolicitud;
 
 	private Usuario miUsuario;
 	private ONG miUsuarioONG;
@@ -106,18 +107,23 @@ public class ControlONG {
 	public void setSelectedProyecto(Proyecto selectedProyecto) {
 		this.selectedProyecto = selectedProyecto;
 	}
+	
+	public Demanda getSelectedSolicitud() {
+		return this.selectedSolicitud;
+	}
+
+	public void setSelectedSolicitud(Demanda selectedSolicitud) {
+		this.selectedSolicitud = selectedSolicitud;
+	}
 
 	public ONG getMiUsuarioONG() {
 		return miUsuarioONG;
 	}
 
-
-
 	public void setMiUsuarioONG(ONG miUsuarioONG) {
 		this.miUsuarioONG = miUsuarioONG;
 	}
 
-	
 	public Boolean getShowtableSolicitudes() {
 		return showtableSolicitudes;
 	}
@@ -189,6 +195,10 @@ public class ControlONG {
 	
 	public void crearProyecto() {
 		listaProyectos.add(project);
+	}
+	
+	public void modificarComentario(String Comentario) {
+		selectedSolicitud.setComentarios_ONG(Comentario);
 	}
 	
 	public String enableEditarPerfil() {

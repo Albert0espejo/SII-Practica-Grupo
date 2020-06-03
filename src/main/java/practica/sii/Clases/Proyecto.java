@@ -33,7 +33,7 @@ public class Proyecto implements Serializable {
 	private ONG ong;
 	@ElementCollection
 	@OneToMany (mappedBy = "proyecto")
-	private List<Demanda> participantes;
+	private List<Demanda> comentarios;
 	private String Reconocimiento;
 
 	public String getReconocimiento() {
@@ -44,10 +44,6 @@ public class Proyecto implements Serializable {
 		this.Reconocimiento = reconocimiento;
 	}
 	private static final long serialVersionUID = 1L;
-	
-
-	//private List<ONG> ong; Cambiamos List<ONG> a List<Usuario> solo en esta tarea 2 para las vista. Esto se implementará en la tarea 3
-	
 	
 	public Proyecto() {
 		super();
@@ -115,10 +111,10 @@ public class Proyecto implements Serializable {
 	}
 	
 	public List<Demanda> getSolicitud() {
-		return participantes;
+		return comentarios;
 	}
-	public void setSolicitud(List<Demanda> participantes) {
-		this.participantes = participantes;
+	public void setSolicitud(List<Demanda> comentarios) {
+		this.comentarios = comentarios;
 	}
 	
 	@Override

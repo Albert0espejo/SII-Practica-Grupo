@@ -27,8 +27,13 @@
 						<div class="ui-g-3">
 
 							<h:form id="form">
+															
+								<!--List Solicitudes-->
 								<p:dataList value="#{controlONG.listaSolicitudes}"
-									var="solicitudes" type="definition">
+									var="solicitudes" type="definition"
+									id="solicitudes"  rowKey="#{solicitudes.id_Solicitud}"
+									selection="#{controlONG.selectedSolicitud}"
+									selectionMode="single">
 									<f:facet name="header">
 							            Solicitudes
 							        </f:facet>
@@ -51,13 +56,33 @@
 												<h:outputText value="Proyecto:" />
 												<h:outputText value="#{solicitudes.proyecto.ID_Proyecto}"
 													style="font-weight: bold" />
+													
+												<h:outputText value="Comentarios:" />
+												<h:outputText value="#{solicitudes.comentarios_ONG}"
+													style="font-weight: bold" />
 											</h:panelGrid>
 										</p:outputPanel>
+										<p:commandButton onclick="PF('modificar').show()"
+															value="Modificar"></p:commandButton>
 									</h:panelGrid>
-									<hr />
 								</p:dataList>
 							</h:form>
 
+							<p:dialog header="Añadir Comentario" widgetVar="modificar"
+													modal="true" showEffect="fade" hideEffect="fade"
+													resizable="false">
+													<p:outputPanel id="addPanelNew" style="text-align:center;">
+														<h:panelGrid columns="2">
+															<h:outputText value="Comentario"></h:outputText>
+															<h:inputText value="#{solicitudes.comentarios_ONG}"></h:inputText>
+															
+															<h:outputLabel></h:outputLabel>
+															<h:commandButton action="#{controlONG.modificarComentario}"
+																value="Modificar" update="solicitudes"></h:commandButton>
+															
+														</h:panelGrid>
+													</p:outputPanel>
+												</p:dialog>
 
 
 						</div>
@@ -129,14 +154,15 @@
 													<h:panelGrid columns="2">
 														<p:commandButton onclick="PF('addNew').show()"
 															value="Añadir"></p:commandButton>
-														<p:commandButton action="#{controlONG.borrarNoticias}"
-															value="Eliminar" update="noticia"></p:commandButton>
+														<h:commandButton action="#{controlONG.borrarNoticias}"
+															value="Eliminar" update="noticia"></h:commandButton>
 													</h:panelGrid>
 
 												</p:tab>
 
 
 												<!-- String to Date -->
+												<h:form>
 												<p:dialog header="Añadir Noticia" widgetVar="addNew"
 													modal="true" showEffect="fade" hideEffect="fade"
 													resizable="false">
@@ -168,6 +194,7 @@
 														</h:panelGrid>
 													</p:outputPanel>
 												</p:dialog>
+												</h:form>
 
 												<!-- Lista PROYECTOS  -->
 												<p:tab title="Proyectos">
@@ -267,10 +294,10 @@
 													</p:dataTable>
 
 													<h:panelGrid columns="2">
-														<p:commandButton onclick="PF('addProyecto').show()"
-															value="Añadir"></p:commandButton>
-														<p:commandButton action="#{controlONG.borrarProyectos}"
-															value="Eliminar" update="proyecto"></p:commandButton>
+														<h:commandButton onclick="PF('addProyecto').show()"
+															value="Añadir"></h:commandButton>
+														<h:commandButton action="#{controlONG.borrarProyectos}"
+															value="Eliminar" update="proyecto"></h:commandButton>
 													</h:panelGrid>
 
 												</p:tab>
