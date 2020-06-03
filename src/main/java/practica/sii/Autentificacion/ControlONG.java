@@ -12,12 +12,16 @@ import practica.sii.Clases.Noticias;
 import practica.sii.Clases.ONG;
 import practica.sii.Clases.Proyecto;
 import practica.sii.Clases.Usuario;
+import practica.sii.ejb.BaseDeDatosLocal;
 
 
 @Named(value = "controlONG") 
 @RequestScoped
 
 public class ControlONG {
+	
+	@Inject
+	private BaseDeDatosLocal bbdd;
 
 	private List<Noticias> listaNoticias;
 	private List<Proyecto> listaProyectos;
@@ -36,6 +40,7 @@ public class ControlONG {
 	private ONG miUsuarioONG;
 	private Noticias news;
 	private Proyecto project;
+	
 	@Inject
 	private Login listas;
 	
@@ -49,11 +54,10 @@ public class ControlONG {
 
 	}
 	
+	/*Geters and Seters*/
 	
 	public List<Demanda> getListaSolicitudes() {
-		listaSolicitudes = listas.getListaSolicitudes();
-		
-		return listaSolicitudes;
+		return bbdd.todoSolicitudes();
 	}
 	
 	public Proyecto getProject() {
@@ -81,9 +85,7 @@ public class ControlONG {
 	}
 
 	public List<Proyecto> getListaProyectos() {
-		listaProyectos = listas.getListaProyectos();
-		
-		return listaProyectos;
+		return bbdd.todoProyectos();
 	}
 	
 	public Noticias getSelectedNoticia() {
@@ -95,9 +97,7 @@ public class ControlONG {
 	}
 
 	public List<Noticias> getListaNoticias() {
-
-		listaNoticias = listas.getListaNoticias();
-		return listaNoticias;
+		return bbdd.todoNoticias();
 	}
 	
 	public Proyecto getSelectedProyecto() {
@@ -123,6 +123,8 @@ public class ControlONG {
 	public void setMiUsuarioONG(ONG miUsuarioONG) {
 		this.miUsuarioONG = miUsuarioONG;
 	}
+	
+	/*ShowTables*/
 
 	public Boolean getShowtableSolicitudes() {
 		return showtableSolicitudes;
@@ -139,6 +141,9 @@ public class ControlONG {
 	public Boolean getShowtableProyectos() {
 		return showtableProyectos;
 	}
+	
+	/*Activacion Tablas*/
+	
 	
 	public void enabletableNoticias() {
 		if(showtableProyectos || showtablePerfil || showtableSolicitudes) {
@@ -176,25 +181,31 @@ public class ControlONG {
 		
 		showtableSolicitudes = !showtableSolicitudes;
 	}
+	
+	/*Metodos*/
 
 	public void borrarNoticias() {
-		listaNoticias.remove(selectedNoticia);
-		selectedNoticia = null;
-		listas.setListaNoticias(listaNoticias);
+		if(selectedNoticia != null) {
+			bbdd.eliminarNoticia(selectedNoticia);
+			selectedNoticia = null;
+		}
 	}
 	
 	public void borrarProyectos() {
-		listaProyectos.remove(selectedProyecto);
-		selectedProyecto = null;
-		listas.setListaProyectos(listaProyectos);
+		if(selectedProyecto != null) {
+			bbdd.eliminarProyecto(selectedProyecto);;
+			selectedProyecto = null;
+		}
 	}
 	
 	public void crearNoticia() {
-		listaNoticias.add(news);
+		bbdd.aniadirNoticia(news);
+		news = new Noticias();
 	}
 	
 	public void crearProyecto() {
-		listaProyectos.add(project);
+		bbdd.aniadirProyecto(project);
+		project = new Proyecto();
 	}
 	
 	public void modificarComentario(String Comentario) {
