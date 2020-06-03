@@ -117,5 +117,26 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 	public List<Usuario> listaProfesores() {
 		return em.createNamedQuery("listaProfesores.todos", Usuario.class).getResultList();
 	}
+	
+	@Override
+	public List<Usuario> todoONG() {
+		return em.createNamedQuery("Usuario.ong", Usuario.class).getResultList();
+	}
+
+	@Override
+	public List<Usuario> todoPAS() {
+		return em.createNamedQuery("Usuario.pas", Usuario.class).getResultList();
+	}
+
+	@Override
+	public List<Usuario> todoPDI() {
+		return em.createNamedQuery("Usuario.pdi", Usuario.class).getResultList();
+	}
+
+	@Override
+	public List<Usuario> todoAlumnos() {
+		return em.createNamedQuery("Usuario.alumno", Usuario.class).getResultList();
+	}
+
 
 }

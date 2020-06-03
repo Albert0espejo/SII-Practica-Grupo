@@ -4,8 +4,12 @@ import java.util.List;
 
 import javax.ejb.Local;
 
+import practica.sii.Clases.Alumno;
 import practica.sii.Clases.Demanda;
 import practica.sii.Clases.Noticias;
+import practica.sii.Clases.ONG;
+import practica.sii.Clases.PAS;
+import practica.sii.Clases.PDI;
 import practica.sii.Clases.Proyecto;
 import practica.sii.Clases.Universidad;
 import practica.sii.Clases.Usuario;
@@ -30,4 +34,8 @@ public interface BaseDeDatosLocal {
 	void eliminarProyecto(Proyecto c);
 	List<Demanda> listaSolicitudes();
 	List<Usuario> listaProfesores();
+	List<Usuario> todoONG();
+	List<Usuario> todoPDI();
+	List<Usuario> todoPAS();
+	List<Usuario> todoAlumnos();
 }
