@@ -46,6 +46,18 @@
 					<p:column headerText="Proyecto">
 						<h:outputText value="#{solicitudes.proyecto.ID_Proyecto}" />
 					</p:column>
+					<p:column headerText="Comentarios profesor">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{solicitudes.getComentarios_Profesor()}" />
+							</f:facet>
+							<f:facet name="input">
+								<h:inputText value="#{solicitudes.getComentarios_Profesor()}" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+
 					<p:column style="width:35px">
 						<p:rowEditor />
 					</p:column>
