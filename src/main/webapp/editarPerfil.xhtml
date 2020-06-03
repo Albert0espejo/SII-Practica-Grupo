@@ -8,7 +8,7 @@
 
 	<ui:define name="botones">
 		<c:choose>
-			<c:when test="#{controlAutorizacion.usuario.rol == 'PAS'}">
+			<c:when test="#{controlAutorizacion.usuario.rol == 'PDI'}">
 				<li><h:commandButton
 						action="#{controlPDI.enabletableSolicitudes}" update="solicitudes"
 						value="Vista Solicitudes" /></li>
@@ -24,39 +24,48 @@
 	<ui:define name="content">
 		<c:choose>
 			<c:when test="#{controlAutorizacion.usuario.rol == 'PAS'}">
-			<h:form>
-				<p:panel header="Informacion personal">
-                <p:messages />
-                <h:panelGrid class="tabla" columns="2" columnClasses="label, value">
-                    <h:outputText value="Usuario: *" />
-                    <h:inputText value="#{controlPAS.miPAS.usuario}"  required="true" label="Usuario"/>
- 
-                    <h:outputText value="Contraseña *" />
-                    <h:inputSecret value="#{controlPAS.miPAS.contrasena}" required="true" label="Contraseña"/>
- 
-                    <h:outputText value="Correo *" />
-                    <h:inputText value="#{controlPAS.miPAS.correo}" label="Correo"/>
-                    
-                    <h:outputText value="Facultad" />
-                    <h:inputText value="#{controlPAS.miPAS.facultad}" label="Facultad"/>
-                    
-                    <h:outputText value="Servicio" />
-                    <h:inputText value="#{controlPAS.miPAS.servicio}" label="Servicio"/>
-                    
-                    <h:outputText value="Direccion" />
-                    <h:inputText value="#{controlPAS.miPAS.direccion}" label="Direccion"/>
-                    
-                    <h:outputText value="Representante" />
-                    <h:inputText value="#{controlPAS.miPAS.representante}" label="Representante"/>
-                     
-                    <h:outputText value="Telefono" />
-                    <h:inputText value="#{controlPAS.miPAS.telefono}" label="Telefono"/> 
- 
-                </h:panelGrid>
-                <p:commandButton value="Aplicar cambios" action="#{controlPAS.aplicarCambios}"/>
-            </p:panel>
-            </h:form>
-            
+				<h:form>
+					<p:panel header="Informacion personal">
+						<p:messages />
+						<h:panelGrid class="tabla" columns="2"
+							columnClasses="label, value">
+							<h:outputText value="Usuario: *" />
+							<h:inputText value="#{controlPAS.miPAS.usuario}" required="true"
+								label="Usuario" />
+
+							<h:outputText value="Contraseña *" />
+							<h:inputSecret value="#{controlPAS.miPAS.contrasena}"
+								required="true" label="Contraseña" />
+
+							<h:outputText value="Correo *" />
+							<h:inputText value="#{controlPAS.miPAS.correo}" label="Correo" />
+
+							<h:outputText value="Facultad" />
+							<h:inputText value="#{controlPAS.miPAS.facultad}"
+								label="Facultad" />
+
+							<h:outputText value="Servicio" />
+							<h:inputText value="#{controlPAS.miPAS.servicio}"
+								label="Servicio" />
+
+							<h:outputText value="Direccion" />
+							<h:inputText value="#{controlPAS.miPAS.direccion}"
+								label="Direccion" />
+
+							<h:outputText value="Representante" />
+							<h:inputText value="#{controlPAS.miPAS.representante}"
+								label="Representante" />
+
+							<h:outputText value="Telefono" />
+							<h:inputText value="#{controlPAS.miPAS.telefono}"
+								label="Telefono" />
+
+						</h:panelGrid>
+						<p:commandButton value="Aplicar cambios"
+							action="#{controlPAS.aplicarCambios}" />
+					</p:panel>
+				</h:form>
+
 			</c:when>
 
 			<c:when test="#{controlAutorizacion.usuario.rol == 'PDI'}">
@@ -66,19 +75,19 @@
 						<h:panelGrid class="tabla" columns="2"
 							columnClasses="label, value">
 							<h:outputText value="Usuario: *" />
-							<p:inputText value="#{miususuario.usuario}" required="true"
+							<p:inputText value="#{miPDI.usuario}" required="true"
 								label="Usuario" />
 
 							<h:outputText value="Contraseña *" />
-							<p:password value="#{miusuario.contrasena}"
-								required="true" label="Contraseña" />
+							<p:password value="#{miPDI.contrasena}" required="true"
+								label="Contraseña" />
 
 							<h:outputText value="Correo *" />
-							<p:inputText value="#{miusuario.correo}" label="Correo" />
+							<p:inputText value="#{miPDI.correo}" label="Correo" />
 						</h:panelGrid>
 					</p:panel>
-				</h:form>	
-						
+				</h:form>
+
 			</c:when>
 
 			<c:when test="#{controlAutorizacion.usuario.rol == 'ONG'}">
