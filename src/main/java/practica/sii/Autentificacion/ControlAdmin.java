@@ -14,7 +14,12 @@ import org.primefaces.event.RowEditEvent;
 import practica.sii.Clases.Estado;
 
 import practica.sii.Clases.Noticias;
+import practica.sii.Clases.ONG;
+import practica.sii.Clases.PAS;
+import practica.sii.Clases.PDI;
 import practica.sii.Clases.Proyecto;
+import practica.sii.Clases.Address;
+import practica.sii.Clases.Alumno;
 import practica.sii.Clases.Demanda;
 import practica.sii.Clases.Universidad;
 import practica.sii.Clases.Usuario;
@@ -35,6 +40,10 @@ public class ControlAdmin{
 	private List<Proyecto> listaProyectos;
 	private List<Rol> listaRoles;
 	private List<Estado> listaEstado;
+	private List<Usuario> listaONG;
+	private List<Usuario> listaPDI;
+	private List<Usuario> listaPAS;
+	private List<Usuario> listaAlumno;
 	
 	private Usuario selectedUsuario;
 	private Demanda selectedSolicitud;
@@ -49,6 +58,7 @@ public class ControlAdmin{
 	private Universidad uni;
 	private Noticias news;
 	private Proyecto project;
+	private Address direccion;
 	
 	
 	public ControlAdmin() {
@@ -58,6 +68,7 @@ public class ControlAdmin{
 		news = new Noticias();
 		project = new Proyecto();
 		listas = new Login();
+		direccion = new Address();
 		listaNoticias = new ArrayList<Noticias>();
 		listaProyectos = new ArrayList<Proyecto>();
 		listaSolicitudes = new ArrayList<Demanda>();
@@ -148,6 +159,22 @@ public class ControlAdmin{
 		return bbdd.todoProyectos();
 	}
 	
+	public List<Usuario> getListaONG() {
+		return bbdd.todoONG();
+	}
+
+	public List<Usuario> getListaPDI() {
+		return bbdd.todoPDI();
+	}
+
+	public List<Usuario> getListaPAS() {
+		return bbdd.todoPAS();
+	}
+
+	public List<Usuario> getListaAlumno() {
+		return bbdd.todoAlumnos();
+	}
+
 	public void borrarUsuario() {
 		if(selectedUsuario != null) {
 			bbdd.eliminarUsuario(selectedUsuario);
@@ -219,6 +246,14 @@ public class ControlAdmin{
 		this.project = project;
 	}
 
+	public Address getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(Address direccion) {
+		this.direccion = direccion;
+	}
+
 	public void crearUsuario() {
 		bbdd.aniadirUsuario(user);
 		user = new Usuario();
@@ -230,8 +265,10 @@ public class ControlAdmin{
 	}
 	
 	public void crearUniversidad() {
+		uni.setDireccion(direccion);
 		bbdd.aniadirUniversidad(uni);
 		uni = new Universidad();
+		direccion = new Address();
 	}
 	
 	public void crearNoticia() {
@@ -244,8 +281,8 @@ public class ControlAdmin{
 		project = new Proyecto();
 	}
 	
-	public void actualizarUsuario(RowEditEvent<Usuario> event) {
-		bbdd.actualizarUsuario(event.getObject());
+	public void actualizarUsuario(Usuario u) {
+		bbdd.actualizarUsuario(u);
 	}
 	
 }

@@ -10,6 +10,10 @@ import javax.persistence.*;
  *
  */
 @NamedQuery(name = "Usuario.todos", query="select c from Usuario c")
+@NamedQuery(name = "Usuario.alumno", query="select c from Usuario c where ROL = 'Alumno'")
+@NamedQuery(name = "Usuario.ong", query="select c from Usuario c where ROL = 'ONG'")
+@NamedQuery(name = "Usuario.pdi", query="select c from Usuario c where ROL = 'PDI'")
+@NamedQuery(name = "Usuario.pas", query="select c from Usuario c where ROL = 'PAS'")
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "Usuario")
