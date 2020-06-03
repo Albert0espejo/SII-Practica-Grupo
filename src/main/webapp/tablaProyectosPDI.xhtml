@@ -1,0 +1,116 @@
+<ui:composition template="/WEB-INF/Templates/plantilla.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<ui:define name="botones">
+		<li><h:commandButton
+				action="#{controlPDI.enabletableSolicitudes}" update="solicitudes"
+				value="Vista Solicitudes" /></li>
+		<li><h:commandButton action="#{controlPDI.enabletableProyectos}"
+				update="proyectos" value="Vista Proyectos" /></li>
+		<li><h:commandButton action="#{controlPDI.enabletablePerfil}"
+				update="perfil" value="Editar Perfil" /></li>
+	</ui:define>
+
+	<ui:define name="content">
+		<c:choose>
+			<c:when test="#{controlAutorizacion.usuario.rol == 'PDI'}">
+				<p:dataTable class="tabla" id="proyecto"
+					value="#{controlPDI.listaProyectos}" var="proyectos"
+					editable="true" rowKey="#{proyectos.ID_Proyecto}"
+					selection="#{controlPDI.selectedProyecto}" selectionMode="single">
+
+					<p:column headerText="Id">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{proyectos.ID_Proyecto}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText id="modelInput" value="#{proyectos.ID_Proyecto}" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+					<p:column headerText="Lugar">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{proyectos.lugar}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText value="#{proyectos.lugar}" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+					<p:column headerText="Fecha Inicio">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{proyectos.fecha_Inicio}" />
+							</f:facet>
+							<f:facet name="input">
+								<!-- String to Date -->
+								<p:calendar value="#{proyectos.fecha_Inicio}" showOn="button"></p:calendar>
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+					<p:column headerText="Fecha Final">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{proyectos.fecha_Final}" />
+							</f:facet>
+							<!-- String to Date -->
+							<f:facet name="input">
+								<p:calendar value="#{proyectos.fecha_Final}" showOn="button"></p:calendar>
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column headerText="Descripcion">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{proyectos.descripcion}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText value="#{proyectos.descripcion}" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column headerText="Reconocimiento">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{proyectos.reconocimiento}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText value="#{proyectos.reconocimiento}" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column headerText="Estado">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{proyectos.estado}" />
+							</f:facet>
+							<f:facet name="input">
+								<h:selectOneMenu value="#{proyectos.estado}">
+									<f:selectItems value="#{controlPDI.listaEstado}" var="estado"
+										itemLabel="#{estado}" itemValue="#{estado}" />
+								</h:selectOneMenu>
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+					<p:column style="width:35px">
+						<p:rowEditor />
+					</p:column>
+
+				</p:dataTable>
+			</c:when>
+			<c:otherwise>
+				<ui:include src="/WEB-INF/Templates/errorAutorizacion.xhtml" />
+			</c:otherwise>
+		</c:choose>
+	</ui:define>
+</ui:composition>
