@@ -272,7 +272,6 @@ public class ControlAdmin{
 	}
 	
 	public void crearNoticia() {
-
 		bbdd.aniadirNoticia(news);
 		news = new Noticias();
 	}
