@@ -126,7 +126,7 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 
 	@Override
 	public List<Usuario> listaProfesores() {
-		return em.createNamedQuery("listaProfesores.todos", Usuario.class).getResultList();
+		return em.createNamedQuery("Usuario.PDI", Usuario.class).getResultList();
 	}
 	
 	@Override
