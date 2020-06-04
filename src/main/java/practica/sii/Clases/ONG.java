@@ -16,6 +16,7 @@ import javax.persistence.*;
 @Entity
 public class ONG extends Usuario implements Serializable {
 
+	
 	@Embedded
 	private Address Direccion;
 	private Integer Telefono;
