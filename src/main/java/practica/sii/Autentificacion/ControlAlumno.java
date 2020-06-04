@@ -185,7 +185,7 @@ public class ControlAlumno implements Serializable{
 		
 		this.bbdd.aniadirSolicitud(solicitud);
 		selectedProyecto=new Proyecto();
-		bbdd.editProyecto(aux);
+		bbdd.actualizarProyecto(aux);
 		return "alumno.xhtml";
 	}
 	
