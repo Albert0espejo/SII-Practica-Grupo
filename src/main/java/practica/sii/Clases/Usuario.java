@@ -14,6 +14,7 @@ import javax.persistence.*;
 @NamedQuery(name = "Usuario.ong", query="select c from Usuario c where ROL = 'ONG'")
 @NamedQuery(name = "Usuario.pdi", query="select c from Usuario c where ROL = 'PDI'")
 @NamedQuery(name = "Usuario.pas", query="select c from Usuario c where ROL = 'PAS'")
+@NamedQuery(name = "profesoresUni.todos", query="select p from Demanda d JOIN d.Universidad a JOIN a.pdi p")
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "Usuario")

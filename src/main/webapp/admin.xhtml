@@ -150,7 +150,7 @@
 										</p:cellEditor>
 									</p:column>
 									<p:column headerText="Universidad">
-										<h:outputText value="#{solicitudes.universidad}" />
+										<h:outputText value="#{solicitudes.universidad.nombre}" />
 									</p:column>
 									<p:column headerText="Proyecto">
 										<h:outputText value="#{solicitudes.proyecto.ID_Proyecto}" />
@@ -199,7 +199,26 @@
 											itemValue="#{sol}" itemLaber="#{sol}"></f:selectItems>
 									</h:selectOneMenu>
 
+									<h:outputText value="Proyecto"></h:outputText>
+									<h:selectOneMenu value="#{controlAdmin.sol.proyecto.ID_Proyecto}">
+										<f:selectItems value="#{controlAdmin.listaProyectos}"
+										var="proyecto" itemValue="#{proyecto.ID_Proyecto}"
+										itemLabel="#{proyecto.ID_Proyecto}"></f:selectItems>
+									</h:selectOneMenu>
+									
+									<h:outputText value="Alumno"></h:outputText>
+									<h:selectOneMenu value="#{controlAdmin.sol.alumno.id}">
+										<f:selectItems value="#{controlAdmin.listaAlumno}"
+										var="alumno" itemValue="#{alumno.id}"
+										itemLabel="#{alumno.id}"></f:selectItems>
+									</h:selectOneMenu>
 
+									<h:outputText value="Universidad"></h:outputText>
+									<h:selectOneMenu value="#{controlAdmin.sol.universidad.id_Universidad}">
+										<f:selectItems value="#{controlAdmin.listaUniversidades}"
+										var="uni" itemValue="#{uni.id_Universidad}"
+										itemLabel="#{uni.id_Universidad}"></f:selectItems>
+									</h:selectOneMenu>
 
 									<h:outputLabel></h:outputLabel>
 									<h:commandButton action="#{controlAdmin.crearSolicitud}"

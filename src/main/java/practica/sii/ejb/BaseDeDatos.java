@@ -65,6 +65,12 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 	}
 	
 	@Override
+	public void actualizarUniversidad(Universidad c) {
+		em.merge(c);
+		
+	}
+	
+	@Override
 	public List<Demanda> todoSolicitudes() {
 		return em.createNamedQuery("Demanda.todos", Demanda.class).getResultList();
 	}
@@ -76,13 +82,14 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 	}
 	
 	@Override
-	public void editSolicitud(Demanda c){
-        em.merge(c);
-    }
-	
-	@Override
 	public void eliminarSolicitud(Demanda c) {
 		em.remove(em.merge(c));
+	}
+	
+	@Override
+	public void actualizarSolicitud(Demanda c) {
+		em.merge(c);
+		
 	}
 	
 	@Override
@@ -102,6 +109,12 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 	}
 	
 	@Override
+	public void actualizarNoticia(Noticias c) {
+		em.merge(c);
+		
+	}
+	
+	@Override
 	public List<Proyecto> todoProyectos() {
 		return em.createNamedQuery("Proyecto.todos", Proyecto.class).getResultList();
 	}
@@ -113,13 +126,14 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 	}
 	
 	@Override
-	public void editProyecto(Proyecto c){
-        em.merge(c);
-    }
-	
-	@Override
 	public void eliminarProyecto(Proyecto c) {
 		em.remove(em.merge(c));
+	}
+	
+	@Override
+	public void actualizarProyecto(Proyecto c) {
+		em.merge(c);
+		
 	}
 
 	@Override
@@ -129,7 +143,7 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 
 	@Override
 	public List<Usuario> listaProfesores() {
-		return em.createNamedQuery("Usuario.PDI", Usuario.class).getResultList();
+		return em.createNamedQuery("profesoresUni.todos", Usuario.class).getResultList();
 	}
 	
 	@Override
