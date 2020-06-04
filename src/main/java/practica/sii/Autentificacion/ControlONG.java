@@ -1,13 +1,16 @@
 package practica.sii.Autentificacion;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import practica.sii.Clases.Address;
 import practica.sii.Clases.Demanda;
+import practica.sii.Clases.Estado;
 import practica.sii.Clases.Noticias;
 import practica.sii.Clases.ONG;
 import practica.sii.Clases.Proyecto;
@@ -26,6 +29,7 @@ public class ControlONG {
 	private List<Noticias> listaNoticias;
 	private List<Proyecto> listaProyectos;
 	private List<Demanda> listaSolicitudes; 
+	private List<Estado> listaEstado;
 	
 	private Boolean showtableNoticias = false;
 	private Boolean showtableProyectos = false;
@@ -40,6 +44,8 @@ public class ControlONG {
 	private ONG miUsuarioONG;
 	private Noticias news;
 	private Proyecto project;
+	private Address direccion;
+	private Estado estado_AUX;
 	
 	@Inject
 	private Login listas;
@@ -51,6 +57,9 @@ public class ControlONG {
 		listaNoticias = new ArrayList<Noticias>();
 		listaProyectos = new ArrayList<Proyecto>();
 		listaSolicitudes = new ArrayList<Demanda>();
+		direccion = new Address();
+		
+		listaEstado = Arrays.asList(Estado.values());
 
 	}
 	
@@ -124,6 +133,26 @@ public class ControlONG {
 		this.miUsuarioONG = miUsuarioONG;
 	}
 	
+	public Address getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(Address direccion) {
+		this.direccion = direccion;
+	}
+	
+	public Estado getEstado_AUX() {
+		return estado_AUX;
+	}
+
+	public void setEstado_AUX(Estado estado_AUX) {
+		this.estado_AUX = estado_AUX;
+	}
+
+	public List<Estado> getListaEstado() {
+		return listaEstado;
+	}
+	
 	/*ShowTables*/
 
 	public Boolean getShowtableSolicitudes() {
@@ -193,7 +222,7 @@ public class ControlONG {
 	
 	public void borrarProyectos() {
 		if(selectedProyecto != null) {
-			bbdd.eliminarProyecto(selectedProyecto);;
+			bbdd.eliminarProyecto(selectedProyecto);
 			selectedProyecto = null;
 		}
 	}
@@ -204,13 +233,17 @@ public class ControlONG {
 	}
 	
 	public void crearProyecto() {
+		project.setEstado(estado_AUX);
 		bbdd.aniadirProyecto(project);
 		project = new Proyecto();
+		project.setOng(new ONG());
 	}
 	
 	public void crearOng() {
+		miUsuarioONG.setDireccion(direccion);
 		bbdd.aniadirONG(miUsuarioONG);
 		miUsuarioONG = new ONG();
+		direccion = new Address();
 	}
 	
 	public void modificarComentario(String Comentario) {

@@ -131,7 +131,7 @@
 															</f:facet>
 														</p:cellEditor>
 													</p:column>
-													
+
 													<p:column headerText="Texto">
 														<p:cellEditor>
 															<f:facet name="output">
@@ -154,6 +154,18 @@
 															</f:facet>
 														</p:cellEditor>
 													</p:column>
+
+													<p:column headerText="ONG">
+														<p:cellEditor>
+															<f:facet name="output">
+																<h:outputText value="#{noticias.ong}" />
+															</f:facet>
+															<f:facet name="input">
+																<p:inputText value="#{noticias.ong}" />
+															</f:facet>
+														</p:cellEditor>
+													</p:column>
+
 													<p:column style="width:35px">
 														<p:rowEditor />
 													</p:column>
@@ -163,18 +175,19 @@
 												<h:panelGrid columns="2">
 													<h:outputText value="Borrar elemento seleccionado"></h:outputText>
 													<h:commandButton action="#{controlONG.borrarNoticias}"
-														value="Eliminar" update="noticia"></h:commandButton>
+														value="Eliminar"></h:commandButton>
 												</h:panelGrid>
-
+											</h:form>
+											<h:form>
 												<h:panelGrid columns="2" class="tabla">
 													<h:outputText value="Autor"></h:outputText>
 													<h:inputText value="#{controlONG.news.autor}"
 														required="true"></h:inputText>
 
-													<h:outputText value="Fecha Publicación"></h:outputText>
-													<p:calendar value="#{controlONG.news.fecha_Publicacion}"
-														pattern="yyyy/MM/dd" showOn="button" required="true"
-														readonly="true" readonlyInput="true"></p:calendar>
+													<h:outputText value="Fecha Publicación (yyyy/MM/dd)"></h:outputText>
+													<h:inputText value="#{controlONG.news.fecha_Publicacion}">
+														<f:convertDateTime pattern="yyyy/MM/dd" />
+													</h:inputText>
 
 													<h:outputText value="Titulo"></h:outputText>
 													<h:inputText value="#{controlONG.news.titulo}"
@@ -184,7 +197,7 @@
 													<h:inputText value="#{controlONG.news.texto}"
 														required="true"></h:inputText>
 
-													<h:outputText value="#{controlONG.news.fecha_Publicacion}"></h:outputText>
+													<h:outputLabel></h:outputLabel>
 													<h:commandButton action="#{controlONG.crearNoticia}"
 														value="Añadir"></h:commandButton>
 												</h:panelGrid>
@@ -197,7 +210,7 @@
 												<p:dataTable class="tabla" id="proyecto"
 													value="#{controlONG.listaProyectos}" var="proyectos"
 													editable="true" rowKey="#{proyectos.ID_Proyecto}"
-													selection="#{controlAdmin.selectedProyecto}"
+													selection="#{controlONG.selectedProyecto}"
 													selectionMode="single">
 
 													<p:column headerText="Id">
@@ -268,7 +281,6 @@
 														</p:cellEditor>
 													</p:column>
 
-
 													<p:column headerText="Estado">
 														<p:cellEditor>
 															<f:facet name="output">
@@ -276,7 +288,7 @@
 															</f:facet>
 															<f:facet name="input">
 																<h:selectOneMenu value="#{proyectos.estado}">
-																	<f:selectItems value="#{controlAdmin.listaEstado}"
+																	<f:selectItems value="#{controlONG.listaEstado}"
 																		var="estado" itemLabel="#{estado}"
 																		itemValue="#{estado}" />
 																</h:selectOneMenu>
@@ -300,13 +312,14 @@
 													<h:inputText value="#{controlONG.project.lugar}"
 														required="true"></h:inputText>
 
-													<h:outputText value="Fecha Inicio"></h:outputText>
-													<p:calendar value="#{controlONG.project.fecha_Inicio}"
-														showOn="button" required="true"></p:calendar>
-
-													<h:outputText value="Fecha Final"></h:outputText>
-													<p:calendar value="#{controlONG.project.fecha_Final}"
-														pattern="yyyy/dd/MM" showOn="button" required="true"></p:calendar>
+													<h:outputText value="Fecha Inicio (yyyy/MM/dd)"></h:outputText>
+													<h:inputText value="#{controlONG.project.fecha_Inicio}">
+														<f:convertDateTime pattern="yyyy/MM/dd" />
+													</h:inputText>
+													<h:outputText value="Fecha Final (yyyy/MM/dd)"></h:outputText>
+													<h:inputText value="#{controlONG.project.fecha_Final}">
+														<f:convertDateTime pattern="yyyy/MM/dd" />
+													</h:inputText>
 
 													<h:outputText value="Descripcion"></h:outputText>
 													<h:inputText value="#{controlONG.project.descripcion}"
@@ -318,14 +331,8 @@
 
 													<h:outputText value="Estado"></h:outputText>
 													<h:selectOneMenu value="#{controlONG.project.estado}">
-														<f:selectItems value="#{controlAdmin.listaEstado}"
+														<f:selectItems value="#{controlONG.listaEstado}"
 															var="sol" itemValue="#{sol}" itemLaber="#{sol}"></f:selectItems>
-													</h:selectOneMenu>
-
-													<h:outputText value="ONG"></h:outputText>
-													<h:selectOneMenu value="#{controlONG.project.ong}">
-														<f:selectItems value="#{controlAdmin.listaONG}" var="ong"
-															itemValue="#{ong}" itemLabel="#{ong.id}"></f:selectItems>
 													</h:selectOneMenu>
 
 													<h:outputLabel></h:outputLabel>
@@ -334,9 +341,6 @@
 												</h:panelGrid>
 											</h:form>
 										</p:tab>
-
-
-
 									</p:accordionPanel>
 								</c:when>
 								<c:otherwise>
