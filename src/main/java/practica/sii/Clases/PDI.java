@@ -13,6 +13,7 @@ import practica.sii.Clases.Usuario.Rol;
  * Entity implementation class for Entity: PDI
  *
  */
+@NamedQuery(name = "PDI.todos", query="select c from PDI c")
 @Entity
 public class PDI extends Usuario implements Serializable {
 
