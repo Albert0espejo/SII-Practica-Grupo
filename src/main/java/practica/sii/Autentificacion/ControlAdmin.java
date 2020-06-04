@@ -74,8 +74,6 @@ public class ControlAdmin{
 		ong = new ONG();
 		sol = new Demanda();
 		sol.setAlumno(new Alumno());
-		sol.setPas(new PAS());
-		sol.setPdi(new PDI());
 		sol.setProyecto(new Proyecto());
 		sol.setUniversidad(new Universidad());
 		uni = new Universidad();
@@ -322,7 +320,6 @@ public class ControlAdmin{
 	}
 	
 	public void crearSolicitud() {
-		//sol.setUniversidad(sol.getAlumno().getUniversidad());
 		sol.setEstado(estado_AUX);
 		bbdd.aniadirSolicitud(sol);
 		sol = new Demanda();

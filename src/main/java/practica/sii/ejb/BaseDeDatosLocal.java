@@ -23,15 +23,19 @@ public interface BaseDeDatosLocal {
 	List<Demanda> todoSolicitudes();
 	void aniadirSolicitud(Demanda c);
 	void eliminarSolicitud(Demanda c);
+	void actualizarSolicitud(Demanda c);
 	List<Universidad> todoUniversidad();
 	void aniadirUniversidad(Universidad c);
 	void eliminarUniversidad(Universidad c);
+	void actualizarUniversidad(Universidad c);
 	List<Noticias> todoNoticias();
 	void aniadirNoticia(Noticias c);
 	void eliminarNoticia(Noticias c);
+	void actualizarNoticia(Noticias c);
 	List<Proyecto> todoProyectos();
 	void aniadirProyecto(Proyecto c);
 	void eliminarProyecto(Proyecto c);
+	void actualizarProyecto(Proyecto c);
 	List<Demanda> listaSolicitudes();
 	List<Usuario> listaProfesores();
 	List<Usuario> todoONG();
@@ -39,8 +43,6 @@ public interface BaseDeDatosLocal {
 	List<Usuario> todoPAS();
 	List<Usuario> todoAlumnos();
 	Proyecto findProyecto(Long id);
-	void editSolicitud(Demanda c);
-	void editProyecto(Proyecto c);
 	void aniadirONG(ONG c);
 	void aniadirAlumno(Alumno c);
 	void aniadirPAS(PAS c);
