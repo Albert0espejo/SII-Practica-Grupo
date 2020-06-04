@@ -83,7 +83,15 @@
 								label="Contraseña" />
 
 							<h:outputText value="Correo *" />
-							<p:inputText value="#{miPDI.correo}" label="Correo" />
+							<p:inputText value="#{miPDI.correo}" required="true"
+								label="Correo" />
+
+							<h:outputText value="Telefono " />
+							<p:inputText value="#{miPDI.Telefono}" label="Correo" />
+
+							<h:commandButton action="#{controlPDI.}"
+								value="Aplicar cambios"></h:commandButton>
+
 						</h:panelGrid>
 					</p:panel>
 				</h:form>
