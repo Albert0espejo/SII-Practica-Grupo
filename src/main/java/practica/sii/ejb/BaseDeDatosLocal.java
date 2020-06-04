@@ -42,5 +42,6 @@ public interface BaseDeDatosLocal {
 	void editSolicitud(Demanda c);
 	void editProyecto(Proyecto c);
 	void aniadirONG(ONG c);
+	void aniadirAlumno(Alumno c);
 	
 }

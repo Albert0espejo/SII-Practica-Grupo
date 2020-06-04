@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import practica.sii.Autentificacion.ControlPAS;
+import practica.sii.Clases.Alumno;
 import practica.sii.Clases.Demanda;
 import practica.sii.Clases.Noticias;
 import practica.sii.Clases.ONG;
@@ -156,6 +157,11 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 	
 	@Override
 	public void aniadirONG(ONG c) {
+		em.persist(c);
+	}
+	
+	@Override
+	public void aniadirAlumno(Alumno c) {
 		em.persist(c);
 	}
 }
