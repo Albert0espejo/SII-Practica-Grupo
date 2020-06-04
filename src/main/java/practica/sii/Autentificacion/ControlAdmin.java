@@ -59,18 +59,28 @@ public class ControlAdmin{
 	private Noticias news;
 	private Proyecto project;
 	private Address direccion;
+	private Estado estado_AUX;
 	
 	
 	public ControlAdmin() {
 		user = new Usuario();
 		sol = new Demanda();
+		sol.setAlumno(new Alumno());
+		sol.setPas(new PAS());
+		sol.setPdi(new PDI());
+		sol.setProyecto(new Proyecto());
+		sol.setUniversidad(new Universidad());
 		uni = new Universidad();
+		
 		news = new Noticias();
 		news.setOng(new Usuario());
+		
 		project = new Proyecto();
 		project.setOng(new ONG());
+		
 		listas = new Login();
 		direccion = new Address();
+
 		listaNoticias = new ArrayList<Noticias>();
 		listaProyectos = new ArrayList<Proyecto>();
 		listaSolicitudes = new ArrayList<Demanda>();
@@ -256,14 +266,28 @@ public class ControlAdmin{
 		this.direccion = direccion;
 	}
 
+	public Estado getEstado_AUX() {
+		return estado_AUX;
+	}
+
+	public void setEstado_AUX(Estado estado_AUX) {
+		this.estado_AUX = estado_AUX;
+	}
+
 	public void crearUsuario() {
 		bbdd.aniadirUsuario(user);
 		user = new Usuario();
 	}
 	
 	public void crearSolicitud() {
+		sol.setEstado(estado_AUX);
 		bbdd.aniadirSolicitud(sol);
 		sol = new Demanda();
+		sol.setAlumno(new Alumno());
+		sol.setPas(new PAS());
+		sol.setPdi(new PDI());
+		sol.setProyecto(new Proyecto());
+		sol.setUniversidad(new Universidad());
 	}
 	
 	public void crearUniversidad() {
@@ -279,8 +303,10 @@ public class ControlAdmin{
 	}
 	
 	public void crearProyecto() {
+		project.setEstado(estado_AUX);
 		bbdd.aniadirProyecto(project);
 		project = new Proyecto();
+		project.setOng(new ONG());
 	}
 	
 	public void actualizarUsuario(Usuario u) {
