@@ -81,7 +81,7 @@ public class ControlPAS{
 	}
 
 	public List<Usuario> getListaProfesores(){
-		return bbdd.listaProfesores();
+		return bbdd.todoPDI();
 	}
 
 	
@@ -90,7 +90,6 @@ public class ControlPAS{
 	}
 	
 	public void enabletableSolicitudes() {
-		
 		showtableSolicitudes = !showtableSolicitudes;
 	}
 	
