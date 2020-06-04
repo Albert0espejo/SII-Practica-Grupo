@@ -188,6 +188,12 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 		em.persist(c);
 	}
 	
+	@Override
+	public void actualizarONG(ONG c) {
+		em.merge(c);
+		
+	}
+	
 	
 	
 	

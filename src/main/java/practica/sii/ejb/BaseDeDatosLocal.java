@@ -46,6 +46,7 @@ public interface BaseDeDatosLocal {
 	
 	List<Usuario> todoONG();
 	void aniadirONG(ONG c);
+	void actualizarONG(ONG c);
 	
 	List<Usuario> listaProfesores();
 
