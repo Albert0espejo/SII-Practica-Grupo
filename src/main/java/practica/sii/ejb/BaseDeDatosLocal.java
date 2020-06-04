@@ -52,14 +52,14 @@ public interface BaseDeDatosLocal {
 
 	List<Usuario> todoPDI();
 	void aniadirPDI(PDI c);
+	void actualizarPDI(PDI c);
 	
 	List<Usuario> todoPAS();
 	void aniadirPAS(PAS c);
+	void actualizarPAS(PAS c);
 	
 	List<Usuario> todoAlumnos();
 	void aniadirAlumno(Alumno c);
-	
-	
-
+	void actualizarAlumno(Alumno c);
 	
 }

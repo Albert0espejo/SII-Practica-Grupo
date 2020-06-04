@@ -217,6 +217,12 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 		em.persist(c);
 	}
 	
+	@Override
+	public void actualizarPDI(PDI c) {
+		em.merge(c);
+		
+	}
+	
 	
 	
 	
@@ -232,6 +238,12 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 		em.persist(c);
 	}
 	
+	@Override
+	public void actualizarPAS(PAS c) {
+		em.merge(c);
+		
+	}
+	
 	
 	
 	
@@ -245,6 +257,12 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 	@Override
 	public void aniadirAlumno(Alumno c) {
 		em.persist(c);
+	}
+	
+	@Override
+	public void actualizarAlumno(Alumno c) {
+		em.merge(c);
+		
 	}
 	
 	
