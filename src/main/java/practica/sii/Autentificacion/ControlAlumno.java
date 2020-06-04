@@ -42,11 +42,18 @@ public class ControlAlumno implements Serializable{
 	private Boolean showtableSolicitudes = false;
 	private Boolean showtableNoticias = false;
 	private Boolean showtableProyectos = false;
-	     
+	
+
+	private Demanda solicitud;
+	private Proyecto selectedProyecto;	
+	private Universidad uni;
 	private Login listas;
 	private Usuario miUsuario;
 	private Alumno miAlumno;
+	private Universidad miUni;
 	
+	
+
 	public Alumno getMiAlumno() {
 		return miAlumno;
 	}
@@ -54,9 +61,6 @@ public class ControlAlumno implements Serializable{
 	public void setMiAlumno(Alumno miAlumno) {
 		this.miAlumno = miAlumno;
 	}
-
-	private Demanda solicitud;
-	private Proyecto selectedProyecto;
 	
 	public ControlAlumno() {
 		listas = new Login();
@@ -66,6 +70,11 @@ public class ControlAlumno implements Serializable{
 		listaSolicitudes = new ArrayList<Demanda>();
 	}
 
+	public void setMiUsuario(Usuario miUsuario) {
+		this.miUsuario = miUsuario;
+		this.miAlumno=new Alumno(miUsuario.getId(), miUsuario.getUsuario(),miUsuario.getContrasena(),miUsuario.getCorreo(),miUsuario.getRol(), null);
+	}
+	
 	public List<Demanda> getListaSolicitudes() {
 		return this.bbdd.todoSolicitudes();
 	}
@@ -74,11 +83,22 @@ public class ControlAlumno implements Serializable{
 		return miUsuario;
 	}
 
-	public void setMiUsuario(Usuario miUsuario) {
-		this.miUsuario = miUsuario;
-		this.miAlumno=new Alumno(miUsuario.getId(), miUsuario.getUsuario(),miUsuario.getContrasena(),miUsuario.getCorreo(),miUsuario.getRol(), null);
+	public Universidad getMiUni() {
+		return miUni;
 	}
 
+	public void setMiUni(Universidad miUni) {
+		this.miUni = miUni;
+	}
+	
+	public List<Universidad> getUni() {
+		return this.bbdd.todoUniversidad();
+	}
+
+	public void setUni(Universidad uni) {
+		this.bbdd.aniadirUniversidad(uni);;
+	}
+	
 	public Proyecto getSelectedProyecto() {
 		return selectedProyecto;
 	}
