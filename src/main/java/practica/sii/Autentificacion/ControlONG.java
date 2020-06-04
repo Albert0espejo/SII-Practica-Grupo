@@ -246,11 +246,15 @@ public class ControlONG {
 		direccion = new Address();
 	}
 	
-	public void modificarComentario(String Comentario) {
-		selectedSolicitud.setComentarios_ONG(Comentario);
+	public void modificarComentario() {
+		bbdd.actualizarSolicitud(selectedSolicitud);
 	}
 	
 	public String enableEditarPerfil() {
 		return "editarPerfil.xhtml";
+	}
+	
+	public void modificarOng() {
+		
 	}
 }

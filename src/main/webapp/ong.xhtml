@@ -65,25 +65,26 @@
 										<p:commandButton onclick="PF('modificar').show()"
 											value="Modificar"></p:commandButton>
 									</h:panelGrid>
+									<h:form>
+										<p:dialog header="Añadir Comentario" widgetVar="modificar"
+											modal="true" showEffect="fade" hideEffect="fade"
+											resizable="false">
+											<p:outputPanel id="addPanelNew" style="text-align:center;">
+												<h:panelGrid columns="2">
+													<h:outputText value="Comentario"></h:outputText>
+													<h:inputText value="#{solicitudes.comentarios_ONG}"></h:inputText>
+
+													<h:outputLabel></h:outputLabel>
+													<h:commandButton action="#{controlONG.modificarComentario}"
+														value="Modificar" update="solicitudes"></h:commandButton>
+
+												</h:panelGrid>
+											</p:outputPanel>
+										</p:dialog>
+									</h:form>
+
 								</p:dataList>
 							</h:form>
-
-							<p:dialog header="Añadir Comentario" widgetVar="modificar"
-								modal="true" showEffect="fade" hideEffect="fade"
-								resizable="false">
-								<p:outputPanel id="addPanelNew" style="text-align:center;">
-									<h:panelGrid columns="2">
-										<h:outputText value="Comentario"></h:outputText>
-										<h:inputText value="#{solicitudes.comentarios_ONG}"></h:inputText>
-
-										<h:outputLabel></h:outputLabel>
-										<h:commandButton action="#{controlONG.modificarComentario}"
-											value="Modificar" update="solicitudes"></h:commandButton>
-
-									</h:panelGrid>
-								</p:outputPanel>
-							</p:dialog>
-
 
 						</div>
 						<div class="ui-g-9">
@@ -331,8 +332,8 @@
 
 													<h:outputText value="Estado"></h:outputText>
 													<h:selectOneMenu value="#{controlONG.project.estado}">
-														<f:selectItems value="#{controlONG.listaEstado}"
-															var="sol" itemValue="#{sol}" itemLaber="#{sol}"></f:selectItems>
+														<f:selectItems value="#{controlONG.listaEstado}" var="sol"
+															itemValue="#{sol}" itemLaber="#{sol}"></f:selectItems>
 													</h:selectOneMenu>
 
 													<h:outputLabel></h:outputLabel>
