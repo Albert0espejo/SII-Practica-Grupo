@@ -255,6 +255,6 @@ public class ControlONG {
 	}
 	
 	public void modificarOng() {
-		
+		bbdd.actualizarONG(miUsuarioONG);
 	}
 }
