@@ -90,7 +90,6 @@ public class ControlPAS{
 	}
 	
 	public void enabletableSolicitudes() {
-		
 		showtableSolicitudes = !showtableSolicitudes;
 	}
 	
