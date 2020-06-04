@@ -30,10 +30,7 @@ public class ControlPDI implements Serializable{
 	
 	@Inject
 	private BaseDeDatosLocal bbdd;
-	
-	private List<Usuario> listaUsuarios;
-	private List<Demanda> listaSolicitudes;
-	private List<Proyecto> listaProyectos;
+
 	private List<Rol> listaRoles;
 	private List<Estado> listaEstado;
 	
@@ -49,8 +46,6 @@ public class ControlPDI implements Serializable{
 	
 	
 	public ControlPDI() {
-		listaProyectos = new ArrayList<Proyecto>();
-		listaSolicitudes = new ArrayList<Demanda>();
 		listaRoles = Arrays.asList(Rol.values());
 		listaEstado = Arrays.asList(Estado.values());
 	}
@@ -135,6 +130,4 @@ public class ControlPDI implements Serializable{
 		return "tablaProyectosPDI.xhtml";
 	}
 
-
-	
 }

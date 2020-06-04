@@ -7,8 +7,6 @@ import java.util.List;
 
 import javax.persistence.*;
 
-import practica.sii.Clases.Usuario.Rol;
-
 /**
  * Entity implementation class for Entity: PDI
  *
