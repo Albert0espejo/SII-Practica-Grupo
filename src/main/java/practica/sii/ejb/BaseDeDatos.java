@@ -124,7 +124,7 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 
 	@Override
 	public List<Demanda> listaSolicitudes() {
-		return em.createNamedQuery("listaSolicitudes.todos", Demanda.class).getResultList();
+		return em.createNamedQuery("Demanda.todos", Demanda.class).getResultList();  
 	}
 
 	@Override
@@ -176,4 +176,10 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 	public void aniadirPAS(PAS c) {
 		em.persist(c);
 	}
+	
+	@Override
+	public Universidad findUni(Long id) {
+        return em.find(Universidad.class, id);
+    }
+	
 }

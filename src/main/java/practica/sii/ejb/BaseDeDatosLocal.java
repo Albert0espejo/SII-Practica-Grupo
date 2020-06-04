@@ -45,5 +45,6 @@ public interface BaseDeDatosLocal {
 	void aniadirAlumno(Alumno c);
 	void aniadirPAS(PAS c);
 	void aniadirPDI(PDI c);
+	Universidad findUni(Long id);
 	
 }
