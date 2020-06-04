@@ -31,7 +31,6 @@ public class ControlPAS{
 	
 	private Boolean showtableSolicitudes = false;
 	
-	private Login listas;
 	private Usuario miusuario;
 	private PAS miPAS;
 	private Demanda selectedSolicitud;
@@ -46,7 +45,6 @@ public class ControlPAS{
 	}
 	
 	public ControlPAS() {
-		listas = new Login();
 		listaProfesores = new ArrayList<Usuario>();
 		listaSolicitudes = new ArrayList<Demanda>();
 	}
@@ -77,11 +75,11 @@ public class ControlPAS{
 	}
 
 	public List<Demanda> getListaSolicitudes() {
-		return bbdd.listaSolicitudes();
+		return bbdd.todoSolicitudes();
 	}
 
 	public List<Usuario> getListaProfesores(){
-		return bbdd.listaProfesores();
+		return bbdd.todoPDI();
 	}
 
 	
