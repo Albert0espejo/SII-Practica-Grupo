@@ -10,7 +10,7 @@ import javax.persistence.*;
  *
  */
 @NamedQuery(name = "Demanda.todos", query="select c from Demanda c")
-@NamedQuery(name = "listaSolicitudes.todos", query="select c from Demanda c where Universidad.nombre = 'Universidad de Malaga'")
+@NamedNativeQuery(name = "listaSolicitudes.todos", query="select * from Demanda where Universidad.nombre = 'Universidad de Malaga'")
 @Entity
 @Table(name = "Demanda")
 public class Demanda implements Serializable {
