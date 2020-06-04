@@ -48,6 +48,43 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 		
 	}
 	
+	
+	
+	
+	
+	@Override
+	public List<Demanda> todoSolicitudes() {
+		return em.createNamedQuery("Demanda.todos", Demanda.class).getResultList();
+	}
+	
+	@Override
+	public List<Demanda> listaSolicitudes() {
+		return em.createNamedQuery("listaSolicitudes.todos", Demanda.class).getResultList();  
+	}
+	
+	@Override
+	public void aniadirSolicitud(Demanda c) {
+		em.persist(c);
+		
+	}
+	
+	@Override
+	public void eliminarSolicitud(Demanda c) {
+		em.remove(em.merge(c));
+	}
+	
+	@Override
+	public void actualizarSolicitud(Demanda c) {
+		em.merge(c);
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 	@Override
 	public List<Universidad> todoUniversidad() {
 		return em.createNamedQuery("Universidad.todos", Universidad.class).getResultList();
@@ -71,26 +108,14 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 	}
 	
 	@Override
-	public List<Demanda> todoSolicitudes() {
-		return em.createNamedQuery("Demanda.todos", Demanda.class).getResultList();
-	}
+	public Universidad findUni(Long id) {
+        return em.find(Universidad.class, id);
+    }
 	
-	@Override
-	public void aniadirSolicitud(Demanda c) {
-		em.persist(c);
-		
-	}
 	
-	@Override
-	public void eliminarSolicitud(Demanda c) {
-		em.remove(em.merge(c));
-	}
 	
-	@Override
-	public void actualizarSolicitud(Demanda c) {
-		em.merge(c);
-		
-	}
+	
+	
 	
 	@Override
 	public List<Noticias> todoNoticias() {
@@ -114,6 +139,13 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 		
 	}
 	
+	
+	
+	
+	
+	
+	
+	
 	@Override
 	public List<Proyecto> todoProyectos() {
 		return em.createNamedQuery("Proyecto.todos", Proyecto.class).getResultList();
@@ -135,16 +167,16 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 		em.merge(c);
 		
 	}
-
+	
 	@Override
-	public List<Demanda> listaSolicitudes() {
-		return em.createNamedQuery("listaSolicitudes.todos", Demanda.class).getResultList();  
-	}
-
-	@Override
-	public List<Usuario> listaProfesores() {
-		return em.createNamedQuery("profesoresUni.todos", Usuario.class).getResultList();
-	}
+	public Proyecto findProyecto(Long id) {
+        return em.find(Proyecto.class, id);
+    }
+	
+	
+	
+	
+	
 	
 	@Override
 	public List<Usuario> todoONG() {
@@ -152,28 +184,74 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 	}
 
 	@Override
-	public List<Usuario> todoPAS() {
-		return em.createNamedQuery("Usuario.pas", Usuario.class).getResultList();
+	public void aniadirONG(ONG c) {
+		em.persist(c);
 	}
-
+	
+	@Override
+	public void actualizarONG(ONG c) {
+		em.merge(c);
+		
+	}
+	
+	
+	
+	
+	
+	@Override
+	public List<Usuario> listaProfesores() {
+		return em.createNamedQuery("profesoresUni.todos", Usuario.class).getResultList();
+	}
+	
+	
+	
+	
+	
 	@Override
 	public List<Usuario> todoPDI() {
 		return em.createNamedQuery("Usuario.pdi", Usuario.class).getResultList();
 	}
 
 	@Override
-	public List<Usuario> todoAlumnos() {
-		return em.createNamedQuery("Usuario.alumno", Usuario.class).getResultList();
+	public void aniadirPDI(PDI c) {
+		em.persist(c);
 	}
 	
 	@Override
-	public Proyecto findProyecto(Long id) {
-        return em.find(Proyecto.class, id);
-    }
+	public void actualizarPDI(PDI c) {
+		em.merge(c);
+		
+	}
+	
+	
+	
+	
+	
 	
 	@Override
-	public void aniadirONG(ONG c) {
+	public List<Usuario> todoPAS() {
+		return em.createNamedQuery("Usuario.pas", Usuario.class).getResultList();
+	}
+
+	@Override
+	public void aniadirPAS(PAS c) {
 		em.persist(c);
+	}
+	
+	@Override
+	public void actualizarPAS(PAS c) {
+		em.merge(c);
+		
+	}
+	
+	
+	
+	
+	
+	
+	@Override
+	public List<Usuario> todoAlumnos() {
+		return em.createNamedQuery("Usuario.alumno", Usuario.class).getResultList();
 	}
 	
 	@Override
@@ -182,18 +260,15 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 	}
 	
 	@Override
-	public void aniadirPDI(PDI c) {
-		em.persist(c);
+	public void actualizarAlumno(Alumno c) {
+		em.merge(c);
+		
 	}
 	
-	@Override
-	public void aniadirPAS(PAS c) {
-		em.persist(c);
-	}
 	
-	@Override
-	public Universidad findUni(Long id) {
-        return em.find(Universidad.class, id);
-    }
+	
+	
+	
+	
 	
 }

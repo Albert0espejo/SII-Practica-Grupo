@@ -11,6 +11,7 @@ import javax.persistence.*;
  * Entity implementation class for Entity: PAS
  *
  */
+@NamedQuery(name = "PAS.todos", query="select c from PAS c")
 @Entity
 @Table(name="PAS")
 public class PAS extends Usuario implements Serializable {

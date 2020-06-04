@@ -13,6 +13,7 @@ import javax.persistence.*;
  *
  */
 
+@NamedQuery(name = "ONG.todos", query="select c from ONG c")
 @Entity
 public class ONG extends Usuario implements Serializable {
 
