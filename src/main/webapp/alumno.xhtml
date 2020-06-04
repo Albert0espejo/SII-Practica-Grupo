@@ -44,7 +44,19 @@
 							                    <h:outputText value="#{solicitudes.universidad}" style="font-weight: bold"/>
 							 
 							                    <h:outputText value="Proyecto:" />
-							                    <h:outputText value="#{solicitudes.proyecto.ID_Proyecto}" style="font-weight: bold"/>						 
+							                    <h:outputText value="#{solicitudes.proyecto.ID_Proyecto}" style="font-weight: bold"/>
+							                    
+							                    <h:outputText value="Comentario Profesor:" />
+							                    <h:outputText value="#{solicitudes.comentarios_Profesor}" style="font-weight: bold"/>
+							                    						 
+							                    <h:outputText value="Comentario Alumno:" />
+							                    <h:outputText value="#{solicitudes.comentarios_Alumno}" style="font-weight: bold"/>
+							                    
+							                    <h:outputText value="Comentario ONG:" />
+							                    <h:outputText value="#{solicitudes.comentarios_ONG}" style="font-weight: bold"/>
+							                    
+							                    <h:outputText value="Nota:" />
+							                    <h:outputText value="#{solicitudes.nota}" style="font-weight: bold"/>
 							                </h:panelGrid>
 							            </p:outputPanel>
 							        </h:panelGrid>
@@ -78,16 +90,34 @@
 													<p:column headerText="Fecha Final">
 														<h:outputText value="#{proyectos.fecha_Final}" />
 													</p:column>
+													
+													
+													
+													
+													<p:column headerText="Descripcion">
+														<h:outputText value="#{controlONG.project.descripcion}" />
+													</p:column>
+													
+													<p:column headerText="Reconocimiento">
+														<h:outputText value="#{proyectos.fecha_Final}" />
+													</p:column>
+													
+													
+													<h:outputText value="Descripcion"></h:outputText>
+													<h:inputText value="#{controlONG.project.reconocimiento}" required="true"></h:inputText>
+				
+													<h:outputText value="Reconocimiento"></h:outputText>
+													<h:inputText value="#{controlONG.project.reconocimiento}" required="true"></h:inputText>																
+													
+													
 													<p:column headerText="Estado">
 														<h:outputText value="#{proyectos.estado}" />
-												</p:column>
+													</p:column>
 											</p:dataTable>
 						
-											<p:contextMenu>
-												<p:menuitem value="Enviar solicitud" action="#{controlAlumno.crearSolicitud}" 
-												onclick="PF('dlg1').show()"/>
-											</p:contextMenu>
-											<p:dialog header="Solicitud" widgetVar="dlg1" minHeight="40">
+												<h:outputLabel></h:outputLabel>
+												<h:commandButton onclick="PF('dlg1').show()" value="Enviar solicitud" action="#{controlAlumno.crearSolicitud}" /> 
+												<p:dialog header="Solicitud" widgetVar="dlg1" minHeight="40">
 						    						<h:outputText value="Solicitud enviada!" />
 											</p:dialog>
 										</h:form>						

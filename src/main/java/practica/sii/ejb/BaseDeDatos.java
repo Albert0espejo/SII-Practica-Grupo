@@ -18,7 +18,7 @@ import practica.sii.Clases.Usuario;
  */
 @Stateless
 public class BaseDeDatos implements BaseDeDatosLocal {
-
+	private Class<Proyecto> buscarProyecto;
 	@PersistenceContext(unitName = "practica.sii")
 	private EntityManager em;
 	
@@ -138,5 +138,7 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 		return em.createNamedQuery("Usuario.alumno", Usuario.class).getResultList();
 	}
 
-
+	public Proyecto findProyecto(Long id) {
+        return em.find(buscarProyecto, id);
+    }
 }
