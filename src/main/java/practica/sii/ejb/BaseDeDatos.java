@@ -176,4 +176,10 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 	public void aniadirPAS(PAS c) {
 		em.persist(c);
 	}
+	
+	@Override
+	public Universidad findUni(Long id) {
+        return em.find(Universidad.class, id);
+    }
+	
 }
