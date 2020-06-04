@@ -67,9 +67,7 @@ public class ControlAlumno implements Serializable{
 	}
 
 	public List<Demanda> getListaSolicitudes() {
-		listaSolicitudes = listas.getListaSolicitudes();
-		
-		return listaSolicitudes;
+		return this.bbdd.todoSolicitudes();
 	}
 
 	public Usuario getMiUsuario() {
@@ -94,13 +92,11 @@ public class ControlAlumno implements Serializable{
 	}
 	
 	public List<Noticias> getListaNoticias() {
-		return bbdd.todoNoticias();
+		return this.bbdd.todoNoticias();
 	}
  
 	public List<Proyecto> getListaProyectos() {
-		listaProyectos = listas.getListaProyectos();
-		
-		return listaProyectos;
+		return this.bbdd.todoProyectos();
 	}
 		
 	public Boolean getShowtableSolicitudes() {
@@ -160,8 +156,16 @@ public class ControlAlumno implements Serializable{
 	}
 	
 	public void crearSolicitud() {
+		Proyecto aux = this.bbdd.findProyecto(selectedProyecto.getID_Proyecto());
 		solicitud = new Demanda(new Random().nextLong(), Estado.En_Espera, null, selectedProyecto);
-		listas.getListaSolicitudes().add(solicitud);
+		
+		List<Demanda> solicitudes=aux.getSolicitud();
+		if(solicitudes.add(solicitud)) {
+			aux.setSolicitud(solicitudes);
+		}
+		this.bbdd.aniadirSolicitud(solicitud);
+		selectedProyecto=new Proyecto();
+		bbdd.editProyecto(aux);
 		
 	}
 	
