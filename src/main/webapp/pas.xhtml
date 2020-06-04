@@ -36,13 +36,13 @@
 						
 						<p:dataTable class="tabla" value="#{controlPAS.listaProfesores}"
 							var="profesores" rowKey="#{profesores.id}"
-							selection="#{controlPAS.selectedUsuario}" selectionMode="single">
+							selection="#{controlPAS.selectedPDI}" selectionMode="single">
 
 							<p:column headerText="Profesor">
 									<h:outputText value="#{profesores.correo}" />
 							</p:column>
 							<p:column headerText="Enviar">
-								<p:commandButton value="Enviar" action="#{controlPAS.enviarA}" onclick="PF('enviarAProfe').close()"/>
+								<p:commandButton value="Enviar" action="#{controlPAS.enviarA(selectedPDI)}" onclick="PF('enviarAProfe').hide()"/>
 							</p:column>
 						</p:dataTable>
 					</p:dialog>

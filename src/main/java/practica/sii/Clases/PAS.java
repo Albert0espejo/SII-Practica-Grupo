@@ -87,5 +87,4 @@ public class PAS extends Usuario implements Serializable {
 	public void setSolicitudes(List<Demanda> solicitudes) {
 		this.solicitudes = solicitudes;
 	}
-	
 }

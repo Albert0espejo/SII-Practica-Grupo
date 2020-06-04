@@ -11,6 +11,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.NamedQuery;
 
+import org.primefaces.event.RowEditEvent;
+
 import practica.sii.Clases.PAS;
 import practica.sii.Clases.PDI;
 import practica.sii.Clases.Demanda;
@@ -19,8 +21,6 @@ import practica.sii.Clases.Usuario.Rol;
 import practica.sii.ejb.BaseDeDatosLocal;
 
 @Named(value = "controlPAS")
-@NamedQuery(name = "listaSolicitudes.todos", query="select c from Demanda where Universidad = 'Universidad de Malaga'")
-@NamedQuery(name = "listaProfesores.todos", query="select c from PDI where Universidad = 'Universidad de Malaga'")
 @RequestScoped
 public class ControlPAS{
 	@Inject
@@ -35,39 +35,24 @@ public class ControlPAS{
 	private Usuario miusuario;
 	private PAS miPAS;
 	private Demanda selectedSolicitud;
-	private PDI supervisor;
-	private Usuario selectedUsuario;
+	private PDI selectedPDI;
+	
+	public PDI getSelectedPDI() {
+		return selectedPDI;
+	}
+	
+	public void setSelectedPDI(PDI selectedPDI) {
+		this.selectedPDI = selectedPDI;
+	}
 	
 	public ControlPAS() {
 		listas = new Login();
-		supervisor = new PDI();
 		listaProfesores = new ArrayList<Usuario>();
 		listaSolicitudes = new ArrayList<Demanda>();
 	}
 	
 	
 	
-	public Usuario getSupervisor() {
-		return supervisor;
-	}
-
-	public void setSupervisor(PDI supervisor) {
-		this.supervisor = supervisor;
-	}
-
-	
-	
-	public Usuario getSelectedUsuario() {
-		return selectedUsuario;
-	}
-
-
-
-	public void setSelectedUsuario(Usuario selectedUsuario) {
-		this.selectedUsuario = selectedUsuario;
-	}
-
-
 
 	public Demanda getSelectedSolicitud() {
 		return selectedSolicitud;
@@ -116,7 +101,7 @@ public class ControlPAS{
 		return "editarPerfil.xhtml";
 	}
 	
-	public void enviarA() {
+	public void enviarA(PDI supervisor) {
 		selectedSolicitud.setPdi(supervisor);
 		selectedSolicitud = null;
 	}
