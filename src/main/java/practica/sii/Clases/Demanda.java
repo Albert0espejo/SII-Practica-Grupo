@@ -72,8 +72,7 @@ public class Demanda implements Serializable {
 		super();
 	}
 
-	public Demanda(Long Id_Solicitud, Estado Estado, Universidad universidad, Proyecto proyecto) {
-		this.Id_Solicitud = Id_Solicitud;
+	public Demanda( Estado Estado, Universidad universidad, Proyecto proyecto) {
 		this.Estado = Estado;
 		this.universidad = universidad;
 		this.proyecto = proyecto;

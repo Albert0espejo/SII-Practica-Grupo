@@ -30,7 +30,7 @@ import practica.sii.ejb.BaseDeDatosLocal;
 @RequestScoped
 public class ControlAlumno implements Serializable{
 	
-	@Inject
+	@EJB
 	private BaseDeDatosLocal bbdd;
 	
 	
@@ -155,18 +155,18 @@ public class ControlAlumno implements Serializable{
 		return "editarPerfil.xhtml";
 	}
 	
-	public void crearSolicitud() {
+	public String crearSolicitud() {
 		Proyecto aux = this.bbdd.findProyecto(selectedProyecto.getID_Proyecto());
-		solicitud = new Demanda(new Random().nextLong(), Estado.En_Espera, null, selectedProyecto);
+		solicitud = new Demanda( Estado.En_Espera, null, aux);
 		
-		List<Demanda> solicitudes=aux.getSolicitud();
-		if(solicitudes.add(solicitud)) {
-			aux.setSolicitud(solicitudes);
-		}
+		//List<Demanda> solicitudes=aux.getSolicitud();
+		//solicitudes.add(solicitud);
+		//aux.setSolicitud(solicitudes);
+		
 		this.bbdd.aniadirSolicitud(solicitud);
 		selectedProyecto=new Proyecto();
 		bbdd.editProyecto(aux);
-		
+		return "alumno.xhtml";
 	}
 	
 }

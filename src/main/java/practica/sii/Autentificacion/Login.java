@@ -67,9 +67,9 @@ public class Login implements Serializable{
         usuarios.add(new Usuario(6L,"pdiprueba2","zxcv","pdiprueba2@uma.es", Rol.PDI));
         usuarios.add(new Usuario(4L,"pdiprueba","zxcv","pdiprueba@uma.es", Rol.PDI));
         usuarios.add(new Usuario(5L, "ongprueba", "qwer", "ong@uma.es", Rol.ONG));
-        listaSolicitudes.add(new Demanda(2L, Estado.Aceptado, Malaga, ProyectoB));
-        listaSolicitudes.add(new Demanda(1L, Estado.En_Espera, Malaga, ProyectoA));
-        listaSolicitudes.add(new Demanda(1L, Estado.En_Espera, Malaga, ProyectoA));
+        listaSolicitudes.add(new Demanda( Estado.Aceptado, Malaga, ProyectoB));
+        listaSolicitudes.add(new Demanda( Estado.En_Espera, Malaga, ProyectoA));
+        listaSolicitudes.add(new Demanda( Estado.En_Espera, Malaga, ProyectoA));
         listaUniversidades.add(Malaga);
         listaProyectos.add(ProyectoA);
         listaProyectos.add(ProyectoB);

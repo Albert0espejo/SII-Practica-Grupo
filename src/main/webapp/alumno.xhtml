@@ -95,20 +95,12 @@
 													
 													
 													<p:column headerText="Descripcion">
-														<h:outputText value="#{controlONG.project.descripcion}" />
+														<h:outputText value="#{proyectos.descripcion}" />
 													</p:column>
 													
 													<p:column headerText="Reconocimiento">
-														<h:outputText value="#{proyectos.fecha_Final}" />
+														<h:outputText value="#{proyectos.reconocimiento}" />
 													</p:column>
-													
-													
-													<h:outputText value="Descripcion"></h:outputText>
-													<h:inputText value="#{controlONG.project.reconocimiento}" required="true"></h:inputText>
-				
-													<h:outputText value="Reconocimiento"></h:outputText>
-													<h:inputText value="#{controlONG.project.reconocimiento}" required="true"></h:inputText>																
-													
 													
 													<p:column headerText="Estado">
 														<h:outputText value="#{proyectos.estado}" />
