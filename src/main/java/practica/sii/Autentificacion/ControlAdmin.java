@@ -66,7 +66,9 @@ public class ControlAdmin{
 		sol = new Demanda();
 		uni = new Universidad();
 		news = new Noticias();
+		news.setOng(new Usuario());
 		project = new Proyecto();
+		project.setOng(new ONG());
 		listas = new Login();
 		direccion = new Address();
 		listaNoticias = new ArrayList<Noticias>();
