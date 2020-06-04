@@ -11,6 +11,8 @@ import practica.sii.Clases.Alumno;
 import practica.sii.Clases.Demanda;
 import practica.sii.Clases.Noticias;
 import practica.sii.Clases.ONG;
+import practica.sii.Clases.PAS;
+import practica.sii.Clases.PDI;
 import practica.sii.Clases.Proyecto;
 import practica.sii.Clases.Universidad;
 import practica.sii.Clases.Usuario;
@@ -122,7 +124,7 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 
 	@Override
 	public List<Demanda> listaSolicitudes() {
-		return em.createNamedQuery("listaSolicitudes.todos", Demanda.class).getResultList();
+		return em.createNamedQuery("Demanda.todos", Demanda.class).getResultList();  
 	}
 
 	@Override
@@ -164,4 +166,20 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 	public void aniadirAlumno(Alumno c) {
 		em.persist(c);
 	}
+	
+	@Override
+	public void aniadirPDI(PDI c) {
+		em.persist(c);
+	}
+	
+	@Override
+	public void aniadirPAS(PAS c) {
+		em.persist(c);
+	}
+	
+	@Override
+	public Universidad findUni(Long id) {
+        return em.find(Universidad.class, id);
+    }
+	
 }

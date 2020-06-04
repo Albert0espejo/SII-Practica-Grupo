@@ -96,25 +96,14 @@
 						<p:messages />
 						<h:panelGrid class="tabla" columns="2"
 							columnClasses="label, value">
-							<h:outputText value="Usuario: *" />
-							<h:inputText value="#{controlONG.miUsuario.usuario}"
-								required="true" label="Usuario" />
-
-							<h:outputText value="Contraseña *" />
-							<h:password value="#{controlONG.miUsuario.contrasena}"
-								required="true" label="Contraseña" />
 								
 							<h:outputText value="Nombre" />
 							<h:inputText value="#{controlONG.miUsuarioONG.nombre}"
 								label="Nombre" />
 
-							<h:outputText value="Correo *" />
-							<h:inputText value="#{controlONG.miUsuario.correo}"
+							<h:outputText value="Correo" />
+							<h:inputText value="#{controlONG.miUsuarioONG.correo}"
 								label="Correo" />
-
-							<h:outputText value="Direccion" />
-							<h:inputText value="#{controlONG.miUsuarioONG.direccion}"
-								label="Direccion" />
 
 							<h:outputText value="Telefono" />
 							<h:inputText value="#{controlONG.miUsuarioONG.telefono}"
@@ -127,8 +116,36 @@
 							<h:outputText value="Representante" />
 							<h:inputText value="#{controlONG.miUsuarioONG.representante}"
 								label="Representante" />
+								
+							<h:outputText value="Descripcion" />
+							<h:inputText value="#{controlONG.miUsuarioONG.descripcion}"
+								label="Descripcion" />
+								
+							<h:outputText value="Ciudad" />
+							<h:inputText value="#{controlONG.direccion.city}"
+								label="City" />
+								
+							<h:outputText value="State" />
+							<h:inputText value="#{controlONG.direccion.state}"
+								label="State" />
+								
+							<h:outputText value="Street 1" />
+							<h:inputText value="#{controlONG.direccion.street1}"
+								label="Street1" />
+								
+							<h:outputText value="Street 2" />
+							<h:inputText value="#{controlONG.direccion.street2}"
+								label="Street2" />
+								
+							<h:outputText value="Zip Code" />
+							<h:inputText value="#{controlONG.direccion.zipcode}"
+								label="Zipcode" />
+								
+							<h:outputText value="Pais" />
+							<h:inputText value="#{controlONG.direccion.country}"
+								label="Contry" />
 
-							<h:commandButton action="#{controlONG.crearONG}" value="Añadir"
+							<h:commandButton action="#{controlONG.crearOng}" value="Añadir"
 								update="ONG">
 							</h:commandButton>
 						</h:panelGrid>

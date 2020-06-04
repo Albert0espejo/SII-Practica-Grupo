@@ -12,16 +12,18 @@ import javax.persistence.*;
  * Entity implementation class for Entity: ONG
  *
  */
+
 @Entity
 public class ONG extends Usuario implements Serializable {
 
-	private String Nombre;
-	private String Descripcion;
+	
 	@Embedded
 	private Address Direccion;
 	private Integer Telefono;
 	private String Representante;
 	private String Direccion_Web;
+	private String Nombre;
+	private String Descripcion;
 	@ElementCollection
 	@OneToMany (mappedBy = "ong") 
 	private List<Proyecto> proyecto = new ArrayList<Proyecto>();

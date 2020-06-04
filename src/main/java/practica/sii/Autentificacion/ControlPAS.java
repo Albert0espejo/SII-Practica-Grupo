@@ -50,9 +50,6 @@ public class ControlPAS{
 		listaProfesores = new ArrayList<Usuario>();
 		listaSolicitudes = new ArrayList<Demanda>();
 	}
-	
-	
-	
 
 	public Demanda getSelectedSolicitud() {
 		return selectedSolicitud;
@@ -80,7 +77,7 @@ public class ControlPAS{
 	}
 
 	public List<Demanda> getListaSolicitudes() {
-		return bbdd.listaSolicitudes();
+		return bbdd.todoSolicitudes();
 	}
 
 	public List<Usuario> getListaProfesores(){

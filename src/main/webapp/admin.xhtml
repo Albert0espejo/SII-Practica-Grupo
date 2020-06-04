@@ -155,36 +155,10 @@
 									<p:column headerText="Proyecto">
 										<h:outputText value="#{solicitudes.proyecto.ID_Proyecto}" />
 									</p:column>
-									<p:column headerText="PDI">
-										<p:cellEditor>
-											<f:facet name="output">
-												<h:outputText value="#{solicitudes.pdi.apellidos}" />
-											</f:facet>
-											<f:facet name="input">
-												<h:selectOneMenu value="#{solicitudes.pdi}">
-													<f:selectItems value="#{controlAdmin.listaPDI}"
-														var="pdi" itemLabel="#{pdi}" itemValue="#{pdi.id}" />
-												</h:selectOneMenu>
-											</f:facet>
-										</p:cellEditor>
-									</p:column>
-									<p:column headerText="PAS">
-										<p:cellEditor>
-											<f:facet name="output">
-												<h:outputText value="#{solicitudes.pas.facultad}" />
-											</f:facet>
-											<f:facet name="input">
-												<h:selectOneMenu value="#{solicitudes.pas}">
-													<f:selectItems value="#{controlAdmin.listaPAS}"
-														var="pas" itemLabel="#{pas}" itemValue="#{pas.id}" />
-												</h:selectOneMenu>
-											</f:facet>
-										</p:cellEditor>
-									</p:column>
 									<p:column headerText="Alumno">
 										<p:cellEditor>
 											<f:facet name="output">
-												<h:outputText value="#{solicitudes.alumno.apellidos}" />
+												<h:outputText value="#{solicitudes.alumno.id}" />
 											</f:facet>
 											<f:facet name="input">
 												<h:selectOneMenu value="#{solicitudes.alumno}">
@@ -218,35 +192,14 @@
 							</h:form>
 							<h:form>
 								<h:panelGrid columns="2" class="tabla">
-
-
-									<h:outputText value="Universidad"></h:outputText>
-									<h:selectOneMenu value="#{controlAdmin.sol.universidad.id_Universidad}">
-										<f:selectItems value="#{controlAdmin.listaUniversidades}"
-											var="universidades" itemValue="#{universidades.id_Universidad}"
-											itemLaber="#{universidades.nombre}"></f:selectItems>
+								
+									<h:outputText value="Estado"></h:outputText>
+									<h:selectOneMenu value="#{controlAdmin.estado_AUX}">
+										<f:selectItems value="#{controlAdmin.listaEstado}" var="sol"
+											itemValue="#{sol}" itemLaber="#{sol}"></f:selectItems>
 									</h:selectOneMenu>
 
-									<h:outputText value="Proyecto"></h:outputText>
-									<h:selectOneMenu value="#{controlAdmin.sol.proyecto.ID_Proyecto}">
-										<f:selectItems value="#{controlAdmin.listaProyectos}"
-											var="proyectos" itemValue="#{proyectos.ID_Proyecto}"
-											itemLabel="#{proyectos.ID_Proyecto}"></f:selectItems>
-									</h:selectOneMenu>
-									
-									<h:outputText value="Facultad"></h:outputText>
-									<h:selectOneMenu value="#{controlAdmin.sol.pas.id}">
-										<f:selectItems value="#{controlAdmin.listaPAS}"
-											var="pas" itemValue="#{pas.id}"
-											itemLabel="#{pas.id}"></f:selectItems>
-									</h:selectOneMenu>
-									
-									<h:outputText value="Alumno"></h:outputText>
-									<h:selectOneMenu value="#{controlAdmin.sol.alumno.id}">
-										<f:selectItems value="#{controlAdmin.listaAlumno}"
-											var="alumno" itemValue="#{alumno.id}"
-											itemLabel="#{alumno.id}"></f:selectItems>
-									</h:selectOneMenu>
+
 
 									<h:outputLabel></h:outputLabel>
 									<h:commandButton action="#{controlAdmin.crearSolicitud}"

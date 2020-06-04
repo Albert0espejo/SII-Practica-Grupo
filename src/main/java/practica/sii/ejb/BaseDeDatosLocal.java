@@ -43,5 +43,8 @@ public interface BaseDeDatosLocal {
 	void editProyecto(Proyecto c);
 	void aniadirONG(ONG c);
 	void aniadirAlumno(Alumno c);
+	void aniadirPAS(PAS c);
+	void aniadirPDI(PDI c);
+	Universidad findUni(Long id);
 	
 }

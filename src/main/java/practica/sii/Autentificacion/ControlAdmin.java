@@ -54,6 +54,10 @@ public class ControlAdmin{
 	private Login listas;
 	
 	private Usuario user;
+	private Alumno alumno;
+	private PAS pas;
+	private PDI pdi;
+	private ONG ong;
 	private Demanda sol;
 	private Universidad uni;
 	private Noticias news;
@@ -64,6 +68,10 @@ public class ControlAdmin{
 	
 	public ControlAdmin() {
 		user = new Usuario();
+		alumno = new Alumno();
+		pas = new PAS();
+		pdi = new PDI();
+		ong = new ONG();
 		sol = new Demanda();
 		sol.setAlumno(new Alumno());
 		sol.setPas(new PAS());
@@ -194,7 +202,7 @@ public class ControlAdmin{
 		}
 	}
 	
-	public void borrarSolicitudes(Demanda solicitud) {
+	public void borrarSolicitudes() {
 		if(selectedSolicitud != null) {
 			bbdd.eliminarSolicitud(selectedSolicitud);
 			selectedSolicitud = null;
@@ -275,19 +283,51 @@ public class ControlAdmin{
 	}
 
 	public void crearUsuario() {
-		bbdd.aniadirUsuario(user);
-		user = new Usuario();
+		if (user.getRol().equals(Rol.ALUMNO)) {
+			alumno.setContrasena(user.getContrasena());
+			alumno.setCorreo(user.getCorreo());
+			alumno.setRol(user.getRol());
+			alumno.setUsuario(user.getUsuario());
+			bbdd.aniadirAlumno(alumno);
+			user = new Usuario();
+			alumno = new Alumno();
+		}else if(user.getRol().equals(Rol.ONG)) {
+			ong.setContrasena(user.getContrasena());
+			ong.setCorreo(user.getCorreo());
+			ong.setRol(user.getRol());
+			ong.setUsuario(user.getUsuario());
+			bbdd.aniadirONG(ong);
+			user = new Usuario();
+			ong = new ONG();
+		}else if(user.getRol().equals(Rol.PAS)) {
+			pas.setContrasena(user.getContrasena());
+			pas.setCorreo(user.getCorreo());
+			pas.setRol(user.getRol());
+			pas.setUsuario(user.getUsuario());
+			bbdd.aniadirPAS(pas);
+			user = new Usuario();
+			pas = new PAS();
+		}else if(user.getRol().equals(Rol.PDI)) {
+			pdi.setContrasena(user.getContrasena());
+			pdi.setCorreo(user.getCorreo());
+			pdi.setRol(user.getRol());
+			pdi.setUsuario(user.getUsuario());
+			bbdd.aniadirPDI(pdi);
+			user = new Usuario();
+			pdi = new PDI();
+		}else {
+			bbdd.aniadirUsuario(user);
+			user = new Usuario();
+		}
 	}
 	
 	public void crearSolicitud() {
+		//sol.setUniversidad(sol.getAlumno().getUniversidad());
 		sol.setEstado(estado_AUX);
 		bbdd.aniadirSolicitud(sol);
 		sol = new Demanda();
 		sol.setAlumno(new Alumno());
-		sol.setPas(new PAS());
-		sol.setPdi(new PDI());
 		sol.setProyecto(new Proyecto());
-		sol.setUniversidad(new Universidad());
 	}
 	
 	public void crearUniversidad() {
