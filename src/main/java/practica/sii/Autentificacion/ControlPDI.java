@@ -10,69 +10,72 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.event.RowEditEvent;
+
 import practica.sii.Clases.Estado;
+import practica.sii.Clases.Noticias;
 import practica.sii.Clases.PAS;
 import practica.sii.Clases.PDI;
 import practica.sii.Clases.Proyecto;
+import practica.sii.Clases.Universidad;
 import practica.sii.Clases.Demanda;
 import practica.sii.Clases.Usuario;
+import practica.sii.Clases.Usuario.Rol;
+import practica.sii.ejb.BaseDeDatosLocal;
 
 
 @Named(value = "controlPDI")
 @RequestScoped
 public class ControlPDI implements Serializable{
 	
-	
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private List<Demanda> listaSolicitudes;
-	private List<Estado> listaEstado;
-	private List<Proyecto> listaProyectos;
-	
-	
-	private Demanda selectedSolicitud;
-	private Usuario selectedUsuario;
-	private Proyecto selectedProyecto;
 	@Inject
-	private Login listas;
+	private BaseDeDatosLocal bbdd;
+	
+	private List<Usuario> listaUsuarios;
+	private List<Demanda> listaSolicitudes;
+	private List<Proyecto> listaProyectos;
+	private List<Rol> listaRoles;
+	private List<Estado> listaEstado;
+	
+	
+	private Usuario selectedUsuario;
+	private Demanda selectedSolicitud;
+	private Proyecto selectedProyecto;
+	
 	private Usuario miusuario;
 	private PDI miPDI;
 	
+	
+	
+	
 	public ControlPDI() {
-		listaSolicitudes = new ArrayList<Demanda>();
-		listaEstado = Arrays.asList(Estado.values());
 		listaProyectos = new ArrayList<Proyecto>();
+		listaSolicitudes = new ArrayList<Demanda>();
+		listaRoles = Arrays.asList(Rol.values());
+		listaEstado = Arrays.asList(Estado.values());
+	}
+
+	public List<Usuario> getTodosUsuarios() {
+		return bbdd.todoUsuarios();
+	}
+
+	public List<Demanda> getListaSolicitudes() {
+		return bbdd.todoSolicitudes();
+	}
+
+	public List<Proyecto> getListaProyectos() {
+		return bbdd.todoProyectos();
+	}
+
+	public List<Rol> getListaRoles() {
+		return listaRoles;
+	}
+
+	public List<Estado> getListaEstado() {
+		return listaEstado;
 	}
 	
-	public Usuario getMiusuario() {
-		return miusuario;
-	}
-
-	public void setMiusuario(Usuario miusuario) {
-		this.miusuario = miusuario;
-		this.miPDI = new PDI(miusuario.getId(),miusuario.getUsuario(),miusuario.getContrasena(),miusuario.getCorreo(),miusuario.getRol(), null ,null,null,null,null,null,null);
-
-	}
-
-	public Demanda getSelectedSolicitud() {
-		return selectedSolicitud;
-	}
-
-	public void setSelectedSolicitud(Demanda selectedSolicitud) {
-		this.selectedSolicitud = selectedSolicitud;
-	}
-	
-	public PDI getMiPDI() {
-		return miPDI;
-	}
-
-	public void setMiPDI(PDI miPDI) {
-		this.miPDI = miPDI;
-	}
-
+	/**/
 	
 	public Usuario getSelectedUsuario() {
 		return selectedUsuario;
@@ -82,48 +85,43 @@ public class ControlPDI implements Serializable{
 		this.selectedUsuario = selectedUsuario;
 	}
 	
+	public Demanda getSelectedSolicitud() {
+		return selectedSolicitud;
+	}
+
+	public void setSelectedSolicitud(Demanda selectedSolicitud) {
+		this.selectedSolicitud = selectedSolicitud;
+	}
+
 	public Proyecto getSelectedProyecto() {
 		return selectedProyecto;
 	}
 
-
 	public void setSelectedProyecto(Proyecto selectedProyecto) {
 		this.selectedProyecto = selectedProyecto;
 	}
-	
-	public List<Estado> getListaEstado() {
-		return listaEstado;
-	}
-	
-	public List<Demanda> getListaSolicitudes() {
-		/*
-		List<Demanda> aux = listas.getListaSolicitudes();
-		for(int i=0; i < aux.size();i++) {
-			if(aux.get(i).getUniversidad().equals(null)) {
-				listaSolicitudes.add(aux.get(i));
-			}
-		} 
-		*/
-		listaSolicitudes = listas.getListaSolicitudes();
 
-		return listaSolicitudes;
-	}
+	/**/
 	
-	public List<Proyecto> getListaProyectos() {
-		/*
-		List<Proyectos> aux = listas.getListaProyectos();
-		for(int i=0; i < aux.size();i++) {
-			if(aux.get(i).getUniversidad().equals(null)) {
-				listaProyectos.add(aux.get(i));
-			}
-		} 
-		*/
-		listaProyectos = listas.getListaProyectos();
-		
-		return listaProyectos;
+	public Usuario getMiusuario() {
+		return miusuario;
 	}
-	
 
+	public void setMiusuario(Usuario miusuario) {
+		this.miusuario = miusuario;
+		this.setMiPDI(new PDI(miusuario.getId(),miusuario.getUsuario(),miusuario.getContrasena(),miusuario.getCorreo(),miusuario.getRol(), null ,null,null,null,null,null,null));
+
+	}
+
+	public PDI getMiPDI() {
+		return miPDI;
+	}
+	
+	public void setMiPDI(PDI miPDI) {
+		this.miPDI = miPDI;
+	}
+	
+	/***********************************************************/
 	
 	public String enabletableSolicitudes() {
 		return "tablaSolicitudesPDI.xhtml";
