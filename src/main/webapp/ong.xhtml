@@ -131,6 +131,18 @@
 															</f:facet>
 														</p:cellEditor>
 													</p:column>
+													
+													<p:column headerText="Texto">
+														<p:cellEditor>
+															<f:facet name="output">
+																<h:outputText value="#{noticias.texto}" />
+															</f:facet>
+															<f:facet name="input">
+																<p:inputText value="#{noticias.texto}" />
+															</f:facet>
+														</p:cellEditor>
+													</p:column>
+
 													<p:column headerText="Fecha Publicación">
 														<p:cellEditor>
 															<f:facet name="output">
