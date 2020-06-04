@@ -208,6 +208,11 @@ public class ControlONG {
 		project = new Proyecto();
 	}
 	
+	public void crearOng() {
+		bbdd.aniadirONG(miUsuarioONG);
+		miUsuarioONG = new ONG();
+	}
+	
 	public void modificarComentario(String Comentario) {
 		selectedSolicitud.setComentarios_ONG(Comentario);
 	}

@@ -41,4 +41,6 @@ public interface BaseDeDatosLocal {
 	Proyecto findProyecto(Long id);
 	void editSolicitud(Demanda c);
 	void editProyecto(Proyecto c);
+	void aniadirONG(ONG c);
+	
 }

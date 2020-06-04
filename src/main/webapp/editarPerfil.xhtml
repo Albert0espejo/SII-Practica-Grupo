@@ -93,71 +93,90 @@
 			<c:when test="#{controlAutorizacion.usuario.rol == 'ONG'}">
 				<h:form>
 					<p:panel header="Informacion del Perfil">
-		                <p:messages />
-		                <h:panelGrid class="tabla" columns="2" columnClasses="label, value">
-		                    <h:outputText value="Usuario: *" />
-		                    <p:inputText value="#{controlONG.miUsuario.usuario}"  required="true" label="Usuario"/>
+						<p:messages />
+						<h:panelGrid class="tabla" columns="2"
+							columnClasses="label, value">
+							<h:outputText value="Usuario: *" />
+							<h:inputText value="#{controlONG.miUsuario.usuario}"
+								required="true" label="Usuario" />
 
-		                    <h:outputText value="Contraseña *" />
-		                    <p:password value="#{controlONG.miUsuario.contrasena}" required="true" label="Contraseña"/>
+							<h:outputText value="Contraseña *" />
+							<h:password value="#{controlONG.miUsuario.contrasena}"
+								required="true" label="Contraseña" />
 
-		                    <h:outputText value="Correo *" />
-		                    <p:inputText value="#{controlONG.miUsuario.correo}" label="Correo"/>
+							<h:outputText value="Correo *" />
+							<h:inputText value="#{controlONG.miUsuario.correo}"
+								label="Correo" />
 
-		                    <h:outputText value="Facultad" />
-		                    <p:inputText value="#{controlONG.miUsuarioONG.nombre}" label="Nombre"/>
+							<h:outputText value="Nombre" />
+							<h:inputText value="#{controlONG.miUsuarioONG.nombre}"
+								label="Nombre" />
 
-		                    <h:outputText value="Direccion" />
-		                    <p:inputText value="#{controlONG.miUsuarioONG.direccion}" label="Direccion"/>
+							<h:outputText value="Direccion" />
+							<h:inputText value="#{controlONG.miUsuarioONG.direccion}"
+								label="Direccion" />
 
-		                    <h:outputText value="Telefono" />
-		                    <p:inputText value="#{controlONG.miUsuarioONG.telefono}" label="Telefono"/>
+							<h:outputText value="Telefono" />
+							<h:inputText value="#{controlONG.miUsuarioONG.telefono}"
+								label="Telefono" />
 
-		                    <h:outputText value="Direccion_Web" />
-		                    <p:inputText value="#{controlONG.miUsuarioONG.direccion_Web}" label="Direccion Web"/>
+							<h:outputText value="Direccion_Web" />
+							<h:inputText value="#{controlONG.miUsuarioONG.direccion_Web}"
+								label="Direccion Web" />
 
-		                    <h:outputText value="Representante" />
-		                    <p:inputText value="#{controlONG.miUsuarioONG.representante}" label="Representante"/>
+							<h:outputText value="Representante" />
+							<h:inputText value="#{controlONG.miUsuarioONG.representante}"
+								label="Representante" />
 
-		                </h:panelGrid>
-		            </p:panel>
-	            </h:form>
+							<h:commandButton action="#{controlONG.crearONG}"
+								value="Añadir" update="ONG">
+								</h:commandButton>
+						</h:panelGrid>
+					</p:panel>
+				</h:form>
 			</c:when>
-			
+
 			<c:when test="#{controlAutorizacion.usuario.rol == 'ALUMNO'}">
 				<h:form>
 					<p:panel header="Informacion personal">
-		                <p:messages />
-		                <h:panelGrid class="tabla" columns="2" columnClasses="label, value">
-		                    <h:outputText value="Usuario: *" />
-		                    <p:inputText value="#{controlAlumno.miAlumno.usuario}"  required="true" label="Usuario"/>
-		 
-		                    <h:outputText value="Contraseña *" />
-		                    <p:password value="#{controlAlumno.miAlumno.contrasena}" required="true" label="Contraseña"/>
-		 
-		                    <h:outputText value="Correo *" />
-		                    <p:inputText value="#{controlAlumno.miAlumno.correo}" label="Correo"/>
-		                    
-		                    <h:outputText value="Facultad" />
-		                    <p:inputText value="#{controlAlumno.miAlumno.universidad}" label="Facultad"/>
-		                    
-		                    <h:outputText value="Direccion" />
-		                    <p:inputText value="#{controlAlumno.miAlumno.direccion}" label="Direccion"/>
-		                    
-		                    <h:outputText value="Idiomas" />
-		 					<p:dataList value="#{controlAlumno.miAlumno.idiomas}" var="Idiomas" type="ordered">
+						<p:messages />
+						<h:panelGrid class="tabla" columns="2"
+							columnClasses="label, value">
+							<h:outputText value="Usuario: *" />
+							<p:inputText value="#{controlAlumno.miAlumno.usuario}"
+								required="true" label="Usuario" />
+
+							<h:outputText value="Contraseña *" />
+							<p:password value="#{controlAlumno.miAlumno.contrasena}"
+								required="true" label="Contraseña" />
+
+							<h:outputText value="Correo *" />
+							<p:inputText value="#{controlAlumno.miAlumno.correo}"
+								label="Correo" />
+
+							<h:outputText value="Facultad" />
+							<p:inputText value="#{controlAlumno.miAlumno.universidad}"
+								label="Facultad" />
+
+							<h:outputText value="Direccion" />
+							<p:inputText value="#{controlAlumno.miAlumno.direccion}"
+								label="Direccion" />
+
+							<h:outputText value="Idiomas" />
+							<p:dataList value="#{controlAlumno.miAlumno.idiomas}"
+								var="Idiomas" type="ordered">
 								#{idioma.name}
 							</p:dataList>
-		                </h:panelGrid>
-		            </p:panel> 
-	            </h:form>
-					
+						</h:panelGrid>
+					</p:panel>
+				</h:form>
+
 			</c:when>
-			
+
 			<c:otherwise>
 				<ui:include src="/WEB-INF/Templates/errorAutorizacion.xhtml" />
 			</c:otherwise>
-		</c:choose>		
+		</c:choose>
 	</ui:define>
-	
+
 </ui:composition>

@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import practica.sii.Autentificacion.ControlPAS;
 import practica.sii.Clases.Demanda;
 import practica.sii.Clases.Noticias;
+import practica.sii.Clases.ONG;
 import practica.sii.Clases.Proyecto;
 import practica.sii.Clases.Universidad;
 import practica.sii.Clases.Usuario;
@@ -152,4 +153,9 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 	public Proyecto findProyecto(Long id) {
         return em.find(buscarProyecto, id);
     }
+	
+	@Override
+	public void aniadirONG(ONG c) {
+		em.persist(c);
+	}
 }
