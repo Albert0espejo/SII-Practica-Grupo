@@ -1,6 +1,5 @@
 package practica.sii.Autentificacion;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -26,9 +25,6 @@ public class ControlONG {
 	@Inject
 	private BaseDeDatosLocal bbdd;
 
-	private List<Noticias> listaNoticias;
-	private List<Proyecto> listaProyectos;
-	private List<Demanda> listaSolicitudes; 
 	private List<Estado> listaEstado;
 	
 	private Boolean showtableNoticias = false;
@@ -47,16 +43,10 @@ public class ControlONG {
 	private Address direccion;
 	private Estado estado_AUX;
 	
-	@Inject
-	private Login listas;
-	
 	public ControlONG() {
 		news = new Noticias();
 		project = new Proyecto();
 		miUsuarioONG = new ONG();
-		listaNoticias = new ArrayList<Noticias>();
-		listaProyectos = new ArrayList<Proyecto>();
-		listaSolicitudes = new ArrayList<Demanda>();
 		direccion = new Address();
 		
 		listaEstado = Arrays.asList(Estado.values());

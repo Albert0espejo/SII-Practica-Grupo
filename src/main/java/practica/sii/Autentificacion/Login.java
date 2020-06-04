@@ -25,6 +25,7 @@ import practica.sii.Clases.Demanda;
 import practica.sii.Clases.Universidad;
 import practica.sii.Clases.Usuario;
 import practica.sii.Clases.Usuario.Rol;
+import practica.sii.ejb.BaseDeDatosLocal;
 
 
 
@@ -32,13 +33,13 @@ import practica.sii.Clases.Usuario.Rol;
 @SessionScoped
 public class Login implements Serializable{
 
-    private String usuario;
+	@Inject
+	private BaseDeDatosLocal bbdd;
+	
+	private String usuario;
     private String contrasenia;
     private List<Usuario> usuarios;
-	private List<Demanda> listaSolicitudes;
-	private List<Universidad> listaUniversidades;
-	private List<Noticias> listaNoticias;
-	private List<Proyecto> listaProyectos;
+
     
     @Inject
     private ControlAutorizacion ctrl;
@@ -47,69 +48,11 @@ public class Login implements Serializable{
      * Creates a new instance of Login
      */
     public Login() {
-    	Date finicio = new Date(01/06/2020);
-    	Date ffinal = new Date(21/07/2020);
-    	List<String> facultades = new ArrayList<String>();
-    	facultades.add("ciencias");
-    	facultades.add("salud");
-    	Universidad Malaga = new Universidad(1L,"Malaga", facultades, new Address("Avd.Cervantes","","Malaga","Andalucia",29010L,"España"),"uma.es");
-        Proyecto ProyectoA = new Proyecto(1L , "Hospital Carlos Haya", finicio, ffinal, "Descripcion del proyecto", Estado.En_Espera,"2 creditos");
-        Proyecto ProyectoB = new Proyecto(2L , "Hospital Carlos Cipres", finicio, ffinal, "prueba segundo proyecto", Estado.En_Espera,"2 creditos");
-        //Proyecto ProyectoB = new Proyecto(2L , "Casa de la Juventud", 15/12/2020, 08/02/2021, "Descripcion del proyecto", 1);
-    	usuarios = new ArrayList<Usuario>();
-    	listaSolicitudes = new ArrayList<Demanda>();
-    	listaProyectos = new ArrayList<Proyecto>();
-    	listaUniversidades = new ArrayList<Universidad>();
-    	listaNoticias = new ArrayList<Noticias>();
-        usuarios.add(new Usuario(1L,"pepe", "asdf","pepe@uma.es", Rol.ALUMNO));
-        usuarios.add(new Usuario(2L,"manolo", "qwer", "manolo@uma.es",Rol.ADMINISTRADOR));
-        usuarios.add(new Usuario(3L,"pasprueba","asdf","pasprueba@uma.es", Rol.PAS));
-        usuarios.add(new Usuario(6L,"pdiprueba2","zxcv","pdiprueba2@uma.es", Rol.PDI));
-        usuarios.add(new Usuario(4L,"pdiprueba","zxcv","pdiprueba@uma.es", Rol.PDI));
-        usuarios.add(new Usuario(5L, "ongprueba", "qwer", "ong@uma.es", Rol.ONG));
-        listaSolicitudes.add(new Demanda( Estado.Aceptado, Malaga, ProyectoB));
-        listaSolicitudes.add(new Demanda( Estado.En_Espera, Malaga, ProyectoA));
-        listaSolicitudes.add(new Demanda( Estado.En_Espera, Malaga, ProyectoA));
-        listaUniversidades.add(Malaga);
-        listaProyectos.add(ProyectoA);
-        listaProyectos.add(ProyectoB);
 
     }
 
     public void setUsuarios(List<Usuario> usuarios) { 
 		this.usuarios = usuarios;
-	}
-
-	public List<Demanda> getListaSolicitudes() {
-		return listaSolicitudes;
-	}
-
-	public void setListaSolicitudes(List<Demanda> listaSolicitudes) {
-		this.listaSolicitudes = listaSolicitudes;
-	}
-
-	public List<Universidad> getListaUniversidades() {
-		return listaUniversidades;
-	}
-
-	public void setListaUniversidades(List<Universidad> listaUniversidades) {
-		this.listaUniversidades = listaUniversidades;
-	}
-
-	public List<Noticias> getListaNoticias() {
-		return listaNoticias;
-	}
-
-	public void setListaNoticias(List<Noticias> listaNoticias) {
-		this.listaNoticias = listaNoticias;
-	}
-
-	public List<Proyecto> getListaProyectos() {
-		return listaProyectos;
-	}
-
-	public void setListaProyectos(List<Proyecto> listaProyectos) {
-		this.listaProyectos = listaProyectos;
 	}
 
 	public String getUsuario() {
@@ -136,6 +79,8 @@ public class Login implements Serializable{
         // Implementar este método
     	FacesContext ctx = FacesContext.getCurrentInstance();
         
+    	usuarios = bbdd.todoUsuarios();
+    	
         boolean encontrado = false;
         Iterator i = usuarios.iterator();
         Usuario aux = null;

@@ -1,7 +1,6 @@
 package practica.sii.Clases;
 
 import java.io.Serializable;
-import java.lang.Integer;
 import java.lang.String;
 import javax.persistence.*;
 

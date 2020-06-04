@@ -1,29 +1,19 @@
 package practica.sii.Autentificacion;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.SessionScoped;
-import javax.faces.application.FacesMessage;
-import javax.inject.Inject;
 import javax.inject.Named;
-
-import org.primefaces.event.RowEditEvent;
 
 import practica.sii.Clases.Alumno;
 import practica.sii.Clases.Estado;
 import practica.sii.Clases.Noticias;
-import practica.sii.Clases.PDI;
 import practica.sii.Clases.Proyecto;
 import practica.sii.Clases.Demanda;
 import practica.sii.Clases.Universidad;
 import practica.sii.Clases.Usuario;
-import practica.sii.Clases.Usuario.Rol;
 import practica.sii.ejb.BaseDeDatosLocal;
 
 @Named(value = "controlAlumno")
@@ -33,11 +23,6 @@ public class ControlAlumno implements Serializable{
 	@EJB
 	private BaseDeDatosLocal bbdd;
 	
-	
-	private List<Demanda> listaSolicitudes;
-	private List<Noticias> listaNoticias;
-	private List<Proyecto> listaProyectos;
-	
 	private Boolean showtablePerfil = false;
 	private Boolean showtableSolicitudes = false;
 	private Boolean showtableNoticias = false;
@@ -46,12 +31,9 @@ public class ControlAlumno implements Serializable{
 
 	private Demanda solicitud;
 	private Proyecto selectedProyecto;	
-	private Universidad uni;
-	private Login listas;
 	private Usuario miUsuario;
 	private Alumno miAlumno;
 	private Universidad miUni;
-	
 	
 
 	public Alumno getMiAlumno() {
@@ -63,11 +45,7 @@ public class ControlAlumno implements Serializable{
 	}
 	
 	public ControlAlumno() {
-		listas = new Login();
 		solicitud = new Demanda();
-		listaNoticias = new ArrayList<Noticias>();
-		listaProyectos = new ArrayList<Proyecto>();
-		listaSolicitudes = new ArrayList<Demanda>();
 	}
 
 	public void setMiUsuario(Usuario miUsuario) {

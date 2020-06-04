@@ -20,12 +20,15 @@ public interface BaseDeDatosLocal {
 	void aniadirUsuario(Usuario c);
 	void eliminarUsuario(Usuario c);
 	void actualizarUsuario(Usuario c);
+	Usuario findUsuario(Long c);
+	
 	
 	List<Demanda> todoSolicitudes();
 	List<Demanda> listaSolicitudes();//solicitudes de la uma
 	void aniadirSolicitud(Demanda c);
 	void eliminarSolicitud(Demanda c);
 	void actualizarSolicitud(Demanda c);
+	Demanda findSolicitud(Long c);
 	
 	List<Universidad> todoUniversidad();
 	void aniadirUniversidad(Universidad c);
@@ -37,6 +40,7 @@ public interface BaseDeDatosLocal {
 	void aniadirNoticia(Noticias c);
 	void eliminarNoticia(Noticias c);
 	void actualizarNoticia(Noticias c);
+	Noticias findNoticia(Long id);
 	
 	List<Proyecto> todoProyectos();
 	void aniadirProyecto(Proyecto c);
@@ -44,22 +48,37 @@ public interface BaseDeDatosLocal {
 	void actualizarProyecto(Proyecto c);
 	Proyecto findProyecto(Long id);
 	
-	List<Usuario> todoONG();
+	List<Usuario> todoONG();//sacar todos los usuarios con roll ONG
+	List<ONG> todoONGTablaONG();//sacar todas las entidades ONG
 	void aniadirONG(ONG c);
+	void eliminarONG(ONG c);
 	void actualizarONG(ONG c);
+	ONG findONG(Long id);
 	
-	List<Usuario> listaProfesores();
-
-	List<Usuario> todoPDI();
+	
+	List<Usuario> todoPDI();//sacar todos los usuarios con roll PDI
+	List<PDI> todoPDITablaPDI();//sacar todas las entidades PDI
 	void aniadirPDI(PDI c);
+	void eliminarPDI(PDI c);
 	void actualizarPDI(PDI c);
+	PDI findPDI(Long id);
 	
-	List<Usuario> todoPAS();
+	List<Usuario> todoPAS();//sacar todos los usuarios con roll PAS
+	List<PAS> todoPASTablaPAS();//sacar todas las entidades PAS
 	void aniadirPAS(PAS c);
+	void eliminarPAS(PAS c);
 	void actualizarPAS(PAS c);
+	PAS findPAS(Long id);
 	
-	List<Usuario> todoAlumnos();
+	List<Usuario> todoAlumnos();//sacar todos los usuarios con roll Alumno
+	List<Alumno> todoAlumnosTablaAlumno();//sacar todas las entidades Alumno
 	void aniadirAlumno(Alumno c);
+	void eliminarAlumno(Alumno c);
 	void actualizarAlumno(Alumno c);
+	Alumno findAlumno(Long id);
 	
+	
+	
+	
+		
 }

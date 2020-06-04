@@ -1,15 +1,11 @@
 package practica.sii.Autentificacion;
 
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-
-import org.primefaces.event.RowEditEvent;
 
 import practica.sii.Clases.Estado;
 

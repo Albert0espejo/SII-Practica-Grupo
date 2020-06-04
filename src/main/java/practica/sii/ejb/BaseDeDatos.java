@@ -6,7 +6,6 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import practica.sii.Autentificacion.ControlPAS;
 import practica.sii.Clases.Alumno;
 import practica.sii.Clases.Demanda;
 import practica.sii.Clases.Noticias;
@@ -47,6 +46,11 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 		em.merge(c);
 		
 	}
+	@Override
+	public Usuario findUsuario(Long id) {
+        return em.find(Usuario.class, id);
+		
+	}
 	
 	
 	
@@ -76,6 +80,12 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 	@Override
 	public void actualizarSolicitud(Demanda c) {
 		em.merge(c);
+		
+	}
+	
+	@Override
+	public Demanda findSolicitud(Long id) {
+        return em.find(Demanda.class, id);
 		
 	}
 	
@@ -139,7 +149,10 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 		
 	}
 	
-	
+	@Override
+	public Noticias findNoticia(Long id) {
+        return em.find(Noticias.class, id);
+    }
 	
 	
 	
@@ -184,8 +197,18 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 	}
 
 	@Override
+	public List<ONG> todoONGTablaONG() {
+		return em.createNamedQuery("ONG.todos", ONG.class).getResultList();
+	}
+	
+	@Override
 	public void aniadirONG(ONG c) {
 		em.persist(c);
+	}
+	
+	@Override
+	public void eliminarONG(ONG c) {
+		em.remove(em.merge(c));
 	}
 	
 	@Override
@@ -194,14 +217,14 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 		
 	}
 	
-	
-	
-	
-	
 	@Override
-	public List<Usuario> listaProfesores() {
-		return em.createNamedQuery("profesoresUni.todos", Usuario.class).getResultList();
-	}
+	public ONG findONG(Long id) {
+        return em.find(ONG.class, id);
+    }
+	
+	
+	
+	
 	
 	
 	
@@ -211,10 +234,20 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 	public List<Usuario> todoPDI() {
 		return em.createNamedQuery("Usuario.pdi", Usuario.class).getResultList();
 	}
-
+	
+	@Override
+	public List<PDI> todoPDITablaPDI() {
+		return em.createNamedQuery("PDI.todos", PDI.class).getResultList();
+	}
+	
 	@Override
 	public void aniadirPDI(PDI c) {
 		em.persist(c);
+	}
+	
+	@Override
+	public void eliminarPDI(PDI c) {
+		em.remove(em.merge(c));
 	}
 	
 	@Override
@@ -223,7 +256,10 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 		
 	}
 	
-	
+	@Override
+	public PDI findPDI(Long id) {
+        return em.find(PDI.class, id);
+    }
 	
 	
 	
@@ -234,8 +270,18 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 	}
 
 	@Override
+	public List<PAS> todoPASTablaPAS() {
+		return em.createNamedQuery("PAS.todos", PAS.class).getResultList();
+	}
+	
+	@Override
 	public void aniadirPAS(PAS c) {
 		em.persist(c);
+	}
+	
+	@Override
+	public void eliminarPAS(PAS c) {
+		em.remove(em.merge(c));
 	}
 	
 	@Override
@@ -244,7 +290,10 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 		
 	}
 	
-	
+	@Override
+	public PAS findPAS(Long id) {
+        return em.find(PAS.class, id);
+    }
 	
 	
 	
@@ -255,8 +304,18 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 	}
 	
 	@Override
+	public List<Alumno> todoAlumnosTablaAlumno() {
+		return em.createNamedQuery("Alumno.todos", Alumno.class).getResultList();
+	}
+	
+	@Override
 	public void aniadirAlumno(Alumno c) {
 		em.persist(c);
+	}
+	
+	@Override
+	public void eliminarAlumno(Alumno c) {
+		em.remove(em.merge(c));
 	}
 	
 	@Override
@@ -265,6 +324,10 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 		
 	}
 	
+	@Override
+	public Alumno findAlumno(Long id) {
+        return em.find(Alumno.class, id);
+    }
 	
 	
 	
