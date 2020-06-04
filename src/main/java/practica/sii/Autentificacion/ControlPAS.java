@@ -77,7 +77,7 @@ public class ControlPAS{
 	}
 
 	public List<Demanda> getListaSolicitudes() {
-		return bbdd.todoSolicitudes();
+		return bbdd.listaSolicitudes();
 	}
 
 	public List<Usuario> getListaProfesores(){
