@@ -438,8 +438,11 @@
 									
 									
 
+
 									<h:outputText value="Fecha Publicación"></h:outputText>
-									<h:inputText value="#{controlAdmin.news.fecha_Publicacion}"></h:inputText>
+									<h:inputText value="#{controlAdmin.news.fecha_Publicacion}">
+										<f:convertDateTime pattern="yyyy/MM/dd"/> 
+									</h:inputText>
 
 									<h:outputText value="Titulo"></h:outputText>
 									<h:inputText value="#{controlAdmin.news.titulo}"
