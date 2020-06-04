@@ -33,25 +33,14 @@ public class ControlAdmin{
 	@Inject
 	private BaseDeDatosLocal bbdd;
 	
-	private List<Usuario> listaUsuarios;
-	private List<Demanda> listaSolicitudes;
-	private List<Universidad> listaUniversidades;
-	private List<Noticias> listaNoticias;
-	private List<Proyecto> listaProyectos;
 	private List<Rol> listaRoles;
 	private List<Estado> listaEstado;
-	private List<Usuario> listaONG;
-	private List<Usuario> listaPDI;
-	private List<Usuario> listaPAS;
-	private List<Usuario> listaAlumno;
 	
 	private Usuario selectedUsuario;
 	private Demanda selectedSolicitud;
 	private Universidad selectedUniversidad;
 	private Noticias selectedNoticia;
 	private Proyecto selectedProyecto;
-	
-	private Login listas;
 	
 	private Usuario user;
 	private Alumno alumno;
@@ -84,13 +73,8 @@ public class ControlAdmin{
 		project = new Proyecto();
 		project.setOng(new ONG());
 		
-		listas = new Login();
 		direccion = new Address();
 
-		listaNoticias = new ArrayList<Noticias>();
-		listaProyectos = new ArrayList<Proyecto>();
-		listaSolicitudes = new ArrayList<Demanda>();
-		listaUniversidades = new ArrayList<Universidad>();
 		listaRoles = Arrays.asList(Rol.values());
 		listaEstado = Arrays.asList(Estado.values());
 	}
