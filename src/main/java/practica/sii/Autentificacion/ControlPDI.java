@@ -129,5 +129,12 @@ public class ControlPDI implements Serializable{
 	public String enabletableProyectos() {
 		return "tablaProyectosPDI.xhtml";
 	}
+	
+	public void aplicarCambios() {
+		setMiusuario(miusuario);
+		miPDI.setContrasena(miPDI.getContrasena());
+		miPDI.setCorreo(miPDI.getCorreo());
+		miPDI.setTelefono(miPDI.getTelefono());
+	}
 
 }
