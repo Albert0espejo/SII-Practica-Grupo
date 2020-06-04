@@ -272,6 +272,7 @@ public class ControlAdmin{
 	}
 	
 	public void crearNoticia() {
+		news.setOng(new Usuario(100L, "ONGGG", "asdf", "ong@ong.com", Rol.ONG));
 		bbdd.aniadirNoticia(news);
 		news = new Noticias();
 	}

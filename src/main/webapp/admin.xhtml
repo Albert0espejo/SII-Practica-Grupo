@@ -430,23 +430,16 @@
 										<h:commandButton action="#{controlAdmin.borrarNoticias}"
 											value="Eliminar" ></h:commandButton>
 								</h:panelGrid>
-							
-							
+							</h:form>
+							<h:form>
 								<h:panelGrid columns="2" class="tabla">
 									<h:outputText value="Autor"></h:outputText>
 									<h:inputText value="#{controlAdmin.news.autor}" required="true"></h:inputText>
 									
-									<h:outputText value="ONG"></h:outputText>
-									<h:selectOneMenu value="#{controlAdmin.news.ong}">
-										<f:selectItems value="#{controlAdmin.listaONG}"
-											var="ong" itemValue="#{ong}"
-											itemLabel="#{ong.nombre}"></f:selectItems>
-									</h:selectOneMenu>
+									
 
 									<h:outputText value="Fecha Publicación"></h:outputText>
-									<p:calendar value="#{controlAdmin.news.fecha_Publicacion}"
-										 pattern="yyyy/MM/dd" showOn="button" required="true"
-										 readonly="true" readonlyInput="true"></p:calendar>
+									<h:inputText value="#{controlAdmin.news.fecha_Publicacion}"></h:inputText>
 
 									<h:outputText value="Titulo"></h:outputText>
 									<h:inputText value="#{controlAdmin.news.titulo}"
