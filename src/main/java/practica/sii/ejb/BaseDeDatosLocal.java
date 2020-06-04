@@ -39,4 +39,6 @@ public interface BaseDeDatosLocal {
 	List<Usuario> todoPAS();
 	List<Usuario> todoAlumnos();
 	Proyecto findProyecto(Long id);
+	void editSolicitud(Demanda c);
+	void editProyecto(Proyecto c);
 }

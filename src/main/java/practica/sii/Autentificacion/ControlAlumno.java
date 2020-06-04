@@ -156,11 +156,16 @@ public class ControlAlumno implements Serializable{
 	}
 	
 	public void crearSolicitud() {
-		solicitud = new Demanda(new Random().nextLong(), Estado.En_Espera, null, selectedProyecto);
 		Proyecto aux = this.bbdd.findProyecto(selectedProyecto.getID_Proyecto());
+		solicitud = new Demanda(new Random().nextLong(), Estado.En_Espera, null, selectedProyecto);
+		
+		List<Demanda> solicitudes=aux.getSolicitud();
+		if(solicitudes.add(solicitud)) {
+			aux.setSolicitud(solicitudes);
+		}
 		this.bbdd.aniadirSolicitud(solicitud);
-		aux.getSolicitud().add(solicitud);
-		selectedProyecto= new Proyecto();
+		selectedProyecto=new Proyecto();
+		bbdd.editProyecto(aux);
 		
 	}
 	

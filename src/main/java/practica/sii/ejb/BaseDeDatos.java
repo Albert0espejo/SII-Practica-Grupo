@@ -72,6 +72,11 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 	}
 	
 	@Override
+	public void editSolicitud(Demanda c){
+        em.merge(c);
+    }
+	
+	@Override
 	public void eliminarSolicitud(Demanda c) {
 		em.remove(em.merge(c));
 	}
@@ -102,6 +107,11 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 		em.persist(c);
 		
 	}
+	
+	@Override
+	public void editProyecto(Proyecto c){
+        em.merge(c);
+    }
 	
 	@Override
 	public void eliminarProyecto(Proyecto c) {
@@ -137,7 +147,8 @@ public class BaseDeDatos implements BaseDeDatosLocal {
 	public List<Usuario> todoAlumnos() {
 		return em.createNamedQuery("Usuario.alumno", Usuario.class).getResultList();
 	}
-
+	
+	@Override
 	public Proyecto findProyecto(Long id) {
         return em.find(buscarProyecto, id);
     }
